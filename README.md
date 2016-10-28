@@ -48,4 +48,8 @@ PureBASIC is a commercial programming language and IDE published by Fantaisie So
 Repo History
 ============
 
-- `2016/10/26` — repository creation date.
+A record of the milestones of this repository history.
+
+-   `2016/10/26` — repository creation date.
+-   `2016/10/27` — **Highlight**: this repo becomes the home of the PureBASIC language definition and color theme files for [**Highlight** syntax highlighter](./syntax-highlighting/highlight/).
+

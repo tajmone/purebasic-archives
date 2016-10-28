@@ -5,9 +5,6 @@ REM *                                                                           
 REM *                        MARKDOWN CLEAN UP + AUTO-TOC                        *
 REM *                                                                            *
 REM ******************************************************************************
-REM 
-REM ----------------------------{ v1.0 - 2016/10/27 }-----------------------------
-REM 
 REM                               by Tristano Ajmone                              
 REM ==============================================================================
 REM | This batch file auto-cleans up the markdown source and re-generates its TOC |
@@ -22,12 +19,12 @@ ECHO.
 ECHO ==============================================================================
 ECHO                    MARKDOWN CLEANER AND AUTO-TOC GENERATOR                    
 ECHO.
-ECHO ----------------------------{ v1.0 - 2016/10/27 }-----------------------------
+ECHO ----------------------------{ v1.1 - 2016/10/28 }-----------------------------
 ECHO.
 ECHO                               by Tristano Ajmone                              
 ECHO ==============================================================================
 IF [%1]==[] (
-	ECHO ERROR -- Missing filename parameter!
+	ECHO ERROR -- Missing filename parameter! 1>&2
 	GOTO:PRINT_HELP
 	)
 IF NOT EXIST "%1" (
@@ -48,7 +45,7 @@ ECHO 1) Invoking gfmtoc on "%1" for TOC creation/update
 CALL gfmtoc "%1"
 IF ERRORLEVEL 1 (
 	ECHO.
-	ECHO    ERROR -- Something went wrong during gfmtoc invocation!
+	ECHO    ERROR -- Something went wrong during gfmtoc invocation! 1>&2
 	GOTO:PRINT_HELP
 	)
 ECHO    DONE!
@@ -58,7 +55,7 @@ ECHO 2) Invoking Pandoc on "%1" for markdown source cleanup
 pandoc --smart --wrap=none --normalize -f markdown -t markdown -o "%1" "%1"
 IF ERRORLEVEL 1 (
 	ECHO.
-	ECHO    ERROR -- Something went wrong during Pandoc invocation!
+	ECHO    ERROR -- Something went wrong during Pandoc invocation! 1>&2
 	GOTO:PRINT_HELP
 	)
 ECHO    DONE!

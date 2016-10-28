@@ -1,8 +1,17 @@
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+•                                                                            •
+•                                  SNIPPETS                                  •
+•                                                                            •
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+Just a bunch of handy snippets for frequent cut-and-paste operations...
 
+==============================================================================
+                      MARKDOWN FILES AUTO-TOC GENERATION                      
+==============================================================================
 In order for "updatemarkdown.bat" to auto-generate the TOC in markdown files,
-don't forget to paste the following tags into the markdown source (only required
-once, unless they are removed accidentaly, or by a markdown editor which strips
-away html comments!):
+don't forget to paste the following tags into the markdown source (only 
+required once, unless they are removed accidentaly, or by a markdown editor 
+which strips away html comments!):
 
 <!-- #toc -->
 <!-- /toc -->

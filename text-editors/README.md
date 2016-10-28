@@ -3,9 +3,9 @@ Text Editors Support for PureBASIC
 
 This folder will gather resources pertaining PureBASIC syntax support for various text- and code-editors.
 
-[ _to be continued..._ ]
+\[ *to be continued…* \]
 
-----
+------------------------------------------------------------------------
 
 <!-- #toc -->
 -   [Known Editors](#known-editors)
@@ -29,3 +29,4 @@ Atom is a powerful, highly customizable and extensible MIT licensed text editor,
 PureBASIC is supported in Atom via the CoffeeScript package “language-purebasic” (©2014, MIT lic.) by Peter Thomas Horn ([@alomvar](https://github.com/alomvar)):
 
 -   https://github.com/alomvar/language-purebasic
+
