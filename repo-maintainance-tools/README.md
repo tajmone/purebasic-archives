@@ -64,4 +64,3 @@ This is useful when you’ve been editing many `README.md` files, and want to up
 --------------
 
 Just a container for snippets that need to be cut-&-pasted often. For the lazy and/or forgetful ones…
-

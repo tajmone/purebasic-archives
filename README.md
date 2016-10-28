@@ -7,6 +7,7 @@ A collection of PureBASIC resources.
 -   [Introduction](#introduction)
 -   [Resources Organization](#resources-organization)
 -   [License](#license)
+-   [Contributing](#contributing)
 -   [About PureBASIC](#about-purebasic)
 -   [Repo History](#repo-history)
 
@@ -33,6 +34,17 @@ License
 This is a collection of various resources, and each resource comes with its own license. Please read carefully the licenses terms on a per-resource basis before incorporating them into your projects.
 
 Nothing has been incorporated here that would prevent cloning this repository. As for the project in itself — ie: its structure, and my personal contributions in terms of documentations and project-related resources — its to be considered as released into the public domain according to the Unlicense terms (see: [Unlicense.org](http://unlicense.org/)).
+
+Contributing
+============
+
+If you’ve found these archives helpful in finding resources for learning and working with PureBASIC, consider helping the project grow by contributing your own resources, or adding links to external resources, writing reviews or tutorials.
+
+Before submitting pull requests, please read the [`CONTRIBUTING.md`](./CONTRIBUTING.md) file.
+
+Ideas, proposals, and corrections can be discussed by opening an Issue:
+
+-   https://github.com/tajmone/purebasic-archives/issues
 
 About PureBASIC
 ===============
