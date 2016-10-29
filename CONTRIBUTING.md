@@ -9,7 +9,8 @@ Before contributing to this project you should read these guidelines, especially
         -   [Your work need a license too…](#your-work-need-a-license-too)
         -   [Assume others’ work is always copyrighted…](#assume-others-work-is-always-copyrighted)
         -   [If in doubt, provide links instead of code…](#if-in-doubt-provide-links-instead-of-code)
--   [READMEs And Other MD Files](#readmes-and-other-md-files)
+-   [Markdown Consistency And Automation](#markdown-consistency-and-automation)
+-   [README Files](#readme-files)
 
 <!-- /toc -->
 Licenses
@@ -45,20 +46,20 @@ If you want to contribute resources found around the web — code examples found
 
 > If you find software that doesn’t have a license, that generally means you have no permission from the creators of the software to use, modify, or share the software. Although a code host such as GitHub may allow you to view and fork the code, this does not imply that you are permitted to use, modify, or share the software for any purpose.
 >
-> http://choosealicense.com/no-license/\#for-users
+> <http://choosealicense.com/no-license/#for-users>
 
 Just because someone posted some code on a forum — maybe to exemplify an answer during a discussion — it doesn’t mean that that code is in the public domain — it only means the author allowed others to *read* it, not to use it.
 
-In lack of evidence to the contrary, always assume the work of others is protected by copyright — only because some source code is out there in the open, it doesn’t mean it’s free and open source. When unsure, always contact the author and ask.
+As a general rule: lacking evidence to the contrary, always assume the work of others is protected by copyright — simply because some source code is out there in the open it doesn’t mean it’s free and open source. When unsure, always contact the author and ask.
 
 ### If in doubt, provide links instead of code…
 
-Whenever you are unable to ascertain the license terms of any resource, stay on the safe path and contribute a link to it and/or a review, instead of the actual resource.
+Whenever you are unable to ascertain the license terms of any resource, stay on the safe path and contribute a link to it with a review, instead of the actual resource.
 
-The goal of PureBASIC Archives is to provide a place where resources can be *legitimately* and *legaly* accessed and shared. If a resource can be included in the repository, so much the better — all those sharing a local copy of it will find the new resources on their harddrive —; if not, a link to follow will still be a precious resource in itself — sparing our users time-consuming searches around the web.
+The goal of PureBASIC Archives is to provide a place where resources can be *legitimately* and *legaly* accessed and shared. If a resource can be included in the repository, so much the better; otherwise, a link to follow will still be a precious resource in itself — sparing users time-consuming searches around the web.
 
-READMEs And Other MD Files
-==========================
+Markdown Consistency And Automation
+===================================
 
 To preserve consistency across markdown files in the repo — especially for the README files — you’ll find some useful scripts in the [`/repo-maintainance-tools/`](./repo-maintainance-tools/) folder.
 
@@ -79,3 +80,16 @@ So make sure that:
 3.  Before making a pull request, you run these scripts on any edited MD document, to ensure its TOC is up to date with the contents, and it source well formatted.
 
 More info on how the scripts work is found in the [`/repo-maintainance-tools/`](./repo-maintainance-tools/) folder’s README file.
+
+> **NOTE**: The current automation-script setting for Pandoc reformatting is: from `markdown` to `markdown` — and not `markdown_github` (GitHub-Flavored Markdown). The reason for this is that I’ve experienced some problems with `markdown_github` reformatting, especially with linebreaks. In the future this setting might change.
+
+README Files
+============
+
+Each resource main folder should contain a `README.md` document. This improves preview-navigation of the repo on GitHub.
+
+For consistency, all READMEs should be markdown files named `README.md` — documents other than READMEs can be in any other GitHub supported format (Asciidoc, textile, ecc.).
+
+Markdown syntax of READMEs should follow GitHub’s markdown rules — so, it’s ok to take advantage of GFM features like task-lists, strikethrough, fenced code syntax highlighting, emoji, ecc.
+
+> **REMEMBER**: You can always use Pandoc to convert from a markdown flavor to another.
