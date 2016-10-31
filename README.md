@@ -22,10 +22,14 @@ This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)
 Resources Organization
 ======================
 
-The project is divided into folders according to categories:
+The Archives project is divided into folders according to categories:
 
+-   [`/books/`](./books/) — books on PureBASIC programming.
 -   [`/syntax-highlighting/`](./syntax-highlighting/) — publishing PureBASIC source code in colored syntax.
 -   [`/text-editors/`](./text-editors/) — PureBASIC syntax support in text editors.
+
+Some folders contain material specific to this repo’s developement and maintainance:
+
 -   [`/repo-maintainance-tools/`](./repo-maintainance-tools/) — scripts related to the maintainance of this repository.
 
 License
@@ -64,4 +68,5 @@ A record of the milestones of this repository history.
 
 -   `2016/10/26` — repository creation date.
 -   `2016/10/27` — **Highlight**: this repo becomes the home of the PureBASIC language definition and color theme files for [**Highlight** syntax highlighter](./syntax-highlighting/highlight/).
+-   `2016/10/31` — Added *Programming 2D Scrolling Games* PDF book and code examples.
 
