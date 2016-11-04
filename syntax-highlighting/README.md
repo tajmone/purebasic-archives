@@ -23,7 +23,7 @@ Highlight
 
 -   [/highlight/](./highlight/)
 
-This repo hosts the project page of the PureBASIC language definition and color theme for [**Highlight**](http://www.andre-simon.de/doku/highlight/en/highlight.php) syntax highligther (PB lang definition file is now bundled in Highlight since v3.33).
+This repo hosts the project page of the PureBASIC language definition and color theme for [**Highlight**](http://www.andre-simon.de/doku/highlight/en/highlight.php) syntax highligther (PB lang definition file and theme are now bundled in Highlight since v3.33).
 
 Written by Tristano Ajmone, public domain.
 

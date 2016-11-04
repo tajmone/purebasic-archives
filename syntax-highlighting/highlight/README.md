@@ -3,13 +3,13 @@ PureBASIC For Highlight
 
 This folder is the home of the PureBASIC language definition and theme files for André Simons’ **Highlight**.
 
+> **NOTE**: The PureBASIC language definition and theme are now bundled in Highlight (v &gt;=3.33). No need to install them manually, just [download/update](http://www.andre-simon.de/zip/download.php) to the latest version of Highlight.
 
-> __NOTE1__: The PureBASIC language definition is now bundled in Highlight (v &gt;=3.33). No need to install it manually, just [download/update](http://www.andre-simon.de/zip/download.php) to the latest version of Highlight. 
-
-> __NOTE2__: It seems that the PureBASIC color theme was accidently left out of Highlight 3.33 release. You’ll need to [manually setup the theme file](#manually-installing-the-purebasic-theme) untill it will be included in Highlight.
+------------------------------------------------------------------------
 
 <!-- #toc -->
 -   [About This Project](#about-this-project)
+    -   [Files](#files)
 -   [About Highlight](#about-highlight)
     -   [AsciiDoc Integration](#asciidoc-integration)
 -   [Manual Installation](#manual-installation)
@@ -21,6 +21,12 @@ About This Project
 ==================
 
 The PureBASIC language and theme files herein contained were written by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) and released in October 2016 under the public domain according to the [Unlicense terms](./UNLICENSE) ([Unlicense.org](http://unlicense.org)).
+
+Files
+-----
+
+-   `purebasic.lang` — PureBASIC language definition file for Highlight.
+-   `edit-purebasic.theme` — PureBASIC color theme for Highlight, mimicking PB’s native IDE look and feel.
 
 About Highlight
 ===============
@@ -63,12 +69,12 @@ This opens the doors of the powerful AsciiDoc publishing toolchain to PureBASIC:
 Manual Installation
 ===================
 
+The PureBASIC language definition and theme are now part of the Highlight distribution since version 3.33 (2nd Nov. 2016). Just download/update to the latest version of Highlight to enjoy PureBASIC syntax highlighting!
+
+If — for any reasons — you wish to manually install them from this repo, follow the instructions below…
+
 Installing PureBASIC Lang Definition
 ------------------------------------
-
-The PureBASIC language definition is now part of the Highlight distribution since version 3.33 (2nd Nov. 2016). Just download/update to the latest version of Highlight to enjoy PureBASIC syntax highlighting!
-
-If — for any reasons — you wish to manually download and install the language file from this repo, follow the instructions below…
 
 1.  **Fetch the PB Language-Definition file**:
 
@@ -107,23 +113,23 @@ Manually Installing The PureBASIC Theme
 
 PureBASIC language file will render with any of Highilight’s themes: language definitions and color themes are independent of each other. The PureBASIC theme file was created to reproduce the look and feel of PureBASIC’s native IDE, so when you publish some PB code it will look familiar to users.
 
-> __NOTE__: It seems that the PureBASIC color theme was accidently left out of Highlight 3.33 release (it was announced in the ChangeLog, but left out of the final release). It should soon be fixed. Meanwhile, if you want the native PureBASIC look and feel, you’ll need to manually download and copy the theme file.
+> **NOTE**: All Highlight themes wich mimic an editor or IDE have the “edit-” prefix.
 
 1.  **Fetch the PureBASIC Theme file**:
 
-    -   `pure_basic.theme`
+    -   `edit-purebasic.theme`
 
     If you cloned/download this repo, you’ll find it in the same folder of this README file. Else, you can [download it directly from GitHub](ttps://raw.githubusercontent.com/tajmone/purebasic-archives/master/syntax-highlighting/highlight/pure_basic.theme).
 
-2.  __Copy it to the Themes folder__:
+2.  **Copy it to the Themes folder**:
 
     Navigate to Highlight’s setup folder.
 
-    Copy/move the `pure_basic.theme` file to the `\langDefs\` folder.
+    Copy/move the `edit-purebasic.theme` file to the `\langDefs\` folder.
 
-That’s it! Now the theme will uppear as “**pure\_basic**” under the “**Color theme:**” drop-down menu in the “**Formatting**” tab of Highlight’s GUI, or available via options form CLI invocation.
+That’s it! Now the theme will uppear as “**edit-purebasic**” under the “**Color theme:**” drop-down menu in the “**Formatting**” tab of Highlight’s GUI, or available via options form CLI invocation.
 
-> __NOTE__: If Highlight GUI was running, you’ll need to restart it for the theme to show up.
+> **NOTE**: If Highlight GUI was running, you’ll need to restart it for the theme to show up.
 
 ------------------------------------------------------------------------
 
