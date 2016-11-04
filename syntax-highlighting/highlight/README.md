@@ -22,6 +22,10 @@ About This Project
 
 The PureBASIC language and theme files herein contained were written by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) and released in October 2016 under the public domain according to the [Unlicense terms](./UNLICENSE) ([Unlicense.org](http://unlicense.org)).
 
+These files are now part of the official Highlight project and since v3.33 are bundled with it.
+
+The `edit-purebasic` color theme mimics the look and feel of PB’s native IDE, and can be accessed in the “**Formatting**” tab, under the “**Color theme:**” drop-down menu of Highlight’s GUI, or invoked via options from the command line.
+
 Files
 -----
 

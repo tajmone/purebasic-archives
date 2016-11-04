@@ -25,6 +25,7 @@ Resources Organization
 The Archives project is divided into folders according to categories:
 
 -   [`/books/`](./books/) — books on PureBASIC programming.
+-   [`/libs/`](./libs/) -- 3rd party PureBASIC libraries, modules, wrappers, ecc.
 -   [`/syntax-highlighting/`](./syntax-highlighting/) — publishing PureBASIC source code in colored syntax.
 -   [`/text-editors/`](./text-editors/) — PureBASIC syntax support in text editors.
 
