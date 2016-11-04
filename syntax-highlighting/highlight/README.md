@@ -119,7 +119,7 @@ PureBASIC language file will render with any of Highilight’s themes: language 
 
     -   `edit-purebasic.theme`
 
-    If you cloned/download this repo, you’ll find it in the same folder of this README file. Else, you can [download it directly from GitHub](ttps://raw.githubusercontent.com/tajmone/purebasic-archives/master/syntax-highlighting/highlight/pure_basic.theme).
+    If you cloned/download this repo, you’ll find it in the same folder of this README file. Else, you can [download it directly from GitHub](https://raw.githubusercontent.com/tajmone/purebasic-archives/master/syntax-highlighting/highlight/edit-purebasic.theme).
 
 2.  **Copy it to the Themes folder**:
 
