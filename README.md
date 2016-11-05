@@ -9,6 +9,10 @@ A collection of PureBASIC resources.
 -   [License](#license)
 -   [Contributing](#contributing)
 -   [About PureBASIC](#about-purebasic)
+-   [More Collections on GitHub](#more-collections-on-github)
+    -   [FOSS Collections](#foss-collections)
+    -   [Non-FOSS Collections](#non-foss-collections)
+    -   [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
 -   [Repo History](#repo-history)
 
 <!-- /toc -->
@@ -25,7 +29,7 @@ Resources Organization
 The Archives project is divided into folders according to categories:
 
 -   [`/books/`](./books/) — books on PureBASIC programming.
--   [`/libs/`](./libs/) -- 3rd party PureBASIC libraries, modules, wrappers, ecc.
+-   [`/libs/`](./libs/) – 3rd party PureBASIC libraries, modules, wrappers, ecc.
 -   [`/syntax-highlighting/`](./syntax-highlighting/) — publishing PureBASIC source code in colored syntax.
 -   [`/text-editors/`](./text-editors/) — PureBASIC syntax support in text editors.
 
@@ -61,6 +65,40 @@ PureBASIC is a commercial programming language and IDE published by Fantaisie So
 > PureBasic is a native 32-bit and 64-bit programming language based on established BASIC rules. The key features of PureBasic are portability (Windows, Linux and MacOS X are currently supported), the production of very fast and highly optimized executables and, of course, the very simple BASIC syntax. PureBasic has been created for the beginner and expert alike. We have put a lot of effort into its realization to produce a fast, reliable system friendly language.
 >
 > In spite of its beginner-friendly syntax, the possibilities are endless with PureBasic’s advanced features such as pointers, structures, procedures, dynamically linked lists and much more. Experienced coders will have no problem gaining access to any of the legal OS structures or API objects and PureBasic even allows inline ASM.
+
+More Collections on GitHub
+==========================
+
+Some links to other GitHub repos acting as containers for PureBASIC code.
+
+FOSS Collections
+----------------
+
+> **NOTE**: The statement “`LICENSE file is a [LICENSE-NAME] template`” means that the author chose a license during repo creation, but did not fill-in its fields (author and project name, date, ecc). Even if the author’s intentions are clear, a blank license template might not be an effective license.
+
+-   blendman/[Purebasic](https://github.com/blendman/Purebasic) – “Some purebasic codes, under GPL.”
+-   aziascreations/[Random-PureBasic-Projects](https://github.com/aziascreations/Random-PureBasic-Projects) – “A collection of random PureBasic projects”. LICENSE file is a GNU GPL template.
+-   IndigoFuzz/[PureBasicLibrary](https://github.com/IndigoFuzz/PureBasicLibrary) – “Purebasic Code Library: The purpose of this library is to provide a useful repository of code for the PureBasic programming language.” LICENSE file is a GNU GPL template.
+
+Non-FOSS Collections
+--------------------
+
+In absence of explicit licensing terms, their contents should be considered copyrighted and for viewing purposes only.
+
+-   aistun/[PureBasic-Sources](https://github.com/aistun/PureBasic-Sources) – various PB project by aistun, in French. No license.
+
+PureBasic CodeArchiv (Rebirth)
+------------------------------
+
+-   https://github.com/GPIforGit/PureBasic-CodeArchiv-Rebirth
+
+This project deserves a special mention. It seems to be a WIP to recreate an updated version of the historical **PureBasic CodeArchiv**, hosted at PureArea.net:
+
+-   http://www.purearea.net/pb/CodeArchiv/CodeArchiv.html
+
+**PureBasic CodeArchiv** contains a wealth of resources for PureBASIC version 3 and 4. Its license terms are:
+
+> Design and compilation of the PureBasic CodeArchive is (c) 2003-2007 by Andre Beer and exclusive component of the www.PureArea.net PureBasic support site. You may use the codes published on this site without restrictions for your own projects, however a publication of this code archive on other web pages, CDRom etc., require the express consent of the author. The copyright of the individual codes lies at the respective authors.
 
 Repo History
 ============
