@@ -9,6 +9,7 @@ Before contributing to this project you should read these guidelines, especially
         -   [Your work need a license too…](#your-work-need-a-license-too)
         -   [Assume others’ work is always copyrighted…](#assume-others-work-is-always-copyrighted)
         -   [If in doubt, provide links instead of code…](#if-in-doubt-provide-links-instead-of-code)
+-   [Using Developement Branches](#using-developement-branches)
 -   [Markdown Consistency And Automation](#markdown-consistency-and-automation)
 -   [README Files](#readme-files)
 
@@ -57,6 +58,21 @@ As a general rule: lacking evidence to the contrary, always assume the work of o
 Whenever you are unable to ascertain the license terms of any resource, stay on the safe path and contribute a link to it with a review, instead of the actual resource.
 
 The goal of PureBASIC Archives is to provide a place where resources can be *legitimately* and *legaly* accessed and shared. If a resource can be included in the repository, so much the better; otherwise, a link to follow will still be a precious resource in itself — sparing users time-consuming searches around the web.
+
+Using Developement Branches
+===========================
+
+For resources requiring long-term work before being ready for inclusion in `master` branch of the repo, some developement branches have been created to host different kind of works-in-progress:
+
+-   [`dev-tutorials`](https://github.com/tajmone/purebasic-archives/tree/dev-tutorials) – WIP relating to tutorials text and code examples.
+
+The idea is to keep separate the developement of different types of resources, and at the same time join efforts in the developement of resources belonging to the same kind.
+
+> NOTE: dev-branches are created as needs arise. Need a new dev-branch with a different name and scope? Just [open an issue](https://github.com/tajmone/purebasic-archives/issues/new)!
+
+Dev-branches encourage sharing WIP with others and collaboration. No need to wait that a resource if production-ready before making a pull request for it: work on dev-branches and make PRs whenever you feel like sharing with others your current WIP.
+
+Sometimes updating old resources needs quite some work: porting old PB code to run with latest PB version, updating tutorials and documentation text, translating, polishing text, ecc., are all time-consuming tasks which might benefit from others’ collaboration. This is what dev-branches are for!
 
 Markdown Consistency And Automation
 ===================================

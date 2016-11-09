@@ -6,7 +6,10 @@ A collection of PureBASIC resources.
 <!-- #toc -->
 -   [Introduction](#introduction)
 -   [Resources Organization](#resources-organization)
+-   [Developement Branches](#developement-branches)
 -   [License](#license)
+    -   [Third Party Resources Licensing Terms](#third-party-resources-licensing-terms)
+    -   [«PureBASIC Archives» Overall License Terms](#purebasic-archives-overall-license-terms)
 -   [Contributing](#contributing)
 -   [About PureBASIC](#about-purebasic)
 -   [More Collections on GitHub](#more-collections-on-github)
@@ -37,12 +40,37 @@ Some folders contain material specific to this repo’s developement and maintai
 
 -   [`/repo-maintainance-tools/`](./repo-maintainance-tools/) — scripts related to the maintainance of this repository.
 
+Developement Branches
+=====================
+
+Some resources might require long-term work before being ready for inclusion in the main branch of the repo — eg: porting code from PB v4, translating documents, porting text to Markdown or Asciidoc (from HTML, Doc, or PDF), and so on.
+
+For this purpose, some developement branches have been created to host different kind of works-in-progress (WIP):
+
+-   [`dev-tutorials`](https://github.com/tajmone/purebasic-archives/tree/dev-tutorials) – WIP for upcoming tutorials.
+
+You might consider peeking into the dev-branches to get a preview of what is coming next and — why not?! — join the work.
+
 License
 =======
 
 This is a collection of various resources, and each resource comes with its own license. Please read carefully the licenses terms on a per-resource basis before incorporating them into your projects.
 
-Nothing has been incorporated here that would prevent cloning this repository. As for the project in itself — ie: its structure, and my personal contributions in terms of documentations and project-related resources — its to be considered as released into the public domain according to the Unlicense terms (see: [Unlicense.org](http://unlicense.org/)).
+This repo acts as a «general container» through compartmentalization: hosting each resource under its own folder, governed by its own license terms. **PureBASIC Archives** provides a license-neutral structure for organizing into categories the various resources it hosts. In this respect, it resembles the CD-Roms with collections of software tools which are distributed with computer magazines — except that **PureBASIC Archives** is freely accesible to all.
+
+Nothing has been incorporated here that would prevent cloning this repository.
+
+Third Party Resources Licensing Terms
+-------------------------------------
+
+Licenses are placed (or linked/mentioned) in the main folder of each resource and sub-project, and the license terms should cover all files in that folder and sufolders. Further details and exceptions shall be indicated in the `README` file within the resource folder and/or in its parent folder.
+
+«PureBASIC Archives» Overall License Terms
+------------------------------------------
+
+As for the project in itself — ie: this repo as a «container», its structural organization, and my personal contributions in terms of documentations (`README` markdown and html files) and project-related resources (scripts, templates, stylesheets, ecc) — its to be considered as released into the public domain according to the Unlicense terms (see: [Unlicense.org](http://unlicense.org/)), unless otherwise specified — since it wouldn’t be feasible to add a public-domain license to every single document file, I’ll instead ensure that a licence file will be provided where required (like third party tutorials and documents).
+
+The choice of the Unlicense public-domain terms for the overall project ensures flexibility in contributing and forking, and should prevent licenses conflicts.
 
 Contributing
 ============
