@@ -1,0 +1,76 @@
+/*
+
+PureBASIC native IDE style ( version 1.0 - April 2016 )
+
+by Tristano Ajmone <tajmone@gmail.com>
+
+Public Domain
+
+	This CSS file diverge from the official one contained in highlight.js package.
+	This file as been optimized to highilight PureBASIC syntax ONLY!!
+	It also include the "function_call" class, to catch Procedure calls — as is customary
+	with PureBASIC IDE syntax coloring — which didn't make it into the official package.
+
+NOTE_1:	PureBASIC code syntax highlighting only applies the following classes:
+			.hljs-comment
+			.hljs-function
+			.hljs-keywords
+			.hljs-string
+			.hljs-symbol
+
+
+NOTE_2:	Color names provided in comments were derived using "Name that Color" online tool:
+			http://chir.ag/projects/name-that-color	
+*/
+
+.hljs { /* Common set of rules required by highlight.js (don'r remove!) */
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+	background: #FFFFDF; /* Half and Half (approx.) */
+/* --- Uncomment to add PureBASIC native IDE styled font!
+	font-family: Consolas;
+*/
+}
+
+.hljs, /* --- used for PureBASIC base color --- */
+.hljs-type,  /* --- used for PureBASIC Procedures return type --- */
+.hljs-function { /* --- used for wrapping PureBASIC Procedures definitions --- */
+	color: #000000; /* Black */
+}
+
+.hljs-comment { /* --- used for PureBASIC Comments --- */
+
+	color: #00AAAA; /* Persian Green (approx.) */
+}
+
+.hljs-title, .hljs-function_call { /* --- used for PureBASIC Procedures Names --- */
+	color: #006666; /* Blue Stone (approx.) */
+}
+
+.hljs-keyword { /* --- used for PureBASIC Keywords --- */
+	color: #006666; /* Blue Stone (approx.) */
+	font-weight: bold;
+}
+
+.hljs-string { /* --- used for PureBASIC Strings --- */
+	color: #0080FF; /* Azure Radiance (approx.) */
+}
+
+.hljs-symbol { /* --- used for PureBASIC Constants --- */
+	color: #924B72; /* Cannon Pink (approx.) */
+}
+
+/*	==============================================================================
+								  ASCIIDOC ADDITIONS
+	==============================================================================
+	Some extra CSS styling for AsciidocFX generated document.
+	(AsciiDoc via Asciidoctor) */
+
+/* --- Code-Block Border (common to all) --- */
+.hljs { border: 1px solid #bebab0; }
+
+/* --- PB PSEUDOCODE (Grey BG to distinghish it from normal PureBASIC code) --- */
+.pseudocode.hljs {
+	background: #F7F7F8; /* -------- */
+}

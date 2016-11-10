@@ -1,0 +1,2139 @@
+= PureBasic and Object-Oriented Programming
+Dräc
+v0.1, November 9, 2016: Reprint WIP: polishing English.
+:title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
+:description:
+:doctype: article
+:encoding: utf-8
+:lang: en
+:toc: left
+:numbered:
+:highlightjsdir: ../hjs
+:idprefix:
+:idseparator: -
+:version-label: Draft
+
+////
+==============================================================================
+                                     DONE
+==============================================================================
+-- All web pages imported
+-- basic cleanup
+
+==============================================================================
+                                     TODO
+==============================================================================
+-- Polish EN
+-- Clean PB Code
+-- Capitalize according to "Chicago Manual of Style"
+   http://capitalizemytitle.com/
+-- Change 'mother' class to 'parent' in text and code
+
+==============================================================================
+                                BEFORE RELEASE                                
+==============================================================================
+-- REMOVE NUMBERING: change ':numbered:' to ':sectnums!:'
+-- SET VER TO 1.0
+-- CORRECT DATE
+-- RESET ':version-label:'
+-- CLEANUP -- EOL spaces, triple \r\n, ecc.
+
+////
+
+.About This Tutorial
+****
+This is a reprint of «Dräc»’s multi-paart tutorial __PureBasic and the Object-Oriented Programming__, also knwon as __the OOP demystified__, published in 2005  on http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm[drac.site.chez-alice.fr].
+
+It was reprinted with explicit permission of the author, who released the tutorial text and source codes under https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution]  (CC BY 4.0) in response to the permission request to reproduce it inside the https://github.com/tajmone/purebasic-archives[PureBASIC Archives].
+
+The tutorial was ported from HTML to AsciiDoc by Tristano Ajmone, who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm[French tutorial] as a reference) — and made minor changes to code examples (either aesthetic or to ensure compatibility with latest version of PureBASIC).
+****
+
+
+
+// Website Page 1
+
+== Why OOP in PureBasic?
+
+Since many object-oriented languages already exist, trying to achive OOP in PureBasic — which is a procedural language — might come as a surprise.
+
+////
+ORIGINAL TEXT:
+It can be surprising to try realizing in PureBasic, which is a procedural language, an object-oriented representation, as far as numerous languages adapted to the OOP exist.
+////
+
+The fact that some programming languages are defined «Object-Oriented», while others are not, is merely indicating the presence of specific keywords, which facilitate writing code according to the OOP paradigm.
+That is to say: object-oriented languages introduce richer semantics; but compilation-wise they are not introducing any new aspects compared to a non-OO language, they’re just adding a layer over the latter.
+
+
+////
+ORIGINAL TEXT:
+But the fact that some programming languages are called "Object" and the other one are not, is the expression of specific keywords, which facilitate the writing of these programs.
+So, object-oriented languages enrich semantics but not modify at all the compilation aspects with regard to a none-object language. They are only adding a layer over this last one.
+////
+
+Therefore, we can fully implement the OO paradigm in PureBasic, but we have to pay a price in terms of accuracy — both in development and in notation. And here we face the immediate advantages of (natively) object-oriented languages.
+
+////
+ORIGINAL TEXT:
+Thus we can implement completely the concepts in PureBasic but the price is a precision both of development and of notation. It is there the immediate advantage of object-oriented languages.
+////
+
+Nevertheless, besides the possibility of programming in PureBasic according to the OO paradigm, implementing object-oriented concepts in PureBasic offers us the interesting chance to reveal some of the underlying mechanisms of OO languages keywords.
+
+////
+ORIGINAL TEXT:
+Nevertheless, to put into practice the object-oriented concepts in PureBasic offers, besides the possibility of scheduling according to OO philosophy, the interest to reveal some underlying mechanisms of the object-oriented languages keywords.
+////
+
+This paper presents a programming technique that allows large projects to benefit from object oriented design. It is not intended as a course on OOP, and it assumes that the reader has good knowledge of PureBasic language.
+
+////
+ORIGINAL TEXT:
+This paper presents a programming technique that allow large projects to benefit of object oriented design. It doesn’t intend to be a course on OOP techniques and assumes the reader to have a good knowledge of the PureBasic language.
+////
+
+// Website Page 2
+
+== Object Concepts
+
+The Object-Oriented Programming paradigm introduces concepts like: objects,  inheritance and polymorphism.
+Before jumping into how these concepts can be implemented in PureBasic, we must first define them.
+
+////
+ORIGINAL TEXT:
+The Object-Oriented Programming introduces concepts as the object, the inheritance or the polymorphism.
+Before to see how the main concepts can be realized in PureBasic, concepts must be defined first.
+////
+
+
+=== The Notion of Object
+
+
+An object has an internal state:
+
+*   The state is represented by the value of each inner component at a given moment,
+*   A component is either a value or another object.
+
+It uses and gives services:
+
+*   It interacts with the outside through functions called «methods».
+
+It is unique (notion of identity)
+
+An object can be seen at two levels:
+
+*   By the services which it returns: external view (specification). This is the User side,
+*   By the way that services are implemented within it : internal view (implementation). This is the Developer side.
+
+From the developer’s point of view of, an object is a contiguous memory area containing information: variables called *attributes* and functions called **methods**.
+
+The fact that we refer to an object’s functions as «its methods» is because they belong to it and allow manipulation of its attributes.
+
+////
+ORIGINAL TEXT:
+The fact that functions are called methods of an object, means the fact that they are appropriate to the object and allow the manipulation of the attributes of this object.
+
+Le fait que l'on appelle les fonctions d'un objet des méthodes, tient au fait qu'elles sont propres à l'objet et permettent la manipulation des attributs de cet objet.
+////
+
+=== The Notion of Class
+
+This is an extension of the concept of *Type* found in PureBasic.
+
+In a given context, multiple objects can have the same structure and behavior.
+Then can therefore be grouped together in the same «Class».
+
+From a developer’s point of view, a Class defines the type of contents that will be held by objects belonging to it: the nature of their attributes (type of each variable) and their methods (names, implementation).
+
+////
+ORIGINAL TEXT:
+From a developer’s point of view, the Class defines the contain of an object of this Class: the nature of its attributes (type of each variable) and its methods (names, implementation).
+
+////
+
+Just as integer is the type of a variable, the type of an object is its Class.
+
+////
+ORIGINAL TEXT:
+If the type of a variable,  is an integer, the type of an object is its Class.
+
+////
+
+=== The Notion of Instance
+
+An instance is an object defined from a Class.
+
+This process is called instanciation.
+
+It corresponds to the assignement of variables in PureBasic.
+
+Normally, an object is *initialized* at the time of its instanciation.
+
+=== Encapsulation
+
+In theory, the manipulation of objects’ attributes should be possible only through its methods. This technique, which allows making visible to the user only a part of the object, is called encapsulation.
+
+The advantage of encapsulation is that it guarantees the integrity of attributes. Indeed, the developer is the only one who, through the methods provided to the user, manages the modifications allowed on an object.
+
+At our level, this is the least that should be retained of the encapsulation concept.
+
+////
+ORIGINAL TEXT:
+At our level, it is at least what it shall be retain about encapsulation concept.
+
+C'est du moins, à notre niveau ce que l'on en retiendra.
+////
+
+=== Inheritance
+
+Inheritance allows defining new Classes by using already existing ones.
+
+From the developer’s point of view, it means being able to add/modify attributes and methods to/of an existing Class in order to define a new Class.
+
+////
+ORIGINAL TEXT:
+From the developer’s point of view, it means being able to add attributes and methods, and even to modify some methods, to an existing Class in order to define another one.
+
+////
+
+There are two kinds of inheritances:
+
+*   **Simple inheritance**: the new Class is defined from a single existing Class.
+*   **Multiple inheritance**: the new Class is defined from several existing Classes.
+
+Multiple inheritance is complex to implement, and it will not be covered here.
+Thus, this papers deals only with simple inheritance.
+
+// TODO: put "Terminology" into some kind of box (Alert?)
+
+Terminology:
+The Class which inherits from another Class, is often called **Child Class**.
+The Class which gives its inheritance to a Child Class is often called **Parent Class**.
+
+=== Overloading
+
+A method is overloaded if it carries out different actions according to the nature of the target objects.
+
+Let us take an example:
+
+The following objects: circle, rectangle and triangle are all geometrical shapes.
+We can define for these objects the same Class with the given name: `Shape`.
+Thus, these objects are all instances of the `Shape` Class.
+
+If we want to display the objects, the `Shape` Class needs to have a `Draw` method.
+
+So endowed, every object has a `Draw` method to display itself. Now, this method could not possibly be the same for each object, as we want to display a circle, in one case, a rectangle, in onether, and so on.
+
+The objects of the same Class use the same `Draw` method, but the object’s nature (Circle, Rectangle, or Triangle) dictates the implementation of the method.
+The `Draw` method is overloaded: for the user, displaying a circle or a rectangle is achieved in the same way.
+From the developer’s point of view, the methods implementations needs to be different.
+
+Instead of overloaded methods, we can also speak of polymorphic methods (having several forms).
+
+=== The Notion of Abstract Class
+
+As shown above, a Class includes the definition of both attributes and methods of an object.
+
+Let us suppose that we can’t provide the implementation of one of the Class methods. The method is just a name without code. We then speak of abstract method.
+A Class containing at least an abstract method qualifies as an abstract Class.
+
+// TODO: "defining Object Classes" has a link!
+
+You might wonder why an abstract class should exist, since objects of such a Class can’t be created. Abstract Classes allow defining Object Classes, which are considered — by opposition — as being concrete. The transition from the former to the latter occurs through inheritance, where the concrete Class takes care of providing the missing implementations to the abstract methods inherited.
+
+////
+ORIGINAL TEXT:
+We can wonder the reason to be of an abstract class, because an object of a such Class cannot be create. Abstract Classes allow defining Object Classes considered by opposition as concrete. The link between them is made by inheritance where the concrete Class takes care in giving the missing implementations to the inherited abstract methods.
+////
+
+Thus, abstract Classes are a kind of interface, because they describe the generic specification of all the Classes which inherit from them.
+
+// Website Page 3
+
+== Concepts Implementation
+
+In this section, I shall demonstrate how object concepts can be simply implemented in PureBasic.
+This implementation doesn’t refer what is programmed in object-oriented languages. Furthermore, this implementation aims to be improved or adapted according to needs.
+
+Thus, I propose here one of these implementations with its own advantages and limits.
+
+== First Implementation
+
+=== Concrete Class and Abstract Class
+
+As seen, a Class defines the contents of an object:
+
+*   Its attributes (each variable type)
+*   Its methods (Names, implementation)
+
+For example, if I want to represent Rectangle objects and to display them on the screen, I shall define a `Rectangle` Class including a `Draw()` method.
+
+The `Rectangle` Class could have the following construction:
+
+// Example N. 4.1-1 
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle
+  *Draw
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Draw_Rectangle(*this.Rectangle)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+where ``x1``, ``x2``, `y1` and `y2` are four attributes (diametrically opposite points coordinates of the rectangle) and `*Draw` is a pointer referencing to the drawing function which displays Rectangles.
+
+Here `*Draw` is a function pointer used to contain the address of the desired function: ``@Draw_Rectangle()``.
+A function thus referenced can be invoked by using ``CallFunctionFast()``.
+
+Thus, the proposed `Structure` is completely adapted to the Class notion:
+* the structure stores the definition of the object attributes: here ``x1``, ``x2``, `y1` and `y2` are Long variables.
+* the structure stores the definition of the object method: here the `Draw()` function, through to a function pointer.
+
+When a similar Class definition is followed by the implementations of its methods (in our example, `Draw_Rectangle()`’s ``Procedure``/``EndProcedure`` block statement), it becomes a concrete Class. Otherwise, it will be an abstract Class.
+
+[IMPORTANT]
+====
+`*this` always refers to the object on which the method must be applied. This notation can be seen in the previous example, as ``Draw_Rectangle()`` method’s parameter.
+====
+
+=== Instanciation
+
+Now, to create an object called `Rect1` from the `Rectangle` Class, write:
+
+// Example N. 4.2-1
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1.Rectangle
+---------------------------------------------------------------------
+
+To initialize it, simple write:
+
+// Example N. 4.2-2
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1\Draw = @Draw_Rectangle()
+Rect1\x1 = 0
+Rect1\x2 = 10
+Rect1\y1 = 0
+Rect1\y2 = 20
+---------------------------------------------------------------------
+
+Next, to draw Rect1 object, do:
+
+// Example N. 4.2-3
+[source,purebasic]
+---------------------------------------------------------------------
+CallFunctionFast(Rect1\Draw, @Rect1)
+---------------------------------------------------------------------
+
+=== Encapsulation
+
+In this implementation, the encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.
+
+// TODO: MISSING LINK
+By writing ``Rect1\x1``, the user can access to the attribute `x1` of the object. This is the way we used to initialize the object.
+The next implementation (<<Second Implementation>> section) will show how to fix this.
+Although significant, this feature is not essential in implementing OOP.
+
+=== Inheritance
+
+Now I want to create a new Class with the capability to Erase rectangles from the screen.
+I can implement this new `Rectangle2` Class by using the existing `Rectangle` Class and by providing it with a new method called ``Erase()``.
+
+A Class being a ``Structure``, let’s take advantage of the extension property of structures. So, the new Class `Rectangle2` could be:
+
+// Example N. 4.4-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2 Extends Rectangle
+  *Erase
+EndStructure
+
+Procedure Erase_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+The `Rectangle2` Class includes as well members of the previous Rectangle Class and the new Erase() method.
+To instanciate an object from this new Class write:
+
+// Example N. 4.4-2
+[source,purebasic]
+---------------------------------------------------------------------
+Rect2.Rectangle2
+
+Rect2\Draw = @Draw_Rectangle()
+Rect2\Erase = @Erase_Rectangle()
+Rect2\x1 = 0
+Rect2\x2 = 10
+Rect2\y1 = 0
+Rect2\y2 = 20
+---------------------------------------------------------------------
+
+To use ``Rect2``’s `Draw()` and `Erase()` methods, I shall proceed the same way as before: through ``CallFunctionFast()``.
+
+That demonstrates that the `Rectangle2` Class inherited the properties of `Rectangle` Class.
+
+[IMPORTANT]
+====
+Inheritance is a category of polymorphism. The object `Rect2` can be also seen as an Object from the `Rectangle` Class —  just don’t use the `Erase()` method! By inheritance, the object carries several forms: those of the objects coming from the Parent Classes. It is called inheritance polymorphism.
+====
+
+=== Overloading
+
+During the initialization of an object, the function pointers are initialized by assigning to them the method addresses suiting the object.
+
+So, given an object `Rect` from the `Rectangle` Class, by writing:
+
+// Example N. 4.5-1
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1\Draw = @Draw_Rectangle()
+---------------------------------------------------------------------
+
+I can use the `Draw()` method as following:
+
+// Example N. 4.5-2
+[source,purebasic]
+---------------------------------------------------------------------
+CallFunctionFast(Rect1\Draw, @Rect1)
+---------------------------------------------------------------------
+
+Now, imagine that it is possible to implement another method for displaying a rectangle (by using an algorithm different from the one in the first method).
+
+Let us call this implementation as ``Draw_Rectangle2()``:
+
+// Example N. 4.5-3
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Draw_Rectangle2(*this.Rectangle)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+It’s possible to initialize our object `Rect1` with this new method effortlessly:
+
+// Example N. 4.5-4
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1\Draw = @Draw_Rectangle2()
+---------------------------------------------------------------------
+
+To use the method, write again:
+
+// Example N. 4.5-5
+[source,purebasic]
+---------------------------------------------------------------------
+CallFunctionFast(Rect1\Draw, @Rect1)
+---------------------------------------------------------------------
+
+We can see that with both the former method (ie: `Draw_Rectangle()`) as well as the latter (ie: `Draw_Rectangle2()`) the use of the `Rect1` method is strictly identical.
+
+////
+ORIGINAL TEXT:
+In a hand (Draw_Rectangle() method) as in the other hand (Draw_Rectangle2() method) the use of the Rect1 method is strictly identical.
+////
+
+It isn’t possible to distinguish by the single line of code ``CallFunctionFast(Rect1\Draw, @Rect1)`` which one of the `Draw()` methods the `Rect1` object is really using.
+To know this, it is necessary to go back to the initialization of the object.
+
+The notion of function pointer allows overloading the `Draw()` method.
+
+One limitation: the use of the `CallFunctionFast()` instruction implies paying attention to the number of parameters passed.
+
+=== Conclusion:
+
+In this first implementation, we produced an object capable of meeting the main object-oriented concepts, albeit with certain limitations.
+
+
+We mainly just lay the foundations upon which we shall implement a more complete object — thanks to PureBasic’s `Interface` statement!
+
+
+// Website Page 4
+
+== Interface instruction
+
+Syntax:
+
+// Example N. 5-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+Interface <Name1> [Extends <Name2>]
+  [Procedure1]
+  [Procedure2]
+  ...
+EndInterface
+---------------------------------------------------------------------
+
+The PureBasic Interface instruction allows grouping under the same Name (``<Name1>`` in the above box) various procedures.
+
+Example:
+
+// Example N. 5-2
+[source,purebasic]
+---------------------------------------------------------------------
+Interface My_Object
+  Procedure1(x1.l, y1.l)
+  Procedure2(x2.l, y2.l)
+EndInterface
+---------------------------------------------------------------------
+
+By declaring an element of ``My_Object``, the access to its procedures looks like as follows.
+
+* The statement is made in the same way as for a ``Structure``:
+
+// Example N. 5-3
+[source,purebasic]
+---------------------------------------------------------------------
+Object.My_Object
+---------------------------------------------------------------------
+
+* To use the object functions, write directly:
+
+// Example N. 5-4
+[source,purebasic]
+---------------------------------------------------------------------
+Object\Procedure1(10, 20)
+Object\Procedure2(30, 40)
+---------------------------------------------------------------------
+
+Using the Interface instruction leads to a very practical and pleasant notation to operate a procedure.
+By writing ``Object\Procedure1(10, 20)``, the `Procedure1()` from `Object` is called.
+This notation is typical of the Object-oriented Programming.
+
+==== Initialization:
+
+After a variable statement follows normally the variable initialization.
+It’s the same for an element from an Interface.
+
+As unexpected, by giving the name of a procedure inside the Interface:EndInterface block you don’t refere to the implementation of the procedure, e.i. to refer to the Procedure:EndProcedure block of the wished procedure.
+
+In fact, you can rename procedures inside a Interface:EndInterface block, by giving the names you want for the procedures that you go to use.
+
+Then, how to connect this new name with the wished procedure?
+
+As for overloaded methods, the solution is in the function addresses.
+It is necessary to see names, into the Interface:EndInterface block, as function pointers in which the required function addresses are attributed.
+
+However, to initialize the function pointers of an Interface specified element, it is necessary to process differently than for a Structure specified element.
+In fact, it isn’t possible to initialize individually each field defined by an Interface, because remember that Object\Procedure1() means a procedure call.
+
+The initialization comes indirectly by giving to the element, the address of a initialized variable storing the function pointers.
+
+A such variable is called: the table of the methods.
+
+Ex: by resuming the Interface My_Object, let us consider the following Structure describing the function pointers:
+
+// Example N. 5.1-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure My_Methods
+  *Procedure1
+  *Procedure2
+EndStructure
+---------------------------------------------------------------------
+
+and the associated table of the methods:
+
+// Example N. 5.1-2
+[source,purebasic]
+---------------------------------------------------------------------
+Methods.My_Methods
+Methods\Procedure1 = @My_Procedure1()
+Methods\Procedure2 = @My_Procedure2()
+---------------------------------------------------------------------
+
+where My_Procedure1() and My_Procedure2() are the wished procedure implementations.
+
+Then, the initialization of Object from Interface My_Object looks like this:
+
+// Example N. 5.1-3
+[source,purebasic]
+---------------------------------------------------------------------
+Object.My_Object = @Methods
+---------------------------------------------------------------------
+
+Next, by writing
+
+// Example N. 5.1-4
+[source,purebasic]
+---------------------------------------------------------------------
+Object\Procedure2(30, 40)
+---------------------------------------------------------------------
+
+
+the Object `Procedure2()` function is called according `My_Procedure2()` implementation.
+
+[IMPORTANT]
+====
+When an element from an Interface is declared, it is essential to initialize it before using element’s procedures. Thus it is advised to initialize the element at statement time.
+====
+
+[IMPORTANT]
+====
+The table of methods structure composition must be the exact representation of the Interface composition. It must contain the same number of fields and must preserve the order of them to insure the right assignation between names and addresses of each function. It is only on these conditions that the element will be correctly initialized.
+====
+
+To summarize, using an Interface involve:
+
+* an Interface describing the required procedures to use,
+* a Structure describing the function pointers,
+* a table of the methods: a structured variable initialized with the required function adresses.
+
+and the properties are:
+
+* an object-oriented notation
+* an easy way to rename procedures
+
+
+// Website Page 5
+
+== Second Implementation
+
+In our first implementation, object concepts was adapted in a way more or less extend. n our first implementation, object concepts was adapted in a way more or less extend.
+Now, it’s time to improve this first implementation thanks to the use of the Interface instruction.
+
+=== Notion of Object interface:
+
+The purpose of encapsulation is first to make visible, to the user, part of an object contents.
+The visible part of the contents is called interface, the hidden part is called implementation.
+
+Thus, the object interface is the only input-output access that the user has to act on an object.
+
+It is the responsibility that I’m going to give in our use of the Interface instruction.
+
+The Interface instruction allows to group under the same name, all or part of the methods from an object that the user will have the right access.
+
+=== Object Instanciation and Object Constructor
+
+Play with an interface involve three steps:
+
+. an Interface describing the required methods,
+. a structure describing the pointers of the corresponding functions,
+. a table of the methods: a structured variable initialized with the required functions adresses.
+
+Step 1, consists in specify the object Interface, which is not a difficulty. Just name methods.
+
+Steps 2 and 3 are linked. In our object approach, we already have the adapted Structure: it is the one who describes the Class of an object.
+Moreover, the Interface and the Class of an object are close: both contain functions pointers.
+Simply, the Interface instruction doesn’t contain the attributes of the Class but only all or any of the methods of the Class.
+
+Thus it is completely possible to use the Class of an object to initialize the Interface. This step is the most natural. Let us remind that the interface is the visible part of the Class of an object, it is natural that the Class determines the Interface.
+
+To see how to process, let me resume the example of the Rectangle2 class which provided a Draw() and Erase() methods.
+
+The corresponding Class is the following one
+
+// Example N. 6.2-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2
+  *Draw
+  *Erase
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Draw_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+
+Procedure Erase_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+The associated Interface is the following:
+
+// Example N. 6.2-2
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rectangle
+  Draw()
+  Erase()
+EndInterface
+---------------------------------------------------------------------
+
+Because the user may handle an object only through the interface, the object must be created directly from the interface Rectangle rather than class Rectangle2.
+
+The object will thus be create by writing:
+
+// Example N. 6.2-3
+[source,purebasic]
+---------------------------------------------------------------------
+Rect.Rectangle
+---------------------------------------------------------------------
+
+instead of Rect.Rectangle2 .
+
+However, you should not forget to connect the Interface to the Class.
+For this, it is necessary to initialize the Rect object during the statement.
+Correction made, the good instruction to assign the object is the following one:
+
+// Example N. 6.2-4
+[source,purebasic]
+---------------------------------------------------------------------
+Rect.Rectangle = New_Rect(0, 10, 0, 20)
+---------------------------------------------------------------------
+
+New_Rect() is a function which performs the initialization operation.
+What it’s already known about it, it’s that the returned value is the memory address containing the functions addresses to be processed by the interface.
+
+Here is the body of the New_Rect() function:
+
+// Example N. 6.2-5
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
+  *Rect.Rectangle2 = AllocateMemory(SizeOf(Rectangle2))
+
+  *Rect \Draw = @Draw_Rectangle()
+  *Rect \Erase = @Erase_Rectangle(
+
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+This function assigns a memory area of size the object Class size.
+Then it initializes the methods and the attributes of the object.
+It ends by retrieving the memory area address.
+Because the addresses of Draw() and Erase() functions are first positioned in this memory area, the interface is effectively initialized.
+
+To access to the Rect object methods, just write:
+
+// Example N. 6.2-6
+[source,purebasic]
+---------------------------------------------------------------------
+Rect\Draw()
+Rect\Erase()
+---------------------------------------------------------------------
+
+Then, the demonstration is made that:
+
+* Class Rectangle2 allows the object Interface initialization.
+* Rect, declared thanks the interface, is an object of the Class Rectangle2 which can use the Draw() and the Erase() methods.
+
+Thus the Interface instruction and the New_Rect() function perform the instanciation of an Rect object from the Class Rectangle2.
+The New_Rect() function is called as the object Constructor of the Class Rectangle2.
+
+[WARNING]
+====
+All the Methods implementations (``Procedure``/``EndProcedure`` blocks) must contain, as first argument, the `*this` pointer of the object. On the other hand, the `*this` argument mustn’t appear at the Interface level. In fact, as this instruction allows to write ``Rect\Draw()``, it knows that the `Draw()` method involves the `Rect` object: no ambiguity! Everything happens as if the object `Rect` was «aware» of its state.
+====
+
+[IMPORTANT]
+====
+The Constructor could receive, as parameters, the whole functions addresses which implement the methods. It is not the case here because we know the implemented methods: the ones from the class. On the other hand the initial state wished by the user is unkown. Thus, the Constructor may contain parameters for the attributes initialization.
+It is the case here: the entries required by `New_Rect()` are the two coordinates (``x1``, ``y1``) and (``x2``, ``y2``) of the diametrically opposite points of the rectangle.
+====
+
+=== Object Initialization
+
+After the required memory area for an object assigned, the Constructor initializes the various members of the object (methods and attributes).
+This operation will be isolated in a specific procedure called by the Constructor.
+By the way the distinction is made between the memory allocation and the object initialization. This is very useful to achieve afterward the concept of inheritance, because a single memory allocation is sufficient, but several initializations are required.
+
+In addition, the initialization of the methods and of the attributes are separated too. It’s because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see previous remark).
+
+In our example, the two initialization procedures will be implemented as:
+
+// Example N. 6.3-1
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mthds_Rect(*Rect.Rectangle2)
+  *Rect\Draw = @Draw_Rectangle()
+  *Rect\Erase = @Erase_Rectangle()
+EndProcedure
+
+Procedure Init_Mbers_Rect(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+---------------------------------------------------------------------
+
+and the Constructor became:
+
+// Example N. 6.3-2
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect(*Rect)
+  Init_Mbers_Rect(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+=== Object Destructor
+
+Always associated to an object Constructor is the object Destructor.
+During the construction of an object, a memory area is assigned to store the method and attribute definitions.
+When an object is useless, it must be destroy to free the computer memory.
+This process is performed by using a specific function called Destructor of the object.
+
+In our example of Rectangle2 objects, the Destructor is:
+
+// Example N. 6.3-3
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Free_Rect(*Rect)
+  FreeMemory(*Rect)
+EndProcedure
+---------------------------------------------------------------------
+
+and will be used as:
+
+// Example N. 6.3-4
+[source,purebasic]
+---------------------------------------------------------------------
+Free_Rect(Rect2)
+---------------------------------------------------------------------
+
+[IMPORTANT]
+====
+The Destructor could be seen as a method of the object. But to avoid weighing down the object and to preserve homogeneity with the Constructor, I have chosen to see it as a function of the Class.
+====
+
+[WARNING]
+====
+To delete an object by its Destructor means releasing the memory area which containing the object information (methods to use and attributes states) but not deleting the object infrastructure.
+So, in our example, having made:
+
+// CODE CHECKED!
+[source,purebasic]
+---------------------------------------------------------------------
+Free_Rect(Rect2)
+---------------------------------------------------------------------
+
+Rect2 can be reuse without specify its type again:
+
+// CODE CHECKED!
+[source,purebasic]
+---------------------------------------------------------------------
+Rect2 = New_Rect(0, 10, 0, 20)
+Rect2\Draw()
+---------------------------------------------------------------------
+
+Definitely, when an object instanciation is realized, as hereafter:
+
+// CODE CHECKED!
+[source,purebasic]
+---------------------------------------------------------------------
+Rect2.Rectangle
+---------------------------------------------------------------------
+
+the life cycle of object `Rect2` follows the same rules as those of the variables because Rect2 is at first a variable: it is a structured variable continuing the functions pointers of the object methods. (See also the reminder which follows)
+====
+
+[IMPORTANT]
+====
+Small reminder: the life cycle of a variable is linked to the life cycle of the program part where the variable is declared:
+
+If the variable is declared inside a procedure, its life cycle will be linked to that of the procedure, which is equal to the function time of use.
+If the variable is declared outside any procedure, in the program’s main core, its life cycle is linked to that of the program.
+====
+
+=== Memory Allocations
+
+In every new instanciation, the Constructor has to allocate dynamically a memory area according the size of the information describing the object.
+For that purpose, the Constructor should use the `AllocateMemory()` command associated with `FreeMemory()` command for the Destructor.
+But there is other candidate to achieve such dynamic memory allocation.
+Under Windows OS, API can be directly used for example.
+
+Standard PureBasic library provides linked lists, which also a good candidate to allocate dynamically some memory.
+
+=== Encapsulation
+
+Let us imagine now that I want to give to the user only access to the `Draw()` method of the Class ``Rectangle``. I shall begin by defining the wished interface:
+
+// Example N. 6.6-1
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rectangle
+  Draw()
+EndInterface
+---------------------------------------------------------------------
+
+To instanciate a new object I write:
+
+// Example N. 6.6-2
+[source,purebasic]
+---------------------------------------------------------------------
+Rect.Rectangle = New_Rect()
+---------------------------------------------------------------------
+
+with,
+
+// Example N. 6.6-3
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mthds_Rect(*Rect.Rectangle2)
+  *Rect\Draw = @Draw_Rectangle()
+  *Rect\Erase = @Erase_Rectangle()
+EndProcedure
+
+Procedure Init_Mbers_Rect(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect(*Rect)
+  Init_Mbers_Rect(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+It is similar as previous because the first function address is the `Draw()` method one.
+
+Now, imagine that I want to give to the user only the access to the `Erase()` method. I shall begin by defining the new interface:
+
+// Example N. 6.6-4
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rectangle
+  Erase()
+EndInterface
+---------------------------------------------------------------------
+
+Nevertheless to instanciate the new object I cann’t use the `New_Rect()` Constructor above.
+In the opposite case, the result would be identical to the previous case. By writting `Rect\Erase()` the `Draw()` method is called.
+
+Thus, a new Constructor is needed able to return the correct function address.
+
+Hereafter one of them is given:
+
+// Example N. 6.6-5
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mthds_Rect2(*Rect.Rectangle2)
+  *Rect\Draw = @Erase_Rectangle()
+  *Rect\Erase = @Draw_Rectangle()
+EndProcedure
+
+Procedure Init_Mbers_Rect(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect2(*Rect)
+  Init_Mbers_Rect(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+You notice that the functions addresses were just inverted at the initialization level.
+Certainly, it is not very elegant to allocate Draw field of the Rectangle2 Structure with an other function address.
+If it allows to preserve the same Structure, that of the Class, it also underlines a matter:
+The function pointer names are less interesting than their values!
+To erase this non-problem, just rename the pointers of the Class as following:
+
+// Example N. 6.6-6
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2
+  *Method1
+  *Method2
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+---------------------------------------------------------------------
+
+In fact, the Interface and the Constructor are in charge to give a sense to these pointers:
+
+* by giving them a name (task of the interface)
+* by allocating them the adequate functions addresses (task of the constructor)
+
+[IMPORTANT]
+====
+In spite of this arrangement concerning the function pointer names, it remains more practical to keep an explicit name if hiding methods is not considered (what is the most common situation). That allows to modify a Mother Class without retouching the pointers numbering of the Child Classes.
+====
+
+=== Inheritance
+
+As for the first inheritance concept implementation, let takes advantage that the Structure and Interface instructions have to be extend thanks to the keyword Extends.
+
+So, to pass from the Rectangle1 Class which has a single Draw() method to…
+
+// Example N. 6.7-1
+.Interface
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rect1
+  Draw()
+EndInterface
+---------------------------------------------------------------------
+
+// Example N. 6.7-2
+.Class
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle1
+  *Method1
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Draw_Rectangle(*this.Rectangle1)
+  ; [ ...some code... ]
+EndProcedure
+
+Procedure Init_Mthds_Rect1(*Rect.Rectangle1)
+  *Rect\Method1 = @Draw_Rectangle()
+EndProcedure
+---------------------------------------------------------------------
+
+// Example N. 6.7-3
+.Constructor
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mbers_Rect1(*Rect.Rectangle1, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect1(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle1))
+  Init_Mthds_Rect1(*Rect)
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+…a Rectangle2 Class, which have two methods: Draw() and Erase(), write:
+
+// Example N. 6.7-4
+.Interface
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rect2 Extends Rect1
+  Erase()
+EndInterface
+---------------------------------------------------------------------
+
+// Example N. 6.7-5
+.Class
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2 Extends Rectangle1
+  *Method2
+EndStructure
+
+Procedure Erase_Rectangle(*this.Rectangle1)
+  ; [ ...some code... ]
+EndProcedure
+
+Procedure Init_Mthds_Rect2(*Rect.Rectangle2)
+  Init_Mthds_Rect1(*Rect)
+  *Rect\Method2 = @Erase_Rectangle()
+EndProcedure
+---------------------------------------------------------------------
+
+// Example N. 6.7-6
+.Constructor
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mbers_Rect2(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+EndProcedure
+
+Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect2(*Rect)
+  Init_Mbers_Rect2(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+Carrying out an inheritance consists in extending Interface and Class structure, but also in adapting the method and the attribut initializations
+Both procedures Init_Mthds_Rect2() and Init_Mbers_Rect2() call respectively the initialization of the methods and to the initialization of the attributes of the Class Rectangle1 ( Init_Mthds_Rect1() and Init_Mbers_Rect1() ) rather than the Constructor New_Rect1().
+Those because, a Child Class object doesn’t need to instantiate a Mother Class object but just to inherit methods and attributes.
+
+On the other side, verification is made that the Child Class benefits immediately of any changes made at the Mother Class level (adding a method or a variable).
+
+Is the inheritance currently correct? No, because it doesn’t allow the object of the Child Class (Rectangle2) to use the new Erase() method.
+The reason takes place on that function pointer *Methode2 doesn’t follow the *Methode1 one.
+
+Let me show you the explicit form of Class Rectangle2 Structure:
+
+// Example N. 6.7-7
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2
+  *Method1
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+  *Method2.l
+EndStructure
+---------------------------------------------------------------------
+
+instead of having the Structure below, authorizing a correct initialization of the interface:
+
+// Example N. 6.7-8
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2
+  *Method1
+  *Method2
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+---------------------------------------------------------------------
+
+Remind that a correct interface initialization needs functions addresses, which follow each other ().
+To resolve this problem, just group all the methods into a specific structure !
+The Class structure needs just to have a pointer on this new structure as the following example shows:
+
+// Example N. 6.7-9
+.Interface
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rect1
+  Draw()
+EndInterface
+---------------------------------------------------------------------
+
+// Example N. 6.7-10
+.Class
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle1
+  *Methods
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Draw_Rectangle(*this.Rectangle1)
+  ; [ ...some code... ]
+EndProcedure
+
+Structure Methd_Rect1
+  *Method1
+EndStructure
+
+Procedure Init_Mthds_Rect1(*Mthds.Mthds_Rect1)
+  *Mthd_Rect1\Method1 = @Draw_Rectangle()
+EndProcedure
+
+Mthds_Rect1. Mthds_Rect1
+Init_Mthds_Rect1(@Mthds_Rect1)
+---------------------------------------------------------------------
+
+// Example N. 6.7-11
+.Constructor
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mbers_Rect1(*Rect.Rectangle1, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect1(x1.l, x2.l, y1.l, y2.l)
+  Shared Mthds_Rect1
+  *Rect.Rectangle1 = AllocateMemory(SizeOf(Rectangle1))
+  *Rect\Methods = @Mthds_Rect1
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y3)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+The `Methd_Rect1` structure describes all the functions pointers of the Class methods.
+Follows the Methd_Rect1 variable statement and its initialization thanks to Init_Mthds_Rect1().
+
+Methd_Rect1 is called the table of the methods of the call. This variable contains the whole methods adresses.
+Here is reached the final Class methods description.
+
+[IMPORTANT]
+====
+The following expression
+
+// Example N. 6.7-12
+[source,purebasic]
+---------------------------------------------------------------------
+Mthds_Rect1.Mthds_Rect1
+Init_Mthds_Rect1(@Mthds_Rect1)
+---------------------------------------------------------------------
+
+can be condensate into
+
+// Example N. 6.7-13
+[source,purebasic]
+---------------------------------------------------------------------
+Init_Mthds_Rect1(@Mthds_Rect1.Mthds_Rect1)
+---------------------------------------------------------------------
+====
+
+The Rectangle1 structure, contains now a pointer "*Methods", initialized through the constructor by giving to it the Methd_Rect1 variable address.
+
+The inheritance can be now performed correctly, because by extending the Methd_Rect1 Structure in a Methd_Rect2 new one, the addresses of functions are going to follow each other:
+
+// Example N. 6.7-14
+.Interface
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Rect2 Extends Rect1
+  Erase()
+EndInterface
+---------------------------------------------------------------------
+
+// Example N. 6.7-15
+.Class
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2 Extends Rectangle1
+EndStructure
+
+Procedure Erase_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+
+Structure Methd_Rect2 Extends Methd_Rect1
+  *Method2
+EndStructure
+
+Procedure Init_Mthds_Rect2(*Mthds.Mthds_Rect2)
+  Init_Mthds_Rect1(*Mthds)
+  *Mthd_Rect2\Method2 = @Erase_Rectangle()
+EndProcedure
+
+Mthds_Rect2. Mthds_Rect2
+Init_Mthds_Rect2(@Mthds_Rect2)
+---------------------------------------------------------------------
+
+// Example N. 6.7-16
+.Constructor
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Init_Mbers_Rect2(*Rect.Rectangle2 , x1.l, x2.l, y1.l, y2.l)
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+EndProcedure
+
+Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
+  Shared Mthds_Rect2
+  *Rect.Rectangle2 = AllocateMemory(SizeOf(Rectangle2))
+  *Rect\Methods = @Mthds_Rect2
+  Init_Mbers_Rect2(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+In this example, the Rectangle2 Structure is empty and it isn’t a problem.
+Two reasons in it:
+
+* At first the *Methodes pointer needs to exist only once and this in the Mother Class.
+* Then, no supplementary attributes have been added to it.
+
+[IMPORTANT]
+====
+there is three advantages to have a methods initialization routine external to the Constructor and a table of methods available in a single variable:
+
+* The table of the methods are initialized once and not at each object instanciation,
+* The objects have no more than one pointer towards the methods: it is a substantial gain of memory,
+* All the objects referred towards the same table of methods, which guaranteed an identical behavior for all the objects of the same Class.
+====
+
+=== Get() and Set() object methods
+
+By Interface, it is possible to use only methods of an object.
+The interface encapsulates completely the object attributes.
+To act on attributes, either for examine or to modify them, it is necessary to give specific methods to the user.
+The methods allowing to examine object attributes are called Get() methods.
+The methods allowing to modify object attributes are called Set() methods.
+
+In our example of Rectangle1 Class, if I want to examine the value of the attribute var2, I should create the following Get() method:
+
+// Example N. 6.8-1
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Get_var2(*this.Rectangle1)
+  ProcedureReturn *this\var2
+EndProcedure
+---------------------------------------------------------------------
+
+Also, to modify the value of the attribute var2, I should write the following Set() method:
+
+// Example N. 6.8-2
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Set_var2(*this.Rectangle1, value)
+  *this\var2 = value
+EndProcedure
+---------------------------------------------------------------------
+
+Because Get() and Set() methods exist only to allow the user to modify all or any of the object attributes, they are necessarily present in the Interface.
+
+[IMPORTANT]
+====
+See the <<optimisations,Appendix>> of the tutorial for possible optimization.
+====
+
+// Website Page 6
+
+== Synthesis and notation
+
+Before I present the selected Class implementation, I’m going to spend a little time summarizing the work made under a formal notation frame. The implementation of an object involve the following elements:
+
+*   An Interface,
+*   A Class (concrete / abstract) including the methods definition,
+*   A Constructor provided with a routine initializating attributes,
+*   A Destructor.
+The following table summarizes what is our object in PureBasic.
+
+*   The word Class refers to the name of the Class (ex: Methd_Class)
+*   The word Mother refers to the name of the Mother Class during an inheritance (ex: Methd_ MotherClass)
+*   The expressions between embraces {} are to be used during an inheritance
+
+// Example N. 7-1
+.Interface
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+Interface <Interface> {Extends <MotherInterface>}
+  Method1()
+  [Method2()]
+  [Method3()]
+  ...
+EndInterface
+---------------------------------------------------------------------
+
+// Example N. 7-2
+.Class
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+Structure <Class> {Extends <MotherClass>}
+  *Methods
+  [Attribute1]
+  [Attribute2]
+  ...
+EndStructure
+
+Procedure Method1(*this.Class, [arg1]...)
+  ...
+EndProcedure
+
+Procedure Method2(*this.Class, [arg1]...)
+  ...
+EndProcedure
+...
+
+Structure <Mthds_Class> {Extends <Mthds_MotherClass>}
+  *Method1
+  *Method2
+  ...
+EndStructure
+
+Procedure Init_Mthds_Class(*Mthds.Mthds_Class)
+  {Init_Mthds_MotherClass(*Mthds)}
+  *Mthds\Method1 = @Method1()
+  *Mthds\Method2 = @Method2()
+  ...
+EndProcedure
+
+Mthds_Class.Mthds_Class
+Init_Mthds_Class(@Mthds_Class)
+---------------------------------------------------------------------
+
+// Example N. 7-3
+.Constructor
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+Procedure Init_Mbers_Class(*this.Class, [var1]...)
+  {Init_Mbers_MotherClass(*this)}
+  [*this\Attibute1 = var1]
+  ...
+EndProcedure
+
+Procedure New_Class([var1]...)
+  Shared Mthds_Class
+  *this.Class = AllocateMemory(SizeOf(Class))
+  *this\Methods = @Mthds_Class
+  Init_Mbers_Class(*this, [var1]...)
+  ProcedureReturn *this
+EndProcedure
+---------------------------------------------------------------------
+
+// Example N. 7-4
+.Destructor
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+Procedure Free_Class(*this)
+  FreeMemory(*this)
+EndProcedure
+---------------------------------------------------------------------
+
+=== First Code-Example
+
+Here is an example of a code where the inheritance is used:
+
+* link:OOP-Inheritance-Ex1.pb[``OOP-Inheritance-Ex1.pb``]
+
+// Website Page 7
+
+== PB Class
+
+Now we saw OOP concepts and their possible implementations in PureBasic, it’s time to establish an implementation.
+
+Here I present an implementation which seems to me, according to my current knowledge, the most adapted to the OOP by the way of PureBasic.
+
+It is based on the whole work exposed previously but also of my own experience of the practice of the subject.
+The other goal is to tend to simplify the use of object concepts, by clear commands and by automating operations as much as possible.
+In this step, macros are going to play a decisive role.
+Greatly facilitated by Interface and Macro commands, the proposed implementation remains naturally limited by the language itself.
+
+At first, I’ll present the instructions of a Class in PureBasic. Then I’ll analyze what hides behind by firing parallels with the previous pages. This chapter ended on a discussion of the choices made.
+
+=== PureBasic Class
+
+// Example N. 8.1-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Object class
+Class(<ClassName>)
+  [Method1()]
+  [Method2()]
+  [Method3()]
+  ...
+  Methods(<ClassName>)
+    [<*Method1>]
+    [<*Method2>]
+    [<*Method3>]
+    ...
+  Members(<ClassName>)
+    [<Attribute1>]
+    [<Attribute2>]
+    ...
+EndClass(<ClassName>)
+
+; Object methods (implementation)
+Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(<ClassName>, Method1)
+
+...(ditto for each method)
+
+; Object constructor
+New(<ClassName>)
+  ...
+EndNew
+
+; Object destructor
+Free(<ClassName>)
+  ...
+EndFree
+---------------------------------------------------------------------
+
+As shown, the PureBasic Class is articulated with four main subjects:
+
+*   The definition of the class with Class : EndClass block,
+*   The implementation of the methods of the class with Method: EndMethod block,
+*   The construction of the object with New : EndNew block,
+*   The destructor of the object with Free : EndFree block.
+
+=== Second Code-Example
+
+You will find here the files containing the declaration of this set of commands as well as an example file of use based on the inheritance example, what will allow you to compare with <<First Code-Example,previous implementation>>:
+
+// TODO: MISSING LINK
+
+* link:OOP.pbi[``OOP.pbi``]
+* link:OOP-Inheritance-Ex2.pb[``OOP-Inheritance-Ex2.pb``]
+
+[IMPORTANT]
+====
+If you have already looked at the source code from the `OOP.pbi` file, you are going to notice that the final OOP implementation in the source is a little more complicated than the basic explanation from this acticle. This is because some arrangements are made to service update of the source.
+====
+
+Let me run you through the Purebasic Class declaration...
+
+=== Class : EndClass
+
+`Class` : `EndClass` block allows declaring three types of constituents:
+
+*   The interface of the object, only part that the user can handle.
+*   The methods of the object -except implementation- which are reduced to the pointers of the methods.
+*   Members (except methods) of the object. Afterward, words 'member' and more correctly 'attribute' will often make reference to these only elements (and not to the methods which are also members of the object in the strict meaning).
+
+// Example N. 8.2-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Object class
+Class(<ClassName>)
+  [Method1()]
+  [Method2()]
+  [Method3()]
+  ...
+  Methods(<ClassName>)
+    [<*Method1>]
+    [<*Method2>]
+    [<*Method3>]
+    ...
+  Members(<ClassName>)
+    [<Attribute1>]
+    [<Attribute2>]
+    ...
+EndClass(<ClassName>)
+---------------------------------------------------------------------
+
+Each constituent is clearly identified with keywords: Class\Methods\Members. This order must be preserved and keywords always have to appear even though any method or member will not be declared. Also, at each time the name of the class is a parameter of the keyword.
+
+The explanation takes place in the definition of every keyword. Here is the code:
+
+==== Class keyword
+
+// Example N. 8.2-2
+[source,purebasic]
+---------------------------------------------------------------------
+Macro Class(ClassName)
+  ; Declare the class interface
+  Interface ClassName#_
+EndMacro
+---------------------------------------------------------------------
+
+The keyword Class declares just the header of the interface statement. The name of the interface comes from the class name merged with "_". So what follows Class will be the definition of the interface of the object.
+
+==== Methods keyword
+
+// Example N. 8.2-3
+[source,purebasic]
+---------------------------------------------------------------------
+Macro Methods(ClassName)
+  EndInterface
+  ; Declare the methods table structure
+  Structure Mthds_#ClassName
+EndMacro
+---------------------------------------------------------------------
+
+The keyword Methods begins by closing the definition of the interface with EndInterface. Then it opens the statement of the structure which defined the pointers of the methods.
+
+==== Members keyword
+
+// Example N. 8.2-4
+[source,purebasic]
+---------------------------------------------------------------------
+Macro Members(ClassName)
+  EndStructure
+  ; Create the methods table
+  Mthds_#ClassName.Mthds_#ClassName
+  ; Declare the members
+  ; No parent class: implement pointers for the Methods and the instance
+  Structure Mbrs_#ClassName
+    *Methods
+    *Instance.ClassName
+EndMacro
+---------------------------------------------------------------------
+
+The keyword Members is more complicated than the two previous ones.
+
+It begins by closing the definition of the structure first opened by Methods. Then it declares the table of the methods based on the structure freshly built. For the moment this table is empty and will be fill a the end of `Method` : `EndMethod` statement. I’ll be discussing this farther (I can’t wait).
+
+Finally Members ends by opening the structure declaration which defined the members of the object. At first position -as expected- is the pointer to the table of the methods, i.e. to the variable just above. The assignment is done later by the constructor. Follows another pointer which will contain the address of the object itself. I shall explain later the reason of this new member (not! Now).
+
+It remains for the user simply to declare the other members of the object next Members keyword.
+
+==== EndClass keyword
+
+// Example N. 8.2-5
+[source,purebasic]
+---------------------------------------------------------------------
+Macro EndClass(ClassName)
+  EndStructure
+
+  Structure ClassName
+    StructureUnion
+      *Md.ClassName#_     ; its methods
+      *Mb.Mbrs_#ClassName ; its memebers
+    EndStructureUnion
+  EndStructure
+EndMacro
+---------------------------------------------------------------------
+
+EndClass keyword code is at the origin of the implementation chosen for our object. So I’m now going to describe it correctly.
+
+As for Methods and Members, it begins by closing what was opened by the previous keyword, here the structure describing the members of the object.
+
+Then, follows the structure called with the name of the class and which will be use to instanciate the object.
+
+This structure is in fact the union of two elements:
+
+1.  The first is a pointer typed by the interface which allows to call the methods of the object.
+2.  The second is a pointer typed by the structure defining members. It helps in acting on the members of the object.
+
+This design puts into practice optimization on the accessors exposed in appendix. The benefit of this choice is double:
+
+*   It provides a same process to reach methods and members of an object.
++
+To reach a method, write:
+// Example N. 8.2-6
++
+[source,purebasic]
+---------------------------------------------------------------------
+*Rect\Md\Draw()
+---------------------------------------------------------------------
++
+To reach a attribute, write:
+// Example N. 8.2-7
++
+[source,purebasic]
+---------------------------------------------------------------------
+*Rect\Mb\var1
+---------------------------------------------------------------------
+
+*   It avoids to declare systematically Get and Set methods of an object when they are ordinary. That saves time and it’s practical. At the same moment, that limits the numbers of methods of an object (small optimization).
+
+[WARNING]
+====
+The price of this choice is that all the members of an object are visible by the user.
+====
+
+[IMPORTANT]
+====
+This structure could be adapted a little. As terms ' Md ' and ' Mb ' are visually very close, a better distinguish could be studied. Although this choice was not retain, here is an interesting possibility:
+
+// Example N. 8.2-8
+[source,purebasic]
+---------------------------------------------------------------------
+Structure ClassName
+  StructureUnion
+    *Md.ClassName#_       ; methods
+    *Get.Mbrs_#ClassName  ; used to read a member
+    *Set.Mbrs_#ClassName  ; used to modify a member
+  EndStructureUnion
+EndStructure
+---------------------------------------------------------------------
+
+In this code, the pointer *Mb was replaced by two pointers *Get and *Set. They have the same functionality but they can lead to a more legible code by clarifying if an attribute is readed or modified.
+====
+
+=== Method : EndMethod
+
+`Method` : `EndMethod` block allows to acheive the implementation of the various methods of an object.
+
+// Example N. 8.3-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Object methods (implementation)
+Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(<ClassName>, Method1)
+---------------------------------------------------------------------
+
+Each keyword has the class name and the method name as parameters.
+
+In use, Method : EndMethod works like Procedure: EndProcedure. In fact it is a wrap of this block as exposed hereafter.
+
+[WARNING]
+====
+Note the very special syntax of the method which requires two closed brackets. This specificity comes from the use of a macro combined with a different number of possible arguments for each method.
+====
+
+==== Method keyword
+
+// Example N. 8.3-2
+[source,purebasic]
+---------------------------------------------------------------------
+Macro Method(ClassName, Mthd)
+  Procedure Mthd#_#ClassName(*this.Mbrs_#ClassName
+EndMacro
+---------------------------------------------------------------------
+
+Method keyword is not more than a Procedure keyword where are pre-declared the variable *this required as first argument.
+
+Code doesn’t end by a bracket to allow the user to complete it by the specific parameters of its method. Up to him to close this bracket as shown in the syntax, otherwise the compiler will not miss to notify this!
+
+==== EndMethod keyword
+
+// Example N. 8.3-3
+[source,purebasic]
+---------------------------------------------------------------------
+Macro EndMethod(ClassName, Mthd)
+  EndProcedure
+  ; Save the method’s address into the methods table
+  Mthds_#ClassName\Mthd=@Mthd#_#ClassName()
+EndMacro
+---------------------------------------------------------------------
+
+EndMethod keyword begins by closing the procedure opened by the Method keyword.
+Once the method defined, it can be referenced into the table of methods (declared by the Members keyword of the class). Actually, by declaring a method, this method is automatically referenced.
+
+=== Object Constructor
+
+New : EndNew block allows to instanciate a new object of the class by declaring and initialising.
+
+// Example N. 8.4-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Object constructor
+New(<ClassName>)
+  ...
+EndNew
+---------------------------------------------------------------------
+
+The New keyword has the class name as parameter.
+
+==== New keyword
+
+// Example N. 8.4-2
+[source,purebasic]
+---------------------------------------------------------------------
+Macro New(ClassName)
+  Declare Init_Mbers_#ClassName(*this, *input.Mbrs_#ClassName=0)
+  
+  Procedure.l New_#ClassName(*input.Mbrs_#ClassName =0)
+    Shared Mthds_#ClassName
+    ; Allocate the memory required for the object members
+    *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
+    ; Attach the methods table to the object
+    *this\Methods=@Mthds_#ClassName
+    ; The object is created then initialised
+    ; Create the object
+    *this\Instance= AllocateMemory(SizeOf(ClassName))
+    *this\Instance\Md = *this
+    ; Now init members
+    Init_Mbers_#ClassName(*this, *input)
+    ProcedureReturn *this\Instance
+  EndProcedure
+  
+  Init_Mbers(ClassName)
+EndMacro
+---------------------------------------------------------------------
+
+New keyword is dense but doesn’t change really compare to previous design.
+
+The goal of this keyword is to create a new object and to initialise it. These tasks are performed into the New_ClassName procedure which is the main part of the New macro.
+
+This procedure accepts a single argument, the one required by Init_Mbers for attributs initialisation.
+
+It begins by allocated the memory space required for the members of the object.
+
+Then it attaches to it the table of the methods of the class.
+
+Next it performs the object instanciation by assigning an address to the object then by initializing the interface.
+
+The initialization of the attributes of the object follows through Init_Mbers method.
+
+Finally, New returns the address of the object.
+
+The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the New : EndNew block is simply the attributs initialisation. More on that in a moment though (Give me now!).
+
+This arrangement is possible thanks declaring the Init_Mbers method first in the macro.
+
+[IMPORTANT]
+====
+Notice that the New_ClassName procedure is common to all kind of Class. It is because the variant part was externalized into Init_Mbers method.
+====
+
+==== EndNew keyword
+
+// Example N. 8.4-3
+[source,purebasic]
+---------------------------------------------------------------------
+Macro EndNew
+  EndInit_Mbers
+EndMacro
+---------------------------------------------------------------------
+
+EndNew keyword is limited to call the EndInit_Mbers keyword that end the statement of the attribut initialisation start at the end of the New macro.
+
+Conclusion: the goal is reached. Through the New : EndNew block, we have a new object of the Class initialised (methods and attributs)
+
+In use, the New : EndNew block allows the attibuts initialisation like this:
+
+// Example N. 8.4-4
+[source,purebasic]
+---------------------------------------------------------------------
+New(Rect1)
+*this\var1 = *input\var1
+*this\var2 = *input\var2
+; [ ...some code... ]
+EndNew
+---------------------------------------------------------------------
+
+to instanciate an such object write:
+
+// Example N. 8.4-5
+[source,purebasic]
+---------------------------------------------------------------------
+input.Mbrs_Rect1
+input\var1 = 10
+input\var2 = 20
+
+; *Rect is a new object from Rect1 class
+*Rect.Rect1 = New_Rect1(input)
+---------------------------------------------------------------------
+
+Note that the constructor name is 'New' followed by the name of the class separated by "_".
+
+[IMPORTANT]
+====
+With regard to what was studied until now, the object will always be a pointer. It doesn’t matter but it’s the consequence of the choice made in regrouping the access of the methods and the access of the members (What!? I don’t remember!).
+
+The choice of the StructureUnion requires two different memory allocations: the one for the members and the one to regroup methods and members (4 bytes here).
+This bivalence -which didn’t exist for the previous implementation- leads us to keep information into the object. So in the methods of the object, you could access to the address of members with *this and to the address of the instance (method and members) by *this\Instance.
+====
+
+[WARNING]
+====
+It ensues an important feature by using *this\Instance to call the methods of the object within its methods (No I did not drink!). This feature is the best way to do this task because the name of the procedure behind the method isn’t really known, what is needed in the inheritance process.
+
+For that purpose, a macro Mtd is directly proposed in source file OOP.pbi.
+====
+
+==== Init_Mbers : EndInit_Mbers private block
+
+Init_Mbers: EndInit_Mbers block is a private block of the OOP implementation, used by the New : EndNew block to initilalise attributs of an object. But it is important to present this internal block to understand how an object initialisation will by specified.
+
+// Example N. 8.4-6
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Attributes initialisation
+Init_Mbers(<ClassName>)
+  ...
+EndInit_Mbers
+---------------------------------------------------------------------
+
+Between the two keywords are a series of member’s initialization.
+Note that only Init_Mbers keyword requires the class name as parameter.
+
+====== Init_Mbers keyword
+
+// Example N. 8.4-7
+[source,purebasic]
+---------------------------------------------------------------------
+Macro Init_Mbers(ClassName)
+  Method(ClassName, Init_Mbers), *input.Mbrs_#ClassName =0)
+EndMacro
+---------------------------------------------------------------------
+
+Instruction Init_Mbers is defined as a method of the object accepting a single argument.
+
+To initialize the object according to the wishes of the user and because the number of members couldn’t be known in advance, the choice was made to pass information by referent.
+
+This choice is reinforced by the prejudice that the constructor has the responsibility to initialize the object (by calling this particular method).
+Finally, but not the least, this disposal allows to automate the process of inheritance.
+
+In use, the initialization of members will look like mostly what follows:
+
+// Example N. 8.4-8
+[source,purebasic]
+---------------------------------------------------------------------
+Init_Mbers(Rect1)
+*this\var1 = *input\var1
+*this\var2 = *input\var2
+; [ ...some code... ]
+EndInit_Mbers
+---------------------------------------------------------------------
+
+====== EndInit_Mbers keyword
+
+// Example N. 8.4-9
+[source,purebasic]
+---------------------------------------------------------------------
+Macro EndInit_Mbers
+  EndProcedure
+EndMacro
+---------------------------------------------------------------------
+
+EndInit_Mbers keyword is not more and not less that the EndProcedure keyword which ends the statement of the method of the object initialization.
+
+If you are the impatient sort and have already looked at the source code, you may have noticed that the final update OOP implementation source file include extra optional parameters called arg1 to arg5. This is because in some situation, it is useful to complet the standard *input pointer by additional information.
+
+=== Object destructor
+Free: EndFree block allows to destroy object of the class and to restore memory.
+
+// Example N. 8.5-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Object destructor
+Free(<ClassName>)
+ ...
+EndFree
+---------------------------------------------------------------------
+
+Free keyword has the class name as parameter.
+
+===== Free:EndFree block
+
+// Example N. 8.5-2
+[source,purebasic]
+---------------------------------------------------------------------
+Macro Free(ClassName)
+  Procedure Free_#ClassName(*Instance.ClassName)
+    If *Instance
+EndMacro
+
+Macro EndFree
+      FreeMemory(*Instance\Md)
+      FreeMemory(*Instance)
+    EndIf
+  EndProcedure
+EndMacro
+---------------------------------------------------------------------
+
+Free:EndFree block is rather simple.
+
+Free:EndFree block is rather simple.
+
+*   Free opens a procedure with the object address as argument. In passing we check that it is a none null address (nevertheless it not guaranteed a valid address for FreeMemory() ).
+*   EndFree releases sequentially the memory assigned to members then that of the object.
+
+In use, to free an object intance write:
+
+// Example N. 8.5-3
+[source,purebasic]
+---------------------------------------------------------------------
+Free_Rect1(*Rect)
+---------------------------------------------------------------------
+
+As for the constructor, note that the destructor name is 'Free' followed by the name of the class separated by "_".
+
+[CAUTION]
+====
+If your object consists of other objects, i.e. that objects are members of the current object and exist by this object (hic!) it is important to free them too by calling their destructors between keywords Free and EndFree.
+
+Even if PureBasic automatically free the allocated memory areas, it will occur only when the programs ends. During programs execution, it is up to the user to take care of any memory waste especially its growth.
+====
+
+=== Inheritance
+In the set of commands just exposed, nothing makes reference to the inheritance process. It is normal because current commands do not support this! (Damn! Fear!)! We need to decline an additional set of commands to deal with the concept (Arghhh! <death pangs>).
+
+Fortunately, it is not rocket science as our conception is ready for this (Phew! I feeling better now).
+
+Here what looks like the class in that case:
+
+// Example N. 8.6-1
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+; Object class
+ClassEx(<ClassName>,<MotherClass>)
+  [Method1()]
+  [Method2()]
+  [Method3()]
+  ...
+  MethodsEx(<ClassName>,<MotherClass>)
+    [<*Method1>]
+    [<*Method2>]
+    [<*Method3>]
+    ...
+  MembersEx(<ClassName>,<MotherClass>)
+    [<Attribute1>]
+    [<Attribute2>]
+    ...
+EndClass(<ClassName>)
+
+; Object methods (implementation)
+Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(<ClassName>, Method1)
+
+...(ditto for each method)
+
+; Object constructor
+NewEx(<ClassName>,<MotherClass>)
+  ...
+EndNew
+
+; Object destructor
+Free(<ClassName>)
+  ...
+EndFree
+---------------------------------------------------------------------
+
+Four extra keywords are supplied: ClassEx, MethodsEx, MembersEx and NewEx as a replacement of Class, Methods, Members and New.
+
+For each new keyword, in addition of the name of the current class, the name of the mother class is given as a new argument.
+
+The operation is finally rather simple for the user with a very easy process for inheritance.
+
+I won’t list the declaration of the new keywords here to save space, but it might be a good idea to check out OOP.pbi in your IDE to get a feel for it.
+
+=== Discussion
+
+Phew! The presentation of a PureBasic Class is finished.
+
+What else? Well, macros allow to define a real set of commands that:
+
+*   Clarified the object structure,
+*   Facilitate or automate some processes, as the methods initialization or the inheritance.
+I list here the various choices which drive the conception to the object. Let me you feel that it is possible to adapt some parts to suit one’s style to one’s object without fundamentally modifying it:
+
+1.  Use of StructureUnion to define the object. It confers to the object the peculiarity to act on the members without using any accessor method.
+
+2.  The table of methods is class-specific and not object-specific.
+
+*   It is initialized once at the beginning of the program and not at the intanciate level of an object,
+*   Objects instance store only a pointer towards the table of methods: substantial save of memory space,
+*   All the objects point towards the same table of methods, which guarantees an identical behavior of the objects from the same class.3.  A constructor which initializes the object, driving to use a single pointer as input parameter which store the initialisation data of the object. The process of inheritance is largely facilitated.
+We can envisage to split the process in two steps: step one, the user create an object, step two the user calls the routine of initialization himself. In this case, method Init_Mbers is not called by New method and then it can support number of arguments.Two disadvantages:
+
+        *   The risk of an incorrect initialization of the object: one can forget to do it, but -more important- it’s not possible any more to automate the process of inheritance: it’s up to the user to manage it!
+    *   A strong class-interdependence for enter parameters: as soon as the parameters of the initialization method change from the mother class, the user has to proceed this modification in all the child classes.
+In extreme, but it’s not advisable, we can imagine that the user initializes member after member by using accessors. But a member initialization is not always a single assignation. It can require more complex internal operations to reach the assignation. Repeat this at each new object, it is advised to keep this into a dedicated method.
+4.  A destructor consistent with the constructor. It is not a part of the interface although it is possible. In this case, to free an object write ' Objet\Md\Free () ' instead of writing ' Free_ClassName ( object) '. This disposal is easy to operate and doesn’t modify the conception of the object.
+
+5.  I didn’t achieve the automation of the table of methods. It is important to remind why it is articulated with a structure. Structure allows to create abstract classes, that are classes where all the methods are not implemented. It is a major notion of the object concepts. Structure facilitates to preserve the addresses order into the table of methods what ever the implemented methods are while preserve the inheritance process! An array, a linkedlist or a hash map as a replacement of a structure shall not have this flexibility (at least I didn’t find a such solution).
+
+=== Reminder of types
+
+Find here the list of the types which are used by a class:
+
+[width="100%",options="header,footer"]
+|====================
+| Type               | Applied to        | Origin
+| <ClassName>        | Object instance   | EndClass
+| <ClassName>_       | Interface         | Class
+| Mthds_<ClassName>  | Table of methods  | Methods
+| Mbrs_<ClassName>_  | Members structure | Members
+| Mbrs_<ClassName>   | Members structure | EndClass
+|====================
+
+[IMPORTANT]
+====
+Mbrs_<ClassName>_ type wasn’t presented in this paper. It is an intermediary step used to build the Mbrs_<ClassName> structure of the members definition. This arrangement is required to achieve the *this\Instance feature exposed here
+====
+
+// Website Page 8
+
+== Conclusion
+
+You will have understood that, if it is possible to adopt a Object-Oriented Programming in PureBasic, a rigor of writing is required.
+But once this task released, the object manipulation is excessively simple.
+
+Now if the Objects languages bring a bigger flexibility in writing codes (according to a direct object concepts using), its organization is articulated on using a lot of methods which leads to some performance loses.
+
+Nevertheless, I hope that this tutorial will have allowed you, at first, to realize the underlying mechanisms in the OOP and to understand the concepts.
+
+// Website Page 9
+
+[appendix]
+== Optimisations
+
+The paragraphs which follow deal with considerations on our Object-oriented approach to improve the program runtime the performances of .
+
+=== Optimisation: Get() and Set() methods
+
+By making frequent calls to Get() and Set() methods, it means many function calls and a loss of performance.
+For those who are in search of performance, there are two possibilities to accelerate the process:
+
+Both consist in coupling a pointer to the object, the second solution brings a layer to the first one.
+
+==== First solution:
+
+The pointer is specified by the Class Structure.
+So, for an object Rect from the Rectangle1 Class, write:
+
+// A.1.1-1
+[source,purebasic]
+---------------------------------------------------------------------
+Rect.Rect = New_Rect()
+*Rect.Rectangle1 = Rect
+---------------------------------------------------------------------
+
+To act on var2 attribute write:
+
+// A.1.1-2
+[source,purebasic]
+---------------------------------------------------------------------
+*Rect\var2
+---------------------------------------------------------------------
+
+It is then possible both to examine and to modify it.
+This is the more simple solution to implement.
+
+==== Second solution:
+
+The first solution asks to work with two different typed elements: Rect and *Rect.
+This second solution, suggests grouping these two elements in a StructureUnion block.
+
+// A.1.2-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rect_
+  StructureUnion
+    Mthd.Rect
+    *Mbers.Rectangle1
+  EndStructureUnion
+EndStructure
+---------------------------------------------------------------------
+
+Creating an object from Class Rectangle1, means declaring the object thanks to this new Structure.
+By adapting the constructor, like this:
+
+// A.1.2-2
+[source,purebasic]
+---------------------------------------------------------------------
+New_Rect(@Rect.Rect_)
+---------------------------------------------------------------------
+
+with,
+
+// A.1.2-3
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure New_Rect(*Instance.Rect_)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Rect1(*Rect)
+  Init_Rect2(*Rect)
+  *Instance\Mthd = *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+To access to the Draw() method, write:
+
+// A.1.2-4
+[source,purebasic]
+---------------------------------------------------------------------
+Rect\Mthd\Draw()
+---------------------------------------------------------------------
+
+To access to the var2 attribute, write:
+
+// A.1.2-5
+[source,purebasic]
+---------------------------------------------------------------------
+Rect\Mbers\var2
+---------------------------------------------------------------------
+
+This second solution has the advantage to have only a single element that can be deal as an object from which all the attributes are accessible from outside of the class.
+It preserves also object-oriented notation, although it presents a supplementary level of fields.
+
+The inconvenience concerns essentially the fact that it is necessary to maintain a new structure within the Class.
+
