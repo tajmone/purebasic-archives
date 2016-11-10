@@ -654,7 +654,7 @@ EndProcedure
 ;                              PSEUDOCODE - SYNTAX!
 ; ------------------------------------------------------------------------------
 
-Interface <Interface> {Extends <MotherInterface>}
+Interface <Interface> {Extends <ParentInterface>}
   Method1()
   [Method2()]
   [Method3()]
@@ -667,7 +667,7 @@ EndInterface
 ;                              PSEUDOCODE - SYNTAX!
 ; ------------------------------------------------------------------------------
 
-Structure <Class> {Extends <MotherClass>}
+Structure <Class> {Extends <ParentClass>}
   *Methods
   [Attribute1]
   [Attribute2]
@@ -683,14 +683,14 @@ Procedure Method2(*this.Class, [arg1]...)
 EndProcedure
 ...
 
-Structure <Mthds_Class> {Extends <Mthds_MotherClass>}
+Structure <Mthds_Class> {Extends <Mthds_ParentClass>}
   *Method1
   *Method2
   ...
 EndStructure
 
 Procedure Init_Mthds_Class(*Mthds.Mthds_Class)
-  {Init_Mthds_MotherClass(*Mthds)}
+  {Init_Mthds_ParentClass(*Mthds)}
   *Mthds\Method1 = @Method1()
   *Mthds\Method2 = @Method2()
   ...
@@ -706,7 +706,7 @@ Init_Mthds_Class(@Mthds_Class)
 ; ------------------------------------------------------------------------------
 
 Procedure Init_Mbers_Class(*this.Class, [var1]...)
-  {Init_Mbers_MotherClass(*this)}
+  {Init_Mbers_ParentClass(*this)}
   [*this\Attibute1 = var1]
   ...
 EndProcedure
@@ -1043,17 +1043,17 @@ Free_Rect1(*Rect)
 ; ------------------------------------------------------------------------------
 
 ; Object class
-ClassEx(<ClassName>,<MotherClass>)
+ClassEx(<ClassName>,<ParentClass>)
   [Method1()]
   [Method2()]
   [Method3()]
   ...
-  MethodsEx(<ClassName>,<MotherClass>)
+  MethodsEx(<ClassName>,<ParentClass>)
     [<*Method1>]
     [<*Method2>]
     [<*Method3>]
     ...
-  MembersEx(<ClassName>,<MotherClass>)
+  MembersEx(<ClassName>,<ParentClass>)
     [<Attribute1>]
     [<Attribute2>]
     ...
@@ -1068,7 +1068,7 @@ EndMethod(<ClassName>, Method1)
 ...(ditto For each method)
 
 ; Object constructor
-NewEx(<ClassName>,<MotherClass>)
+NewEx(<ClassName>,<ParentClass>)
   ...
 EndNew
 

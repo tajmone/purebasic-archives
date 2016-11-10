@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.1,</span>
-<span id="revdate">November 9, 2016</span>
+<span id="revnumber">draft 0.2,</span>
+<span id="revdate">November 10, 2016</span>
 <br><span id="revremark">Reprint WIP: polishing English.</span>
 </div>
 <div id="toc" class="toc2">
@@ -525,7 +525,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Since many object-oriented languages already exist, trying to achive OOP in PureBasic — which is a procedural language — might come as a surprise.</p>
 </div>
 <div class="paragraph">
-<p>The fact that some programming languages are defined «Object-Oriented», while others are not, is merely indicating the presence of specific keywords, which facilitate writing code according to the OOP paradigm.
+<p>The fact that some languages are defined «Object-Oriented», while others are not, is merely indicating the presence of specific keywords which facilitate writing code according to the OOP paradigm.
 That is to say: object-oriented languages introduce richer semantics; but compilation-wise they are not introducing any new aspects compared to a non-OO language, they’re just adding a layer over the latter.</p>
 </div>
 <div class="paragraph">
@@ -562,7 +562,7 @@ Before jumping into how these concepts can be implemented in PureBasic, we must 
 </ul>
 </div>
 <div class="paragraph">
-<p>It uses and gives services:</p>
+<p>It uses and provides services:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -572,7 +572,7 @@ Before jumping into how these concepts can be implemented in PureBasic, we must 
 </ul>
 </div>
 <div class="paragraph">
-<p>It is unique (notion of identity)</p>
+<p>It is unique (notion of identity).</p>
 </div>
 <div class="paragraph">
 <p>An object can be seen at two levels:</p>
@@ -580,15 +580,15 @@ Before jumping into how these concepts can be implemented in PureBasic, we must 
 <div class="ulist">
 <ul>
 <li>
-<p>By the services which it returns: external view (specification). This is the User side,</p>
+<p>By the services which it provides: external view (specification). This is the User side,</p>
 </li>
 <li>
-<p>By the way that services are implemented within it : internal view (implementation). This is the Developer side.</p>
+<p>By the way these services are implemented within it: internal view (implementation). This is the Developer side.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>From the developer’s point of view of, an object is a contiguous memory area containing information: variables called <strong>attributes</strong> and functions called <strong>methods</strong>.</p>
+<p>From the developer’s point of view, an object is a contiguous memory area containing information: variables called <strong>attributes</strong> and functions called <strong>methods</strong>.</p>
 </div>
 <div class="paragraph">
 <p>The fact that we refer to an object’s functions as «its methods» is because they belong to it and allow manipulation of its attributes.</p>
@@ -597,11 +597,11 @@ Before jumping into how these concepts can be implemented in PureBasic, we must 
 <div class="sect2">
 <h3 id="the-notion-of-class"><a class="anchor" href="#the-notion-of-class"></a>2.2. The Notion of Class</h3>
 <div class="paragraph">
-<p>This is an extension of the concept of <strong>Type</strong> found in PureBasic.</p>
+<p>This is an extension of the concept of «<strong>type</strong>» found in PureBasic.</p>
 </div>
 <div class="paragraph">
 <p>In a given context, multiple objects can have the same structure and behavior.
-Then can therefore be grouped together in the same «Class».</p>
+They can therefore be grouped together in the same «<strong>Class</strong>».</p>
 </div>
 <div class="paragraph">
 <p>From a developer’s point of view, a Class defines the type of contents that will be held by objects belonging to it: the nature of their attributes (type of each variable) and their methods (names, implementation).</p>
@@ -616,7 +616,7 @@ Then can therefore be grouped together in the same «Class».</p>
 <p>An instance is an object defined from a Class.</p>
 </div>
 <div class="paragraph">
-<p>This process is called instanciation.</p>
+<p>This process is called «<strong>instanciation</strong>».</p>
 </div>
 <div class="paragraph">
 <p>It corresponds to the assignement of variables in PureBasic.</p>
@@ -628,7 +628,7 @@ Then can therefore be grouped together in the same «Class».</p>
 <div class="sect2">
 <h3 id="encapsulation"><a class="anchor" href="#encapsulation"></a>2.4. Encapsulation</h3>
 <div class="paragraph">
-<p>In theory, the manipulation of objects’ attributes should be possible only through its methods. This technique, which allows making visible to the user only a part of the object, is called encapsulation.</p>
+<p>In theory, the manipulation of an object’s attributes should be possible only through its methods. This technique, which allows making visible to the user only a part of the object, is called «<strong>encapsulation</strong>».</p>
 </div>
 <div class="paragraph">
 <p>The advantage of encapsulation is that it guarantees the integrity of attributes. Indeed, the developer is the only one who, through the methods provided to the user, manages the modifications allowed on an object.</p>
@@ -663,9 +663,17 @@ Then can therefore be grouped together in the same «Class».</p>
 Thus, this papers deals only with simple inheritance.</p>
 </div>
 <div class="paragraph">
-<p>Terminology:
-The Class which inherits from another Class, is often called <strong>Child Class</strong>.
-The Class which gives its inheritance to a Child Class is often called <strong>Parent Class</strong>.</p>
+<p><span class="big"><strong>Terminology:</strong></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Class which inherits from another Class, is usually called <strong>Child Class</strong>.</p>
+</li>
+<li>
+<p>The Class which gives its inheritance to a Child Class is usually called <strong>Parent Class</strong>.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -685,10 +693,10 @@ Thus, these objects are all instances of the <code>Shape</code> Class.</p>
 <p>If we want to display the objects, the <code>Shape</code> Class needs to have a <code>Draw</code> method.</p>
 </div>
 <div class="paragraph">
-<p>So endowed, every object has a <code>Draw</code> method to display itself. Now, this method could not possibly be the same for each object, as we want to display a circle, in one case, a rectangle, in onether, and so on.</p>
+<p>So endowed, every object has a <code>Draw</code> method to display itself. Now, this method could not possibly be the same for each object, since we want to display a circle, in one case, a rectangle, in another, etc.</p>
 </div>
 <div class="paragraph">
-<p>The objects of the same Class use the same <code>Draw</code> method, but the object’s nature (Circle, Rectangle, or Triangle) dictates the implementation of the method.
+<p>Objects of the same Class employ the same <code>Draw</code> method, but the object’s nature (Circle, Rectangle, or Triangle) dictates the actual implementation of the method.
 The <code>Draw</code> method is overloaded: for the user, displaying a circle or a rectangle is achieved in the same way.
 From the developer’s point of view, the methods implementations needs to be different.</p>
 </div>
@@ -699,14 +707,12 @@ From the developer’s point of view, the methods implementations needs to be di
 <div class="sect2">
 <h3 id="the-notion-of-abstract-class"><a class="anchor" href="#the-notion-of-abstract-class"></a>2.7. The Notion of Abstract Class</h3>
 <div class="paragraph">
-<p>As shown above, a Class includes the definition of both attributes and methods of an object.</p>
+<p>As we’ve seen, a Class includes the definition of both attributes and methods of an object.
+Let us suppose that we can’t provide the implementation of one of the Class methods. This method is just a name without code. We’re then speaking of an «<strong>abstract method</strong>».
+A Class containing at least one abstract method qualifies as an «<strong>abstract Class</strong>».</p>
 </div>
 <div class="paragraph">
-<p>Let us suppose that we can’t provide the implementation of one of the Class methods. The method is just a name without code. We then speak of abstract method.
-A Class containing at least an abstract method qualifies as an abstract Class.</p>
-</div>
-<div class="paragraph">
-<p>You might wonder why an abstract class should exist, since objects of such a Class can’t be created. Abstract Classes allow defining Object Classes, which are considered — by opposition — as being concrete. The transition from the former to the latter occurs through inheritance, where the concrete Class takes care of providing the missing implementations to the abstract methods inherited.</p>
+<p>You might wonder why an abstract class should exist at all, since objects of such a Class can’t be created. Abstract Classes allow defining <a href="#the-notion-of-class">Object Classes</a>, which are considered — by opposition — as being «concrete». The transition from the former to the latter occurs through inheritance, where the concrete Class takes care of providing the missing implementations to the abstract methods inherited.</p>
 </div>
 <div class="paragraph">
 <p>Thus, abstract Classes are a kind of interface, because they describe the generic specification of all the Classes which inherit from them.</p>
@@ -1752,10 +1758,10 @@ EndProcedure</code></pre>
 <div class="paragraph">
 <p>Carrying out an inheritance consists in extending Interface and Class structure, but also in adapting the method and the attribut initializations
 Both procedures Init_Mthds_Rect2() and Init_Mbers_Rect2() call respectively the initialization of the methods and to the initialization of the attributes of the Class Rectangle1 ( Init_Mthds_Rect1() and Init_Mbers_Rect1() ) rather than the Constructor New_Rect1().
-Those because, a Child Class object doesn’t need to instantiate a Mother Class object but just to inherit methods and attributes.</p>
+Those because, a Child Class object doesn’t need to instantiate a Parent Class object but just to inherit methods and attributes.</p>
 </div>
 <div class="paragraph">
-<p>On the other side, verification is made that the Child Class benefits immediately of any changes made at the Mother Class level (adding a method or a variable).</p>
+<p>On the other side, verification is made that the Child Class benefits immediately of any changes made at the Parent Class level (adding a method or a variable).</p>
 </div>
 <div class="paragraph">
 <p>Is the inheritance currently correct? No, because it doesn’t allow the object of the Child Class (Rectangle2) to use the new Erase() method.
@@ -1946,7 +1952,7 @@ Two reasons in it:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>At first the *Methodes pointer needs to exist only once and this in the Mother Class.</p>
+<p>At first the *Methodes pointer needs to exist only once and this in the Parent Class.</p>
 </li>
 <li>
 <p>Then, no supplementary attributes have been added to it.</p>
@@ -2052,10 +2058,8 @@ EndProcedure</code></pre>
 The following table summarizes what is our object in PureBasic.</p>
 </li>
 <li>
-<p>The word Class refers to the name of the Class (ex: Methd_Class)</p>
-</li>
-<li>
-<p>The word Mother refers to the name of the Mother Class during an inheritance (ex: Methd_ MotherClass)</p>
+<p>The word Class refers to the name of the Class (ex: Methd_Class)
+= *   The word Parent refers to the name of the Parent Class during an inheritance (ex: Methd_ ParentClass)</p>
 </li>
 <li>
 <p>The expressions between embraces {} are to be used during an inheritance</p>
@@ -2065,7 +2069,7 @@ The following table summarizes what is our object in PureBasic.</p>
 <div class="listingblock">
 <div class="title">Interface</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Interface &lt;Interface&gt; {Extends &lt;MotherInterface&gt;}
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Interface &lt;Interface&gt; {Extends &lt;ParentInterface&gt;}
   Method1()
   [Method2()]
   [Method3()]
@@ -2076,7 +2080,7 @@ EndInterface</code></pre>
 <div class="listingblock">
 <div class="title">Class</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Structure &lt;Class&gt; {Extends &lt;MotherClass&gt;}
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Structure &lt;Class&gt; {Extends &lt;ParentClass&gt;}
   *Methods
   [Attribute1]
   [Attribute2]
@@ -2092,14 +2096,14 @@ Procedure Method2(*this.Class, [arg1]...)
 EndProcedure
 ...
 
-Structure &lt;Mthds_Class&gt; {Extends &lt;Mthds_MotherClass&gt;}
+Structure &lt;Mthds_Class&gt; {Extends &lt;Mthds_ParentClass&gt;}
   *Method1
   *Method2
   ...
 EndStructure
 
 Procedure Init_Mthds_Class(*Mthds.Mthds_Class)
-  {Init_Mthds_MotherClass(*Mthds)}
+  {Init_Mthds_ParentClass(*Mthds)}
   *Mthds\Method1 = @Method1()
   *Mthds\Method2 = @Method2()
   ...
@@ -2113,7 +2117,7 @@ Init_Mthds_Class(@Mthds_Class)</code></pre>
 <div class="title">Constructor</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Procedure Init_Mbers_Class(*this.Class, [var1]...)
-  {Init_Mbers_MotherClass(*this)}
+  {Init_Mbers_ParentClass(*this)}
   [*this\Attibute1 = var1]
   ...
 EndProcedure
@@ -2867,17 +2871,17 @@ EndMacro</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Object class
-ClassEx(&lt;ClassName&gt;,&lt;MotherClass&gt;)
+ClassEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
   [Method1()]
   [Method2()]
   [Method3()]
   ...
-  MethodsEx(&lt;ClassName&gt;,&lt;MotherClass&gt;)
+  MethodsEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
     [&lt;*Method1&gt;]
     [&lt;*Method2&gt;]
     [&lt;*Method3&gt;]
     ...
-  MembersEx(&lt;ClassName&gt;,&lt;MotherClass&gt;)
+  MembersEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
     [&lt;Attribute1&gt;]
     [&lt;Attribute2&gt;]
     ...
@@ -2889,10 +2893,10 @@ Method(&lt;ClassName&gt;, Method1) [,&lt;variable1 [= DefaultValue]&gt;,...])
   [ProcedureReturn value]
 EndMethod(&lt;ClassName&gt;, Method1)
 
-...(ditto for each method)
+...(ditto For each method)
 
 ; Object constructor
-NewEx(&lt;ClassName&gt;,&lt;MotherClass&gt;)
+NewEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
   ...
 EndNew
 
@@ -2906,7 +2910,7 @@ EndFree</code></pre>
 <p>Four extra keywords are supplied: ClassEx, MethodsEx, MembersEx and NewEx as a replacement of Class, Methods, Members and New.</p>
 </div>
 <div class="paragraph">
-<p>For each new keyword, in addition of the name of the current class, the name of the mother class is given as a new argument.</p>
+<p>For each new keyword, in addition of the name of the current class, the name of the parent class is given as a new argument.</p>
 </div>
 <div class="paragraph">
 <p>The operation is finally rather simple for the user with a very easy process for inheritance.</p>
@@ -2956,7 +2960,7 @@ We can envisage to split the process in two steps: step one, the user create an 
 <p>The risk of an incorrect initialization of the object: one can forget to do it, but -more important- it’s not possible any more to automate the process of inheritance: it’s up to the user to manage it!</p>
 </li>
 <li>
-<p>A strong class-interdependence for enter parameters: as soon as the parameters of the initialization method change from the mother class, the user has to proceed this modification in all the child classes.
+<p>A strong class-interdependence for enter parameters: as soon as the parameters of the initialization method change from the parent class, the user has to proceed this modification in all the child classes.
 In extreme, but it’s not advisable, we can imagine that the user initializes member after member by using accessors. But a member initialization is not always a single assignation. It can require more complex internal operations to reach the assignation. Repeat this at each new object, it is advised to keep this into a dedicated method.</p>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3160,8 +3164,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.1<br>
-Last updated 2016-11-09 19:38:44 E
+Draft 0.2<br>
+Last updated 2016-11-10 11:55:03 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

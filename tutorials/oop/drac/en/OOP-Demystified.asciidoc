@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.1, November 9, 2016: Reprint WIP: polishing English.
+v0.2, November 10, 2016: Reprint WIP: polishing English.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :description:
 :doctype: article
@@ -15,10 +15,24 @@ v0.1, November 9, 2016: Reprint WIP: polishing English.
 
 ////
 ==============================================================================
+                               CHAPTERS STATUS                                
+==============================================================================
+--READY-- 1. Why OOP in PureBasic?
+--READY-- 2. Object Concepts
+--------- 3. Concepts Implementation
+--------- 4. First Implementation
+--------- 5. Interface instruction
+--------- 6. Second Implementation
+--------- 7. Synthesis and notation
+--------- 8. PB Class
+--------- 9. Conclusion
+--------- A. Optimisations
+==============================================================================
                                      DONE
 ==============================================================================
 -- All web pages imported
 -- basic cleanup
+-- Change 'mother' class to 'parent' in text and code
 
 ==============================================================================
                                      TODO
@@ -27,7 +41,6 @@ v0.1, November 9, 2016: Reprint WIP: polishing English.
 -- Clean PB Code
 -- Capitalize according to "Chicago Manual of Style"
    http://capitalizemytitle.com/
--- Change 'mother' class to 'parent' in text and code
 
 ==============================================================================
                                 BEFORE RELEASE                                
@@ -57,41 +70,16 @@ The tutorial was ported from HTML to AsciiDoc by Tristano Ajmone, who also polsi
 
 Since many object-oriented languages already exist, trying to achive OOP in PureBasic — which is a procedural language — might come as a surprise.
 
-////
-ORIGINAL TEXT:
-It can be surprising to try realizing in PureBasic, which is a procedural language, an object-oriented representation, as far as numerous languages adapted to the OOP exist.
-////
-
-The fact that some programming languages are defined «Object-Oriented», while others are not, is merely indicating the presence of specific keywords, which facilitate writing code according to the OOP paradigm.
+The fact that some languages are defined «Object-Oriented», while others are not, is merely indicating the presence of specific keywords which facilitate writing code according to the OOP paradigm.
 That is to say: object-oriented languages introduce richer semantics; but compilation-wise they are not introducing any new aspects compared to a non-OO language, they’re just adding a layer over the latter.
-
-
-////
-ORIGINAL TEXT:
-But the fact that some programming languages are called "Object" and the other one are not, is the expression of specific keywords, which facilitate the writing of these programs.
-So, object-oriented languages enrich semantics but not modify at all the compilation aspects with regard to a none-object language. They are only adding a layer over this last one.
-////
 
 Therefore, we can fully implement the OO paradigm in PureBasic, but we have to pay a price in terms of accuracy — both in development and in notation. And here we face the immediate advantages of (natively) object-oriented languages.
 
-////
-ORIGINAL TEXT:
-Thus we can implement completely the concepts in PureBasic but the price is a precision both of development and of notation. It is there the immediate advantage of object-oriented languages.
-////
-
 Nevertheless, besides the possibility of programming in PureBasic according to the OO paradigm, implementing object-oriented concepts in PureBasic offers us the interesting chance to reveal some of the underlying mechanisms of OO languages keywords.
-
-////
-ORIGINAL TEXT:
-Nevertheless, to put into practice the object-oriented concepts in PureBasic offers, besides the possibility of scheduling according to OO philosophy, the interest to reveal some underlying mechanisms of the object-oriented languages keywords.
-////
 
 This paper presents a programming technique that allows large projects to benefit from object oriented design. It is not intended as a course on OOP, and it assumes that the reader has good knowledge of PureBasic language.
 
-////
-ORIGINAL TEXT:
-This paper presents a programming technique that allow large projects to benefit of object oriented design. It doesn’t intend to be a course on OOP techniques and assumes the reader to have a good knowledge of the PureBasic language.
-////
+
 
 // Website Page 2
 
@@ -99,13 +87,6 @@ This paper presents a programming technique that allow large projects to benefit
 
 The Object-Oriented Programming paradigm introduces concepts like: objects,  inheritance and polymorphism.
 Before jumping into how these concepts can be implemented in PureBasic, we must first define them.
-
-////
-ORIGINAL TEXT:
-The Object-Oriented Programming introduces concepts as the object, the inheritance or the polymorphism.
-Before to see how the main concepts can be realized in PureBasic, concepts must be defined first.
-////
-
 
 === The Notion of Object
 
@@ -115,56 +96,37 @@ An object has an internal state:
 *   The state is represented by the value of each inner component at a given moment,
 *   A component is either a value or another object.
 
-It uses and gives services:
+It uses and provides services:
 
 *   It interacts with the outside through functions called «methods».
 
-It is unique (notion of identity)
+It is unique (notion of identity).
 
 An object can be seen at two levels:
 
-*   By the services which it returns: external view (specification). This is the User side,
-*   By the way that services are implemented within it : internal view (implementation). This is the Developer side.
+*   By the services which it provides: external view (specification). This is the User side,
+*   By the way these services are implemented within it: internal view (implementation). This is the Developer side.
 
-From the developer’s point of view of, an object is a contiguous memory area containing information: variables called *attributes* and functions called **methods**.
+From the developer’s point of view, an object is a contiguous memory area containing information: variables called *attributes* and functions called **methods**.
 
 The fact that we refer to an object’s functions as «its methods» is because they belong to it and allow manipulation of its attributes.
 
-////
-ORIGINAL TEXT:
-The fact that functions are called methods of an object, means the fact that they are appropriate to the object and allow the manipulation of the attributes of this object.
-
-Le fait que l'on appelle les fonctions d'un objet des méthodes, tient au fait qu'elles sont propres à l'objet et permettent la manipulation des attributs de cet objet.
-////
-
 === The Notion of Class
 
-This is an extension of the concept of *Type* found in PureBasic.
+This is an extension of the concept of «*type*» found in PureBasic.
 
 In a given context, multiple objects can have the same structure and behavior.
-Then can therefore be grouped together in the same «Class».
+They can therefore be grouped together in the same «**Class**».
 
 From a developer’s point of view, a Class defines the type of contents that will be held by objects belonging to it: the nature of their attributes (type of each variable) and their methods (names, implementation).
 
-////
-ORIGINAL TEXT:
-From a developer’s point of view, the Class defines the contain of an object of this Class: the nature of its attributes (type of each variable) and its methods (names, implementation).
-
-////
-
 Just as integer is the type of a variable, the type of an object is its Class.
-
-////
-ORIGINAL TEXT:
-If the type of a variable,  is an integer, the type of an object is its Class.
-
-////
 
 === The Notion of Instance
 
 An instance is an object defined from a Class.
 
-This process is called instanciation.
+This process is called «**instanciation**».
 
 It corresponds to the assignement of variables in PureBasic.
 
@@ -172,9 +134,11 @@ Normally, an object is *initialized* at the time of its instanciation.
 
 === Encapsulation
 
-In theory, the manipulation of objects’ attributes should be possible only through its methods. This technique, which allows making visible to the user only a part of the object, is called encapsulation.
+In theory, the manipulation of an object’s attributes should be possible only through its methods. This technique, which allows making visible to the user only a part of the object, is called «**encapsulation**».
 
 The advantage of encapsulation is that it guarantees the integrity of attributes. Indeed, the developer is the only one who, through the methods provided to the user, manages the modifications allowed on an object.
+
+// TODO: SENTENCE BELOW NEEDS CHECKING
 
 At our level, this is the least that should be retained of the encapsulation concept.
 
@@ -191,12 +155,6 @@ Inheritance allows defining new Classes by using already existing ones.
 
 From the developer’s point of view, it means being able to add/modify attributes and methods to/of an existing Class in order to define a new Class.
 
-////
-ORIGINAL TEXT:
-From the developer’s point of view, it means being able to add attributes and methods, and even to modify some methods, to an existing Class in order to define another one.
-
-////
-
 There are two kinds of inheritances:
 
 *   **Simple inheritance**: the new Class is defined from a single existing Class.
@@ -205,11 +163,10 @@ There are two kinds of inheritances:
 Multiple inheritance is complex to implement, and it will not be covered here.
 Thus, this papers deals only with simple inheritance.
 
-// TODO: put "Terminology" into some kind of box (Alert?)
+[big]##**Terminology:**##
 
-Terminology:
-The Class which inherits from another Class, is often called **Child Class**.
-The Class which gives its inheritance to a Child Class is often called **Parent Class**.
+* The Class which inherits from another Class, is usually called **Child Class**.
+* The Class which gives its inheritance to a Child Class is usually called **Parent Class**.
 
 === Overloading
 
@@ -223,9 +180,9 @@ Thus, these objects are all instances of the `Shape` Class.
 
 If we want to display the objects, the `Shape` Class needs to have a `Draw` method.
 
-So endowed, every object has a `Draw` method to display itself. Now, this method could not possibly be the same for each object, as we want to display a circle, in one case, a rectangle, in onether, and so on.
+So endowed, every object has a `Draw` method to display itself. Now, this method could not possibly be the same for each object, since we want to display a circle, in one case, a rectangle, in another, etc.
 
-The objects of the same Class use the same `Draw` method, but the object’s nature (Circle, Rectangle, or Triangle) dictates the implementation of the method.
+Objects of the same Class employ the same `Draw` method, but the object’s nature (Circle, Rectangle, or Triangle) dictates the actual implementation of the method.
 The `Draw` method is overloaded: for the user, displaying a circle or a rectangle is achieved in the same way.
 From the developer’s point of view, the methods implementations needs to be different.
 
@@ -233,21 +190,20 @@ Instead of overloaded methods, we can also speak of polymorphic methods (having 
 
 === The Notion of Abstract Class
 
-As shown above, a Class includes the definition of both attributes and methods of an object.
+As we’ve seen, a Class includes the definition of both attributes and methods of an object.
+Let us suppose that we can’t provide the implementation of one of the Class methods. This method is just a name without code. We’re then speaking of an «**abstract method**».
+A Class containing at least one abstract method qualifies as an «**abstract Class**».
 
-Let us suppose that we can’t provide the implementation of one of the Class methods. The method is just a name without code. We then speak of abstract method.
-A Class containing at least an abstract method qualifies as an abstract Class.
-
-// TODO: "defining Object Classes" has a link!
-
-You might wonder why an abstract class should exist, since objects of such a Class can’t be created. Abstract Classes allow defining Object Classes, which are considered — by opposition — as being concrete. The transition from the former to the latter occurs through inheritance, where the concrete Class takes care of providing the missing implementations to the abstract methods inherited.
-
-////
-ORIGINAL TEXT:
-We can wonder the reason to be of an abstract class, because an object of a such Class cannot be create. Abstract Classes allow defining Object Classes considered by opposition as concrete. The link between them is made by inheritance where the concrete Class takes care in giving the missing implementations to the inherited abstract methods.
-////
+You might wonder why an abstract class should exist at all, since objects of such a Class can’t be created. Abstract Classes allow defining <<The Notion of Class,Object Classes>>, which are considered — by opposition — as being «concrete». The transition from the former to the latter occurs through inheritance, where the concrete Class takes care of providing the missing implementations to the abstract methods inherited.
 
 Thus, abstract Classes are a kind of interface, because they describe the generic specification of all the Classes which inherit from them.
+
+
+
+
+
+
+// ============== REVISED UP TO THIS POINT! ==============
 
 // Website Page 3
 
@@ -1076,9 +1032,9 @@ EndProcedure
 
 Carrying out an inheritance consists in extending Interface and Class structure, but also in adapting the method and the attribut initializations
 Both procedures Init_Mthds_Rect2() and Init_Mbers_Rect2() call respectively the initialization of the methods and to the initialization of the attributes of the Class Rectangle1 ( Init_Mthds_Rect1() and Init_Mbers_Rect1() ) rather than the Constructor New_Rect1().
-Those because, a Child Class object doesn’t need to instantiate a Mother Class object but just to inherit methods and attributes.
+Those because, a Child Class object doesn’t need to instantiate a Parent Class object but just to inherit methods and attributes.
 
-On the other side, verification is made that the Child Class benefits immediately of any changes made at the Mother Class level (adding a method or a variable).
+On the other side, verification is made that the Child Class benefits immediately of any changes made at the Parent Class level (adding a method or a variable).
 
 Is the inheritance currently correct? No, because it doesn’t allow the object of the Child Class (Rectangle2) to use the new Erase() method.
 The reason takes place on that function pointer *Methode2 doesn’t follow the *Methode1 one.
@@ -1257,7 +1213,7 @@ EndProcedure
 In this example, the Rectangle2 Structure is empty and it isn’t a problem.
 Two reasons in it:
 
-* At first the *Methodes pointer needs to exist only once and this in the Mother Class.
+* At first the *Methodes pointer needs to exist only once and this in the Parent Class.
 * Then, no supplementary attributes have been added to it.
 
 [IMPORTANT]
@@ -1317,14 +1273,14 @@ Before I present the selected Class implementation, I’m going to spend a littl
 The following table summarizes what is our object in PureBasic.
 
 *   The word Class refers to the name of the Class (ex: Methd_Class)
-*   The word Mother refers to the name of the Mother Class during an inheritance (ex: Methd_ MotherClass)
+= *   The word Parent refers to the name of the Parent Class during an inheritance (ex: Methd_ ParentClass)
 *   The expressions between embraces {} are to be used during an inheritance
 
 // Example N. 7-1
 .Interface
 [source,purebasic pseudocode]
 ---------------------------------------------------------------------
-Interface <Interface> {Extends <MotherInterface>}
+Interface <Interface> {Extends <ParentInterface>}
   Method1()
   [Method2()]
   [Method3()]
@@ -1336,7 +1292,7 @@ EndInterface
 .Class
 [source,purebasic pseudocode]
 ---------------------------------------------------------------------
-Structure <Class> {Extends <MotherClass>}
+Structure <Class> {Extends <ParentClass>}
   *Methods
   [Attribute1]
   [Attribute2]
@@ -1352,14 +1308,14 @@ Procedure Method2(*this.Class, [arg1]...)
 EndProcedure
 ...
 
-Structure <Mthds_Class> {Extends <Mthds_MotherClass>}
+Structure <Mthds_Class> {Extends <Mthds_ParentClass>}
   *Method1
   *Method2
   ...
 EndStructure
 
 Procedure Init_Mthds_Class(*Mthds.Mthds_Class)
-  {Init_Mthds_MotherClass(*Mthds)}
+  {Init_Mthds_ParentClass(*Mthds)}
   *Mthds\Method1 = @Method1()
   *Mthds\Method2 = @Method2()
   ...
@@ -1374,7 +1330,7 @@ Init_Mthds_Class(@Mthds_Class)
 [source,purebasic pseudocode]
 ---------------------------------------------------------------------
 Procedure Init_Mbers_Class(*this.Class, [var1]...)
-  {Init_Mbers_MotherClass(*this)}
+  {Init_Mbers_ParentClass(*this)}
   [*this\Attibute1 = var1]
   ...
 EndProcedure
@@ -1942,17 +1898,17 @@ Here what looks like the class in that case:
 [source,purebasic pseudocode]
 ---------------------------------------------------------------------
 ; Object class
-ClassEx(<ClassName>,<MotherClass>)
+ClassEx(<ClassName>,<ParentClass>)
   [Method1()]
   [Method2()]
   [Method3()]
   ...
-  MethodsEx(<ClassName>,<MotherClass>)
+  MethodsEx(<ClassName>,<ParentClass>)
     [<*Method1>]
     [<*Method2>]
     [<*Method3>]
     ...
-  MembersEx(<ClassName>,<MotherClass>)
+  MembersEx(<ClassName>,<ParentClass>)
     [<Attribute1>]
     [<Attribute2>]
     ...
@@ -1964,10 +1920,10 @@ Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
   [ProcedureReturn value]
 EndMethod(<ClassName>, Method1)
 
-...(ditto for each method)
+...(ditto For each method)
 
 ; Object constructor
-NewEx(<ClassName>,<MotherClass>)
+NewEx(<ClassName>,<ParentClass>)
   ...
 EndNew
 
@@ -1979,7 +1935,7 @@ EndFree
 
 Four extra keywords are supplied: ClassEx, MethodsEx, MembersEx and NewEx as a replacement of Class, Methods, Members and New.
 
-For each new keyword, in addition of the name of the current class, the name of the mother class is given as a new argument.
+For each new keyword, in addition of the name of the current class, the name of the parent class is given as a new argument.
 
 The operation is finally rather simple for the user with a very easy process for inheritance.
 
@@ -2005,7 +1961,7 @@ I list here the various choices which drive the conception to the object. Let me
 We can envisage to split the process in two steps: step one, the user create an object, step two the user calls the routine of initialization himself. In this case, method Init_Mbers is not called by New method and then it can support number of arguments.Two disadvantages:
 
         *   The risk of an incorrect initialization of the object: one can forget to do it, but -more important- it’s not possible any more to automate the process of inheritance: it’s up to the user to manage it!
-    *   A strong class-interdependence for enter parameters: as soon as the parameters of the initialization method change from the mother class, the user has to proceed this modification in all the child classes.
+    *   A strong class-interdependence for enter parameters: as soon as the parameters of the initialization method change from the parent class, the user has to proceed this modification in all the child classes.
 In extreme, but it’s not advisable, we can imagine that the user initializes member after member by using accessors. But a member initialization is not always a single assignation. It can require more complex internal operations to reach the assignation. Repeat this at each new object, it is advised to keep this into a dedicated method.
 4.  A destructor consistent with the constructor. It is not a part of the interface although it is possible. In this case, to free an object write ' Objet\Md\Free () ' instead of writing ' Free_ClassName ( object) '. This disposal is easy to operate and doesn’t modify the conception of the object.
 
