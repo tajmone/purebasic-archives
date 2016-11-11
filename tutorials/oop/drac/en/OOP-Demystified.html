@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.2,</span>
-<span id="revdate">November 10, 2016</span>
+<span id="revnumber">draft 0.3,</span>
+<span id="revdate">November 11, 2016</span>
 <br><span id="revremark">Reprint WIP: polishing English.</span>
 </div>
 <div id="toc" class="toc2">
@@ -724,11 +724,11 @@ A Class containing at least one abstract method qualifies as an «<strong>abstra
 <h2 id="concepts-implementation"><a class="anchor" href="#concepts-implementation"></a>3. Concepts Implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In this section, I shall demonstrate how object concepts can be simply implemented in PureBasic.
-This implementation doesn’t refer what is programmed in object-oriented languages. Furthermore, this implementation aims to be improved or adapted according to needs.</p>
+<p>In this section, I shall demonstrate how the aforementioned object concepts can be implemented in PureBasic.
+This implementation doesn’t refer to what is programmed in object-oriented languages. Furthermore, this implementations is meant be improved upon, or adapted according to needs.</p>
 </div>
 <div class="paragraph">
-<p>Thus, I propose here one of these implementations with its own advantages and limits.</p>
+<p>I’ll be presenting here one of these implementations, with its advantages and limits.</p>
 </div>
 </div>
 </div>
@@ -751,7 +751,7 @@ This implementation doesn’t refer what is programmed in object-oriented langua
 </ul>
 </div>
 <div class="paragraph">
-<p>For example, if I want to represent Rectangle objects and to display them on the screen, I shall define a <code>Rectangle</code> Class including a <code>Draw()</code> method.</p>
+<p>For example, if I want to represent Rectangle objects and display them on screen, I shall define a <code>Rectangle</code> Class including a <code>Draw()</code> method.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Rectangle</code> Class could have the following construction:</p>
@@ -772,16 +772,16 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>where <code>x1</code>, <code>x2</code>, <code>y1</code> and <code>y2</code> are four attributes (diametrically opposite points coordinates of the rectangle) and <code>*Draw</code> is a pointer referencing to the drawing function which displays Rectangles.</p>
+<p>where <code>x1</code>, <code>x2</code>, <code>y1</code> and <code>y2</code> are four attributes (the coordinates of the diametrically opposed points of the rectangle) and <code>*Draw</code> is a pointer referencing the drawing function which displays Rectangles.</p>
 </div>
 <div class="paragraph">
 <p>Here <code>*Draw</code> is a function pointer used to contain the address of the desired function: <code>@Draw_Rectangle()</code>.
-A function thus referenced can be invoked by using <code>CallFunctionFast()</code>.</p>
+Functions referenced in this manner can be invoked by using <code>CallFunctionFast()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Thus, the proposed <code>Structure</code> is completely adapted to the Class notion:
-* the structure stores the definition of the object attributes: here <code>x1</code>, <code>x2</code>, <code>y1</code> and <code>y2</code> are Long variables.
-* the structure stores the definition of the object method: here the <code>Draw()</code> function, through to a function pointer.</p>
+<p>Thus, the proposed <code>Structure</code> is completely adapted to the notion of Class:
+* the structure stores the definition of the object’s attributes: here <code>x1</code>, <code>x2</code>, <code>y1</code> and <code>y2</code> are Long variables.
+* the structure stores the definition of the object’s method: here the <code>Draw()</code> function, through to a function pointer.</p>
 </div>
 <div class="paragraph">
 <p>When a similar Class definition is followed by the implementations of its methods (in our example, <code>Draw_Rectangle()</code>’s <code>Procedure</code>/<code>EndProcedure</code> block statement), it becomes a concrete Class. Otherwise, it will be an abstract Class.</p>
@@ -794,7 +794,7 @@ A function thus referenced can be invoked by using <code>CallFunctionFast()</cod
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>*this</code> always refers to the object on which the method must be applied. This notation can be seen in the previous example, as <code>Draw_Rectangle()</code> method’s parameter.</p>
+<p><code>*this</code> always refers to the object on which the method must be applied. This notation can be seen in the previous example, within the <code>Draw_Rectangle()</code> method.</p>
 </div>
 </td>
 </tr>
@@ -824,7 +824,7 @@ Rect1\y2 = 20</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, to draw Rect1 object, do:</p>
+<p>Next, to draw the <code>Rect1</code> object, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -835,10 +835,10 @@ Rect1\y2 = 20</code></pre>
 <div class="sect2">
 <h3 id="encapsulation-2"><a class="anchor" href="#encapsulation-2"></a>4.3. Encapsulation</h3>
 <div class="paragraph">
-<p>In this implementation, the encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.</p>
+<p>In this implementation, encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.</p>
 </div>
 <div class="paragraph">
-<p>By writing <code>Rect1\x1</code>, the user can access to the attribute <code>x1</code> of the object. This is the way we used to initialize the object.
+<p>By writing <code>Rect1\x1</code>, the user can access the <code>x1</code> attribute of the object. This is the way we used to initialize the object.
 The next implementation (<a href="#second-implementation">Second Implementation</a> section) will show how to fix this.
 Although significant, this feature is not essential in implementing OOP.</p>
 </div>
@@ -864,7 +864,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Rectangle2</code> Class includes as well members of the previous Rectangle Class and the new Erase() method.
+<p>The Class <code>Rectangle2</code> includes the members of the previous <code>Rectangle</code> Class as well as those of the new <code>Erase()</code> method.
 To instanciate an object from this new Class write:</p>
 </div>
 <div class="listingblock">
@@ -883,13 +883,13 @@ Rect2\y2 = 20</code></pre>
 <p>To use <code>Rect2</code>’s <code>Draw()</code> and <code>Erase()</code> methods, I shall proceed the same way as before: through <code>CallFunctionFast()</code>.</p>
 </div>
 <div class="paragraph">
-<p>That demonstrates that the <code>Rectangle2</code> Class inherited the properties of <code>Rectangle</code> Class.</p>
+<p>This demonstrates that the <code>Rectangle2</code> Class inherited the properties of the <code>Rectangle</code> Class.</p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -903,7 +903,7 @@ Rect2\y2 = 20</code></pre>
 <div class="sect2">
 <h3 id="overloading-2"><a class="anchor" href="#overloading-2"></a>4.5. Overloading</h3>
 <div class="paragraph">
-<p>During the initialization of an object, the function pointers are initialized by assigning to them the method addresses suiting the object.</p>
+<p>During initialization of an object, its function pointers are initialized by assigning to them the addresses of the methods suiting the object.</p>
 </div>
 <div class="paragraph">
 <p>So, given an object <code>Rect</code> from the <code>Rectangle</code> Class, by writing:</p>
@@ -914,7 +914,7 @@ Rect2\y2 = 20</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I can use the <code>Draw()</code> method as following:</p>
+<p>I can invoke its <code>Draw()</code> method the following way:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -922,7 +922,7 @@ Rect2\y2 = 20</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now, imagine that it is possible to implement another method for displaying a rectangle (by using an algorithm different from the one in the first method).</p>
+<p>Now, imagine that it was possible to implement another method for displaying a rectangle (by using a different algorithm from the one in the first method).</p>
 </div>
 <div class="paragraph">
 <p>Let us call this implementation as <code>Draw_Rectangle2()</code>:</p>
@@ -955,10 +955,10 @@ EndProcedure</code></pre>
 </div>
 <div class="paragraph">
 <p>It isn’t possible to distinguish by the single line of code <code>CallFunctionFast(Rect1\Draw, @Rect1)</code> which one of the <code>Draw()</code> methods the <code>Rect1</code> object is really using.
-To know this, it is necessary to go back to the initialization of the object.</p>
+To know this, it is necessary to go back to the object initialization.</p>
 </div>
 <div class="paragraph">
-<p>The notion of function pointer allows overloading the <code>Draw()</code> method.</p>
+<p>The notion of <strong>function pointer</strong> allows overloading the <code>Draw()</code> method.</p>
 </div>
 <div class="paragraph">
 <p>One limitation: the use of the <code>CallFunctionFast()</code> instruction implies paying attention to the number of parameters passed.</p>
@@ -3164,8 +3164,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.2<br>
-Last updated 2016-11-10 11:55:03 E
+Draft 0.3<br>
+Last updated 2016-11-11 10:41:38 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

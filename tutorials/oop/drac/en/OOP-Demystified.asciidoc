@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.2, November 10, 2016: Reprint WIP: polishing English.
+v0.3, November 11, 2016: Reprint WIP: polishing English.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :description:
 :doctype: article
@@ -19,8 +19,8 @@ v0.2, November 10, 2016: Reprint WIP: polishing English.
 ==============================================================================
 --READY-- 1. Why OOP in PureBasic?
 --READY-- 2. Object Concepts
---------- 3. Concepts Implementation
---------- 4. First Implementation
+--READY-- 3. Concepts Implementation
+--READY-- 4. First Implementation
 --------- 5. Interface instruction
 --------- 6. Second Implementation
 --------- 7. Synthesis and notation
@@ -200,19 +200,28 @@ Thus, abstract Classes are a kind of interface, because they describe the generi
 
 
 
-
-
-
-// ============== REVISED UP TO THIS POINT! ==============
-
 // Website Page 3
 
 == Concepts Implementation
 
-In this section, I shall demonstrate how object concepts can be simply implemented in PureBasic.
-This implementation doesn’t refer what is programmed in object-oriented languages. Furthermore, this implementation aims to be improved or adapted according to needs.
+// TODO: SENTENCE BELOW NEEDS FIXING AND CHECKING
 
-Thus, I propose here one of these implementations with its own advantages and limits.
+In this section, I shall demonstrate how the aforementioned object concepts can be implemented in PureBasic.
+This implementation doesn’t refer to what is programmed in object-oriented languages. Furthermore, this implementations is meant be improved upon, or adapted according to needs.
+
+
+////
+ORIGINAL TEXT:
+This implementation doesn't refer what is programmed in object-oriented languages.
+
+En aucun cas cela fait référence à ce qui est programmé dans les langages objets.
+
+Furthermore, the goal of an implementation is to be improved or to be adapted to the need.
+
+De plus, le propre de l'implémentation c'est de pouvoir être amélioré ou de s'adapter au besoin.
+////
+
+I’ll be presenting here one of these implementations, with its advantages and limits.
 
 == First Implementation
 
@@ -223,7 +232,7 @@ As seen, a Class defines the contents of an object:
 *   Its attributes (each variable type)
 *   Its methods (Names, implementation)
 
-For example, if I want to represent Rectangle objects and to display them on the screen, I shall define a `Rectangle` Class including a `Draw()` method.
+For example, if I want to represent Rectangle objects and display them on screen, I shall define a `Rectangle` Class including a `Draw()` method.
 
 The `Rectangle` Class could have the following construction:
 
@@ -243,20 +252,20 @@ Procedure Draw_Rectangle(*this.Rectangle)
 EndProcedure
 ---------------------------------------------------------------------
 
-where ``x1``, ``x2``, `y1` and `y2` are four attributes (diametrically opposite points coordinates of the rectangle) and `*Draw` is a pointer referencing to the drawing function which displays Rectangles.
+where ``x1``, ``x2``, `y1` and `y2` are four attributes (the coordinates of the diametrically opposed points of the rectangle) and `*Draw` is a pointer referencing the drawing function which displays Rectangles.
 
 Here `*Draw` is a function pointer used to contain the address of the desired function: ``@Draw_Rectangle()``.
-A function thus referenced can be invoked by using ``CallFunctionFast()``.
+Functions referenced in this manner can be invoked by using ``CallFunctionFast()``.
 
-Thus, the proposed `Structure` is completely adapted to the Class notion:
-* the structure stores the definition of the object attributes: here ``x1``, ``x2``, `y1` and `y2` are Long variables.
-* the structure stores the definition of the object method: here the `Draw()` function, through to a function pointer.
+Thus, the proposed `Structure` is completely adapted to the notion of Class:
+* the structure stores the definition of the object’s attributes: here ``x1``, ``x2``, `y1` and `y2` are Long variables.
+* the structure stores the definition of the object’s method: here the `Draw()` function, through to a function pointer.
 
 When a similar Class definition is followed by the implementations of its methods (in our example, `Draw_Rectangle()`’s ``Procedure``/``EndProcedure`` block statement), it becomes a concrete Class. Otherwise, it will be an abstract Class.
 
 [IMPORTANT]
 ====
-`*this` always refers to the object on which the method must be applied. This notation can be seen in the previous example, as ``Draw_Rectangle()`` method’s parameter.
+`*this` always refers to the object on which the method must be applied. This notation can be seen in the previous example, within the ``Draw_Rectangle()`` method.
 ====
 
 === Instanciation
@@ -281,7 +290,7 @@ Rect1\y1 = 0
 Rect1\y2 = 20
 ---------------------------------------------------------------------
 
-Next, to draw Rect1 object, do:
+Next, to draw the `Rect1` object, use:
 
 // Example N. 4.2-3
 [source,purebasic]
@@ -291,10 +300,10 @@ CallFunctionFast(Rect1\Draw, @Rect1)
 
 === Encapsulation
 
-In this implementation, the encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.
+In this implementation, encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.
 
 // TODO: MISSING LINK
-By writing ``Rect1\x1``, the user can access to the attribute `x1` of the object. This is the way we used to initialize the object.
+By writing ``Rect1\x1``, the user can access the `x1` attribute of the object. This is the way we used to initialize the object.
 The next implementation (<<Second Implementation>> section) will show how to fix this.
 Although significant, this feature is not essential in implementing OOP.
 
@@ -317,7 +326,7 @@ Procedure Erase_Rectangle(*this.Rectangle2)
 EndProcedure
 ---------------------------------------------------------------------
 
-The `Rectangle2` Class includes as well members of the previous Rectangle Class and the new Erase() method.
+The Class `Rectangle2` includes the members of the previous `Rectangle` Class as well as those of the new `Erase()` method.
 To instanciate an object from this new Class write:
 
 // Example N. 4.4-2
@@ -335,16 +344,16 @@ Rect2\y2 = 20
 
 To use ``Rect2``’s `Draw()` and `Erase()` methods, I shall proceed the same way as before: through ``CallFunctionFast()``.
 
-That demonstrates that the `Rectangle2` Class inherited the properties of `Rectangle` Class.
+This demonstrates that the `Rectangle2` Class inherited the properties of the `Rectangle` Class.
 
-[IMPORTANT]
+[NOTE]
 ====
 Inheritance is a category of polymorphism. The object `Rect2` can be also seen as an Object from the `Rectangle` Class —  just don’t use the `Erase()` method! By inheritance, the object carries several forms: those of the objects coming from the Parent Classes. It is called inheritance polymorphism.
 ====
 
 === Overloading
 
-During the initialization of an object, the function pointers are initialized by assigning to them the method addresses suiting the object.
+During initialization of an object, its function pointers are initialized by assigning to them the addresses of the methods suiting the object.
 
 So, given an object `Rect` from the `Rectangle` Class, by writing:
 
@@ -354,7 +363,7 @@ So, given an object `Rect` from the `Rectangle` Class, by writing:
 Rect1\Draw = @Draw_Rectangle()
 ---------------------------------------------------------------------
 
-I can use the `Draw()` method as following:
+I can invoke its `Draw()` method the following way:
 
 // Example N. 4.5-2
 [source,purebasic]
@@ -362,7 +371,7 @@ I can use the `Draw()` method as following:
 CallFunctionFast(Rect1\Draw, @Rect1)
 ---------------------------------------------------------------------
 
-Now, imagine that it is possible to implement another method for displaying a rectangle (by using an algorithm different from the one in the first method).
+Now, imagine that it was possible to implement another method for displaying a rectangle (by using a different algorithm from the one in the first method).
 
 Let us call this implementation as ``Draw_Rectangle2()``:
 
@@ -392,15 +401,10 @@ CallFunctionFast(Rect1\Draw, @Rect1)
 
 We can see that with both the former method (ie: `Draw_Rectangle()`) as well as the latter (ie: `Draw_Rectangle2()`) the use of the `Rect1` method is strictly identical.
 
-////
-ORIGINAL TEXT:
-In a hand (Draw_Rectangle() method) as in the other hand (Draw_Rectangle2() method) the use of the Rect1 method is strictly identical.
-////
-
 It isn’t possible to distinguish by the single line of code ``CallFunctionFast(Rect1\Draw, @Rect1)`` which one of the `Draw()` methods the `Rect1` object is really using.
-To know this, it is necessary to go back to the initialization of the object.
+To know this, it is necessary to go back to the object initialization.
 
-The notion of function pointer allows overloading the `Draw()` method.
+The notion of *function pointer* allows overloading the `Draw()` method.
 
 One limitation: the use of the `CallFunctionFast()` instruction implies paying attention to the number of parameters passed.
 
@@ -411,6 +415,10 @@ In this first implementation, we produced an object capable of meeting the main 
 
 We mainly just lay the foundations upon which we shall implement a more complete object — thanks to PureBasic’s `Interface` statement!
 
+
+
+
+// ============== REVISED UP TO THIS POINT! ==============
 
 // Website Page 4
 
