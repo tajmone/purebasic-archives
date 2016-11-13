@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.3,</span>
-<span id="revdate">November 11, 2016</span>
+<span id="revnumber">draft 0.4,</span>
+<span id="revdate">November 13, 2016</span>
 <br><span id="revremark">Reprint WIP: polishing English.</span>
 </div>
 <div id="toc" class="toc2">
@@ -457,7 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#interface-instruction">5. Interface instruction</a>
 <ul class="sectlevel3">
-<li><a href="#initialization">5.1. Initialization:</a></li>
+<li><a href="#initialization">5.1. Initialization</a></li>
 </ul>
 </li>
 <li><a href="#second-implementation">6. Second Implementation</a>
@@ -978,10 +978,8 @@ To know this, it is necessary to go back to the object initialization.</p>
 <div class="sect1">
 <h2 id="interface-instruction"><a class="anchor" href="#interface-instruction"></a>5. Interface instruction</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Syntax:</p>
-</div>
 <div class="listingblock">
+<div class="title">Syntax</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Interface &lt;Name1&gt; [Extends &lt;Name2&gt;]
   [Procedure1]
@@ -991,12 +989,10 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The PureBasic Interface instruction allows grouping under the same Name (<code>&lt;Name1&gt;</code> in the above box) various procedures.</p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
+<p>The PureBasic <code>Interface</code> instruction allows grouping under the same Name (<code>&lt;Name1&gt;</code> in the above box) various procedures.</p>
 </div>
 <div class="listingblock">
+<div class="title">Example</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface My_Object
   Procedure1(x1.l, y1.l)
@@ -1005,26 +1001,15 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By declaring an element of <code>My_Object</code>, the access to its procedures looks like as follows.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The statement is made in the same way as for a <code>Structure</code>:</p>
-</li>
-</ul>
+<p>It’s now sufficient to declare an element as being of the <code>My_Object</code> type in order to access all the procedures that it contains. The declaration is carried out in the same manner as with <code>Structure</code>types:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Object.My_Object</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>To use the object functions, write directly:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>As a result, we can now acess the <code>Object</code>’s functions directly:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1033,41 +1018,44 @@ Object\Procedure2(30, 40)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Using the Interface instruction leads to a very practical and pleasant notation to operate a procedure.
+<p>Thanks to the <code>Interface</code> instruction, procedures can be called via a very practical and pleasant notation.
 By writing <code>Object\Procedure1(10, 20)</code>, the <code>Procedure1()</code> from <code>Object</code> is called.
-This notation is typical of the Object-oriented Programming.</p>
+This notation is typical of the Object-oriented Programming paradigm.</p>
 </div>
 <div class="sect3">
-<h4 id="initialization"><a class="anchor" href="#initialization"></a>5.1. Initialization:</h4>
+<h4 id="initialization"><a class="anchor" href="#initialization"></a>5.1. Initialization</h4>
 <div class="paragraph">
-<p>After a variable statement follows normally the variable initialization.
-It’s the same for an element from an Interface.</p>
+<p>Any typed variable declaration is normally followed by initialization. The same applies when declaring an element whose type is an <code>Interface</code>.</p>
 </div>
 <div class="paragraph">
-<p>As unexpected, by giving the name of a procedure inside the Interface:EndInterface block you don’t refere to the implementation of the procedure, e.i. to refer to the Procedure:EndProcedure block of the wished procedure.</p>
+<p>Unexpectedly, naming the <code>Interface : EndInterface</code> block with the name of a desired Procedure isn’t enough to make it refer to its implementation — i.e., to reference the <code>Procedure : EndProcedure</code> block of the desired procedure.</p>
 </div>
 <div class="paragraph">
-<p>In fact, you can rename procedures inside a Interface:EndInterface block, by giving the names you want for the procedures that you go to use.</p>
+<p>In fact, we can rename procedures inside an <code>Interface : EndInterface</code> block: we can give any name we like to the procedures that we are going to use.</p>
 </div>
 <div class="paragraph">
-<p>Then, how to connect this new name with the wished procedure?</p>
+<p>Then, how are we going to connect this new name with the desired real procedure?</p>
 </div>
 <div class="paragraph">
-<p>As for overloaded methods, the solution is in the function addresses.
-It is necessary to see names, into the Interface:EndInterface block, as function pointers in which the required function addresses are attributed.</p>
+<p>As with overloaded methods, the solution is in function addresses.
+We must see the names inside the <code>Interface : EndInterface</code> block as function pointers to the desired function — i.e., as pointer holding function addresses.</p>
 </div>
 <div class="paragraph">
-<p>However, to initialize the function pointers of an Interface specified element, it is necessary to process differently than for a Structure specified element.
-In fact, it isn’t possible to initialize individually each field defined by an Interface, because remember that Object\Procedure1() means a procedure call.</p>
+<p>However, to initialize the function pointers of an <code>Interface</code> typed element, the approach is different from that of a <code>Structure</code> typed element.
+Indeed, it isn’t possible to initialize individually each field defined by an <code>Interface</code>, because, you must remember, that writing <code>Object\Procedure1()</code> means calling that procedure.</p>
 </div>
 <div class="paragraph">
-<p>The initialization comes indirectly by giving to the element, the address of a initialized variable storing the function pointers.</p>
+<p>Initialization occurs indirectly, by giving to the element the address of a pre-initialized variable storing functions pointers.</p>
 </div>
 <div class="paragraph">
-<p>A such variable is called: the table of the methods.</p>
+<p>This kind of variable is called a <strong>method table</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Ex: by resuming the Interface My_Object, let us consider the following Structure describing the function pointers:</p>
+<p><span class="big"><strong>Example:</strong></span></p>
+</div>
+<div class="paragraph">
+<p>Let us carry on with the <code>Interface My_Object</code>.
+Consider the following <code>Structure</code> describing the function pointers:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1078,7 +1066,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and the associated table of the methods:</p>
+<p>and its associated method table:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1088,10 +1076,10 @@ Methods\Procedure2 = @My_Procedure2()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>where My_Procedure1() and My_Procedure2() are the wished procedure implementations.</p>
+<p>where <code>My_Procedure1()</code> and <code>My_Procedure2()</code> are the desired procedure implementations.</p>
 </div>
 <div class="paragraph">
-<p>Then, the initialization of Object from Interface My_Object looks like this:</p>
+<p>Then, initialization of <code>Object</code> (of the <code>My_Object</code> type, an <code>Interface</code>) looks like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1107,7 +1095,7 @@ Methods\Procedure2 = @My_Procedure2()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>the Object <code>Procedure2()</code> function is called according <code>My_Procedure2()</code> implementation.</p>
+<p>the <code>Object</code>’s <code>Procedure2()</code> function is called — i.e., <code>My_Procedure2()</code>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1117,7 +1105,7 @@ Methods\Procedure2 = @My_Procedure2()</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>When an element from an Interface is declared, it is essential to initialize it before using element’s procedures. Thus it is advised to initialize the element at statement time.</p>
+<p>When declaring elements of an <code>Interface</code>, it’s essential to initialize them before using their procedures. Therefore, it is strongly advisable to initialize elements at declaration time.</p>
 </div>
 </td>
 </tr>
@@ -1131,30 +1119,32 @@ Methods\Procedure2 = @My_Procedure2()</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The table of methods structure composition must be the exact representation of the Interface composition. It must contain the same number of fields and must preserve the order of them to insure the right assignation between names and addresses of each function. It is only on these conditions that the element will be correctly initialized.</p>
+<p>The <strong>method table</strong>’s <code>Structure</code> must reflect exactly the composition of its correlated <code>Interface</code>.
+It must contain the same number of fields, and preserve their order, to ensure the correct assignation of each function’s name and address.
+It is only under these conditions that the element will be properly initialized.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To summarize, using an Interface involve:</p>
+<p>To summarize, using an <code>Interface</code> involves:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>an Interface describing the required procedures to use,</p>
+<p>an <code>Interface</code> describing the required procedures to use,</p>
 </li>
 <li>
-<p>a Structure describing the function pointers,</p>
+<p>a <code>Structure</code> describing the function pointers,</p>
 </li>
 <li>
-<p>a table of the methods: a structured variable initialized with the required function adresses.</p>
+<p>a <strong>method table</strong>: a structured variable initialized with the required function adresses.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>and the properties are:</p>
+<p>And its benefits are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1346,7 +1336,7 @@ The New_Rect() function is called as the object Constructor of the Class Rectang
 </td>
 <td class="content">
 <div class="paragraph">
-<p>All the Methods implementations (<code>Procedure</code>/<code>EndProcedure</code> blocks) must contain, as first argument, the <code>*this</code> pointer of the object. On the other hand, the <code>*this</code> argument mustn’t appear at the Interface level. In fact, as this instruction allows to write <code>Rect\Draw()</code>, it knows that the <code>Draw()</code> method involves the <code>Rect</code> object: no ambiguity! Everything happens as if the object <code>Rect</code> was «aware» of its state.</p>
+<p>All the Methods implementations (<code>Procedure : EndProcedure</code> blocks) must contain, as first argument, the <code>*this</code> pointer of the object. On the other hand, the <code>*this</code> argument mustn’t appear at the Interface level. In fact, as this instruction allows to write <code>Rect\Draw()</code>, it knows that the <code>Draw()</code> method involves the <code>Rect</code> object: no ambiguity! Everything happens as if the object <code>Rect</code> was «aware» of its state.</p>
 </div>
 </td>
 </tr>
@@ -2218,16 +2208,16 @@ EndFree</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The definition of the class with Class : EndClass block,</p>
+<p>The definition of the class with <code>Class : EndClass</code> block,</p>
 </li>
 <li>
-<p>The implementation of the methods of the class with Method: EndMethod block,</p>
+<p>The implementation of the methods of the class with <code>Method: EndMethod</code> block,</p>
 </li>
 <li>
-<p>The construction of the object with New : EndNew block,</p>
+<p>The construction of the object with <code>New : EndNew</code> block,</p>
 </li>
 <li>
-<p>The destructor of the object with Free : EndFree block.</p>
+<p>The destructor of the object with <code>Free : EndFree</code> block.</p>
 </li>
 </ul>
 </div>
@@ -2481,7 +2471,7 @@ EndStructure</code></pre>
 <div class="sect2">
 <h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>8.4. Method : EndMethod</h3>
 <div class="paragraph">
-<p><code>Method</code> : <code>EndMethod</code> block allows to acheive the implementation of the various methods of an object.</p>
+<p><code>Method : EndMethod</code> block allows to acheive the implementation of the various methods of an object.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2548,7 +2538,7 @@ Once the method defined, it can be referenced into the table of methods (declare
 <div class="sect2">
 <h3 id="object-constructor"><a class="anchor" href="#object-constructor"></a>8.5. Object Constructor</h3>
 <div class="paragraph">
-<p>New : EndNew block allows to instanciate a new object of the class by declaring and initialising.</p>
+<p><code>New : EndNew</code> block allows to instanciate a new object of the class by declaring and initialising.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2612,7 +2602,7 @@ EndMacro</code></pre>
 <p>Finally, New returns the address of the object.</p>
 </div>
 <div class="paragraph">
-<p>The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the New : EndNew block is simply the attributs initialisation. More on that in a moment though (Give me now!).</p>
+<p>The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the <code>New : EndNew</code> block is simply the attributs initialisation. More on that in a moment though (Give me now!).</p>
 </div>
 <div class="paragraph">
 <p>This arrangement is possible thanks declaring the Init_Mbers method first in the macro.</p>
@@ -2645,10 +2635,10 @@ EndMacro</code></pre>
 <p>EndNew keyword is limited to call the EndInit_Mbers keyword that end the statement of the attribut initialisation start at the end of the New macro.</p>
 </div>
 <div class="paragraph">
-<p>Conclusion: the goal is reached. Through the New : EndNew block, we have a new object of the Class initialised (methods and attributs)</p>
+<p>Conclusion: the goal is reached. Through the <code>New : EndNew</code> block, we have a new object of the Class initialised (methods and attributs)</p>
 </div>
 <div class="paragraph">
-<p>In use, the New : EndNew block allows the attibuts initialisation like this:</p>
+<p>In use, the <code>New : EndNew</code> block allows the attibuts initialisation like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2714,7 +2704,7 @@ This bivalence -which didn’t exist for the previous implementation- leads us t
 <div class="sect3">
 <h4 id="init_mbers-endinit_mbers-private-block"><a class="anchor" href="#init_mbers-endinit_mbers-private-block"></a>8.5.3. Init_Mbers : EndInit_Mbers private block</h4>
 <div class="paragraph">
-<p>Init_Mbers: EndInit_Mbers block is a private block of the OOP implementation, used by the New : EndNew block to initilalise attributs of an object. But it is important to present this internal block to understand how an object initialisation will by specified.</p>
+<p><code>Init_Mbers: EndInit_Mbers</code> block is a private block of the OOP implementation, used by the <code>New : EndNew</code> block to initilalise attributs of an object. But it is important to present this internal block to understand how an object initialisation will by specified.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2781,7 +2771,7 @@ EndMacro</code></pre>
 <div class="sect2">
 <h3 id="object-destructor-2"><a class="anchor" href="#object-destructor-2"></a>8.6. Object destructor</h3>
 <div class="paragraph">
-<p>Free: EndFree block allows to destroy object of the class and to restore memory.</p>
+<p><code>Free: EndFree</code> block allows to destroy object of the class and to restore memory.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2795,7 +2785,7 @@ EndFree</code></pre>
 <p>Free keyword has the class name as parameter.</p>
 </div>
 <div class="sect4">
-<h5 id="free-endfree-block"><a class="anchor" href="#free-endfree-block"></a>Free:EndFree block</h5>
+<h5 id="free-endfree-block"><a class="anchor" href="#free-endfree-block"></a>Free : EndFree block</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Free(ClassName)
@@ -2812,10 +2802,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Free:EndFree block is rather simple.</p>
-</div>
-<div class="paragraph">
-<p>Free:EndFree block is rather simple.</p>
+<p><code>Free : EndFree</code> block is rather simple.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3164,8 +3151,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.3<br>
-Last updated 2016-11-11 10:41:38 E
+Draft 0.4<br>
+Last updated 2016-11-13 16:53:19 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

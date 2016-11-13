@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.3, November 11, 2016: Reprint WIP: polishing English.
+v0.4, November 13, 2016: Reprint WIP: polishing English.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :description:
 :doctype: article
@@ -21,7 +21,7 @@ v0.3, November 11, 2016: Reprint WIP: polishing English.
 --READY-- 2. Object Concepts
 --READY-- 3. Concepts Implementation
 --READY-- 4. First Implementation
---------- 5. Interface instruction
+--READY-- 5. Interface instruction
 --------- 6. Second Implementation
 --------- 7. Synthesis and notation
 --------- 8. PB Class
@@ -41,7 +41,11 @@ v0.3, November 11, 2016: Reprint WIP: polishing English.
 -- Clean PB Code
 -- Capitalize according to "Chicago Manual of Style"
    http://capitalizemytitle.com/
-
+-- Implment consistent notation for «"XX : EndXX" block» statements:
+   -- `XX : EndXX` block        <= (thus found in PB Help)
+-- "OOP-Inheritance-Ex2.pb" : Create the output of this source with all macros
+   expanded (and include file included). This might help analysis of how the
+   macros act on the code.
 ==============================================================================
                                 BEFORE RELEASE                                
 ==============================================================================
@@ -416,17 +420,12 @@ In this first implementation, we produced an object capable of meeting the main 
 We mainly just lay the foundations upon which we shall implement a more complete object — thanks to PureBasic’s `Interface` statement!
 
 
-
-
-// ============== REVISED UP TO THIS POINT! ==============
-
 // Website Page 4
 
 == Interface instruction
 
-Syntax:
-
 // Example N. 5-1
+.Syntax
 [source,purebasic pseudocode]
 ---------------------------------------------------------------------
 Interface <Name1> [Extends <Name2>]
@@ -436,11 +435,10 @@ Interface <Name1> [Extends <Name2>]
 EndInterface
 ---------------------------------------------------------------------
 
-The PureBasic Interface instruction allows grouping under the same Name (``<Name1>`` in the above box) various procedures.
-
-Example:
+The PureBasic `Interface` instruction allows grouping under the same Name (``<Name1>`` in the above box) various procedures.
 
 // Example N. 5-2
+.Example
 [source,purebasic]
 ---------------------------------------------------------------------
 Interface My_Object
@@ -449,9 +447,7 @@ Interface My_Object
 EndInterface
 ---------------------------------------------------------------------
 
-By declaring an element of ``My_Object``, the access to its procedures looks like as follows.
-
-* The statement is made in the same way as for a ``Structure``:
+It’s now sufficient to declare an element as being of the `My_Object` type in order to access all the procedures that it contains. The declaration is carried out in the same manner as with ``Structure``types:
 
 // Example N. 5-3
 [source,purebasic]
@@ -459,7 +455,7 @@ By declaring an element of ``My_Object``, the access to its procedures looks lik
 Object.My_Object
 ---------------------------------------------------------------------
 
-* To use the object functions, write directly:
+As a result, we can now acess the ``Object``’s functions directly:
 
 // Example N. 5-4
 [source,purebasic]
@@ -468,32 +464,34 @@ Object\Procedure1(10, 20)
 Object\Procedure2(30, 40)
 ---------------------------------------------------------------------
 
-Using the Interface instruction leads to a very practical and pleasant notation to operate a procedure.
+Thanks to the `Interface` instruction, procedures can be called via a very practical and pleasant notation.
 By writing ``Object\Procedure1(10, 20)``, the `Procedure1()` from `Object` is called.
-This notation is typical of the Object-oriented Programming.
+This notation is typical of the Object-oriented Programming paradigm.
 
-==== Initialization:
+==== Initialization
 
-After a variable statement follows normally the variable initialization.
-It’s the same for an element from an Interface.
+Any typed variable declaration is normally followed by initialization. The same applies when declaring an element whose type is an `Interface`.
 
-As unexpected, by giving the name of a procedure inside the Interface:EndInterface block you don’t refere to the implementation of the procedure, e.i. to refer to the Procedure:EndProcedure block of the wished procedure.
+Unexpectedly, naming the `Interface : EndInterface` block with the name of a desired Procedure isn’t enough to make it refer to its implementation — i.e., to reference the `Procedure : EndProcedure` block of the desired procedure.
 
-In fact, you can rename procedures inside a Interface:EndInterface block, by giving the names you want for the procedures that you go to use.
+In fact, we can rename procedures inside an `Interface : EndInterface` block: we can give any name we like to the procedures that we are going to use.
 
-Then, how to connect this new name with the wished procedure?
+Then, how are we going to connect this new name with the desired real procedure?
 
-As for overloaded methods, the solution is in the function addresses.
-It is necessary to see names, into the Interface:EndInterface block, as function pointers in which the required function addresses are attributed.
+As with overloaded methods, the solution is in function addresses.
+We must see the names inside the `Interface : EndInterface` block as function pointers to the desired function — i.e., as pointer holding function addresses.
 
-However, to initialize the function pointers of an Interface specified element, it is necessary to process differently than for a Structure specified element.
-In fact, it isn’t possible to initialize individually each field defined by an Interface, because remember that Object\Procedure1() means a procedure call.
+However, to initialize the function pointers of an `Interface` typed element, the approach is different from that of a `Structure` typed element.
+Indeed, it isn’t possible to initialize individually each field defined by an ``Interface``, because, you must remember, that writing `Object\Procedure1()` means calling that procedure.
 
-The initialization comes indirectly by giving to the element, the address of a initialized variable storing the function pointers.
+Initialization occurs indirectly, by giving to the element the address of a pre-initialized variable storing functions pointers.
 
-A such variable is called: the table of the methods.
+This kind of variable is called a **method table**.
 
-Ex: by resuming the Interface My_Object, let us consider the following Structure describing the function pointers:
+[big]##**Example:**##
+
+Let us carry on with the ``Interface My_Object``.
+Consider the following `Structure` describing the function pointers:
 
 // Example N. 5.1-1
 [source,purebasic]
@@ -504,7 +502,7 @@ Structure My_Methods
 EndStructure
 ---------------------------------------------------------------------
 
-and the associated table of the methods:
+and its associated method table:
 
 // Example N. 5.1-2
 [source,purebasic]
@@ -514,9 +512,9 @@ Methods\Procedure1 = @My_Procedure1()
 Methods\Procedure2 = @My_Procedure2()
 ---------------------------------------------------------------------
 
-where My_Procedure1() and My_Procedure2() are the wished procedure implementations.
+where `My_Procedure1()` and `My_Procedure2()` are the desired procedure implementations.
 
-Then, the initialization of Object from Interface My_Object looks like this:
+Then, initialization of `Object` (of the `My_Object` type, an ``Interface``) looks like this:
 
 // Example N. 5.1-3
 [source,purebasic]
@@ -532,30 +530,36 @@ Next, by writing
 Object\Procedure2(30, 40)
 ---------------------------------------------------------------------
 
-
-the Object `Procedure2()` function is called according `My_Procedure2()` implementation.
-
-[IMPORTANT]
-====
-When an element from an Interface is declared, it is essential to initialize it before using element’s procedures. Thus it is advised to initialize the element at statement time.
-====
+the ``Object``’s `Procedure2()` function is called — i.e., ``My_Procedure2()``.
 
 [IMPORTANT]
 ====
-The table of methods structure composition must be the exact representation of the Interface composition. It must contain the same number of fields and must preserve the order of them to insure the right assignation between names and addresses of each function. It is only on these conditions that the element will be correctly initialized.
+When declaring elements of an ``Interface``, it’s essential to initialize them before using their procedures. Therefore, it is strongly advisable to initialize elements at declaration time.
 ====
 
-To summarize, using an Interface involve:
+[IMPORTANT]
+====
+The **method table**’s `Structure` must reflect exactly the composition of its correlated ``Interface``.
+It must contain the same number of fields, and preserve their order, to ensure the correct assignation of each function’s name and address.
+It is only under these conditions that the element will be properly initialized.
+====
 
-* an Interface describing the required procedures to use,
-* a Structure describing the function pointers,
-* a table of the methods: a structured variable initialized with the required function adresses.
+To summarize, using an `Interface` involves:
 
-and the properties are:
+* an `Interface` describing the required procedures to use,
+* a `Structure` describing the function pointers,
+* a **method table**: a structured variable initialized with the required function adresses.
+
+And its benefits are:
 
 * an object-oriented notation
 * an easy way to rename procedures
 
+
+
+
+
+// ============== REVISED UP TO THIS POINT! ==============
 
 // Website Page 5
 
@@ -696,7 +700,7 @@ The New_Rect() function is called as the object Constructor of the Class Rectang
 
 [WARNING]
 ====
-All the Methods implementations (``Procedure``/``EndProcedure`` blocks) must contain, as first argument, the `*this` pointer of the object. On the other hand, the `*this` argument mustn’t appear at the Interface level. In fact, as this instruction allows to write ``Rect\Draw()``, it knows that the `Draw()` method involves the `Rect` object: no ambiguity! Everything happens as if the object `Rect` was «aware» of its state.
+All the Methods implementations (``Procedure : EndProcedure`` blocks) must contain, as first argument, the `*this` pointer of the object. On the other hand, the `*this` argument mustn’t appear at the Interface level. In fact, as this instruction allows to write ``Rect\Draw()``, it knows that the `Draw()` method involves the `Rect` object: no ambiguity! Everything happens as if the object `Rect` was «aware» of its state.
 ====
 
 [IMPORTANT]
@@ -1425,10 +1429,10 @@ EndFree
 
 As shown, the PureBasic Class is articulated with four main subjects:
 
-*   The definition of the class with Class : EndClass block,
-*   The implementation of the methods of the class with Method: EndMethod block,
-*   The construction of the object with New : EndNew block,
-*   The destructor of the object with Free : EndFree block.
+*   The definition of the class with `Class : EndClass` block,
+*   The implementation of the methods of the class with `Method: EndMethod` block,
+*   The construction of the object with `New : EndNew` block,
+*   The destructor of the object with `Free : EndFree` block.
 
 === Second Code-Example
 
@@ -1607,7 +1611,7 @@ In this code, the pointer *Mb was replaced by two pointers *Get and *Set. They h
 
 === Method : EndMethod
 
-`Method` : `EndMethod` block allows to acheive the implementation of the various methods of an object.
+`Method : EndMethod` block allows to acheive the implementation of the various methods of an object.
 
 // Example N. 8.3-1
 [source,purebasic pseudocode]
@@ -1659,7 +1663,7 @@ Once the method defined, it can be referenced into the table of methods (declare
 
 === Object Constructor
 
-New : EndNew block allows to instanciate a new object of the class by declaring and initialising.
+`New : EndNew` block allows to instanciate a new object of the class by declaring and initialising.
 
 // Example N. 8.4-1
 [source,purebasic pseudocode]
@@ -1715,7 +1719,7 @@ The initialization of the attributes of the object follows through Init_Mbers me
 
 Finally, New returns the address of the object.
 
-The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the New : EndNew block is simply the attributs initialisation. More on that in a moment though (Give me now!).
+The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the `New : EndNew` block is simply the attributs initialisation. More on that in a moment though (Give me now!).
 
 This arrangement is possible thanks declaring the Init_Mbers method first in the macro.
 
@@ -1736,9 +1740,9 @@ EndMacro
 
 EndNew keyword is limited to call the EndInit_Mbers keyword that end the statement of the attribut initialisation start at the end of the New macro.
 
-Conclusion: the goal is reached. Through the New : EndNew block, we have a new object of the Class initialised (methods and attributs)
+Conclusion: the goal is reached. Through the `New : EndNew` block, we have a new object of the Class initialised (methods and attributs)
 
-In use, the New : EndNew block allows the attibuts initialisation like this:
+In use, the `New : EndNew` block allows the attibuts initialisation like this:
 
 // Example N. 8.4-4
 [source,purebasic]
@@ -1782,7 +1786,7 @@ For that purpose, a macro Mtd is directly proposed in source file OOP.pbi.
 
 ==== Init_Mbers : EndInit_Mbers private block
 
-Init_Mbers: EndInit_Mbers block is a private block of the OOP implementation, used by the New : EndNew block to initilalise attributs of an object. But it is important to present this internal block to understand how an object initialisation will by specified.
+`Init_Mbers: EndInit_Mbers` block is a private block of the OOP implementation, used by the `New : EndNew` block to initilalise attributs of an object. But it is important to present this internal block to understand how an object initialisation will by specified.
 
 // Example N. 8.4-6
 [source,purebasic pseudocode]
@@ -1840,7 +1844,8 @@ EndInit_Mbers keyword is not more and not less that the EndProcedure keyword whi
 If you are the impatient sort and have already looked at the source code, you may have noticed that the final update OOP implementation source file include extra optional parameters called arg1 to arg5. This is because in some situation, it is useful to complet the standard *input pointer by additional information.
 
 === Object destructor
-Free: EndFree block allows to destroy object of the class and to restore memory.
+
+`Free: EndFree` block allows to destroy object of the class and to restore memory.
 
 // Example N. 8.5-1
 [source,purebasic pseudocode]
@@ -1853,7 +1858,7 @@ EndFree
 
 Free keyword has the class name as parameter.
 
-===== Free:EndFree block
+===== Free : EndFree block
 
 // Example N. 8.5-2
 [source,purebasic]
@@ -1871,9 +1876,7 @@ Macro EndFree
 EndMacro
 ---------------------------------------------------------------------
 
-Free:EndFree block is rather simple.
-
-Free:EndFree block is rather simple.
+`Free : EndFree` block is rather simple.
 
 *   Free opens a procedure with the object address as argument. In passing we check that it is a none null address (nevertheless it not guaranteed a valid address for FreeMemory() ).
 *   EndFree releases sequentially the memory assigned to members then that of the object.
