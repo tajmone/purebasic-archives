@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.4,</span>
-<span id="revdate">November 13, 2016</span>
+<span id="revnumber">draft 0.5,</span>
+<span id="revdate">November 15, 2016</span>
 <br><span id="revremark">Reprint WIP: polishing English.</span>
 </div>
 <div id="toc" class="toc2">
@@ -462,14 +462,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#second-implementation">6. Second Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#notion-of-object-interface">6.1. Notion of Object interface:</a></li>
+<li><a href="#notion-of-object-interface">6.1. Notion of Object Interface</a></li>
 <li><a href="#object-instanciation-and-object-constructor">6.2. Object Instanciation and Object Constructor</a></li>
 <li><a href="#object-initialization">6.3. Object Initialization</a></li>
 <li><a href="#object-destructor">6.4. Object Destructor</a></li>
 <li><a href="#memory-allocations">6.5. Memory Allocations</a></li>
 <li><a href="#encapsulation-3">6.6. Encapsulation</a></li>
 <li><a href="#inheritance-3">6.7. Inheritance</a></li>
-<li><a href="#get-and-set-object-methods">6.8. Get() and Set() object methods</a></li>
+<li><a href="#get-and-set-object-methods">6.8. Get() and Set() Object Methods</a></li>
 </ul>
 </li>
 <li><a href="#synthesis-and-notation">7. Synthesis and notation</a>
@@ -506,13 +506,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <div class="title">About This Tutorial</div>
 <div class="paragraph">
-<p>This is a reprint of «Dräc»’s multi-paart tutorial <em>PureBasic and the Object-Oriented Programming</em>, also knwon as <em>the OOP demystified</em>, published in 2005  on <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm">drac.site.chez-alice.fr</a>.</p>
+<p><strong>CREDITS</strong>: This is a reprint of «Dräc»’s multi-paart tutorial <em>PureBasic and the Object-Oriented Programming</em>, also knwon as <em>the OOP demystified</em>, published in 2005  on <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm">drac.site.chez-alice.fr</a>.</p>
 </div>
 <div class="paragraph">
-<p>It was reprinted with explicit permission of the author, who released the tutorial text and source codes under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a>  (CC BY 4.0) in response to the permission request to reproduce it inside the <a href="https://github.com/tajmone/purebasic-archives">PureBASIC Archives</a>.</p>
+<p><strong>LICENSE</strong>: It was reprinted with explicit permission of the author, who released the tutorial text and source codes under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a>  (CC BY 4.0) in response to the permission request to reproduce it inside the <a href="https://github.com/tajmone/purebasic-archives">PureBASIC Archives</a>.</p>
 </div>
 <div class="paragraph">
-<p>The tutorial was ported from HTML to AsciiDoc by Tristano Ajmone, who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm">French tutorial</a> as a reference) — and made minor changes to code examples (either aesthetic or to ensure compatibility with latest version of PureBASIC).</p>
+<p><strong>CHANGES</strong>: The tutorial was ported from HTML to AsciiDoc by Tristano Ajmone, who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm">French tutorial</a> as a reference) — and made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).</p>
 </div>
 </div>
 </div>
@@ -1119,7 +1119,7 @@ Methods\Procedure2 = @My_Procedure2()</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <strong>method table</strong>’s <code>Structure</code> must reflect exactly the composition of its correlated <code>Interface</code>.
+<p><a id="admonition-on-structure-interface-symmetry"></a>The <strong>method table</strong>’s <code>Structure</code> must reflect exactly the composition of its correlated <code>Interface</code>.
 It must contain the same number of fields, and preserve their order, to ensure the correct assignation of each function’s name and address.
 It is only under these conditions that the element will be properly initialized.</p>
 </div>
@@ -1163,59 +1163,59 @@ It is only under these conditions that the element will be properly initialized.
 <h2 id="second-implementation"><a class="anchor" href="#second-implementation"></a>6. Second Implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In our first implementation, object concepts was adapted in a way more or less extend. n our first implementation, object concepts was adapted in a way more or less extend.
-Now, it’s time to improve this first implementation thanks to the use of the Interface instruction.</p>
+<p>In our first implementation, object concepts were adapted in a more or less extended way.
+Now, it’s time to improve this first implementation thanks to the use of the <code>Interface</code> instruction.</p>
 </div>
 <div class="sect2">
-<h3 id="notion-of-object-interface"><a class="anchor" href="#notion-of-object-interface"></a>6.1. Notion of Object interface:</h3>
+<h3 id="notion-of-object-interface"><a class="anchor" href="#notion-of-object-interface"></a>6.1. Notion of Object Interface</h3>
 <div class="paragraph">
-<p>The purpose of encapsulation is first to make visible, to the user, part of an object contents.
-The visible part of the contents is called interface, the hidden part is called implementation.</p>
+<p>The main purpose of encapsulation is to make visible, to the user, only part of an object contents.
+The visible part of an object’s contents is called its <strong>interface</strong>, the hidden part is called it <strong>implementation</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Thus, the object interface is the only input-output access that the user has to act on an object.</p>
+<p>Therefore, an object’s interface is the only input/output access available to the user for interacting with it.</p>
 </div>
 <div class="paragraph">
-<p>It is the responsibility that I’m going to give in our use of the Interface instruction.</p>
+<p>This is the aim that we are going to achieve through the use of the <code>Interface</code> instruction.</p>
 </div>
 <div class="paragraph">
-<p>The Interface instruction allows to group under the same name, all or part of the methods from an object that the user will have the right access.</p>
+<p>The <code>Interface</code> instruction allows to group, under the same name, all or part of an object’s methods which the user will have the right to access.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="object-instanciation-and-object-constructor"><a class="anchor" href="#object-instanciation-and-object-constructor"></a>6.2. Object Instanciation and Object Constructor</h3>
 <div class="paragraph">
-<p>Play with an interface involve three steps:</p>
+<p>Implementing an Interface involves three steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>an Interface describing the required methods,</p>
+<p>An <code>Interface</code> describing the required methods,</p>
 </li>
 <li>
-<p>a structure describing the pointers of the corresponding functions,</p>
+<p>A <code>Structure</code> describing the pointers of the corresponding functions,</p>
 </li>
 <li>
-<p>a table of the methods: a structured variable initialized with the required functions adresses.</p>
+<p>A <strong>method table</strong>: a structured variable initialized with the required functions adresses.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Step 1, consists in specify the object Interface, which is not a difficulty. Just name methods.</p>
+<p>Step 1, consists in specifying the object’s <code>Interface</code>; this is not difficult. Just name the methods.</p>
 </div>
 <div class="paragraph">
-<p>Steps 2 and 3 are linked. In our object approach, we already have the adapted Structure: it is the one who describes the Class of an object.
-Moreover, the Interface and the Class of an object are close: both contain functions pointers.
-Simply, the Interface instruction doesn’t contain the attributes of the Class but only all or any of the methods of the Class.</p>
+<p>Steps 2 and 3 are linked. In our object approach, we already have the adapted <code>Structure</code>: it’s the one that describes the Class of an object.
+Moreover, the Interface and the Class of an object are similar: both contain functions pointers.
+Simply, the <code>Interface</code> instruction doesn’t contain the Class attributes but only all or part of its methods.</p>
 </div>
 <div class="paragraph">
-<p>Thus it is completely possible to use the Class of an object to initialize the Interface. This step is the most natural. Let us remind that the interface is the visible part of the Class of an object, it is natural that the Class determines the Interface.</p>
+<p>Therefore it’s possible to use an object’s Class to initialize its Interface. This approach is the most natural one. Let’s not forget that an interface is the visible part of an object’s Class, so it is natural that the Class determines the Interface.</p>
 </div>
 <div class="paragraph">
-<p>To see how to process, let me resume the example of the Rectangle2 class which provided a Draw() and Erase() methods.</p>
+<p>To see how this can be achieved, let’s carry on with the example of the <code>Rectangle2</code> class, which provided the <code>Draw()</code> and <code>Erase()</code> methods.</p>
 </div>
 <div class="paragraph">
-<p>The corresponding Class is the following one</p>
+<p>The corresponding Class is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1238,7 +1238,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The associated Interface is the following:</p>
+<p>The associated Interface is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1249,10 +1249,10 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Because the user may handle an object only through the interface, the object must be created directly from the interface Rectangle rather than class Rectangle2.</p>
+<p>Since the user can handle an object only through its Interface, the object must be created directly from the <code>Rectangle</code> Interface, rather than from the <code>Rectangle2</code> Class.</p>
 </div>
 <div class="paragraph">
-<p>The object will thus be create by writing:</p>
+<p>The object will thus be created by writing:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1260,12 +1260,12 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>instead of Rect.Rectangle2 .</p>
+<p>instead of <code>Rect.Rectangle2</code>.</p>
 </div>
 <div class="paragraph">
 <p>However, you should not forget to connect the Interface to the Class.
-For this, it is necessary to initialize the Rect object during the statement.
-Correction made, the good instruction to assign the object is the following one:</p>
+For this, it is necessary to initialize the <code>Rect</code> object during its declaration.
+Correction made, the proper instruction to declare the object is the following one:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1273,11 +1273,11 @@ Correction made, the good instruction to assign the object is the following one:
 </div>
 </div>
 <div class="paragraph">
-<p>New_Rect() is a function which performs the initialization operation.
-What it’s already known about it, it’s that the returned value is the memory address containing the functions addresses to be processed by the interface.</p>
+<p><code>New_Rect()</code> is a function which performs the initialization operation.
+We already know that its returned value is the memory address containing the functions addresses to be processed by the interface.</p>
 </div>
 <div class="paragraph">
-<p>Here is the body of the New_Rect() function:</p>
+<p>Here is the body of the <code>New_Rect()</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1297,13 +1297,13 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This function assigns a memory area of size the object Class size.
-Then it initializes the methods and the attributes of the object.
-It ends by retrieving the memory area address.
-Because the addresses of Draw() and Erase() functions are first positioned in this memory area, the interface is effectively initialized.</p>
+<p>This function allocates a memory area with the same size as the object’ Class size.
+Then it initializes the methods and attributes of the object.
+Finally, it ends by returning the memory area’s address.
+Because the addresses of the <code>Draw()</code> and <code>Erase()</code> functions are positioned at the beginning of this memory area, the Interface is effectively initialized.</p>
 </div>
 <div class="paragraph">
-<p>To access to the Rect object methods, just write:</p>
+<p>To access the methods of the <code>Rect</code> object, just write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1312,21 +1312,21 @@ Rect\Erase()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Then, the demonstration is made that:</p>
+<p>Therefore, we have ascertained that:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Class Rectangle2 allows the object Interface initialization.</p>
+<p>Class <code>Rectangle2</code> allows initialization of the object’s Interface .</p>
 </li>
 <li>
-<p>Rect, declared thanks the interface, is an object of the Class Rectangle2 which can use the Draw() and the Erase() methods.</p>
+<p><code>Rect</code> — declared via <code>Interface</code> — is an object of the <code>Rectangle2</code> Class, and can use the <code>Draw()</code> and the <code>Erase()</code> methods.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Thus the Interface instruction and the New_Rect() function perform the instanciation of an Rect object from the Class Rectangle2.
-The New_Rect() function is called as the object Constructor of the Class Rectangle2.</p>
+<p>Thus the <code>Interface</code> instruction and the <code>New_Rect()</code> function perform the instanciation of a <code>Rect</code> object from the <code>Rectangle2</code> Class.
+The <code>New_Rect()</code> function is the <strong>Constructor</strong> for objects of the <code>Rectangle2</code> Class.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1336,7 +1336,7 @@ The New_Rect() function is called as the object Constructor of the Class Rectang
 </td>
 <td class="content">
 <div class="paragraph">
-<p>All the Methods implementations (<code>Procedure : EndProcedure</code> blocks) must contain, as first argument, the <code>*this</code> pointer of the object. On the other hand, the <code>*this</code> argument mustn’t appear at the Interface level. In fact, as this instruction allows to write <code>Rect\Draw()</code>, it knows that the <code>Draw()</code> method involves the <code>Rect</code> object: no ambiguity! Everything happens as if the object <code>Rect</code> was «aware» of its state.</p>
+<p>All the Methods implementations (<code>Procedure : EndProcedure</code> blocks) must contain, as first argument, the <code>*this</code> pointer of the object. On the other hand, the <code>*this</code> argument mustn’t appear at the <code>Interface</code> level. In fact, as this instruction allows to write <code>Rect\Draw()</code>, it knows that the <code>Draw()</code> method involves the <code>Rect</code> object: no ambiguity! Everything happens as if the object <code>Rect</code> was «aware» of its state.</p>
 </div>
 </td>
 </tr>
@@ -1350,8 +1350,8 @@ The New_Rect() function is called as the object Constructor of the Class Rectang
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The Constructor could receive, as parameters, the whole functions addresses which implement the methods. It is not the case here because we know the implemented methods: the ones from the class. On the other hand the initial state wished by the user is unkown. Thus, the Constructor may contain parameters for the attributes initialization.
-It is the case here: the entries required by <code>New_Rect()</code> are the two coordinates (<code>x1</code>, <code>y1</code>) and (<code>x2</code>, <code>y2</code>) of the diametrically opposite points of the rectangle.</p>
+<p>The Constructor could receive, as parameters, the whole functions addresses which implement the methods. This is not the case here, because we know the implemented methods: the ones from the class. On the other hand the initial state desired by the user is unknown. Thus, the Constructor may contain parameters for attributes initialization.
+This case applyes here: the paramters required by <code>New_Rect()</code> are the two coordinates (<code>x1</code>, <code>y1</code>) and (<code>x2</code>, <code>y2</code>) of the diametrically opposite points of the rectangle.</p>
 </div>
 </td>
 </tr>
@@ -1361,12 +1361,12 @@ It is the case here: the entries required by <code>New_Rect()</code> are the two
 <div class="sect2">
 <h3 id="object-initialization"><a class="anchor" href="#object-initialization"></a>6.3. Object Initialization</h3>
 <div class="paragraph">
-<p>After the required memory area for an object assigned, the Constructor initializes the various members of the object (methods and attributes).
-This operation will be isolated in a specific procedure called by the Constructor.
-By the way the distinction is made between the memory allocation and the object initialization. This is very useful to achieve afterward the concept of inheritance, because a single memory allocation is sufficient, but several initializations are required.</p>
+<p>We’ve seen that after allocating the required memory area for an object, the Constructor initializes the various members of the object (methods and attributes).
+This operation can be isolated in a specific procedure, called by the Constructor.
+This precaution allows to make a distinction between an object’s memory allocation and its initialization. This approach will turn out to be very useful later on, when implementing the concept of Inheritance, because a single memory allocation is sufficient, but several initializations are required.</p>
 </div>
 <div class="paragraph">
-<p>In addition, the initialization of the methods and of the attributes are separated too. It’s because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see previous remark).</p>
+<p>In addition, initialization of methods and attributes are separated too — because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see previous remark).</p>
 </div>
 <div class="paragraph">
 <p>In our example, the two initialization procedures will be implemented as:</p>
@@ -1387,7 +1387,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and the Constructor became:</p>
+<p>and the Constructor becomes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1403,13 +1403,13 @@ EndProcedure</code></pre>
 <div class="sect2">
 <h3 id="object-destructor"><a class="anchor" href="#object-destructor"></a>6.4. Object Destructor</h3>
 <div class="paragraph">
-<p>Always associated to an object Constructor is the object Destructor.
-During the construction of an object, a memory area is assigned to store the method and attribute definitions.
-When an object is useless, it must be destroy to free the computer memory.
-This process is performed by using a specific function called Destructor of the object.</p>
+<p>An object <strong>Constructor</strong> is always associated with its counterpart: the object <strong>Destructor</strong>.
+During construction of an object, a memory area is allocated to store its method and attribute definitions.
+When an object becomes useless, it must be destroyed to free the computer memory.
+This process is performed by using a specific function, known as the object’s <strong>Destructor</strong>.</p>
 </div>
 <div class="paragraph">
-<p>In our example of Rectangle2 objects, the Destructor is:</p>
+<p>In our example of <code>Rectangle2</code> objects, the Destructor will be:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1419,7 +1419,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>and will be used as:</p>
+<p>and can be used by:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1434,7 +1434,7 @@ EndProcedure</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The Destructor could be seen as a method of the object. But to avoid weighing down the object and to preserve homogeneity with the Constructor, I have chosen to see it as a function of the Class.</p>
+<p>The Destructor could be seen as a method of the object. But to avoid weighing down the object, and to preserve homogeneity with the Constructor, I have chosen to see it as a function of the Class.</p>
 </div>
 </td>
 </tr>
@@ -1448,8 +1448,8 @@ EndProcedure</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To delete an object by its Destructor means releasing the memory area which containing the object information (methods to use and attributes states) but not deleting the object infrastructure.
-So, in our example, having made:</p>
+<p>To delete an object by its Destructor means releasing the memory area containing its information (the methods it uses, and the state of itsattributes) but not deleting the object’s infrastructure.
+So, in our example, after doing a:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1457,7 +1457,7 @@ So, in our example, having made:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Rect2 can be reuse without specify its type again:</p>
+<p><code>Rect2</code> can be reused without specify its type again:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1466,7 +1466,7 @@ Rect2\Draw()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Definitely, when an object instanciation is realized, as hereafter:</p>
+<p>Indeed, after we instantiate an object with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1474,7 +1474,7 @@ Rect2\Draw()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>the life cycle of object <code>Rect2</code> follows the same rules as those of the variables because Rect2 is at first a variable: it is a structured variable continuing the functions pointers of the object methods. (See also the reminder which follows)</p>
+<p>the life cycle of object <code>Rect2</code> follows the same rules that apply to variables — because <code>Rect2</code> is first of all a variable: it is a structured variable, holding the functions pointers of the object’s methods. (See also the following reminder)</p>
 </div>
 </td>
 </tr>
@@ -1490,9 +1490,15 @@ Rect2\Draw()</code></pre>
 <div class="paragraph">
 <p>Small reminder: the life cycle of a variable is linked to the life cycle of the program part where the variable is declared:</p>
 </div>
-<div class="paragraph">
-<p>If the variable is declared inside a procedure, its life cycle will be linked to that of the procedure, which is equal to the function time of use.
-If the variable is declared outside any procedure, in the program’s main core, its life cycle is linked to that of the program.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>If the variable is declared inside a procedure, its life cycle will be linked to that of the procedure — i.e., it’s equal to the function’s time of use.</p>
+</li>
+<li>
+<p>If the variable is declared outside any procedure, in the program’s main body, its life cycle is linked to that of the program.</p>
+</li>
+</ul>
 </div>
 </td>
 </tr>
@@ -1502,19 +1508,21 @@ If the variable is declared outside any procedure, in the program’s main core,
 <div class="sect2">
 <h3 id="memory-allocations"><a class="anchor" href="#memory-allocations"></a>6.5. Memory Allocations</h3>
 <div class="paragraph">
-<p>In every new instanciation, the Constructor has to allocate dynamically a memory area according the size of the information describing the object.
-For that purpose, the Constructor should use the <code>AllocateMemory()</code> command associated with <code>FreeMemory()</code> command for the Destructor.
-But there is other candidate to achieve such dynamic memory allocation.
-Under Windows OS, API can be directly used for example.</p>
+<p>At every new instanciation, the Constructor has to dynamically allocate a memory area the size of the information describing the object.
+For this purpose, the Constructor should use the <code>AllocateMemory()</code> command; and the Destructor should use its associated counterpart, the <code>FreeMemory()</code> command.</p>
 </div>
 <div class="paragraph">
-<p>Standard PureBasic library provides linked lists, which also a good candidate to allocate dynamically some memory.</p>
+<p>But there are also other candidates for achieving dynamic memory allocation.
+Under Windows OS, for example, the Windows API could be employed directly.</p>
+</div>
+<div class="paragraph">
+<p>PureBasic’s standard library provides linked lists, which are also a good candidate for dynamically allocating some memory.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="encapsulation-3"><a class="anchor" href="#encapsulation-3"></a>6.6. Encapsulation</h3>
 <div class="paragraph">
-<p>Let us imagine now that I want to give to the user only access to the <code>Draw()</code> method of the Class <code>Rectangle</code>. I shall begin by defining the wished interface:</p>
+<p>Suppose now that we wanted to restrict the user’s access to just the <code>Draw()</code> method of the Class <code>Rectangle</code>. We shall begin by defining the desired interface:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1524,7 +1532,7 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To instanciate a new object I write:</p>
+<p>Instanciation of a new object reamins the same:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1532,7 +1540,7 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>with,</p>
+<p>with</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1557,10 +1565,10 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It is similar as previous because the first function address is the <code>Draw()</code> method one.</p>
+<p>It is similar to the previous example, because the first function address is that of the <code>Draw()</code> method.</p>
 </div>
 <div class="paragraph">
-<p>Now, imagine that I want to give to the user only the access to the <code>Erase()</code> method. I shall begin by defining the new interface:</p>
+<p>Now, suppose that we wanted to give to the user only the access to the <code>Erase()</code> method. We shall begin by defining the new interface:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1570,14 +1578,14 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Nevertheless to instanciate the new object I cann’t use the <code>New_Rect()</code> Constructor above.
-In the opposite case, the result would be identical to the previous case. By writting <code>Rect\Erase()</code> the <code>Draw()</code> method is called.</p>
+<p>Nevertheless, to instanciate the new object I cann’t use the <code>New_Rect()</code> Constructor above:
+doing so would yeld results identical to the previous case, and <code>Rect\Erase()</code> would call the <code>Draw()</code> method.</p>
 </div>
 <div class="paragraph">
-<p>Thus, a new Constructor is needed able to return the correct function address.</p>
+<p>Thus, a new Constructor is needed, capable of returning the correct function address.</p>
 </div>
 <div class="paragraph">
-<p>Hereafter one of them is given:</p>
+<p>Here it is:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1602,11 +1610,13 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You notice that the functions addresses were just inverted at the initialization level.
-Certainly, it is not very elegant to allocate Draw field of the Rectangle2 Structure with an other function address.
-If it allows to preserve the same Structure, that of the Class, it also underlines a matter:
-The function pointer names are less interesting than their values!
-To erase this non-problem, just rename the pointers of the Class as following:</p>
+<p>Notice how the functions addresses were simply inverted at the initialization level.
+Certainly, it is not a very elegant solution to allocate the <code>Draw</code> field of <code>Rectangle2</code>’s <code>Structure</code> with an other function’s address.
+But it allows to preserve the same <code>Structure</code> of the Class; and it also underlines a point:
+function pointers’ names are less interesting than their values!</p>
+</div>
+<div class="paragraph">
+<p>To solve this false problem, just rename the pointers of the Class as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1621,7 +1631,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In fact, the Interface and the Constructor are in charge to give a sense to these pointers:</p>
+<p>Indeed, it’s the Interface and the Constructor which give meaning to these pointers:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1641,7 +1651,7 @@ EndStructure</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In spite of this arrangement concerning the function pointer names, it remains more practical to keep an explicit name if hiding methods is not considered (what is the most common situation). That allows to modify a Mother Class without retouching the pointers numbering of the Child Classes.</p>
+<p>In spite of this arrangement concerning the function pointers’ names, it remains more practical to keep an explicit name when not considering to hide methods (which is the most common scenario). This allows to modify a Parent Class without having to retouch the pointers’ numbering in Children Classes.</p>
 </div>
 </td>
 </tr>
@@ -1651,10 +1661,10 @@ EndStructure</code></pre>
 <div class="sect2">
 <h3 id="inheritance-3"><a class="anchor" href="#inheritance-3"></a>6.7. Inheritance</h3>
 <div class="paragraph">
-<p>As for the first inheritance concept implementation, let takes advantage that the Structure and Interface instructions have to be extend thanks to the keyword Extends.</p>
+<p>For our first implementation of the inheritance concept, let’s takes advantage of the fact that the <code>Structure</code> and <code>Interface</code> instructions can be extended thanks to the <code>Extends</code> keyword.</p>
 </div>
 <div class="paragraph">
-<p>So, to pass from the Rectangle1 Class which has a single Draw() method to…</p>
+<p>So, to pass from the <code>Rectangle1</code> Class, which has a single <code>Draw()</code> method…</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1703,7 +1713,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>…a Rectangle2 Class, which have two methods: Draw() and Erase(), write:</p>
+<p>…to a <code>Rectangle2</code> Class, which has two methods: <code>Draw()</code> and <code>Erase()</code>, we write:</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1746,19 +1756,19 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Carrying out an inheritance consists in extending Interface and Class structure, but also in adapting the method and the attribut initializations
-Both procedures Init_Mthds_Rect2() and Init_Mbers_Rect2() call respectively the initialization of the methods and to the initialization of the attributes of the Class Rectangle1 ( Init_Mthds_Rect1() and Init_Mbers_Rect1() ) rather than the Constructor New_Rect1().
-Those because, a Child Class object doesn’t need to instantiate a Parent Class object but just to inherit methods and attributes.</p>
+<p>Carrying out an inheritance doesn’t consist only in extending the object’s <code>Interface</code> and Class <code>Structure</code>, but also in adapting the initialization of its methods and attributes.
+The <code>Init_Mthds_Rect2()</code> and <code>Init_Mbers_Rect2()</code> procedures call, respectively, the initialization of Class <code>Rectangle1</code>’s  methods (<code>Init_Mthds_Rect1()</code>) and attributes (<code>Init_Mbers_Rect1()</code>), rather than the <code>New_Rect1()</code> Constructor.
+This because the Child Class object (<code>Rectangle2</code>) doesn’t need to instantiate its Parent Class object (<code>Rectangle1</code>), but just to inherit its methods and attributes.</p>
 </div>
 <div class="paragraph">
-<p>On the other side, verification is made that the Child Class benefits immediately of any changes made at the Parent Class level (adding a method or a variable).</p>
+<p>On the other hand, we must verify that any changes made to the Parent Class (adding a method or a variable) should be immediately reflected in its Child Class.</p>
 </div>
 <div class="paragraph">
-<p>Is the inheritance currently correct? No, because it doesn’t allow the object of the Child Class (Rectangle2) to use the new Erase() method.
-The reason takes place on that function pointer *Methode2 doesn’t follow the *Methode1 one.</p>
+<p>So, is the current state of inheritance correct? No, because it doesn’t allow the object of the Child Class (<code>Rectangle2</code>) to use the new <code>Erase()</code> method.
+The reason being that the function pointer <code>*Method2</code> doesn’t immediately follow <code>*Method1</code> in order of succession.</p>
 </div>
 <div class="paragraph">
-<p>Let me show you the explicit form of Class Rectangle2 Structure:</p>
+<p>If we look at the explicit <code>Structure</code> of the <code>Rectangle2</code> Class, we find:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1768,12 +1778,12 @@ The reason takes place on that function pointer *Methode2 doesn’t follow the *
   x2.l
   y1.l
   y2.l
-  *Method2.l
+  *Method2
 EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>instead of having the Structure below, authorizing a correct initialization of the interface:</p>
+<p>instead of the <code>Structure</code> below, which permits a correct initialization of the interface:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1788,9 +1798,11 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Remind that a correct interface initialization needs functions addresses, which follow each other ().
-To resolve this problem, just group all the methods into a specific structure !
-The Class structure needs just to have a pointer on this new structure as the following example shows:</p>
+<p>Remember that a correct interface initialization requires that this successsion of functions addresses appears in the same order within its <code>Interface</code> (<a href="#admonition-on-structure-interface-symmetry">see previous note</a>).</p>
+</div>
+<div class="paragraph">
+<p>To solve this problem, we’ll just group all the methods into a specific <code>Structure</code>!
+The Class’s <code>Structure</code> will need just a pointer to this new <code>Structure</code>, as shown in the following example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1815,15 +1827,15 @@ Procedure Draw_Rectangle(*this.Rectangle1)
   ; [ ...some code... ]
 EndProcedure
 
-Structure Methd_Rect1
+Structure Methds_Rect1
   *Method1
 EndStructure
 
 Procedure Init_Mthds_Rect1(*Mthds.Mthds_Rect1)
-  *Mthd_Rect1\Method1 = @Draw_Rectangle()
+  *Mthds\Method1 = @Draw_Rectangle()
 EndProcedure
 
-Mthds_Rect1. Mthds_Rect1
+Mthds_Rect1.Mthds_Rect1
 Init_Mthds_Rect1(@Mthds_Rect1)</code></pre>
 </div>
 </div>
@@ -1847,22 +1859,24 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>Methd_Rect1</code> structure describes all the functions pointers of the Class methods.
-Follows the Methd_Rect1 variable statement and its initialization thanks to Init_Mthds_Rect1().</p>
+<p>The <code>Methds_Rect1</code> structure describes all the functions pointers of the Class’ methods.
+Then follows the <code>Methds_Rect1</code> variable declaration (of the <code>Methds_Rect1</code> type) and its initialization thanks to <code>Init_Mthds_Rect1()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Methd_Rect1 is called the table of the methods of the call. This variable contains the whole methods adresses.
-Here is reached the final Class methods description.</p>
+<p>The <code>Methds_Rect1</code> variable is the Class’ <strong>method table</strong>, because it contains the set of all the addresses of its methods. This set constitutes the complete description of the methods of the Class.</p>
 </div>
-<div class="admonitionblock important">
+<div class="paragraph">
+<p>The <code>Structure</code> of <code>Rectangle1</code> now contains the <code>*Methods</code> pointer, which is initialized by passing the <code>Methds_Rect1</code> variable address to the Constructor.</p>
+</div>
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The following expression</p>
+<p>The following expression:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1871,7 +1885,7 @@ Init_Mthds_Rect1(@Mthds_Rect1)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>can be condensate into</p>
+<p>can be condensed into:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1883,10 +1897,7 @@ Init_Mthds_Rect1(@Mthds_Rect1)</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>The Rectangle1 structure, contains now a pointer "*Methods", initialized through the constructor by giving to it the Methd_Rect1 variable address.</p>
-</div>
-<div class="paragraph">
-<p>The inheritance can be now performed correctly, because by extending the Methd_Rect1 Structure in a Methd_Rect2 new one, the addresses of functions are going to follow each other:</p>
+<p>Inheritance can be now performed correctly, because by extending <code>Methd_Rect1</code>’s <code>Structure</code> into the new <code>Methd_Rect2</code>, the functions’ addresses are going to be consecutive:</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1906,16 +1917,16 @@ Procedure Erase_Rectangle(*this.Rectangle2)
   ; [ ...some code... ]
 EndProcedure
 
-Structure Methd_Rect2 Extends Methd_Rect1
+Structure Methds_Rect2 Extends Methds_Rect1
   *Method2
 EndStructure
 
 Procedure Init_Mthds_Rect2(*Mthds.Mthds_Rect2)
   Init_Mthds_Rect1(*Mthds)
-  *Mthd_Rect2\Method2 = @Erase_Rectangle()
+  *Mthds\Method2 = @Erase_Rectangle()
 EndProcedure
 
-Mthds_Rect2. Mthds_Rect2
+Mthds_Rect2.Mthds_Rect2
 Init_Mthds_Rect2(@Mthds_Rect2)</code></pre>
 </div>
 </div>
@@ -1936,39 +1947,38 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the Rectangle2 Structure is empty and it isn’t a problem.
-Two reasons in it:</p>
+<p>In this example, <code>Rectangle2</code>’s <code>Structure</code> is empty, and it isn’t a problem. Here are two reasons why:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>At first the *Methodes pointer needs to exist only once and this in the Parent Class.</p>
+<p>First, the <code>*Methods</code> pointer only needs to exist once, and this is in the Parent Class.</p>
 </li>
 <li>
-<p>Then, no supplementary attributes have been added to it.</p>
+<p>Second, no supplementary attributes have been added to it.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>there is three advantages to have a methods initialization routine external to the Constructor and a table of methods available in a single variable:</p>
+<p>There are three advantages in having the methods’ initialization function external to the Constructor, and the method table in a single variable:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The table of the methods are initialized once and not at each object instanciation,</p>
+<p>The Class’ method table needs to be initialized only once, and not at each object instanciation,</p>
 </li>
 <li>
-<p>The objects have no more than one pointer towards the methods: it is a substantial gain of memory,</p>
+<p>Object instances will hold a single pointer toward their methods’ pointers: it is a substantial gain in memory,</p>
 </li>
 <li>
-<p>All the objects referred towards the same table of methods, which guaranteed an identical behavior for all the objects of the same Class.</p>
+<p>Since all objects referr to the same method table, this guarantees identical behavior for all objects of the same Class.</p>
 </li>
 </ul>
 </div>
@@ -1978,16 +1988,16 @@ Two reasons in it:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="get-and-set-object-methods"><a class="anchor" href="#get-and-set-object-methods"></a>6.8. Get() and Set() object methods</h3>
+<h3 id="get-and-set-object-methods"><a class="anchor" href="#get-and-set-object-methods"></a>6.8. Get() and Set() Object Methods</h3>
 <div class="paragraph">
-<p>By Interface, it is possible to use only methods of an object.
-The interface encapsulates completely the object attributes.
-To act on attributes, either for examine or to modify them, it is necessary to give specific methods to the user.
-The methods allowing to examine object attributes are called Get() methods.
-The methods allowing to modify object attributes are called Set() methods.</p>
+<p>Through an <code>Interface</code>, it’s only possible to access an object’s methods.
+The interface encapsulates completely the object’s attributes.
+In order to allow access the object’s attributes — to examine, or to modify them — we must provide specific methods to the user.
+The methods allowing to examine objects’ attributes are called <code>Get()</code> methods.
+The methods allowing to modify objects’ attributes are called <code>Set()</code> methods.</p>
 </div>
 <div class="paragraph">
-<p>In our example of Rectangle1 Class, if I want to examine the value of the attribute var2, I should create the following Get() method:</p>
+<p>In our example of the <code>Rectangle1</code> Class, if I want to examine the value of the <code>var2</code> attribute, I should create the following <code>Get()</code> method:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1997,7 +2007,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Also, to modify the value of the attribute var2, I should write the following Set() method:</p>
+<p>Similarly, to modify the value of the <code>var2</code> attribute, I should write the following <code>Set()</code> method:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2007,7 +2017,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Because Get() and Set() methods exist only to allow the user to modify all or any of the object attributes, they are necessarily present in the Interface.</p>
+<p>Since <code>Get()</code> and <code>Set()</code> methods exist only to allow the user to modify all (or some) of the object’s attributes, they necessarily belong to the <code>Interface</code>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -2017,7 +2027,7 @@ EndProcedure</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>See the <a href="#optimisations">Appendix</a> of the tutorial for possible optimization.</p>
+<p>See the <a href="#optimisations">Appendix</a> of the tutorial for possible optimizations of <code>Get()</code>’s and <code>Set()</code>’s performance during execution.</p>
 </div>
 </td>
 </tr>
@@ -3151,8 +3161,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.4<br>
-Last updated 2016-11-13 16:53:19 E
+Draft 0.5<br>
+Last updated 2016-11-15 02:23:14 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

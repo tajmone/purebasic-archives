@@ -528,15 +528,15 @@ Procedure Draw_Rectangle(*this.Rectangle1)
   ; [ ...some code... ]
 EndProcedure
 
-Structure Methd_Rect1
+Structure Methds_Rect1
   *Method1
 EndStructure
 
 Procedure Init_Mthds_Rect1(*Mthds.Mthds_Rect1)
-  *Mthd_Rect1\Method1 = @Draw_Rectangle()
+  *Mthds\Method1 = @Draw_Rectangle()
 EndProcedure
 
-Mthds_Rect1. Mthds_Rect1
+Mthds_Rect1.Mthds_Rect1
 Init_Mthds_Rect1(@Mthds_Rect1)
 
 ; ------------------------------------------------------------------------------
@@ -594,16 +594,16 @@ Procedure Erase_Rectangle(*this.Rectangle2)
   ; [ ...some code... ]
 EndProcedure
 
-Structure Methd_Rect2 Extends Methd_Rect1
+Structure Methds_Rect2 Extends Methds_Rect1
   *Method2
 EndStructure
 
 Procedure Init_Mthds_Rect2(*Mthds.Mthds_Rect2)
   Init_Mthds_Rect1(*Mthds)
-  *Mthd_Rect2\Method2 = @Erase_Rectangle()
+  *Mthds\Method2 = @Erase_Rectangle()
 EndProcedure
 
-Mthds_Rect2. Mthds_Rect2
+Mthds_Rect2.Mthds_Rect2
 Init_Mthds_Rect2(@Mthds_Rect2)
 
 ; ------------------------------------------------------------------------------
