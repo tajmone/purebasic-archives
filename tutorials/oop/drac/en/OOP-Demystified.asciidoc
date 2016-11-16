@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.5, November 15, 2016: Reprint WIP: polishing English.
+v0.6, November 16, 2016: Reprint WIP: polishing English.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :description:
 :doctype: article
@@ -22,8 +22,8 @@ v0.5, November 15, 2016: Reprint WIP: polishing English.
 --READY-- 3. Concepts Implementation
 --READY-- 4. First Implementation
 --READY-- 5. Interface instruction
---------- 6. Second Implementation
---------- 7. Synthesis and notation
+--READY-- 6. Second Implementation
+--READY-- 7. Synthesis and notation
 --------- 8. PB Class
 --------- 9. Conclusion
 --------- A. Optimisations
@@ -1276,26 +1276,22 @@ Since `Get()` and `Set()` methods exist only to allow the user to modify all (or
 See the <<optimisations,Appendix>> of the tutorial for possible optimizations of ``Get()``’s and ``Set()``’s performance during execution.
 ====
 
-
-
-
-// ============== REVISED UP TO THIS POINT! ==============
-
 // Website Page 6
 
 == Synthesis and notation
 
-Before I present the selected Class implementation, I’m going to spend a little time summarizing the work made under a formal notation frame. The implementation of an object involve the following elements:
+Before presenting the final Class implementation, I’m going to spend some time summarizing in a formal notation the work made so far. Implementation of an object involved the following elements:
 
-*   An Interface,
-*   A Class (concrete / abstract) including the methods definition,
-*   A Constructor provided with a routine initializating attributes,
-*   A Destructor.
+*   An **Interface**,
+*   A *Class* (concrete/abstract) including methods definitions,
+*   A *Constructor* provided with a routine for initializating attributes,
+*   A **Destructor**.
+
 The following table summarizes what is our object in PureBasic.
 
-*   The word Class refers to the name of the Class (ex: Methd_Class)
-= *   The word Parent refers to the name of the Parent Class during an inheritance (ex: Methd_ ParentClass)
-*   The expressions between embraces {} are to be used during an inheritance
+*   The word `Class` refers to the name of the Class (e.g.: ``Methd_Class``)
+*   The word `Parent` refers to the name of the Parent Class during inheritance (e.g.: ``Methd_ ParentClass``)
+*   Expressions between braces `{…}` are to be used during inheritance
 
 // Example N. 7-1
 .Interface
@@ -1376,9 +1372,14 @@ EndProcedure
 
 === First Code-Example
 
-Here is an example of a code where the inheritance is used:
+Here is an example file of inheritance in action:
 
 * link:OOP-Inheritance-Ex1.pb[``OOP-Inheritance-Ex1.pb``]
+
+
+
+
+// ============== REVISED UP TO THIS POINT! ==============
 
 // Website Page 7
 

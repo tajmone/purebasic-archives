@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.5,</span>
-<span id="revdate">November 15, 2016</span>
+<span id="revnumber">draft 0.6,</span>
+<span id="revdate">November 16, 2016</span>
 <br><span id="revremark">Reprint WIP: polishing English.</span>
 </div>
 <div id="toc" class="toc2">
@@ -2040,29 +2040,37 @@ EndProcedure</code></pre>
 <h2 id="synthesis-and-notation"><a class="anchor" href="#synthesis-and-notation"></a>7. Synthesis and notation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before I present the selected Class implementation, I’m going to spend a little time summarizing the work made under a formal notation frame. The implementation of an object involve the following elements:</p>
+<p>Before presenting the final Class implementation, I’m going to spend some time summarizing in a formal notation the work made so far. Implementation of an object involved the following elements:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>An Interface,</p>
+<p>An <strong>Interface</strong>,</p>
 </li>
 <li>
-<p>A Class (concrete / abstract) including the methods definition,</p>
+<p>A <strong>Class</strong> (concrete/abstract) including methods definitions,</p>
 </li>
 <li>
-<p>A Constructor provided with a routine initializating attributes,</p>
+<p>A <strong>Constructor</strong> provided with a routine for initializating attributes,</p>
 </li>
 <li>
-<p>A Destructor.
-The following table summarizes what is our object in PureBasic.</p>
+<p>A <strong>Destructor</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following table summarizes what is our object in PureBasic.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The word <code>Class</code> refers to the name of the Class (e.g.: <code>Methd_Class</code>)</p>
 </li>
 <li>
-<p>The word Class refers to the name of the Class (ex: Methd_Class)
-= *   The word Parent refers to the name of the Parent Class during an inheritance (ex: Methd_ ParentClass)</p>
+<p>The word <code>Parent</code> refers to the name of the Parent Class during inheritance (e.g.: <code>Methd_ ParentClass</code>)</p>
 </li>
 <li>
-<p>The expressions between embraces {} are to be used during an inheritance</p>
+<p>Expressions between braces <code>{…}</code> are to be used during inheritance</p>
 </li>
 </ul>
 </div>
@@ -2142,7 +2150,7 @@ EndProcedure</code></pre>
 <div class="sect2">
 <h3 id="first-code-example"><a class="anchor" href="#first-code-example"></a>7.1. First Code-Example</h3>
 <div class="paragraph">
-<p>Here is an example of a code where the inheritance is used:</p>
+<p>Here is an example file of inheritance in action:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3161,8 +3169,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.5<br>
-Last updated 2016-11-15 02:23:14 E
+Draft 0.6<br>
+Last updated 2016-11-16 03:25:51 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">
