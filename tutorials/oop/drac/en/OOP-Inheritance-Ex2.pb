@@ -2,12 +2,12 @@
 ; OOP_Heritage.pb
 ;
 ; Cet exemple montre comment une Classe concrète (Rect1)
-; hérite d'une Classe abstraite (Form) 
+; hérite d'une Classe abstraite (Shape) 
 ; Elle montre aussi comment accéder aux attributs d'un
 ; objet: soit par des méthodes, soit par accès 'intégré'. 
 ; 
 ; This example shows how a concrete Class (Rect1)
-; inherits from an abstract Class (Form) 
+; inherits from an abstract Class (Shape) 
 ; It shows also how to access to object attributes:
 ; either by Methods or by 'embedded' accessor.
 ;
@@ -17,95 +17,92 @@
 XIncludeFile "OOP.pbi"
 
 ;=====================================================
-;Abstract Class Form
+; Abstract Class Shape
 ;
 ;=====================================================
-Class(Form)
-  Draw() 
-  Cut() 
-  Get_var1() ; <-- Class abstraite: la méthode Get_var1() n'est pas impémentée par la classe Form
-  Get_var2() ;     Abstract class : the Get_var1() method is not implemented into Form Class
-Methods(Form)
-  *Draw
-  *Cut
-  *Get_var1
-  *Get_var2
-Members(Form)
-  var1.l 
-  var2.l
-EndClass(Form)
+Class(Shape)
+Draw() 
+Cut() 
+Get_var1()              ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
+Get_var2()    
+Methods(Shape)
+*Draw
+*Cut
+*Get_var1
+*Get_var2
+Members(Shape)
+var1.l 
+var2.l
+EndClass(Shape)
 
-Method(Form, Draw))
-    Debug "Draw from Form Class" 
-EndMethod(Form, Draw)
+Method(Shape, Draw))
+Debug "Draw from Shape Class" 
+EndMethod(Shape, Draw)
 
-Method(Form, Cut))
-    Debug "Cut from Form Class" 
-EndMethod(Form, Cut)
+Method(Shape, Cut))
+Debug "Cut from Shape Class" 
+EndMethod(Shape, Cut)
 
-Method(Form, Get_var2))
-  With *this
-    ProcedureReturn \var2 
-  EndWith
-EndMethod(Form, Get_var2)
+Method(Shape, Get_var2))
+With *this
+  ProcedureReturn \var2 
+EndWith
+EndMethod(Shape, Get_var2)
 
-New(Form) 
-  With *this
-    \var1= *input\var1 
-    \var2= *input\var2
-  EndWith
+New(Shape) 
+With *this
+  \var1= *input\var1 
+  \var2= *input\var2
+EndWith
 EndNew
 
-; New(Form); <-- Class abstraite: les constructeur New et Free ne sont pas nécéssaires
-;                Abstract class : New ans Free constructors are not required
-; Free(Form)
+; New(Shape)              ; <-- Abstract class : New and Free constructors are not required
+; Free(Shape)
 ; EndFree
 
 ; ---------------------------------- 
 
 ;=====================================================
-;Concrete Class Rect1
+; Concrete Class Rect1
 ;
 ;=====================================================
-ClassEx(Rect1,Form); <-- Héritage/Inheritance
-  Erase() 
-  Get_var4()
-MethodsEx(Rect1,Form); <-- Héritage/Inheritance
-  *Erase
-  *Get_var4
-MembersEx(Rect1,Form); <-- Héritage/Inheritance
-  var3.l 
-  var4.l 
-  rectname.s
+ClassEx(Rect1,Shape)      ; <-- Inheritance
+Erase() 
+Get_var4()
+MethodsEx(Rect1,Shape)    ; <-- Inheritance
+*Erase
+*Get_var4
+MembersEx(Rect1,Shape)    ; <-- Inheritance
+var3.l 
+var4.l 
+rectname.s
 EndClass(Rect1)
 
-Method(Rect1, Draw)); <-- Polymorphisme: la classe Rect1 implémente sa propre méthode Draw()
-                    ;     Polymorphism : Rect1 Class implement its own Draw() method
-    Debug "Draw from Rect Class: " + *this\rectname 
+Method(Rect1, Draw))      ; <-- Polymorphism : Rect1 Class implement its own Draw() method
+Debug "Draw from Rect Class: " + *this\rectname 
 EndMethod(Rect1, Draw)
 
 Method(Rect1, Erase))
-    Debug "Erase from Rect Class: " + *this\rectname
+Debug "Erase from Rect Class: " + *this\rectname
 EndMethod(Rect1, Erase)
 
-Method(Rect1, Get_var1)); <-- Class concrète: toute les méthodes de la classe Rect1 sont implémentées
-                        ;     Concrete class : all the methods of the Rect1 Class are implemented
-  With *this
-    ProcedureReturn \var1 
-  EndWith
+Method(Rect1, Get_var1))  ; <-- Concrete class : all the methods of the Rect1 Class are implemented
+With *this
+  ProcedureReturn \var1 
+EndWith
 EndMethod(Rect1, Get_var1)
 
 Method(Rect1, Get_var4))
-  With *this
-    ProcedureReturn \var4 
-  EndWith
+With *this
+  ProcedureReturn \var4 
+EndWith
 EndMethod(Rect1, Get_var4)
 
-NewEx(Rect1,Form); <-- Class concrète: le constructeur et le destructeur de la classe existent
-  With *this     ;     Concrete class : constructor and destructor exist
-    \var4= *input\var4 
-    \rectname= *input\rectname
-  EndWith
+NewEx(Rect1,Shape)        ; <-- Concrete class : constructor and destructor exist
+With *this
+  \var4= *input\var4 
+  \rectname= *input\rectname
+EndWith
 EndNew
 
 Free(Rect1)
@@ -142,18 +139,18 @@ Debug""
 Debug ">> Access Test"
 
 Debug""
-Debug " <var1> de "+*RectA\Mb\rectname
+Debug " <var1> of "+*RectA\Mb\rectname
 Debug *RectA\Mb\var1 
 Debug *RectA\Md\Get_var1() 
-Debug " <var4> de "+*RectA\Mb\rectname
+Debug " <var4> of "+*RectA\Mb\rectname
 Debug *RectA\Mb\var4 
 Debug *RectA\Md\Get_var4() 
 
 Debug""
-Debug " <var1> de "+*RectB\Mb\rectname  
+Debug " <var1> of "+*RectB\Mb\rectname  
 Debug *RectB\Mb\var1 
 Debug *RectB\Md\Get_var1() 
-Debug " <var4> de "+*RectB\Mb\rectname 
+Debug " <var4> of "+*RectB\Mb\rectname 
 Debug *RectB\Mb\var4 
 Debug *RectB\Md\Get_var4()  
 
@@ -162,4 +159,4 @@ Debug ">> Destruction Test"
 Free_Rect1(*RectA) 
 Free_Rect1(*RectB) 
 
-;*Rect1\Md\Draw(); --> Impossible car l'objet Rect n'existe plus! / Impossible to do because Rect object doesn't exist anymore! 
+;*Rect1\Md\Draw()         ; --> Impossible to do because Rect object doesn't exist anymore! 

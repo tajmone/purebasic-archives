@@ -12,6 +12,9 @@ By «Dräc,» (c) 2005, license: [CC BY 4.0](https://creativecommons.org/license
     -   [Reprint And Changes](#reprint-and-changes)
     -   [AsciiDoc Format](#asciidoc-format)
 -   [Files List](#files-list)
+    -   [English Tutorial Files](#english-tutorial-files)
+    -   [Shared Files](#shared-files)
+    -   [Dev-Files](#dev-files)
 
 <!-- /toc -->
 About This Article
@@ -41,16 +44,35 @@ If you wish to edit the AsciiDoc source, and/or compile it to HTML, you might do
 Files List
 ==========
 
+English Tutorial Files
+----------------------
+
 -   [`/en/`](./en/) – Folder of English article.
 -   [`/en/OOP-Demystified.asciidoc`](./en/OOP-Demystified.asciidoc) – AsciiDoc source of English article.
 -   [`/en/OOP-Demystified.html`](./en/OOP-Demystified.html) – HTML output of English article.
 -   [`/en/OOP-Inheritance-Ex1.pb`](./en/OOP-Inheritance-Ex1.pb) – PureBASIC source of First Example of OOP implementation (English comments and naming convention).
 -   [`/en/OOP-Inheritance-Ex2.pb`](./en/OOP-Inheritance-Ex1.pb) – PureBASIC source of Second Example of OOP implementation (EN ver.).
+-   [`/en/OOP-Inheritance-Ex2_preprocessed.pb`](./en/OOP-Inheritance-Ex2_preprocessed.pb) – The preprocessed version of `./en/OOP-Inheritance-Ex1.pb`: contains all included external code, and macros are expanded (orignal macros are kept as comments next to their expanded code), comments are preserved. Included by Tristano Ajmone to simplify analysis of source code.
 -   [`/en/OOP.pbi`](./en/OOP.pbi) – PureBASIC include file, imported by Second Example, and reusable in custom OOP-projects (EN ver.).
+
+Shared Files
+------------
+
+These files are required by, and common to, all locale versions of the tutorial. Don’t rename these files and folders.
+
 -   [`/hjs/`](./hjs/) – Folder containing JavaScript and CSS resources for PureBASIC syntax highlighting in final HTML articles (common to both English and French versions).
 -   [`/hjs/highlight.min.js`](./hjs/highlight.min.js) – Highlight.js v9.3.0 prebuilt for PureBASIC (only) syntax highlighting — [modded version](https://github.com/tajmone/highlight.js/tree/PureBASIC), mimicking 100% PB native IDE.
 -   [`/hjs/styles/github.min.css`](./hjs/styles/github.min.css) – CSS from modded Highlight.js syntax coloring: theme mimicks PB native IDE. Added a few tweaks to change background of PureBASIC «pseudocode» examples found in tutorial.
--   [`/work/`](./work/) – Work files used during republishing and porting from HTML to AsciiDoc. Kept here to help people wishing to translate to other languages.
--   [`/work/tutorial_en_code_snippets.pb`](./work/tutorial_en_code_snippets.pb) – All the snippets of PB code and pseudocode found in English tutorial, with reference numbers pointing to HTML comments in AsciiDoc source. This source file was used to auto-indent the snippets in PB IDE and carry out S&R operations.
 -   [LICENSE](./LICENSE) — CC BY 4.0 license terms.
+
+Dev-Files
+---------
+
+Work files used during republishing the tutorial from HTML to AsciiDoc. Stored here to aid contributors wishing to make changes or translate to other locales.
+
+-   [`/work/`](./work/) – Dev-Files folder.
+-   [`/work/ppEnEx2.bat`](./work/ppEnEx2.bat) — The batch script used for creating `/en/OOP-Inheritance-Ex2_preprocessed.pb`. Works by invoking `/work/pppbsource.bat`.
+-   [`/work/ppEnEx2_header`](./work/ppEnEx2_header) — Text file of the header injected in the final preprocessed version of `/en/OOP-Inheritance-Ex2.pb`. Adds a description (PB comments) to the preprocessed source.
+-   [`/work/pppbsource.bat`](./work/pppbsource.bat) — The common batch script that handles preprocessing Examples for all locales.
+-   [`/work/tutorial_en_code_snippets.pb`](./work/tutorial_en_code_snippets.pb) – All the snippets of PB code and pseudocode found in English tutorial, with reference numbers pointing to HTML comments in AsciiDoc source. This source file was used to auto-indent the snippets in PB IDE and carry out S&R operations.
 

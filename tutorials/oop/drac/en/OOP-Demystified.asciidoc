@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.6, November 16, 2016: Reprint WIP: polishing English.
+v0.7, November 17, 2016: Reprint WIP: polishing English.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :description:
 :doctype: article
@@ -24,7 +24,7 @@ v0.6, November 16, 2016: Reprint WIP: polishing English.
 --READY-- 5. Interface instruction
 --READY-- 6. Second Implementation
 --READY-- 7. Synthesis and notation
---------- 8. PB Class
+---WIP--- 8. PB Class
 --------- 9. Conclusion
 --------- A. Optimisations
 ==============================================================================
@@ -1376,25 +1376,20 @@ Here is an example file of inheritance in action:
 
 * link:OOP-Inheritance-Ex1.pb[``OOP-Inheritance-Ex1.pb``]
 
-
-
-
-// ============== REVISED UP TO THIS POINT! ==============
-
 // Website Page 7
 
 == PB Class
 
-Now we saw OOP concepts and their possible implementations in PureBasic, it’s time to establish an implementation.
+Now that we’ve explored OOP concepts and their possible implementations in PureBasic, it’s time to establish an implementation.
 
-Here I present an implementation which seems to me, according to my current knowledge, the most adapted to the OOP by the way of PureBasic.
+Here I shall present an implementation which I deem, to the best of my current knowledge, as the one best fitting OOP programming in PureBasic.
 
-It is based on the whole work exposed previously but also of my own experience of the practice of the subject.
-The other goal is to tend to simplify the use of object concepts, by clear commands and by automating operations as much as possible.
-In this step, macros are going to play a decisive role.
-Greatly facilitated by Interface and Macro commands, the proposed implementation remains naturally limited by the language itself.
+It is based on all the previously exposed work, as well as on my personal practical experience with the subject matter at hand.
+Another goal here is to simplify the use of object concepts, through clear commands and by automating operations as much as possible.
+During this step, macros are going to play a decisive role.
+Greatly facilitated by the `Interface` and `Macro` commands, the proposed implementation remains naturally limited by the language itself.
 
-At first, I’ll present the instructions of a Class in PureBasic. Then I’ll analyze what hides behind by firing parallels with the previous pages. This chapter ended on a discussion of the choices made.
+At first, I’ll present the instructions for a Class in PureBasic. Then I’ll analyze what hides behind by firing parallels with the previous pages. This chapter ends with a discussion about the choices made.
 
 === PureBasic Class
 
@@ -1437,36 +1432,36 @@ Free(<ClassName>)
 EndFree
 ---------------------------------------------------------------------
 
-As shown, the PureBasic Class is articulated with four main subjects:
+As shown, a PureBasic Class revolves around four main themes:
 
-*   The definition of the class with `Class : EndClass` block,
-*   The implementation of the methods of the class with `Method: EndMethod` block,
-*   The construction of the object with `New : EndNew` block,
-*   The destructor of the object with `Free : EndFree` block.
+*   Definition of the Class via the `Class : EndClass` block,
+*   Implementation of the Class’ methods via the `Method : EndMethod` block,
+*   Construction of the object via the `New : EndNew` block,
+*   Destruction of the object via the `Free : EndFree` block.
 
 === Second Code-Example
 
-You will find here the files containing the declaration of this set of commands as well as an example file of use based on the inheritance example, what will allow you to compare with <<First Code-Example,previous implementation>>:
+Here is a header file cotaining the definition of this set of commands, along with a usage-example file (based on the <<First Code-Example,previous inheritance example>>, so that you might compare them):
 
 // TODO: MISSING LINK
 
 * link:OOP.pbi[``OOP.pbi``]
 * link:OOP-Inheritance-Ex2.pb[``OOP-Inheritance-Ex2.pb``]
 
-[IMPORTANT]
+[NOTE]
 ====
-If you have already looked at the source code from the `OOP.pbi` file, you are going to notice that the final OOP implementation in the source is a little more complicated than the basic explanation from this acticle. This is because some arrangements are made to service update of the source.
+If you have already looked at the source code of the `OOP.pbi` file, you might have noticed that the code of the final OOP implementation is slightly more complex than its presentation in this tutorial. This is because some rearrangements were made in the code in order simplify its maintainance.
 ====
 
-Let me run you through the Purebasic Class declaration...
+Let me guide you through the PureBasic Class declaration…
 
 === Class : EndClass
 
-`Class` : `EndClass` block allows declaring three types of constituents:
+The `Class : EndClass` block allows declaring three types of constituent:
 
-*   The interface of the object, only part that the user can handle.
-*   The methods of the object -except implementation- which are reduced to the pointers of the methods.
-*   Members (except methods) of the object. Afterward, words 'member' and more correctly 'attribute' will often make reference to these only elements (and not to the methods which are also members of the object in the strict meaning).
+*   The object’s **Interface**, i.e: the only part of the object that the user can handle.
+*   The object’s *Methods* — implementation excluded — which are reduced to pointers to the methods.
+*   The object’s *Members* — methods excluded. Henceforth, the terms «**member**» and (more correctly) «``attribute``» will mainly refer to just these elements of an object (not including its methods, which are also members of the object, strictly speaking).
 
 // Example N. 8.2-1
 [source,purebasic pseudocode]
@@ -1489,9 +1484,11 @@ Class(<ClassName>)
 EndClass(<ClassName>)
 ---------------------------------------------------------------------
 
-Each constituent is clearly identified with keywords: Class\Methods\Members. This order must be preserved and keywords always have to appear even though any method or member will not be declared. Also, at each time the name of the class is a parameter of the keyword.
+Each constituent is clearly identified with keywords: ``Class``/``Methods``/``Members``.
+Their order must be preserved and all keywords must always be present, even when a method or a member will not be declared.
+Also, the name of a class is always a parameter of the keyword, and must be enclosed in parentheses.
 
-The explanation takes place in the definition of every keyword. Here is the code:
+The explanation for this is to be found in the definition of each keyword. Here is the code:
 
 ==== Class keyword
 
@@ -1504,7 +1501,7 @@ Macro Class(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-The keyword Class declares just the header of the interface statement. The name of the interface comes from the class name merged with "_". So what follows Class will be the definition of the interface of the object.
+The keyword `Class` defines just the header of the `Interface` statement. The name of the interface is derived from the Class’ name followed by “``_``”. So, whatever follows `Class` will become the definition of the object’s interface.
 
 ==== Methods keyword
 
@@ -1513,12 +1510,13 @@ The keyword Class declares just the header of the interface statement. The name 
 ---------------------------------------------------------------------
 Macro Methods(ClassName)
   EndInterface
-  ; Declare the methods table structure
+  ; Declare the method-table structure
   Structure Mthds_#ClassName
 EndMacro
 ---------------------------------------------------------------------
 
-The keyword Methods begins by closing the definition of the interface with EndInterface. Then it opens the statement of the structure which defined the pointers of the methods.
+
+The keyword `Methods` starts by closing the interface’s definition with ``EndInterface``. Then it opens the definition of the `Structure` which defines the pointers to the methods.
 
 ==== Members keyword
 
@@ -1527,7 +1525,7 @@ The keyword Methods begins by closing the definition of the interface with EndIn
 ---------------------------------------------------------------------
 Macro Members(ClassName)
   EndStructure
-  ; Create the methods table
+  ; Create the method-table
   Mthds_#ClassName.Mthds_#ClassName
   ; Declare the members
   ; No parent class: implement pointers for the Methods and the instance
@@ -1537,13 +1535,25 @@ Macro Members(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-The keyword Members is more complicated than the two previous ones.
+The keyword `Members` is more complicated than the two previous ones.
 
-It begins by closing the definition of the structure first opened by Methods. Then it declares the table of the methods based on the structure freshly built. For the moment this table is empty and will be fill a the end of `Method` : `EndMethod` statement. I’ll be discussing this farther (I can’t wait).
+It begins by closing the `Structure` definition previously opened by ``Methods``. Then it declares the **method table**, using the freshly-built structure (as its type). For the moment this table is empty; it will be filled up a the end of `Method : EndMethod` statement. I’ll be discussing this further on (<<EndMethod keyword,I can’t wait!>>).
 
-Finally Members ends by opening the structure declaration which defined the members of the object. At first position -as expected- is the pointer to the table of the methods, i.e. to the variable just above. The assignment is done later by the constructor. Follows another pointer which will contain the address of the object itself. I shall explain later the reason of this new member (not! Now).
+Finally `Members` ends by opening the `Structure` declaration which defines the object’s members. In first position — as expected — we find the pointer to the *method table* (i.e.: to the variable just mentioned above). Its assignment will be done later, by the Constructor.
+Then follows another pointer, which will contain the address of the object itself. I shall explain later the reasons for this new member (<<admonition-on-object-being-a-pointer,no, now!>>).
 
+
+// TODO: SENTENCE BELOW NEEDS CHECKING
+
+After the `Members` keyword, the user has only to declare the other members of the object.
+
+////
+ORIGINAL TEXT:
 It remains for the user simply to declare the other members of the object next Members keyword.
+
+Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction Members.
+////
+
 
 ==== EndClass keyword
 
@@ -1562,20 +1572,20 @@ Macro EndClass(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-EndClass keyword code is at the origin of the implementation chosen for our object. So I’m now going to describe it correctly.
+The `EndClass` keyword code is at the origin of the implementation chosen for our object. So I’m now going to describe it correctly.
 
-As for Methods and Members, it begins by closing what was opened by the previous keyword, here the structure describing the members of the object.
+As with `Methods` and ``Members``, it begins by closing what was opened by the previous keyword, in this case: the `Structure` describing the object’s members.
 
-Then, follows the structure called with the name of the class and which will be use to instanciate the object.
+Then, follows a `Structure` named as the Class’ name, which will be use to instanciate the object.
 
-This structure is in fact the union of two elements:
+This `Structure` is in fact the union of two elements:
 
-1.  The first is a pointer typed by the interface which allows to call the methods of the object.
-2.  The second is a pointer typed by the structure defining members. It helps in acting on the members of the object.
+1.  The first is a pointer typed by the interface which allows to call the object’s methods.
+2.  The second is a pointer typed by the structure defining members. It helps accessing the object’s members.
 
-This design puts into practice optimization on the accessors exposed in appendix. The benefit of this choice is double:
+This design puts into practice the optimizations for `Get()` and `Set()` methods presented in the <<Optimisation: Get() and Set() methods,Appendix>>. The benefit of this choice is twofold:
 
-*   It provides a same process to reach methods and members of an object.
+*   It provides a seamless approach for reaching an object’s methods and members.
 +
 To reach a method, write:
 // Example N. 8.2-6
@@ -1585,7 +1595,7 @@ To reach a method, write:
 *Rect\Md\Draw()
 ---------------------------------------------------------------------
 +
-To reach a attribute, write:
+To reach an attribute, write:
 // Example N. 8.2-7
 +
 [source,purebasic]
@@ -1593,16 +1603,17 @@ To reach a attribute, write:
 *Rect\Mb\var1
 ---------------------------------------------------------------------
 
-*   It avoids to declare systematically Get and Set methods of an object when they are ordinary. That saves time and it’s practical. At the same moment, that limits the numbers of methods of an object (small optimization).
+*   It prevents having to systematically declare an object’s `Get()` and `Set()` methods, when these are trivial. This saves time and it’s practical.
+At the same time, it reduces the number of objects’ methods (small optimization).
 
 [WARNING]
 ====
-The price of this choice is that all the members of an object are visible by the user.
+The price of this choice is that all members of an object are visible to the user.
 ====
 
-[IMPORTANT]
+[TIP]
 ====
-This structure could be adapted a little. As terms ' Md ' and ' Mb ' are visually very close, a better distinguish could be studied. Although this choice was not retain, here is an interesting possibility:
+This structure could be slighly retouched. Since terms like “``Md``» and “``Mb``» are visually very similar, a better distinction could be arranged. Although this choice was not retained, here is an interesting possibility:
 
 // Example N. 8.2-8
 [source,purebasic]
@@ -1616,12 +1627,12 @@ Structure ClassName
 EndStructure
 ---------------------------------------------------------------------
 
-In this code, the pointer *Mb was replaced by two pointers *Get and *Set. They have the same functionality but they can lead to a more legible code by clarifying if an attribute is readed or modified.
+In this code, the `*Mb` pointer was replaced by two pointers: `*Get` and ``*Set``. They have the same functionality but they can lead to more legible code, by clarifying if an attribute is being read or modified.
 ====
 
 === Method : EndMethod
 
-`Method : EndMethod` block allows to acheive the implementation of the various methods of an object.
+The `Method : EndMethod` block allows to achieve implementation of the various methods of an object.
 
 // Example N. 8.3-1
 [source,purebasic pseudocode]
@@ -1633,13 +1644,13 @@ Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
 EndMethod(<ClassName>, Method1)
 ---------------------------------------------------------------------
 
-Each keyword has the class name and the method name as parameters.
+Each keyword occurence has the Class name and the method name as parameters.
 
-In use, Method : EndMethod works like Procedure: EndProcedure. In fact it is a wrap of this block as exposed hereafter.
+Usewise, `Method : EndMethod` works like `Procedure : EndProcedure` — in fact it’s a wrapper of this block, as we shall see next.
 
-[WARNING]
+[IMPORTANT]
 ====
-Note the very special syntax of the method which requires two closed brackets. This specificity comes from the use of a macro combined with a different number of possible arguments for each method.
+Note the very special syntax of the method which requires two closing parentheses. This specificity ensues from the use of a macro combined with a different number of possible arguments for each method.
 ====
 
 ==== Method keyword
@@ -1652,9 +1663,10 @@ Macro Method(ClassName, Mthd)
 EndMacro
 ---------------------------------------------------------------------
 
-Method keyword is not more than a Procedure keyword where are pre-declared the variable *this required as first argument.
+The `Method` keyword is nothing more than a `Procedure` instruction for pre-declaring the variable ``*this``, which is required as first argument.
 
-Code doesn’t end by a bracket to allow the user to complete it by the specific parameters of its method. Up to him to close this bracket as shown in the syntax, otherwise the compiler will not miss to notify this!
+The code omits the closing parenthesis so that the user might complete it by adding the parameters specific to its method.
+It’s the user’s responsibility to close this parenthesis, as shown in the syntax — and if he forgets, the compiler won’t fail to notice it!
 
 ==== EndMethod keyword
 
@@ -1663,17 +1675,17 @@ Code doesn’t end by a bracket to allow the user to complete it by the specific
 ---------------------------------------------------------------------
 Macro EndMethod(ClassName, Mthd)
   EndProcedure
-  ; Save the method’s address into the methods table
+  ; Save the method’s address into the method-table
   Mthds_#ClassName\Mthd=@Mthd#_#ClassName()
 EndMacro
 ---------------------------------------------------------------------
 
-EndMethod keyword begins by closing the procedure opened by the Method keyword.
-Once the method defined, it can be referenced into the table of methods (declared by the Members keyword of the class). Actually, by declaring a method, this method is automatically referenced.
+The `EndMethod` keyword begins by closing the `Procedure` opened by the `Method` keyword.
+Once defined, the method can be referenced in the `method table` (declared by the `Members` keyword of the Class). Actually, by declaring a method, this method is automatically referenced.
 
 === Object Constructor
 
-`New : EndNew` block allows to instanciate a new object of the class by declaring and initialising.
+The `New : EndNew` block allows to instanciate a new object of the Class by declaring and initialising it.
 
 // Example N. 8.4-1
 [source,purebasic pseudocode]
@@ -1684,7 +1696,7 @@ New(<ClassName>)
 EndNew
 ---------------------------------------------------------------------
 
-The New keyword has the class name as parameter.
+The `New` keyword takes the class name as parameter.
 
 ==== New keyword
 
@@ -1698,7 +1710,7 @@ Macro New(ClassName)
     Shared Mthds_#ClassName
     ; Allocate the memory required for the object members
     *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
-    ; Attach the methods table to the object
+    ; Attach the method-table to the object
     *this\Methods=@Mthds_#ClassName
     ; The object is created then initialised
     ; Create the object
@@ -1713,30 +1725,52 @@ Macro New(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
+// TODO: SENTENCE BELOW NEEDS CHECKING
+
+The `New` keyword is dense, but hasn’t really changed compared to the previous design.
+
+////
+OR MAYBE:
+The `New` keyword is dense, but not really different in design compared to what seen so far.
+
+NOTE: It’s not clear what the author is comparing it to:
+(1) The general macros design seen so far, or
+(2) The previous implementation of the New() concept in the First Implementation.
+The English text seems to point to (1), but the French text to (2).
+
+ORIGINAL TEXT:
 New keyword is dense but doesn’t change really compare to previous design.
 
-The goal of this keyword is to create a new object and to initialise it. These tasks are performed into the New_ClassName procedure which is the main part of the New macro.
+L’instruction New est dense mais ne change pas vraiment par rapport à la structuration vue auparavant.
+////
 
-This procedure accepts a single argument, the one required by Init_Mbers for attributs initialisation.
 
-It begins by allocated the memory space required for the members of the object.
+The goal of this keyword is to create a new object and initialise it. These tasks are performed in the `New_ClassName` procedure, which is the main part of the `New` macro.
 
-Then it attaches to it the table of the methods of the class.
+This procedure accepts a single argument, the one required by `Init_Mbers` for attributes initialisation.
 
-Next it performs the object instanciation by assigning an address to the object then by initializing the interface.
+It begins by allocating the memory space required for the object’s members.
 
-The initialization of the attributes of the object follows through Init_Mbers method.
+Then it attaches to the object the *method table* of the Class.
 
-Finally, New returns the address of the object.
+Next it instanciates the object by assigning an address to it and initializing the interface.
 
-The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the `New : EndNew` block is simply the attributs initialisation. More on that in a moment though (Give me now!).
+Then follows initialization of the object’s attributes via the `Init_Mbers` method.
 
-This arrangement is possible thanks declaring the Init_Mbers method first in the macro.
+Finally, `New` returns the object’s address.
 
-[IMPORTANT]
+The trick in the `New` macro is that it ends with the `Init_Mbers` keyword. This way, what the user has to add inside the `New : EndNew` block is simply the attributes initialisation. More on that in a moment though (<<Init_Mbers : EndInit_Mbers private block, Show me now!>>).
+
+This arrangement is made possible by declaring the `Init_Mbers` method first in the macro.
+
+[NOTE]
 ====
-Notice that the New_ClassName procedure is common to all kind of Class. It is because the variant part was externalized into Init_Mbers method.
+Notice how the `New_ClassName` procedure is common to all kind of Classes. It is because its variable part (and therefore object-specific) was externalized into the `Init_Mbers` method.
 ====
+
+
+
+// ============== REVISED UP TO THIS POINT! ==============
 
 ==== EndNew keyword
 
@@ -1781,7 +1815,7 @@ Note that the constructor name is 'New' followed by the name of the class separa
 
 [IMPORTANT]
 ====
-With regard to what was studied until now, the object will always be a pointer. It doesn’t matter but it’s the consequence of the choice made in regrouping the access of the methods and the access of the members (What!? I don’t remember!).
+[[admonition-on-object-being-a-pointer]]With regard to what was studied until now, the object will always be a pointer. It doesn’t matter but it’s the consequence of the choice made in regrouping the access of the methods and the access of the members (<<EndClass keyword,What?! I don’t remember!>>).
 
 The choice of the StructureUnion requires two different memory allocations: the one for the members and the one to regroup methods and members (4 bytes here).
 This bivalence -which didn’t exist for the previous implementation- leads us to keep information into the object. So in the methods of the object, you could access to the address of members with *this and to the address of the instance (method and members) by *this\Instance.

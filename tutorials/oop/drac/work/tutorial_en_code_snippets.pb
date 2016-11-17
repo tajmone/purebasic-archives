@@ -811,7 +811,7 @@ EndMacro
 
 Macro Methods(ClassName)
   EndInterface
-  ; Declare the methods table structure
+  ; Declare the method-table structure
   Structure Mthds_#ClassName
 EndMacro
 
@@ -821,7 +821,7 @@ EndMacro
 
 Macro Members(ClassName)
   EndStructure
-  ; Create the methods table
+  ; Create the method-table
   Mthds_#ClassName.Mthds_#ClassName
   ; Declare the members
   ; No parent class: implement pointers for the Methods and the instance
@@ -895,7 +895,7 @@ EndMacro
 
 Macro EndMethod(ClassName, Mthd)
   EndProcedure
-  ; Save the method’s address into the methods table
+  ; Save the method’s address into the method-table
   Mthds_#ClassName\Mthd=@Mthd#_#ClassName()
 EndMacro
 
@@ -922,7 +922,7 @@ Macro New(ClassName)
     Shared Mthds_#ClassName
     ; Allocate the memory required for the object members
     *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
-    ; Attach the methods table to the object
+    ; Attach the method-table to the object
     *this\Methods=@Mthds_#ClassName
     ; The object is created then initialised
     ; Create the object

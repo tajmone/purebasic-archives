@@ -425,8 +425,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.6,</span>
-<span id="revdate">November 16, 2016</span>
+<span id="revnumber">draft 0.7,</span>
+<span id="revdate">November 17, 2016</span>
 <br><span id="revremark">Reprint WIP: polishing English.</span>
 </div>
 <div id="toc" class="toc2">
@@ -2166,19 +2166,19 @@ EndProcedure</code></pre>
 <h2 id="pb-class"><a class="anchor" href="#pb-class"></a>8. PB Class</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now we saw OOP concepts and their possible implementations in PureBasic, it’s time to establish an implementation.</p>
+<p>Now that we’ve explored OOP concepts and their possible implementations in PureBasic, it’s time to establish an implementation.</p>
 </div>
 <div class="paragraph">
-<p>Here I present an implementation which seems to me, according to my current knowledge, the most adapted to the OOP by the way of PureBasic.</p>
+<p>Here I shall present an implementation which I deem, to the best of my current knowledge, as the one best fitting OOP programming in PureBasic.</p>
 </div>
 <div class="paragraph">
-<p>It is based on the whole work exposed previously but also of my own experience of the practice of the subject.
-The other goal is to tend to simplify the use of object concepts, by clear commands and by automating operations as much as possible.
-In this step, macros are going to play a decisive role.
-Greatly facilitated by Interface and Macro commands, the proposed implementation remains naturally limited by the language itself.</p>
+<p>It is based on all the previously exposed work, as well as on my personal practical experience with the subject matter at hand.
+Another goal here is to simplify the use of object concepts, through clear commands and by automating operations as much as possible.
+During this step, macros are going to play a decisive role.
+Greatly facilitated by the <code>Interface</code> and <code>Macro</code> commands, the proposed implementation remains naturally limited by the language itself.</p>
 </div>
 <div class="paragraph">
-<p>At first, I’ll present the instructions of a Class in PureBasic. Then I’ll analyze what hides behind by firing parallels with the previous pages. This chapter ended on a discussion of the choices made.</p>
+<p>At first, I’ll present the instructions for a Class in PureBasic. Then I’ll analyze what hides behind by firing parallels with the previous pages. This chapter ends with a discussion about the choices made.</p>
 </div>
 <div class="sect2">
 <h3 id="purebasic-class"><a class="anchor" href="#purebasic-class"></a>8.1. PureBasic Class</h3>
@@ -2221,21 +2221,21 @@ EndFree</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As shown, the PureBasic Class is articulated with four main subjects:</p>
+<p>As shown, a PureBasic Class revolves around four main themes:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The definition of the class with <code>Class : EndClass</code> block,</p>
+<p>Definition of the Class via the <code>Class : EndClass</code> block,</p>
 </li>
 <li>
-<p>The implementation of the methods of the class with <code>Method: EndMethod</code> block,</p>
+<p>Implementation of the Class’ methods via the <code>Method : EndMethod</code> block,</p>
 </li>
 <li>
-<p>The construction of the object with <code>New : EndNew</code> block,</p>
+<p>Construction of the object via the <code>New : EndNew</code> block,</p>
 </li>
 <li>
-<p>The destructor of the object with <code>Free : EndFree</code> block.</p>
+<p>Destruction of the object via the <code>Free : EndFree</code> block.</p>
 </li>
 </ul>
 </div>
@@ -2243,7 +2243,7 @@ EndFree</code></pre>
 <div class="sect2">
 <h3 id="second-code-example"><a class="anchor" href="#second-code-example"></a>8.2. Second Code-Example</h3>
 <div class="paragraph">
-<p>You will find here the files containing the declaration of this set of commands as well as an example file of use based on the inheritance example, what will allow you to compare with <a href="#first-code-example">previous implementation</a>:</p>
+<p>Here is a header file cotaining the definition of this set of commands, along with a usage-example file (based on the <a href="#first-code-example">previous inheritance example</a>, so that you might compare them):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2255,39 +2255,39 @@ EndFree</code></pre>
 </li>
 </ul>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you have already looked at the source code from the <code>OOP.pbi</code> file, you are going to notice that the final OOP implementation in the source is a little more complicated than the basic explanation from this acticle. This is because some arrangements are made to service update of the source.</p>
+<p>If you have already looked at the source code of the <code>OOP.pbi</code> file, you might have noticed that the code of the final OOP implementation is slightly more complex than its presentation in this tutorial. This is because some rearrangements were made in the code in order simplify its maintainance.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Let me run you through the Purebasic Class declaration&#8230;&#8203;</p>
+<p>Let me guide you through the PureBasic Class declaration…</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="class-endclass"><a class="anchor" href="#class-endclass"></a>8.3. Class : EndClass</h3>
 <div class="paragraph">
-<p><code>Class</code> : <code>EndClass</code> block allows declaring three types of constituents:</p>
+<p>The <code>Class : EndClass</code> block allows declaring three types of constituent:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The interface of the object, only part that the user can handle.</p>
+<p>The object’s <strong>Interface</strong>, i.e: the only part of the object that the user can handle.</p>
 </li>
 <li>
-<p>The methods of the object -except implementation- which are reduced to the pointers of the methods.</p>
+<p>The object’s <strong>Methods</strong> — implementation excluded — which are reduced to pointers to the methods.</p>
 </li>
 <li>
-<p>Members (except methods) of the object. Afterward, words 'member' and more correctly 'attribute' will often make reference to these only elements (and not to the methods which are also members of the object in the strict meaning).</p>
+<p>The object’s <strong>Members</strong> — methods excluded. Henceforth, the terms «<strong>member</strong>» and (more correctly) «<code>attribute</code>» will mainly refer to just these elements of an object (not including its methods, which are also members of the object, strictly speaking).</p>
 </li>
 </ul>
 </div>
@@ -2312,10 +2312,12 @@ EndClass(&lt;ClassName&gt;)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Each constituent is clearly identified with keywords: Class\Methods\Members. This order must be preserved and keywords always have to appear even though any method or member will not be declared. Also, at each time the name of the class is a parameter of the keyword.</p>
+<p>Each constituent is clearly identified with keywords: <code>Class</code>/<code>Methods</code>/<code>Members</code>.
+Their order must be preserved and all keywords must always be present, even when a method or a member will not be declared.
+Also, the name of a class is always a parameter of the keyword, and must be enclosed in parentheses.</p>
 </div>
 <div class="paragraph">
-<p>The explanation takes place in the definition of every keyword. Here is the code:</p>
+<p>The explanation for this is to be found in the definition of each keyword. Here is the code:</p>
 </div>
 <div class="sect3">
 <h4 id="class-keyword"><a class="anchor" href="#class-keyword"></a>8.3.1. Class keyword</h4>
@@ -2328,7 +2330,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The keyword Class declares just the header of the interface statement. The name of the interface comes from the class name merged with "_". So what follows Class will be the definition of the interface of the object.</p>
+<p>The keyword <code>Class</code> defines just the header of the <code>Interface</code> statement. The name of the interface is derived from the Class’ name followed by “<code>_</code>”. So, whatever follows <code>Class</code> will become the definition of the object’s interface.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2337,13 +2339,13 @@ EndMacro</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Methods(ClassName)
   EndInterface
-  ; Declare the methods table structure
+  ; Declare the method-table structure
   Structure Mthds_#ClassName
 EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The keyword Methods begins by closing the definition of the interface with EndInterface. Then it opens the statement of the structure which defined the pointers of the methods.</p>
+<p>The keyword <code>Methods</code> starts by closing the interface’s definition with <code>EndInterface</code>. Then it opens the definition of the <code>Structure</code> which defines the pointers to the methods.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2352,7 +2354,7 @@ EndMacro</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Members(ClassName)
   EndStructure
-  ; Create the methods table
+  ; Create the method-table
   Mthds_#ClassName.Mthds_#ClassName
   ; Declare the members
   ; No parent class: implement pointers for the Methods and the instance
@@ -2363,16 +2365,17 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The keyword Members is more complicated than the two previous ones.</p>
+<p>The keyword <code>Members</code> is more complicated than the two previous ones.</p>
 </div>
 <div class="paragraph">
-<p>It begins by closing the definition of the structure first opened by Methods. Then it declares the table of the methods based on the structure freshly built. For the moment this table is empty and will be fill a the end of <code>Method</code> : <code>EndMethod</code> statement. I’ll be discussing this farther (I can’t wait).</p>
+<p>It begins by closing the <code>Structure</code> definition previously opened by <code>Methods</code>. Then it declares the <strong>method table</strong>, using the freshly-built structure (as its type). For the moment this table is empty; it will be filled up a the end of <code>Method : EndMethod</code> statement. I’ll be discussing this further on (<a href="#endmethod-keyword">I can’t wait!</a>).</p>
 </div>
 <div class="paragraph">
-<p>Finally Members ends by opening the structure declaration which defined the members of the object. At first position -as expected- is the pointer to the table of the methods, i.e. to the variable just above. The assignment is done later by the constructor. Follows another pointer which will contain the address of the object itself. I shall explain later the reason of this new member (not! Now).</p>
+<p>Finally <code>Members</code> ends by opening the <code>Structure</code> declaration which defines the object’s members. In first position — as expected — we find the pointer to the <strong>method table</strong> (i.e.: to the variable just mentioned above). Its assignment will be done later, by the Constructor.
+Then follows another pointer, which will contain the address of the object itself. I shall explain later the reasons for this new member (<a href="#admonition-on-object-being-a-pointer">no, now!</a>).</p>
 </div>
 <div class="paragraph">
-<p>It remains for the user simply to declare the other members of the object next Members keyword.</p>
+<p>After the <code>Members</code> keyword, the user has only to declare the other members of the object.</p>
 </div>
 </div>
 <div class="sect3">
@@ -2392,34 +2395,34 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>EndClass keyword code is at the origin of the implementation chosen for our object. So I’m now going to describe it correctly.</p>
+<p>The <code>EndClass</code> keyword code is at the origin of the implementation chosen for our object. So I’m now going to describe it correctly.</p>
 </div>
 <div class="paragraph">
-<p>As for Methods and Members, it begins by closing what was opened by the previous keyword, here the structure describing the members of the object.</p>
+<p>As with <code>Methods</code> and <code>Members</code>, it begins by closing what was opened by the previous keyword, in this case: the <code>Structure</code> describing the object’s members.</p>
 </div>
 <div class="paragraph">
-<p>Then, follows the structure called with the name of the class and which will be use to instanciate the object.</p>
+<p>Then, follows a <code>Structure</code> named as the Class’ name, which will be use to instanciate the object.</p>
 </div>
 <div class="paragraph">
-<p>This structure is in fact the union of two elements:</p>
+<p>This <code>Structure</code> is in fact the union of two elements:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The first is a pointer typed by the interface which allows to call the methods of the object.</p>
+<p>The first is a pointer typed by the interface which allows to call the object’s methods.</p>
 </li>
 <li>
-<p>The second is a pointer typed by the structure defining members. It helps in acting on the members of the object.</p>
+<p>The second is a pointer typed by the structure defining members. It helps accessing the object’s members.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>This design puts into practice optimization on the accessors exposed in appendix. The benefit of this choice is double:</p>
+<p>This design puts into practice the optimizations for <code>Get()</code> and <code>Set()</code> methods presented in the <a href="#optimisation-get-and-set-methods">Appendix</a>. The benefit of this choice is twofold:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>It provides a same process to reach methods and members of an object.</p>
+<p>It provides a seamless approach for reaching an object’s methods and members.</p>
 <div class="paragraph">
 <p>To reach a method, write:</p>
 </div>
@@ -2429,7 +2432,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To reach a attribute, write:</p>
+<p>To reach an attribute, write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2438,7 +2441,8 @@ EndMacro</code></pre>
 </div>
 </li>
 <li>
-<p>It avoids to declare systematically Get and Set methods of an object when they are ordinary. That saves time and it’s practical. At the same moment, that limits the numbers of methods of an object (small optimization).</p>
+<p>It prevents having to systematically declare an object’s <code>Get()</code> and <code>Set()</code> methods, when these are trivial. This saves time and it’s practical.
+At the same time, it reduces the number of objects’ methods (small optimization).</p>
 </li>
 </ul>
 </div>
@@ -2450,21 +2454,21 @@ EndMacro</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The price of this choice is that all the members of an object are visible by the user.</p>
+<p>The price of this choice is that all members of an object are visible to the user.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This structure could be adapted a little. As terms ' Md ' and ' Mb ' are visually very close, a better distinguish could be studied. Although this choice was not retain, here is an interesting possibility:</p>
+<p>This structure could be slighly retouched. Since terms like “<code>Md</code>» and “<code>Mb</code>» are visually very similar, a better distinction could be arranged. Although this choice was not retained, here is an interesting possibility:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2478,7 +2482,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this code, the pointer *Mb was replaced by two pointers *Get and *Set. They have the same functionality but they can lead to a more legible code by clarifying if an attribute is readed or modified.</p>
+<p>In this code, the <code>*Mb</code> pointer was replaced by two pointers: <code>*Get</code> and <code>*Set</code>. They have the same functionality but they can lead to more legible code, by clarifying if an attribute is being read or modified.</p>
 </div>
 </td>
 </tr>
@@ -2489,7 +2493,7 @@ EndStructure</code></pre>
 <div class="sect2">
 <h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>8.4. Method : EndMethod</h3>
 <div class="paragraph">
-<p><code>Method : EndMethod</code> block allows to acheive the implementation of the various methods of an object.</p>
+<p>The <code>Method : EndMethod</code> block allows to achieve implementation of the various methods of an object.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2501,20 +2505,20 @@ EndMethod(&lt;ClassName&gt;, Method1)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Each keyword has the class name and the method name as parameters.</p>
+<p>Each keyword occurence has the Class name and the method name as parameters.</p>
 </div>
 <div class="paragraph">
-<p>In use, Method : EndMethod works like Procedure: EndProcedure. In fact it is a wrap of this block as exposed hereafter.</p>
+<p>Usewise, <code>Method : EndMethod</code> works like <code>Procedure : EndProcedure</code> — in fact it’s a wrapper of this block, as we shall see next.</p>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Note the very special syntax of the method which requires two closed brackets. This specificity comes from the use of a macro combined with a different number of possible arguments for each method.</p>
+<p>Note the very special syntax of the method which requires two closing parentheses. This specificity ensues from the use of a macro combined with a different number of possible arguments for each method.</p>
 </div>
 </td>
 </tr>
@@ -2530,10 +2534,11 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Method keyword is not more than a Procedure keyword where are pre-declared the variable *this required as first argument.</p>
+<p>The <code>Method</code> keyword is nothing more than a <code>Procedure</code> instruction for pre-declaring the variable <code>*this</code>, which is required as first argument.</p>
 </div>
 <div class="paragraph">
-<p>Code doesn’t end by a bracket to allow the user to complete it by the specific parameters of its method. Up to him to close this bracket as shown in the syntax, otherwise the compiler will not miss to notify this!</p>
+<p>The code omits the closing parenthesis so that the user might complete it by adding the parameters specific to its method.
+It’s the user’s responsibility to close this parenthesis, as shown in the syntax — and if he forgets, the compiler won’t fail to notice it!</p>
 </div>
 </div>
 <div class="sect3">
@@ -2542,21 +2547,21 @@ EndMacro</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndMethod(ClassName, Mthd)
   EndProcedure
-  ; Save the method’s address into the methods table
+  ; Save the method’s address into the method-table
   Mthds_#ClassName\Mthd=@Mthd#_#ClassName()
 EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>EndMethod keyword begins by closing the procedure opened by the Method keyword.
-Once the method defined, it can be referenced into the table of methods (declared by the Members keyword of the class). Actually, by declaring a method, this method is automatically referenced.</p>
+<p>The <code>EndMethod</code> keyword begins by closing the <code>Procedure</code> opened by the <code>Method</code> keyword.
+Once defined, the method can be referenced in the <code>method table</code> (declared by the <code>Members</code> keyword of the Class). Actually, by declaring a method, this method is automatically referenced.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="object-constructor"><a class="anchor" href="#object-constructor"></a>8.5. Object Constructor</h3>
 <div class="paragraph">
-<p><code>New : EndNew</code> block allows to instanciate a new object of the class by declaring and initialising.</p>
+<p>The <code>New : EndNew</code> block allows to instanciate a new object of the Class by declaring and initialising it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2567,7 +2572,7 @@ EndNew</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The New keyword has the class name as parameter.</p>
+<p>The <code>New</code> keyword takes the class name as parameter.</p>
 </div>
 <div class="sect3">
 <h4 id="new-keyword"><a class="anchor" href="#new-keyword"></a>8.5.1. New keyword</h4>
@@ -2580,7 +2585,7 @@ EndNew</code></pre>
     Shared Mthds_#ClassName
     ; Allocate the memory required for the object members
     *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
-    ; Attach the methods table to the object
+    ; Attach the method-table to the object
     *this\Methods=@Mthds_#ClassName
     ; The object is created then initialised
     ; Create the object
@@ -2596,44 +2601,44 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>New keyword is dense but doesn’t change really compare to previous design.</p>
+<p>The <code>New</code> keyword is dense, but hasn’t really changed compared to the previous design.</p>
 </div>
 <div class="paragraph">
-<p>The goal of this keyword is to create a new object and to initialise it. These tasks are performed into the New_ClassName procedure which is the main part of the New macro.</p>
+<p>The goal of this keyword is to create a new object and initialise it. These tasks are performed in the <code>New_ClassName</code> procedure, which is the main part of the <code>New</code> macro.</p>
 </div>
 <div class="paragraph">
-<p>This procedure accepts a single argument, the one required by Init_Mbers for attributs initialisation.</p>
+<p>This procedure accepts a single argument, the one required by <code>Init_Mbers</code> for attributes initialisation.</p>
 </div>
 <div class="paragraph">
-<p>It begins by allocated the memory space required for the members of the object.</p>
+<p>It begins by allocating the memory space required for the object’s members.</p>
 </div>
 <div class="paragraph">
-<p>Then it attaches to it the table of the methods of the class.</p>
+<p>Then it attaches to the object the <strong>method table</strong> of the Class.</p>
 </div>
 <div class="paragraph">
-<p>Next it performs the object instanciation by assigning an address to the object then by initializing the interface.</p>
+<p>Next it instanciates the object by assigning an address to it and initializing the interface.</p>
 </div>
 <div class="paragraph">
-<p>The initialization of the attributes of the object follows through Init_Mbers method.</p>
+<p>Then follows initialization of the object’s attributes via the <code>Init_Mbers</code> method.</p>
 </div>
 <div class="paragraph">
-<p>Finally, New returns the address of the object.</p>
+<p>Finally, <code>New</code> returns the object’s address.</p>
 </div>
 <div class="paragraph">
-<p>The trick is that the New macro ends by the keyword Init_Mbers. Like this, what the user has to add inside the <code>New : EndNew</code> block is simply the attributs initialisation. More on that in a moment though (Give me now!).</p>
+<p>The trick in the <code>New</code> macro is that it ends with the <code>Init_Mbers</code> keyword. This way, what the user has to add inside the <code>New : EndNew</code> block is simply the attributes initialisation. More on that in a moment though (<a href="#init_mbers-endinit_mbers-private-block">Show me now!</a>).</p>
 </div>
 <div class="paragraph">
-<p>This arrangement is possible thanks declaring the Init_Mbers method first in the macro.</p>
+<p>This arrangement is made possible by declaring the <code>Init_Mbers</code> method first in the macro.</p>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Notice that the New_ClassName procedure is common to all kind of Class. It is because the variant part was externalized into Init_Mbers method.</p>
+<p>Notice how the <code>New_ClassName</code> procedure is common to all kind of Classes. It is because its variable part (and therefore object-specific) was externalized into the <code>Init_Mbers</code> method.</p>
 </div>
 </td>
 </tr>
@@ -2691,7 +2696,7 @@ input\var2 = 20
 </td>
 <td class="content">
 <div class="paragraph">
-<p>With regard to what was studied until now, the object will always be a pointer. It doesn’t matter but it’s the consequence of the choice made in regrouping the access of the methods and the access of the members (What!? I don’t remember!).</p>
+<p><a id="admonition-on-object-being-a-pointer"></a>With regard to what was studied until now, the object will always be a pointer. It doesn’t matter but it’s the consequence of the choice made in regrouping the access of the methods and the access of the members (<a href="#endclass-keyword">What?! I don’t remember!</a>).</p>
 </div>
 <div class="paragraph">
 <p>The choice of the StructureUnion requires two different memory allocations: the one for the members and the one to regroup methods and members (4 bytes here).
@@ -3169,8 +3174,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.6<br>
-Last updated 2016-11-16 03:25:51 E
+Draft 0.7<br>
+Last updated 2016-11-17 12:08:42 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

@@ -24,85 +24,81 @@
 ;                                  DESCRIPTION                                  
 ; ==============================================================================
 ; This example shows how a concrete Class ('Rect1') inherits from an abstract
-; Class ('Form').
+; Class ('Shape').
 ; It also shows how to access an object’s attributes: either by Methods, or by a
 ; pointer on the object. 
 ; ------------------------------------------------------------------------------
-; Cet exemple montre comment une Classe concrète (Rect1) hérite d'une Classe abstraite (Form) 
-; Elle montre aussi comment accéder aux attributs d'un objet: soit par des méthodes, soit par un pointeur sur l'objet. 
 
-Interface Form 
+Interface Shape
   Draw() 
   Cut() 
   Get_var1() 
   Get_var2() 
 EndInterface 
 
-Structure Form_ 
+Structure Shape_ 
   *Methods
   var1.l 
   var2.l 
 EndStructure 
 
-Procedure Draw_Form(*this.Form_) 
-  Debug "Draw from Form Class" 
+Procedure Draw_Shape(*this.Shape_) 
+  Debug "Draw from Shape Class" 
 EndProcedure 
 
-Procedure Cut_Form(*this.Form_) 
-  Debug "Cut from Form Class" 
+Procedure Cut_Shape(*this.Shape_) 
+  Debug "Cut from Shape Class" 
 EndProcedure 
 
-Procedure Get_var2_Form(*this.Form_) 
+Procedure Get_var2_Shape(*this.Shape_) 
   ProcedureReturn *this\var2 
 EndProcedure 
 
-Structure Mthds_Form 
+Structure Mthds_Shape 
   *Draw
   *Cut
   *Get_var1
   *Get_var2
 EndStructure 
 
-Procedure Init_Mthds_Form(*Mthds.Mthds_Form) 
-  *Mthds\Draw=@Draw_Form() 
-  *Mthds\Cut=@Cut_Form() 
-  *Mthds\Get_var2=@Get_var2_Form() 
+Procedure Init_Mthds_Shape(*Mthds.Mthds_Shape) 
+  *Mthds\Draw=@Draw_Shape() 
+  *Mthds\Cut=@Cut_Shape() 
+  *Mthds\Get_var2=@Get_var2_Shape() 
 EndProcedure 
 
-Mthds_Form.Mthds_Form 
+Mthds_Shape.Mthds_Shape 
 
-Init_Mthds_Form(@Mthds_Form) 
+Init_Mthds_Shape(@Mthds_Shape) 
 
-; Ici la méthode Get_var1() n'est pas implémentée: la Classe Form est une Classe Abstraite 
-; On n'a donc pas besoin de déclarer de Constructeur ni de Destructeur de cette Classe 
-; Here the method Get_var1() is not implemented: the Class Form is an Abstract Class 
+; Here the method Get_var1() is not implemented: the Class Shape is an Abstract Class 
 ; Thus we don't need to declare a Constructor or a Destructor of this Class 
 
-Procedure Init_Mbers_Form(*this.Form_, var1.l, var2.l) 
+Procedure Init_Mbers_Shape(*this.Shape_, var1.l, var2.l) 
   *this\var1=var1 
   *this\var2=var2 
 EndProcedure  
 
-Procedure.l New_Form(var1.l, var2.l) 
-  Shared Mthds_Form 
-  *this.Form_ = AllocateMemory(SizeOf(Form_)) 
-  *this\Methods=@Mthds_Form 
-  Init_Mbers_Form(*this, var1, var2) 
+Procedure.l New_Shape(var1.l, var2.l) 
+  Shared Mthds_Shape 
+  *this.Shape_ = AllocateMemory(SizeOf(Shape_)) 
+  *this\Methods=@Mthds_Shape 
+  Init_Mbers_Shape(*this, var1, var2) 
   ProcedureReturn *this 
 EndProcedure 
 
-Procedure Free_Form(*this) 
+Procedure Free_Shape(*this) 
   FreeMemory(*this) 
 EndProcedure 
 
 ; ---------------------------------- 
 
-Interface Rect1 Extends Form 
+Interface Rect1 Extends Shape 
   Erase() 
   Get_var4() 
 EndInterface 
 
-Structure Rect1_ Extends Form_ 
+Structure Rect1_ Extends Shape_ 
   var3.l 
   var4.l 
   rectname.s 
@@ -124,17 +120,17 @@ Procedure Get_var4_Rect1(*this.Rect1_)
   ProcedureReturn *this\var4 
 EndProcedure 
 
-Structure Mthds_Rect1 Extends Mthds_Form 
+Structure Mthds_Rect1 Extends Mthds_Shape 
   *Erase
   *Get_var4
 EndStructure 
 
 Procedure Init_Mthds_Rect1(*Mthds.Mthds_Rect1) 
-  Init_Mthds_Form(*Mthds)
+  Init_Mthds_Shape(*Mthds)
   *Mthds\Draw=@Draw_Rect1() 
   *Mthds\Erase=@Erase_Rect1() 
-  *Mthds\Get_var1=@Get_var1_Rect1(); La Classe concrète Rect1 se charge de donner l'implémentation de Get_var1() 
-  *Mthds\Get_var4=@Get_var4_Rect1(); The concrete Class Rect1 takes care to give the implementation of Get_var1() method 
+  *Mthds\Get_var1=@Get_var1_Rect1() ; The concrete Class Rect1 takes care to provide the implementation of Get_var1() method
+  *Mthds\Get_var4=@Get_var4_Rect1()  
 EndProcedure 
 
 Mthds_Rect1.Mthds_Rect1 
@@ -142,7 +138,7 @@ Mthds_Rect1.Mthds_Rect1
 Init_Mthds_Rect1(@Mthds_Rect1) 
 
 Procedure Init_Mbers_Rect1(*this.Rect1_, var1.l, var2.l, var4.l, name.s) 
-  Init_Mbers_Form(*this, var1,var2)
+  Init_Mbers_Shape(*this, var1,var2)
   *this\var4=var4 
   *this\rectname=name 
 EndProcedure  
@@ -177,19 +173,19 @@ Debug ">> Access Test"
 
 Debug""
 *Rect.Rect1_= RectA
-Debug " <var1> de "+*Rect\rectname  
+Debug " <var1> of "+*Rect\rectname  
 Debug *Rect\var1 
 Debug RectA\Get_var1()
-Debug " <var4> de "+*Rect\rectname
+Debug " <var4> of "+*Rect\rectname
 Debug *Rect\var4 
 Debug RectA\Get_var4() 
 
 Debug""
 *Rect.Rect1_= RectB
-Debug " <var1> de "+*Rect\rectname  
+Debug " <var1> of "+*Rect\rectname  
 Debug *Rect\var1 
 Debug RectB\Get_var1() 
-Debug " <var4> de "+*Rect\rectname 
+Debug " <var4> of "+*Rect\rectname 
 Debug *Rect\var4 
 Debug RectB\Get_var4()
 
@@ -198,5 +194,5 @@ Debug ">> Destruction Test"
 Free_Rect1(RectA) 
 Free_Rect1(RectB) 
 
-;Rect\Draw(); --> Impossible car l'objet Rect n'existe plus! / Impossible to do because Rect object doesn't exist anymore! 
+;Rect\Draw() ; --> Impossible to do because Rect object doesn't exist anymore! 
 
