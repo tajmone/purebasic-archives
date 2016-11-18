@@ -762,7 +762,7 @@ Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
   [ProcedureReturn value]
 EndMethod(<ClassName>, Method1)
 
-...(ditto For each method)
+; ...(ditto For each method)...
 
 ; Object constructor
 New(<ClassName>)
@@ -924,7 +924,7 @@ Macro New(ClassName)
     *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
     ; Attach the method-table to the object
     *this\Methods=@Mthds_#ClassName
-    ; The object is created then initialised
+    ; The object is created then initialized
     ; Create the object
     *this\Instance= AllocateMemory(SizeOf(ClassName))
     *this\Instance\Md = *this
@@ -949,9 +949,9 @@ EndMacro
 ; ==============================================================================
 
 New(Rect1)
-*this\var1 = *input\var1
-*this\var2 = *input\var2
-; [ ...some code... ]
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
 EndNew
 
 ; ==============================================================================
@@ -971,7 +971,7 @@ input\var2 = 20
 ;                              PSEUDOCODE - SYNTAX!
 ; ------------------------------------------------------------------------------
 
-; Attributes initialisation
+; Attributes initialization
 Init_Mbers(<ClassName>)
   ...
 EndInit_Mbers
@@ -989,9 +989,9 @@ EndMacro
 ; ==============================================================================
 
 Init_Mbers(Rect1)
-*this\var1 = *input\var1
-*this\var2 = *input\var2
-; [ ...some code... ]
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
 EndInit_Mbers
 
 ; ==============================================================================
@@ -1065,7 +1065,7 @@ Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
   [ProcedureReturn value]
 EndMethod(<ClassName>, Method1)
 
-...(ditto For each method)
+; ...(ditto For each method)...
 
 ; Object constructor
 NewEx(<ClassName>,<ParentClass>)

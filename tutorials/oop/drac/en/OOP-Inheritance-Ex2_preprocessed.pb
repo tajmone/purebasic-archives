@@ -276,7 +276,7 @@ Macro ClassEx(ClassName, MotherClass)
 ;   
 ;   ;----------------------------- Init_Mbers -------------------------------
 ;   ;
-;   ; Object members initialisation.
+;   ; Object members initialization.
 ;   ; Used by the New method
 ;   ;
 ;   ; Syntax:
@@ -299,7 +299,7 @@ EndMacro
 ; 
 ; ;---------------------------- Init_MbersEx ------------------------------
 ; ;
-; ; Object members initialisation.
+; ; Object members initialization.
 ; ; Used by the New method when the object inherite from an other class.
 ; ;
 ; ; Syntax:
@@ -311,7 +311,7 @@ EndMacro
 Macro Init_MbersEx(ClassName, MotherClass)
 ;   Init_Mbers(ClassName)
   Init_Mbers(ClassName)
-;   ; Call the object initialisation method of the parent class
+;   ; Call the object initialization method of the parent class
   
 ;   Init_Mbers_#MotherClass(*this, Used_Init_Mbers_Arg())
   Init_Mbers_#MotherClass(*this, Used_Init_Mbers_Arg())
@@ -334,7 +334,7 @@ Macro New_body(ClassName)
   
 ;   *this\Methods=@Mthds_#ClassName
   *this\Methods=@Mthds_#ClassName
-;   ; The object is created than initialised (like this, aggregated/composite objects are available during init)
+;   ; The object is created than initialized (like this, aggregated/composite objects are available during init)
   
 ;   ; Create the object
   
@@ -493,34 +493,34 @@ EndMacro
 ; ;=====================================================
 ; Class(Shape)
 Interface Shape_ 
-; Draw() 
-Draw() 
-; Cut() 
-Cut() 
-; Get_var1()              ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
-Get_var1()              
-; Get_var2()    
-Get_var2()    
-; Methods(Shape)
+;   Draw() 
+  Draw() 
+;   Cut() 
+  Cut() 
+;   Get_var1()                ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
+  Get_var1()                
+;   Get_var2()    
+  Get_var2()    
+;   Methods(Shape)
 EndInterface 
 Structure Mthds_Shape 
-; *Draw
-*Draw
-; *Cut
-*Cut
-; *Get_var1
-*Get_var1
-; *Get_var2
-*Get_var2
-; Members(Shape)
+;     *Draw
+    *Draw
+;     *Cut
+    *Cut
+;     *Get_var1
+    *Get_var1
+;     *Get_var2
+    *Get_var2
+;   Members(Shape)
 EndStructure
 Mthds_Shape.Mthds_Shape
 Structure Mbrs_Shape_
 *Methods
-; var1.l 
-var1.l 
-; var2.l
-var2.l
+;     var1.l 
+    var1.l 
+;     var2.l
+    var2.l
 ; EndClass(Shape)
 EndStructure
 Structure Mbrs_Shape Extends Mbrs_Shape_
@@ -535,28 +535,28 @@ EndStructure
 ; 
 ; Method(Shape, Draw))
 Procedure Draw_Shape(*this.Mbrs_Shape )
-; Debug "Draw from Shape Class" 
-Debug "Draw from Shape Class" 
+;   Debug "Draw from Shape Class" 
+  Debug "Draw from Shape Class" 
 ; EndMethod(Shape, Draw)
 EndProcedure
 Mthds_Shape\Draw=@Draw_Shape()
 ; 
 ; Method(Shape, Cut))
 Procedure Cut_Shape(*this.Mbrs_Shape )
-; Debug "Cut from Shape Class" 
-Debug "Cut from Shape Class" 
+;   Debug "Cut from Shape Class" 
+  Debug "Cut from Shape Class" 
 ; EndMethod(Shape, Cut)
 EndProcedure
 Mthds_Shape\Cut=@Cut_Shape()
 ; 
 ; Method(Shape, Get_var2))
 Procedure Get_var2_Shape(*this.Mbrs_Shape )
-; With *this
-With *this
-;   ProcedureReturn \var2 
+;   With *this
+  With *this
+;     ProcedureReturn \var2 
 ProcedureReturn *this\var2 
-; EndWith
-EndWith
+;   EndWith
+  EndWith
 ; EndMethod(Shape, Get_var2)
 EndProcedure
 Mthds_Shape\Get_var2=@Get_var2_Shape()
@@ -573,18 +573,18 @@ Init_Mbers_Shape(*this, *input, arg1, arg2, arg3, arg4, arg5)
 ProcedureReturn *this\Instance  
 EndProcedure
 Procedure Init_Mbers_Shape(*this.Mbrs_Shape , *input.Mbrs_Shape =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0) 
-; With *this
-With *this
-;   \var1= *input\var1 
+;   With *this
+  With *this
+;     \var1= *input\var1 
 *this\var1= *input\var1 
-;   \var2= *input\var2
+;     \var2= *input\var2
 *this\var2= *input\var2
-; EndWith
-EndWith
+;   EndWith
+  EndWith
 ; EndNew
 EndProcedure
 ; 
-; ; New(Shape)              ; <-- Abstract class : New and Free constructors are not required
+; ; New(Shape)                ; <-- Abstract class : New and Free constructors are not required
 ; ; Free(Shape)
 ; ; EndFree
 ; 
@@ -594,30 +594,30 @@ EndProcedure
 ; ; Concrete Class Rect1
 ; ;
 ; ;=====================================================
-; ClassEx(Rect1,Shape)      ; <-- Inheritance
-Interface Rect1_ Extends Shape_      
-; Erase() 
-Erase() 
-; Get_var4()
-Get_var4()
-; MethodsEx(Rect1,Shape)    ; <-- Inheritance
+; ClassEx(Rect1, Shape)       ; <-- Inheritance
+Interface Rect1_ Extends Shape_       
+;   Erase() 
+  Erase() 
+;   Get_var4()
+  Get_var4()
+;   MethodsEx(Rect1, Shape)   ; <-- Inheritance
 EndInterface
-Structure Mthds_Rect1 Extends Mthds_Shape    
-; *Erase
-*Erase
-; *Get_var4
-*Get_var4
-; MembersEx(Rect1,Shape)    ; <-- Inheritance
+Structure Mthds_Rect1 Extends Mthds_Shape   
+;     *Erase
+    *Erase
+;     *Get_var4
+    *Get_var4
+;   MembersEx(Rect1, Shape)   ; <-- Inheritance
 EndStructure
 Mthds_Rect1.Mthds_Rect1
 CopyMemory(@Mthds_Shape, Mthds_Rect1, SizeOf(Mthds_Shape))
-Structure Mbrs_Rect1_ Extends Mbrs_Shape_    
-; var3.l 
-var3.l 
-; var4.l 
-var4.l 
-; rectname.s
-rectname.s
+Structure Mbrs_Rect1_ Extends Mbrs_Shape_   
+;     var3.l 
+    var3.l 
+;     var4.l 
+    var4.l 
+;     rectname.s
+    rectname.s
 ; EndClass(Rect1)
 EndStructure
 Structure Mbrs_Rect1 Extends Mbrs_Rect1_
@@ -630,47 +630,47 @@ StructureUnion
 EndStructureUnion
 EndStructure
 ; 
-; Method(Rect1, Draw))      ; <-- Polymorphism : Rect1 Class implement its own Draw() method
-Procedure Draw_Rect1(*this.Mbrs_Rect1 )      
-; Debug "Draw from Rect Class: " + *this\rectname 
-Debug "Draw from Rect Class: " + *this\rectname 
+; Method(Rect1, Draw))        ; <-- Polymorphism : Rect1 Class implement its own Draw() method
+Procedure Draw_Rect1(*this.Mbrs_Rect1 )        
+;   Debug "Draw from Rect Class: " + *this\rectname 
+  Debug "Draw from Rect Class: " + *this\rectname 
 ; EndMethod(Rect1, Draw)
 EndProcedure
 Mthds_Rect1\Draw=@Draw_Rect1()
 ; 
 ; Method(Rect1, Erase))
 Procedure Erase_Rect1(*this.Mbrs_Rect1 )
-; Debug "Erase from Rect Class: " + *this\rectname
-Debug "Erase from Rect Class: " + *this\rectname
+;   Debug "Erase from Rect Class: " + *this\rectname
+  Debug "Erase from Rect Class: " + *this\rectname
 ; EndMethod(Rect1, Erase)
 EndProcedure
 Mthds_Rect1\Erase=@Erase_Rect1()
 ; 
-; Method(Rect1, Get_var1))  ; <-- Concrete class : all the methods of the Rect1 Class are implemented
-Procedure Get_var1_Rect1(*this.Mbrs_Rect1 )  
-; With *this
-With *this
-;   ProcedureReturn \var1 
+; Method(Rect1, Get_var1))    ; <-- Concrete class : all the methods of the Rect1 Class are implemented
+Procedure Get_var1_Rect1(*this.Mbrs_Rect1 )    
+;   With *this
+  With *this
+;     ProcedureReturn \var1 
 ProcedureReturn *this\var1 
-; EndWith
-EndWith
+;   EndWith
+  EndWith
 ; EndMethod(Rect1, Get_var1)
 EndProcedure
 Mthds_Rect1\Get_var1=@Get_var1_Rect1()
 ; 
 ; Method(Rect1, Get_var4))
 Procedure Get_var4_Rect1(*this.Mbrs_Rect1 )
-; With *this
-With *this
-;   ProcedureReturn \var4 
+;   With *this
+  With *this
+;     ProcedureReturn \var4 
 ProcedureReturn *this\var4 
-; EndWith
-EndWith
+;   EndWith
+  EndWith
 ; EndMethod(Rect1, Get_var4)
 EndProcedure
 Mthds_Rect1\Get_var4=@Get_var4_Rect1()
 ; 
-; NewEx(Rect1,Shape)        ; <-- Concrete class : constructor and destructor exist
+; NewEx(Rect1, Shape)         ; <-- Concrete class : constructor and destructor exist
 Declare Init_Mbers_Rect1(*this.Mbrs_Rect1 , *input.Mbrs_Rect1 =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0)
 Procedure.l New_Rect1(*input.Mbrs_Rect1 =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0)
 Shared Mthds_Rect1
@@ -682,15 +682,15 @@ Init_Mbers_Rect1(*this, *input, arg1, arg2, arg3, arg4, arg5)
 ProcedureReturn *this\Instance  
 EndProcedure
 Procedure Init_Mbers_Rect1(*this.Mbrs_Rect1 , *input.Mbrs_Rect1 =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0)
-Init_Mbers_Shape(*this, *input, arg1, arg2, arg3, arg4, arg5)        
-; With *this
-With *this
-;   \var4= *input\var4 
+Init_Mbers_Shape(*this, *input, arg1, arg2, arg3, arg4, arg5)         
+;   With *this
+  With *this
+;     \var4= *input\var4 
 *this\var4= *input\var4 
-;   \rectname= *input\rectname
+;     \rectname= *input\rectname
 *this\rectname= *input\rectname
-; EndWith
-EndWith
+;   EndWith
+  EndWith
 ; EndNew
 EndProcedure
 ; 
@@ -794,5 +794,5 @@ Free_Rect1(*RectA)
 ; Free_Rect1(*RectB) 
 Free_Rect1(*RectB) 
 ; 
-; ;*Rect1\Md\Draw()         ; --> Impossible to do because Rect object doesn't exist anymore! 
+; ;*Rect1\Md\Draw()           ; --> Impossible to do because Rect object doesn't exist anymore! 
 ; 

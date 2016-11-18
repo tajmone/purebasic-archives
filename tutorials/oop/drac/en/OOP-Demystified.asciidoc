@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.7, November 17, 2016: Reprint WIP: polishing English.
+v0.8, November 18, 2016: Reprint WIP: polishing English.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :description:
 :doctype: article
@@ -12,6 +12,7 @@ v0.7, November 17, 2016: Reprint WIP: polishing English.
 :idprefix:
 :idseparator: -
 :version-label: Draft
+:icons: font
 
 ////
 ==============================================================================
@@ -24,7 +25,7 @@ v0.7, November 17, 2016: Reprint WIP: polishing English.
 --READY-- 5. Interface instruction
 --READY-- 6. Second Implementation
 --READY-- 7. Synthesis and notation
----WIP--- 8. PB Class
+--READY-- 8. PB Class
 --------- 9. Conclusion
 --------- A. Optimisations
 ==============================================================================
@@ -206,7 +207,7 @@ Thus, abstract Classes are a kind of interface, because they describe the generi
 
 // Website Page 3
 
-== Concepts Implementation
+== First Implementation
 
 // TODO: SENTENCE BELOW NEEDS FIXING AND CHECKING
 
@@ -225,9 +226,7 @@ Furthermore, the goal of an implementation is to be improved or to be adapted to
 De plus, le propre de l'implémentation c'est de pouvoir être amélioré ou de s'adapter au besoin.
 ////
 
-I’ll be presenting here one of these implementations, with its advantages and limits.
-
-== First Implementation
+I’ll be presenting here one of these implementations, with all its pros and cons.
 
 === Concrete Class and Abstract Class
 
@@ -1419,7 +1418,7 @@ Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
   [ProcedureReturn value]
 EndMethod(<ClassName>, Method1)
 
-...(ditto for each method)
+; ...(ditto For each method)...
 
 ; Object constructor
 New(<ClassName>)
@@ -1685,7 +1684,7 @@ Once defined, the method can be referenced in the `method table` (declared by th
 
 === Object Constructor
 
-The `New : EndNew` block allows to instanciate a new object of the Class by declaring and initialising it.
+The `New : EndNew` block allows to instanciate a new object of the Class by declaring and initializing it.
 
 // Example N. 8.4-1
 [source,purebasic pseudocode]
@@ -1705,14 +1704,14 @@ The `New` keyword takes the class name as parameter.
 ---------------------------------------------------------------------
 Macro New(ClassName)
   Declare Init_Mbers_#ClassName(*this, *input.Mbrs_#ClassName=0)
-  
+
   Procedure.l New_#ClassName(*input.Mbrs_#ClassName =0)
     Shared Mthds_#ClassName
     ; Allocate the memory required for the object members
     *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
     ; Attach the method-table to the object
     *this\Methods=@Mthds_#ClassName
-    ; The object is created then initialised
+    ; The object is created then initialized
     ; Create the object
     *this\Instance= AllocateMemory(SizeOf(ClassName))
     *this\Instance\Md = *this
@@ -1720,7 +1719,7 @@ Macro New(ClassName)
     Init_Mbers_#ClassName(*this, *input)
     ProcedureReturn *this\Instance
   EndProcedure
-  
+
   Init_Mbers(ClassName)
 EndMacro
 ---------------------------------------------------------------------
@@ -1745,9 +1744,9 @@ L’instruction New est dense mais ne change pas vraiment par rapport à la stru
 ////
 
 
-The goal of this keyword is to create a new object and initialise it. These tasks are performed in the `New_ClassName` procedure, which is the main part of the `New` macro.
+The goal of this keyword is to create a new object and initialize it. These tasks are performed in the `New_ClassName` procedure, which is the main part of the `New` macro.
 
-This procedure accepts a single argument, the one required by `Init_Mbers` for attributes initialisation.
+This procedure accepts a single argument, the one required by `Init_Mbers` for attributes initialization.
 
 It begins by allocating the memory space required for the object’s members.
 
@@ -1759,7 +1758,7 @@ Then follows initialization of the object’s attributes via the `Init_Mbers` me
 
 Finally, `New` returns the object’s address.
 
-The trick in the `New` macro is that it ends with the `Init_Mbers` keyword. This way, what the user has to add inside the `New : EndNew` block is simply the attributes initialisation. More on that in a moment though (<<Init_Mbers : EndInit_Mbers private block, Show me now!>>).
+The trick in the `New` macro is that it ends with the `Init_Mbers` keyword. This way, what the user has to add inside the `New : EndNew` block is simply the attributes initialization. More on that in a moment though (<<Init_Mbers : EndInit_Mbers private block, Show me now!>>).
 
 This arrangement is made possible by declaring the `Init_Mbers` method first in the macro.
 
@@ -1767,10 +1766,6 @@ This arrangement is made possible by declaring the `Init_Mbers` method first in 
 ====
 Notice how the `New_ClassName` procedure is common to all kind of Classes. It is because its variable part (and therefore object-specific) was externalized into the `Init_Mbers` method.
 ====
-
-
-
-// ============== REVISED UP TO THIS POINT! ==============
 
 ==== EndNew keyword
 
@@ -1782,23 +1777,23 @@ Macro EndNew
 EndMacro
 ---------------------------------------------------------------------
 
-EndNew keyword is limited to call the EndInit_Mbers keyword that end the statement of the attribut initialisation start at the end of the New macro.
+The `EndNew` keyword is limited to calling the `EndInit_Mbers` keyword, which completes the  attributes’ initialization declaration started at the end of the `New` macro.
 
-Conclusion: the goal is reached. Through the `New : EndNew` block, we have a new object of the Class initialised (methods and attributs)
+Conclusion: the goal is reached. Through the `New : EndNew` block, we have created from the Class a new object with initialized methods and attributes.
 
-In use, the `New : EndNew` block allows the attibuts initialisation like this:
+In practical use, the `New : EndNew` block allows to initialize attibutes like this:
 
 // Example N. 8.4-4
 [source,purebasic]
 ---------------------------------------------------------------------
 New(Rect1)
-*this\var1 = *input\var1
-*this\var2 = *input\var2
-; [ ...some code... ]
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
 EndNew
 ---------------------------------------------------------------------
 
-to instanciate an such object write:
+to instanciate such an object, write:
 
 // Example N. 8.4-5
 [source,purebasic]
@@ -1811,38 +1806,38 @@ input\var2 = 20
 *Rect.Rect1 = New_Rect1(input)
 ---------------------------------------------------------------------
 
-Note that the constructor name is 'New' followed by the name of the class separated by "_".
+Note that the constructor name is `New` followed by the Class’ name separated by “``_``”.
 
-[IMPORTANT]
+[NOTE]
 ====
-[[admonition-on-object-being-a-pointer]]With regard to what was studied until now, the object will always be a pointer. It doesn’t matter but it’s the consequence of the choice made in regrouping the access of the methods and the access of the members (<<EndClass keyword,What?! I don’t remember!>>).
-
-The choice of the StructureUnion requires two different memory allocations: the one for the members and the one to regroup methods and members (4 bytes here).
-This bivalence -which didn’t exist for the previous implementation- leads us to keep information into the object. So in the methods of the object, you could access to the address of members with *this and to the address of the instance (method and members) by *this\Instance.
+[[admonition-on-object-being-a-pointer]]In relation to what was studied up to now, the object will always be a pointer. It isn’t an issue, rather it’s the consequence of our choice of grouping together access to methods and members (<<EndClass keyword,What?! I don’t remember!>>).
 ====
 
 [WARNING]
 ====
-It ensues an important feature by using *this\Instance to call the methods of the object within its methods (No I did not drink!). This feature is the best way to do this task because the name of the procedure behind the method isn’t really known, what is needed in the inheritance process.
+[[admonition-about-this-instance]]The choice of `StructureUnion` requires two different memory allocations: one for the members, and one to regroup methods and members (4 bytes here).
+This bivalence — which didn’t exist in the previous implementation — leads us to store information into the object itself. So, within the object’s methods you can access its members address through ``*this``, and its instance’s address (method and members) through ``*this\Instance``.
 
-For that purpose, a macro Mtd is directly proposed in source file OOP.pbi.
+An important feature ensues: the us of `*this\Instance` to call the object’s methods within its methods (__No, I’m not drunk__!). This is the best way to do it, because it hides the name of the procedure behind the method, which is an essential part of the inheritance process.
+
+For this purpose, a `Mtd` macro is present in the link:OOP.pbi[``OOP.pbi``] file.
 ====
 
 ==== Init_Mbers : EndInit_Mbers private block
 
-`Init_Mbers: EndInit_Mbers` block is a private block of the OOP implementation, used by the `New : EndNew` block to initilalise attributs of an object. But it is important to present this internal block to understand how an object initialisation will by specified.
+The `Init_Mbers: EndInit_Mbers` is a private block of the OOP implementation, used by the `New : EndNew` block to initialize an object’s attributes. Explaining this internal block is important for understanding how initialization of an object will be carried out.
 
 // Example N. 8.4-6
 [source,purebasic pseudocode]
 ---------------------------------------------------------------------
-; Attributes initialisation
+; Attributes initialization
 Init_Mbers(<ClassName>)
   ...
 EndInit_Mbers
 ---------------------------------------------------------------------
 
 Between the two keywords are a series of member’s initialization.
-Note that only Init_Mbers keyword requires the class name as parameter.
+Note that only the `Init_Mbers` keyword requires the Class’ name as parameter.
 
 ====== Init_Mbers keyword
 
@@ -1854,22 +1849,22 @@ Macro Init_Mbers(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-Instruction Init_Mbers is defined as a method of the object accepting a single argument.
+The `Init_Mbers` instruction is defined as a method of the object accepting a single argument.
 
-To initialize the object according to the wishes of the user and because the number of members couldn’t be known in advance, the choice was made to pass information by referent.
+In order to initialize the object according to the user’s wishes, and because the number of its members can’t be known in advance, it was chosen to pass information by reference.
 
-This choice is reinforced by the prejudice that the constructor has the responsibility to initialize the object (by calling this particular method).
-Finally, but not the least, this disposal allows to automate the process of inheritance.
+This choice is reinforced by the bias that it’s the Constructor’s responsibility to initialize the object (by calling this particular method).
+Last but not least, this arrangement allows to automate the process of inheritance.
 
-In use, the initialization of members will look like mostly what follows:
+In practical use, members’ initialization will mostly look like this:
 
 // Example N. 8.4-8
 [source,purebasic]
 ---------------------------------------------------------------------
 Init_Mbers(Rect1)
-*this\var1 = *input\var1
-*this\var2 = *input\var2
-; [ ...some code... ]
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
 EndInit_Mbers
 ---------------------------------------------------------------------
 
@@ -1883,13 +1878,16 @@ Macro EndInit_Mbers
 EndMacro
 ---------------------------------------------------------------------
 
-EndInit_Mbers keyword is not more and not less that the EndProcedure keyword which ends the statement of the method of the object initialization.
+The `EndInit_Mbers` keyword is nothing more than the `EndProcedure` keyword, which ends the definition of the object’s initialization method.
 
-If you are the impatient sort and have already looked at the source code, you may have noticed that the final update OOP implementation source file include extra optional parameters called arg1 to arg5. This is because in some situation, it is useful to complet the standard *input pointer by additional information.
+[NOTE]
+====
+If you are the impatient sort, and have already peeked at the source code, you might have noticed that the final OOP implementation file includes extra optional parameters, named `arg1` to ``arg5``. This is because in some situations it is useful to complete the standard `*input` pointer by additional information.
+====
 
 === Object destructor
 
-`Free: EndFree` block allows to destroy object of the class and to restore memory.
+The `Free: EndFree` block allows to destroy an object of the Class and to restore its memory.
 
 // Example N. 8.5-1
 [source,purebasic pseudocode]
@@ -1900,7 +1898,7 @@ Free(<ClassName>)
 EndFree
 ---------------------------------------------------------------------
 
-Free keyword has the class name as parameter.
+The `Free` keyword takes the Class’ name as parameter.
 
 ===== Free : EndFree block
 
@@ -1920,12 +1918,12 @@ Macro EndFree
 EndMacro
 ---------------------------------------------------------------------
 
-`Free : EndFree` block is rather simple.
+The `Free : EndFree` block is rather simple.
 
-*   Free opens a procedure with the object address as argument. In passing we check that it is a none null address (nevertheless it not guaranteed a valid address for FreeMemory() ).
-*   EndFree releases sequentially the memory assigned to members then that of the object.
+*   `Free` opens a `Procedure` with the object’s address as argument. We then check that the passed argument is not a Null address — nevertheless, it doesn’t guarantee that it’s a valid address for ``FreeMemory()``!
+*   `EndFree` releases the memory allocated to the object’s members, then that of the object itself — in that specific order.
 
-In use, to free an object intance write:
+In practical use, to free an object’s intance write:
 
 // Example N. 8.5-3
 [source,purebasic]
@@ -1933,21 +1931,21 @@ In use, to free an object intance write:
 Free_Rect1(*Rect)
 ---------------------------------------------------------------------
 
-As for the constructor, note that the destructor name is 'Free' followed by the name of the class separated by "_".
+As for the constructor, note that the destructor’s name is “``Free``” followed by the class’ name separated by “``_``”.
 
 [CAUTION]
 ====
-If your object consists of other objects, i.e. that objects are members of the current object and exist by this object (hic!) it is important to free them too by calling their destructors between keywords Free and EndFree.
+If your object consists of other objects — i.e.: that some objects are members of the current object, and they exist by (and for) this object (__hic__!) — it’s then important to free them too, by calling their destructors in-between the `Free` and `EndFree` keywords.
 
-Even if PureBasic automatically free the allocated memory areas, it will occur only when the programs ends. During programs execution, it is up to the user to take care of any memory waste especially its growth.
+Even if PureBasic does automatically free the allocated memory areas, it will occur only when the programs ends. During programs execution, it is up to the user to take care of any garbage memory, especially its bloat.
 ====
 
 === Inheritance
-In the set of commands just exposed, nothing makes reference to the inheritance process. It is normal because current commands do not support this! (Damn! Fear!)! We need to decline an additional set of commands to deal with the concept (Arghhh! <death pangs>).
+In the set of commands just exposed, nothing makes reference to the process of inheritance. It is normal, because the current commands do not support it! (__Damn__! __What an anguish__!)! We need to introduce an additional set of commands to deal with the concept (__Arghhh__! __Mega-anguish__!).
 
-Fortunately, it is not rocket science as our conception is ready for this (Phew! I feeling better now).
+Fortunately, it is not rocket science, and our design is ready for this (__Phew__! __I’m feeling better now__).
 
-Here what looks like the class in that case:
+Here is what the Class looks like in this case:
 
 // Example N. 8.6-1
 [source,purebasic pseudocode]
@@ -1975,7 +1973,7 @@ Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
   [ProcedureReturn value]
 EndMethod(<ClassName>, Method1)
 
-...(ditto For each method)
+; ...(ditto For each method)...
 
 ; Object constructor
 NewEx(<ClassName>,<ParentClass>)
@@ -1988,13 +1986,13 @@ Free(<ClassName>)
 EndFree
 ---------------------------------------------------------------------
 
-Four extra keywords are supplied: ClassEx, MethodsEx, MembersEx and NewEx as a replacement of Class, Methods, Members and New.
+Four extra keywords are supplied as replacements for ``Class``, ``Methods``, `Members` and `New` keywords: ``ClassEx``, ``MethodsEx``, `MembersEx` and `NewEx` (respectively).
 
-For each new keyword, in addition of the name of the current class, the name of the parent class is given as a new argument.
+For each new keyword, in addition to the current class’ name, its parent class’ name is now a parameter being passed.
 
-The operation is finally rather simple for the user with a very easy process for inheritance.
+The operation is simple enough for the end user, making the process of inheritance easily accessible.
 
-I won’t list the declaration of the new keywords here to save space, but it might be a good idea to check out OOP.pbi in your IDE to get a feel for it.
+In order to save space, I won’t review here the code of the new keywords; but it might be a good idea to check out link:OOP.pbi[``OOP.pbi``] in your IDE to get a feel of it.
 
 === Discussion
 
@@ -2002,46 +2000,59 @@ Phew! The presentation of a PureBasic Class is finished.
 
 What else? Well, macros allow to define a real set of commands that:
 
-*   Clarified the object structure,
-*   Facilitate or automate some processes, as the methods initialization or the inheritance.
-I list here the various choices which drive the conception to the object. Let me you feel that it is possible to adapt some parts to suit one’s style to one’s object without fundamentally modifying it:
+*   Clarify the object’s structure,
+*   Facilitate or automate some processes, like methods’ initialization or inheritance.
 
-1.  Use of StructureUnion to define the object. It confers to the object the peculiarity to act on the members without using any accessor method.
+I list here the various design choices which drive the object’s conception. Let me remind you that it’s possible to partly re-adapt the design to customize objects, according to your own style, without fundamentally altering it:
 
-2.  The table of methods is class-specific and not object-specific.
+1.  Use `StructureUnion` to define the object. It confers to the object the peculiarity to act on the members without requiring any mutator (setter/getter) method.
 
-*   It is initialized once at the beginning of the program and not at the intanciate level of an object,
-*   Objects instance store only a pointer towards the table of methods: substantial save of memory space,
-*   All the objects point towards the same table of methods, which guarantees an identical behavior of the objects from the same class.3.  A constructor which initializes the object, driving to use a single pointer as input parameter which store the initialisation data of the object. The process of inheritance is largely facilitated.
-We can envisage to split the process in two steps: step one, the user create an object, step two the user calls the routine of initialization himself. In this case, method Init_Mbers is not called by New method and then it can support number of arguments.Two disadvantages:
+2.  The *method table* is class-specific and not object-specific:
 
-        *   The risk of an incorrect initialization of the object: one can forget to do it, but -more important- it’s not possible any more to automate the process of inheritance: it’s up to the user to manage it!
-    *   A strong class-interdependence for enter parameters: as soon as the parameters of the initialization method change from the parent class, the user has to proceed this modification in all the child classes.
-In extreme, but it’s not advisable, we can imagine that the user initializes member after member by using accessors. But a member initialization is not always a single assignation. It can require more complex internal operations to reach the assignation. Repeat this at each new object, it is advised to keep this into a dedicated method.
-4.  A destructor consistent with the constructor. It is not a part of the interface although it is possible. In this case, to free an object write ' Objet\Md\Free () ' instead of writing ' Free_ClassName ( object) '. This disposal is easy to operate and doesn’t modify the conception of the object.
+    *   It is initialized only once, at the beginning of program execution, rather than at objects’ instanciation time,
+    *   Objects’ instances store only a pointer to their **method table**: a substantial save of memory space,
+    *   All the objects point to the same **method table**, which guarantees identical behavior for all objects of the same class.
 
-5.  I didn’t achieve the automation of the table of methods. It is important to remind why it is articulated with a structure. Structure allows to create abstract classes, that are classes where all the methods are not implemented. It is a major notion of the object concepts. Structure facilitates to preserve the addresses order into the table of methods what ever the implemented methods are while preserve the inheritance process! An array, a linkedlist or a hash map as a replacement of a structure shall not have this flexibility (at least I didn’t find a such solution).
+3.  A constructor which initializes the object by taking a single pointer as its input parameter, which store the initialization data of the object. The process of inheritance is largely facilitated.
+We can envisage to split the process in two steps: step one, the user create an object; step two, the user calls the initialization routine himself. In this case, the `Init_Mbers` method is no longer called by the `New` method, and therefore it might contain any number of arguments. Two disadvantages:
 
-=== Reminder of types
+    *   The risk of an incorrect initialization of the object: one can forget to do it, but — more important — it’s no longer possible to automate the inheritance process: it’s up to the user to manage it!
+    *   Strong class-interdependence of input parameters: as soon as the initialization method’s parameters of a parent class change, the user has to carry out this changes across all its children classes.
+    
++
+In extreme — but it’s not advisable — we can imagine the user initializing all members, one after the other, by using mutators (setters).
+But members’ initialization doesn’t always boil down to mere assignment operations: it may involve more complex internal operations to reach its goal.
+If this is going to be repeated with each new object, it is strongly recommended to keep a dedicated method.
 
-Find here the list of the types which are used by a class:
+4.  A destructor consistent with the constructor. It is not part of the interface, although it possibly could be. In this case, to free an object write `Objet\Md\Free()` instead of writing ``Free_ClassName(object)``. This arrangement is easy to operate, and doesn’t alter the design of the object.
+
+5.    I have not managed to automate the generation of the ``method table``. It is important to remember why it was implemented with a ``Structure``. Structures allow to create abstract classes — i.e.: classes whose methods are not implemented. It is a major notion of OOP’s concepts. Structures facilitate preserving the addresses’ order within the *method table* — whatever the implemented methods of the Class might be —, which in turn preserves the inheritance process! Using an array, a linked list, or a hash map as replacement for a Structure shall not provide this flexibility (at least I didn’t find such a solution).
+
+=== Reminder of Types
+
+Here is a list of the types used by a Class:
 
 [width="100%",options="header,footer"]
 |====================
-| Type               | Applied to        | Origin
-| <ClassName>        | Object instance   | EndClass
-| <ClassName>_       | Interface         | Class
-| Mthds_<ClassName>  | Table of methods  | Methods
-| Mbrs_<ClassName>_  | Members structure | Members
-| Mbrs_<ClassName>   | Members structure | EndClass
+| Type                                       | Applied to        | Origin
+| `<ClassName>`                              | Object instance   | `EndClass`
+| `<ClassName>_`                             | Interface         | `Class`
+| `Mthds_<ClassName>`                        | Method Table      | `Methods`
+| `Mbrs_<ClassName>_` icon:warning[role=red] | Members structure | `Members`
+| `Mbrs_<ClassName>`                         | Members structure | `EndClass`
 |====================
 
-[IMPORTANT]
+[WARNING]
 ====
-Mbrs_<ClassName>_ type wasn’t presented in this paper. It is an intermediary step used to build the Mbrs_<ClassName> structure of the members definition. This arrangement is required to achieve the *this\Instance feature exposed here
+The `Mbrs_<ClassName>_` type wasn’t presented in this paper. It is an intermediate step used to build the `Mbrs_<ClassName>` structure of the members definition. This arrangement is required to achieve the `*this\Instance` feature <<admonition-about-this-instance,explained here>>.
 ====
 
 // Website Page 8
+
+
+
+
+// ============== REVISED UP TO THIS POINT! ==============
 
 == Conclusion
 

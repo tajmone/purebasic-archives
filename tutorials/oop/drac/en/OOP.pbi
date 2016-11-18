@@ -167,7 +167,7 @@ Macro ClassEx(ClassName, MotherClass)
   
   ;----------------------------- Init_Mbers -------------------------------
   ;
-  ; Object members initialisation.
+  ; Object members initialization.
   ; Used by the New method
   ;
   ; Syntax:
@@ -184,7 +184,7 @@ EndMacro
 
 ;---------------------------- Init_MbersEx ------------------------------
 ;
-; Object members initialisation.
+; Object members initialization.
 ; Used by the New method when the object inherite from an other class.
 ;
 ; Syntax:
@@ -194,7 +194,7 @@ EndMacro
 ;------------------------------------------------------------------------
 Macro Init_MbersEx(ClassName, MotherClass)
   Init_Mbers(ClassName)
-  ; Call the object initialisation method of the parent class
+  ; Call the object initialization method of the parent class
   Init_Mbers_#MotherClass(*this, Used_Init_Mbers_Arg())
 EndMacro
 
@@ -208,7 +208,7 @@ Macro New_body(ClassName)   ; Common body of a New method
   *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
   ; Attach the methods table to the object
   *this\Methods=@Mthds_#ClassName
-  ; The object is created than initialised (like this, aggregated/composite objects are available during init)
+  ; The object is created than initialized (like this, aggregated/composite objects are available during init)
   ; Create the object
   *this\Instance= AllocateMemory(SizeOf(ClassName))
   *this\Instance\Md = *this

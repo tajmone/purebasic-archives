@@ -21,42 +21,42 @@ XIncludeFile "OOP.pbi"
 ;
 ;=====================================================
 Class(Shape)
-Draw() 
-Cut() 
-Get_var1()              ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
-Get_var2()    
-Methods(Shape)
-*Draw
-*Cut
-*Get_var1
-*Get_var2
-Members(Shape)
-var1.l 
-var2.l
+  Draw() 
+  Cut() 
+  Get_var1()                ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
+  Get_var2()    
+  Methods(Shape)
+    *Draw
+    *Cut
+    *Get_var1
+    *Get_var2
+  Members(Shape)
+    var1.l 
+    var2.l
 EndClass(Shape)
 
 Method(Shape, Draw))
-Debug "Draw from Shape Class" 
+  Debug "Draw from Shape Class" 
 EndMethod(Shape, Draw)
 
 Method(Shape, Cut))
-Debug "Cut from Shape Class" 
+  Debug "Cut from Shape Class" 
 EndMethod(Shape, Cut)
 
 Method(Shape, Get_var2))
-With *this
-  ProcedureReturn \var2 
-EndWith
+  With *this
+    ProcedureReturn \var2 
+  EndWith
 EndMethod(Shape, Get_var2)
 
 New(Shape) 
-With *this
-  \var1= *input\var1 
-  \var2= *input\var2
-EndWith
+  With *this
+    \var1= *input\var1 
+    \var2= *input\var2
+  EndWith
 EndNew
 
-; New(Shape)              ; <-- Abstract class : New and Free constructors are not required
+; New(Shape)                ; <-- Abstract class : New and Free constructors are not required
 ; Free(Shape)
 ; EndFree
 
@@ -66,43 +66,43 @@ EndNew
 ; Concrete Class Rect1
 ;
 ;=====================================================
-ClassEx(Rect1,Shape)      ; <-- Inheritance
-Erase() 
-Get_var4()
-MethodsEx(Rect1,Shape)    ; <-- Inheritance
-*Erase
-*Get_var4
-MembersEx(Rect1,Shape)    ; <-- Inheritance
-var3.l 
-var4.l 
-rectname.s
+ClassEx(Rect1, Shape)       ; <-- Inheritance
+  Erase() 
+  Get_var4()
+  MethodsEx(Rect1, Shape)   ; <-- Inheritance
+    *Erase
+    *Get_var4
+  MembersEx(Rect1, Shape)   ; <-- Inheritance
+    var3.l 
+    var4.l 
+    rectname.s
 EndClass(Rect1)
 
-Method(Rect1, Draw))      ; <-- Polymorphism : Rect1 Class implement its own Draw() method
-Debug "Draw from Rect Class: " + *this\rectname 
+Method(Rect1, Draw))        ; <-- Polymorphism : Rect1 Class implement its own Draw() method
+  Debug "Draw from Rect Class: " + *this\rectname 
 EndMethod(Rect1, Draw)
 
 Method(Rect1, Erase))
-Debug "Erase from Rect Class: " + *this\rectname
+  Debug "Erase from Rect Class: " + *this\rectname
 EndMethod(Rect1, Erase)
 
-Method(Rect1, Get_var1))  ; <-- Concrete class : all the methods of the Rect1 Class are implemented
-With *this
-  ProcedureReturn \var1 
-EndWith
+Method(Rect1, Get_var1))    ; <-- Concrete class : all the methods of the Rect1 Class are implemented
+  With *this
+    ProcedureReturn \var1 
+  EndWith
 EndMethod(Rect1, Get_var1)
 
 Method(Rect1, Get_var4))
-With *this
-  ProcedureReturn \var4 
-EndWith
+  With *this
+    ProcedureReturn \var4 
+  EndWith
 EndMethod(Rect1, Get_var4)
 
-NewEx(Rect1,Shape)        ; <-- Concrete class : constructor and destructor exist
-With *this
-  \var4= *input\var4 
-  \rectname= *input\rectname
-EndWith
+NewEx(Rect1, Shape)         ; <-- Concrete class : constructor and destructor exist
+  With *this
+    \var4= *input\var4 
+    \rectname= *input\rectname
+  EndWith
 EndNew
 
 Free(Rect1)
@@ -159,4 +159,4 @@ Debug ">> Destruction Test"
 Free_Rect1(*RectA) 
 Free_Rect1(*RectB) 
 
-;*Rect1\Md\Draw()         ; --> Impossible to do because Rect object doesn't exist anymore! 
+;*Rect1\Md\Draw()           ; --> Impossible to do because Rect object doesn't exist anymore! 
