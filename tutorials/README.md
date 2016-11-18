@@ -8,10 +8,24 @@ A collection of tutorials to advance learning programming in PureBASIC.
 ------------------------------------------------------------------------
 
 <!-- #toc -->
+-   [In This Repo](#in-this-repo)
+    -   [Dräc’s *PureBasic and OOP*](#dr%C3%A4cs-purebasic-and-oop)
 -   [Links to Online Tutorials](#links-to-online-tutorials)
     -   [In French](#in-french)
 
 <!-- /toc -->
+In This Repo
+============
+
+-   [`/oop/`](./oop/) — Tutorials on implementing Object-Oriented Programming in PureBASIC.
+
+Dräc’s *PureBasic and OOP*
+--------------------------
+
+-   [`/oop/drac/`](./oop/drac/)
+
+**PureBASIC Archives** has reprinted (with its author’s permission) Dräc’s famous tutorial *PureBasic and OOP* — also known as *OOP Demystified*:
+
 Links to Online Tutorials
 =========================
 
