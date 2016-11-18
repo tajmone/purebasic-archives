@@ -71,6 +71,7 @@ Dev-Files
 Work files used during republishing the tutorial from HTML to AsciiDoc. Stored here to aid contributors wishing to make changes or translate to other locales.
 
 -   [`/work/`](./work/) – Dev-Files folder.
+-   [`/work/DEV-NOTES.md`](./work/DEV-NOTES.md) — Some work notes left behind for contributors.
 -   [`/work/ppEnEx2.bat`](./work/ppEnEx2.bat) — The batch script used for creating `/en/OOP-Inheritance-Ex2_preprocessed.pb`. Works by invoking `/work/pppbsource.bat`.
 -   [`/work/ppEnEx2_header`](./work/ppEnEx2_header) — Text file of the header injected in the final preprocessed version of `/en/OOP-Inheritance-Ex2.pb`. Adds a description (PB comments) to the preprocessed source.
 -   [`/work/pppbsource.bat`](./work/pppbsource.bat) — The common batch script that handles preprocessing Examples for all locales.

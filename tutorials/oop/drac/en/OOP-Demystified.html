@@ -5,7 +5,6 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.5.dev">
-<meta name="description" content="">
 <meta name="author" content="Dräc">
 <title>PureBasic and Object-Oriented Programming — or «the OOP demystified»</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -425,74 +424,74 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.8,</span>
+<span id="revnumber">version 1.0,</span>
 <span id="revdate">November 18, 2016</span>
-<br><span id="revremark">Reprint WIP: polishing English.</span>
+<br><span id="revremark">Reprinted and revised edition.</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#why-oop-in-purebasic">1. Why OOP in PureBasic?</a></li>
-<li><a href="#object-concepts">2. Object Concepts</a>
+<li><a href="#why-oop-in-purebasic">Why OOP in PureBasic?</a></li>
+<li><a href="#object-concepts">Object Concepts</a>
 <ul class="sectlevel2">
-<li><a href="#the-notion-of-object">2.1. The Notion of Object</a></li>
-<li><a href="#the-notion-of-class">2.2. The Notion of Class</a></li>
-<li><a href="#the-notion-of-instance">2.3. The Notion of Instance</a></li>
-<li><a href="#encapsulation">2.4. Encapsulation</a></li>
-<li><a href="#inheritance">2.5. Inheritance</a></li>
-<li><a href="#overloading">2.6. Overloading</a></li>
-<li><a href="#the-notion-of-abstract-class">2.7. The Notion of Abstract Class</a></li>
+<li><a href="#the-notion-of-object">The Notion of Object</a></li>
+<li><a href="#the-notion-of-class">The Notion of Class</a></li>
+<li><a href="#the-notion-of-instance">The Notion of Instance</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#overloading">Overloading</a></li>
+<li><a href="#the-notion-of-abstract-class">The Notion of Abstract Class</a></li>
 </ul>
 </li>
-<li><a href="#first-implementation">3. First Implementation</a>
+<li><a href="#first-implementation">First Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#concrete-class-and-abstract-class">3.1. Concrete Class and Abstract Class</a></li>
-<li><a href="#instanciation">3.2. Instanciation</a></li>
-<li><a href="#encapsulation-2">3.3. Encapsulation</a></li>
-<li><a href="#inheritance-2">3.4. Inheritance</a></li>
-<li><a href="#overloading-2">3.5. Overloading</a></li>
-<li><a href="#conclusion">3.6. Conclusion:</a></li>
+<li><a href="#concrete-class-and-abstract-class">Concrete Class and Abstract Class</a></li>
+<li><a href="#instanciation">Instanciation</a></li>
+<li><a href="#encapsulation-2">Encapsulation</a></li>
+<li><a href="#inheritance-2">Inheritance</a></li>
+<li><a href="#overloading-2">Overloading</a></li>
+<li><a href="#conclusion">Conclusion:</a></li>
 </ul>
 </li>
-<li><a href="#interface-instruction">4. Interface instruction</a>
+<li><a href="#interface-instruction">Interface instruction</a>
 <ul class="sectlevel3">
-<li><a href="#initialization">4.1. Initialization</a></li>
+<li><a href="#initialization">Initialization</a></li>
 </ul>
 </li>
-<li><a href="#second-implementation">5. Second Implementation</a>
+<li><a href="#second-implementation">Second Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#notion-of-object-interface">5.1. Notion of Object Interface</a></li>
-<li><a href="#object-instanciation-and-object-constructor">5.2. Object Instanciation and Object Constructor</a></li>
-<li><a href="#object-initialization">5.3. Object Initialization</a></li>
-<li><a href="#object-destructor">5.4. Object Destructor</a></li>
-<li><a href="#memory-allocations">5.5. Memory Allocations</a></li>
-<li><a href="#encapsulation-3">5.6. Encapsulation</a></li>
-<li><a href="#inheritance-3">5.7. Inheritance</a></li>
-<li><a href="#get-and-set-object-methods">5.8. Get() and Set() Object Methods</a></li>
+<li><a href="#notion-of-object-interface">Notion of Object Interface</a></li>
+<li><a href="#object-instanciation-and-object-constructor">Object Instanciation and Object Constructor</a></li>
+<li><a href="#object-initialization">Object Initialization</a></li>
+<li><a href="#object-destructor">Object Destructor</a></li>
+<li><a href="#memory-allocations">Memory Allocations</a></li>
+<li><a href="#encapsulation-3">Encapsulation</a></li>
+<li><a href="#inheritance-3">Inheritance</a></li>
+<li><a href="#get-and-set-object-methods">Get() and Set() Object Methods</a></li>
 </ul>
 </li>
-<li><a href="#synthesis-and-notation">6. Synthesis and notation</a>
+<li><a href="#synthesis-and-notation">Synthesis and notation</a>
 <ul class="sectlevel2">
-<li><a href="#first-code-example">6.1. First Code-Example</a></li>
+<li><a href="#first-code-example">First Code-Example</a></li>
 </ul>
 </li>
-<li><a href="#pb-class">7. PB Class</a>
+<li><a href="#pb-class">PB Class</a>
 <ul class="sectlevel2">
-<li><a href="#purebasic-class">7.1. PureBasic Class</a></li>
-<li><a href="#second-code-example">7.2. Second Code-Example</a></li>
-<li><a href="#class-endclass">7.3. Class : EndClass</a></li>
-<li><a href="#method-endmethod">7.4. Method : EndMethod</a></li>
-<li><a href="#object-constructor">7.5. Object Constructor</a></li>
-<li><a href="#object-destructor-2">7.6. Object destructor</a></li>
-<li><a href="#inheritance-4">7.7. Inheritance</a></li>
-<li><a href="#discussion">7.8. Discussion</a></li>
-<li><a href="#reminder-of-types">7.9. Reminder of Types</a></li>
+<li><a href="#purebasic-class">PureBasic Class</a></li>
+<li><a href="#second-code-example">Second Code-Example</a></li>
+<li><a href="#class-endclass">Class : EndClass</a></li>
+<li><a href="#method-endmethod">Method : EndMethod</a></li>
+<li><a href="#object-constructor">Object Constructor</a></li>
+<li><a href="#object-destructor-2">Object destructor</a></li>
+<li><a href="#inheritance-4">Inheritance</a></li>
+<li><a href="#discussion">Discussion</a></li>
+<li><a href="#reminder-of-types">Reminder of Types</a></li>
 </ul>
 </li>
-<li><a href="#conclusion-2">8. Conclusion</a></li>
+<li><a href="#conclusion-2">Conclusion</a></li>
 <li><a href="#optimisations">Appendix A: Optimisations</a>
 <ul class="sectlevel2">
-<li><a href="#optimisation-get-and-set-methods">A.1. Optimisation: Get() and Set() methods</a></li>
+<li><a href="#optimisation-get-and-set-methods">Optimisation: Get() and Set() Methods</a></li>
 </ul>
 </li>
 </ul>
@@ -511,14 +510,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>LICENSE</strong>: It was reprinted with explicit permission of the author, who released the tutorial text and source codes under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution</a>  (CC BY 4.0) in response to the permission request to reproduce it inside the <a href="https://github.com/tajmone/purebasic-archives">PureBASIC Archives</a>.</p>
 </div>
 <div class="paragraph">
-<p><strong>CHANGES</strong>: The tutorial was ported from HTML to AsciiDoc by Tristano Ajmone, who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm">French tutorial</a> as a reference) — and made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).</p>
+<p><strong>CHANGES</strong>: The tutorial was ported from HTML to AsciiDoc by <a href="https://github.com/tajmone">Tristano Ajmone</a>, who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm">French tutorial</a> as a reference) — and made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).</p>
+</div>
+<div class="paragraph">
+<p>First republished: 2016/11/18 — by <a href="https://github.com/tajmone">@tajmone</a>.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="why-oop-in-purebasic"><a class="anchor" href="#why-oop-in-purebasic"></a>1. Why OOP in PureBasic?</h2>
+<h2 id="why-oop-in-purebasic"><a class="anchor" href="#why-oop-in-purebasic"></a>Why OOP in PureBasic?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Since many object-oriented languages already exist, trying to achive OOP in PureBasic — which is a procedural language — might come as a surprise.</p>
@@ -539,14 +541,14 @@ That is to say: object-oriented languages introduce richer semantics; but compil
 </div>
 </div>
 <div class="sect1">
-<h2 id="object-concepts"><a class="anchor" href="#object-concepts"></a>2. Object Concepts</h2>
+<h2 id="object-concepts"><a class="anchor" href="#object-concepts"></a>Object Concepts</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Object-Oriented Programming paradigm introduces concepts like: objects,  inheritance and polymorphism.
 Before jumping into how these concepts can be implemented in PureBasic, we must first define them.</p>
 </div>
 <div class="sect2">
-<h3 id="the-notion-of-object"><a class="anchor" href="#the-notion-of-object"></a>2.1. The Notion of Object</h3>
+<h3 id="the-notion-of-object"><a class="anchor" href="#the-notion-of-object"></a>The Notion of Object</h3>
 <div class="paragraph">
 <p>An object has an internal state:</p>
 </div>
@@ -594,7 +596,7 @@ Before jumping into how these concepts can be implemented in PureBasic, we must 
 </div>
 </div>
 <div class="sect2">
-<h3 id="the-notion-of-class"><a class="anchor" href="#the-notion-of-class"></a>2.2. The Notion of Class</h3>
+<h3 id="the-notion-of-class"><a class="anchor" href="#the-notion-of-class"></a>The Notion of Class</h3>
 <div class="paragraph">
 <p>This is an extension of the concept of «<strong>type</strong>» found in PureBasic.</p>
 </div>
@@ -610,7 +612,7 @@ They can therefore be grouped together in the same «<strong>Class</strong>».</
 </div>
 </div>
 <div class="sect2">
-<h3 id="the-notion-of-instance"><a class="anchor" href="#the-notion-of-instance"></a>2.3. The Notion of Instance</h3>
+<h3 id="the-notion-of-instance"><a class="anchor" href="#the-notion-of-instance"></a>The Notion of Instance</h3>
 <div class="paragraph">
 <p>An instance is an object defined from a Class.</p>
 </div>
@@ -625,7 +627,7 @@ They can therefore be grouped together in the same «<strong>Class</strong>».</
 </div>
 </div>
 <div class="sect2">
-<h3 id="encapsulation"><a class="anchor" href="#encapsulation"></a>2.4. Encapsulation</h3>
+<h3 id="encapsulation"><a class="anchor" href="#encapsulation"></a>Encapsulation</h3>
 <div class="paragraph">
 <p>In theory, the manipulation of an object’s attributes should be possible only through its methods. This technique, which allows making visible to the user only a part of the object, is called «<strong>encapsulation</strong>».</p>
 </div>
@@ -637,7 +639,7 @@ They can therefore be grouped together in the same «<strong>Class</strong>».</
 </div>
 </div>
 <div class="sect2">
-<h3 id="inheritance"><a class="anchor" href="#inheritance"></a>2.5. Inheritance</h3>
+<h3 id="inheritance"><a class="anchor" href="#inheritance"></a>Inheritance</h3>
 <div class="paragraph">
 <p>Inheritance allows defining new Classes by using already existing ones.</p>
 </div>
@@ -676,7 +678,7 @@ Thus, this papers deals only with simple inheritance.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="overloading"><a class="anchor" href="#overloading"></a>2.6. Overloading</h3>
+<h3 id="overloading"><a class="anchor" href="#overloading"></a>Overloading</h3>
 <div class="paragraph">
 <p>A method is overloaded if it carries out different actions according to the nature of the target objects.</p>
 </div>
@@ -704,7 +706,7 @@ From the developer’s point of view, the methods implementations needs to be di
 </div>
 </div>
 <div class="sect2">
-<h3 id="the-notion-of-abstract-class"><a class="anchor" href="#the-notion-of-abstract-class"></a>2.7. The Notion of Abstract Class</h3>
+<h3 id="the-notion-of-abstract-class"><a class="anchor" href="#the-notion-of-abstract-class"></a>The Notion of Abstract Class</h3>
 <div class="paragraph">
 <p>As we’ve seen, a Class includes the definition of both attributes and methods of an object.
 Let us suppose that we can’t provide the implementation of one of the Class methods. This method is just a name without code. We’re then speaking of an «<strong>abstract method</strong>».
@@ -720,7 +722,7 @@ A Class containing at least one abstract method qualifies as an «<strong>abstra
 </div>
 </div>
 <div class="sect1">
-<h2 id="first-implementation"><a class="anchor" href="#first-implementation"></a>3. First Implementation</h2>
+<h2 id="first-implementation"><a class="anchor" href="#first-implementation"></a>First Implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In this section, I shall demonstrate how the aforementioned object concepts can be implemented in PureBasic.
@@ -730,7 +732,7 @@ This implementation doesn’t refer to what is programmed in object-oriented lan
 <p>I’ll be presenting here one of these implementations, with all its pros and cons.</p>
 </div>
 <div class="sect2">
-<h3 id="concrete-class-and-abstract-class"><a class="anchor" href="#concrete-class-and-abstract-class"></a>3.1. Concrete Class and Abstract Class</h3>
+<h3 id="concrete-class-and-abstract-class"><a class="anchor" href="#concrete-class-and-abstract-class"></a>Concrete Class and Abstract Class</h3>
 <div class="paragraph">
 <p>As seen, a Class defines the contents of an object:</p>
 </div>
@@ -796,7 +798,7 @@ Functions referenced in this manner can be invoked by using <code>CallFunctionFa
 </div>
 </div>
 <div class="sect2">
-<h3 id="instanciation"><a class="anchor" href="#instanciation"></a>3.2. Instanciation</h3>
+<h3 id="instanciation"><a class="anchor" href="#instanciation"></a>Instanciation</h3>
 <div class="paragraph">
 <p>Now, to create an object called <code>Rect1</code> from the <code>Rectangle</code> Class, write:</p>
 </div>
@@ -827,7 +829,7 @@ Rect1\y2 = 20</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encapsulation-2"><a class="anchor" href="#encapsulation-2"></a>3.3. Encapsulation</h3>
+<h3 id="encapsulation-2"><a class="anchor" href="#encapsulation-2"></a>Encapsulation</h3>
 <div class="paragraph">
 <p>In this implementation, encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.</p>
 </div>
@@ -838,7 +840,7 @@ Although significant, this feature is not essential in implementing OOP.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="inheritance-2"><a class="anchor" href="#inheritance-2"></a>3.4. Inheritance</h3>
+<h3 id="inheritance-2"><a class="anchor" href="#inheritance-2"></a>Inheritance</h3>
 <div class="paragraph">
 <p>Now I want to create a new Class with the capability to Erase rectangles from the screen.
 I can implement this new <code>Rectangle2</code> Class by using the existing <code>Rectangle</code> Class and by providing it with a new method called <code>Erase()</code>.</p>
@@ -895,7 +897,7 @@ Rect2\y2 = 20</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="overloading-2"><a class="anchor" href="#overloading-2"></a>3.5. Overloading</h3>
+<h3 id="overloading-2"><a class="anchor" href="#overloading-2"></a>Overloading</h3>
 <div class="paragraph">
 <p>During initialization of an object, its function pointers are initialized by assigning to them the addresses of the methods suiting the object.</p>
 </div>
@@ -959,7 +961,7 @@ To know this, it is necessary to go back to the object initialization.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>3.6. Conclusion:</h3>
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion:</h3>
 <div class="paragraph">
 <p>In this first implementation, we produced an object capable of meeting the main object-oriented concepts, albeit with certain limitations.</p>
 </div>
@@ -970,7 +972,7 @@ To know this, it is necessary to go back to the object initialization.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="interface-instruction"><a class="anchor" href="#interface-instruction"></a>4. Interface instruction</h2>
+<h2 id="interface-instruction"><a class="anchor" href="#interface-instruction"></a>Interface instruction</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="title">Syntax</div>
@@ -1017,7 +1019,7 @@ By writing <code>Object\Procedure1(10, 20)</code>, the <code>Procedure1()</code>
 This notation is typical of the Object-oriented Programming paradigm.</p>
 </div>
 <div class="sect3">
-<h4 id="initialization"><a class="anchor" href="#initialization"></a>4.1. Initialization</h4>
+<h4 id="initialization"><a class="anchor" href="#initialization"></a>Initialization</h4>
 <div class="paragraph">
 <p>Any typed variable declaration is normally followed by initialization. The same applies when declaring an element whose type is an <code>Interface</code>.</p>
 </div>
@@ -1154,14 +1156,14 @@ It is only under these conditions that the element will be properly initialized.
 </div>
 </div>
 <div class="sect1">
-<h2 id="second-implementation"><a class="anchor" href="#second-implementation"></a>5. Second Implementation</h2>
+<h2 id="second-implementation"><a class="anchor" href="#second-implementation"></a>Second Implementation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In our first implementation, object concepts were adapted in a more or less extended way.
 Now, it’s time to improve this first implementation thanks to the use of the <code>Interface</code> instruction.</p>
 </div>
 <div class="sect2">
-<h3 id="notion-of-object-interface"><a class="anchor" href="#notion-of-object-interface"></a>5.1. Notion of Object Interface</h3>
+<h3 id="notion-of-object-interface"><a class="anchor" href="#notion-of-object-interface"></a>Notion of Object Interface</h3>
 <div class="paragraph">
 <p>The main purpose of encapsulation is to make visible, to the user, only part of an object contents.
 The visible part of an object’s contents is called its <strong>interface</strong>, the hidden part is called it <strong>implementation</strong>.</p>
@@ -1177,7 +1179,7 @@ The visible part of an object’s contents is called its <strong>interface</stro
 </div>
 </div>
 <div class="sect2">
-<h3 id="object-instanciation-and-object-constructor"><a class="anchor" href="#object-instanciation-and-object-constructor"></a>5.2. Object Instanciation and Object Constructor</h3>
+<h3 id="object-instanciation-and-object-constructor"><a class="anchor" href="#object-instanciation-and-object-constructor"></a>Object Instanciation and Object Constructor</h3>
 <div class="paragraph">
 <p>Implementing an Interface involves three steps:</p>
 </div>
@@ -1353,7 +1355,7 @@ This case applyes here: the paramters required by <code>New_Rect()</code> are th
 </div>
 </div>
 <div class="sect2">
-<h3 id="object-initialization"><a class="anchor" href="#object-initialization"></a>5.3. Object Initialization</h3>
+<h3 id="object-initialization"><a class="anchor" href="#object-initialization"></a>Object Initialization</h3>
 <div class="paragraph">
 <p>We’ve seen that after allocating the required memory area for an object, the Constructor initializes the various members of the object (methods and attributes).
 This operation can be isolated in a specific procedure, called by the Constructor.
@@ -1395,7 +1397,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="object-destructor"><a class="anchor" href="#object-destructor"></a>5.4. Object Destructor</h3>
+<h3 id="object-destructor"><a class="anchor" href="#object-destructor"></a>Object Destructor</h3>
 <div class="paragraph">
 <p>An object <strong>Constructor</strong> is always associated with its counterpart: the object <strong>Destructor</strong>.
 During construction of an object, a memory area is allocated to store its method and attribute definitions.
@@ -1500,7 +1502,7 @@ Rect2\Draw()</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="memory-allocations"><a class="anchor" href="#memory-allocations"></a>5.5. Memory Allocations</h3>
+<h3 id="memory-allocations"><a class="anchor" href="#memory-allocations"></a>Memory Allocations</h3>
 <div class="paragraph">
 <p>At every new instanciation, the Constructor has to dynamically allocate a memory area the size of the information describing the object.
 For this purpose, the Constructor should use the <code>AllocateMemory()</code> command; and the Destructor should use its associated counterpart, the <code>FreeMemory()</code> command.</p>
@@ -1514,7 +1516,7 @@ Under Windows OS, for example, the Windows API could be employed directly.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encapsulation-3"><a class="anchor" href="#encapsulation-3"></a>5.6. Encapsulation</h3>
+<h3 id="encapsulation-3"><a class="anchor" href="#encapsulation-3"></a>Encapsulation</h3>
 <div class="paragraph">
 <p>Suppose now that we wanted to restrict the user’s access to just the <code>Draw()</code> method of the Class <code>Rectangle</code>. We shall begin by defining the desired interface:</p>
 </div>
@@ -1653,7 +1655,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="inheritance-3"><a class="anchor" href="#inheritance-3"></a>5.7. Inheritance</h3>
+<h3 id="inheritance-3"><a class="anchor" href="#inheritance-3"></a>Inheritance</h3>
 <div class="paragraph">
 <p>For our first implementation of the inheritance concept, let’s takes advantage of the fact that the <code>Structure</code> and <code>Interface</code> instructions can be extended thanks to the <code>Extends</code> keyword.</p>
 </div>
@@ -1982,7 +1984,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="get-and-set-object-methods"><a class="anchor" href="#get-and-set-object-methods"></a>5.8. Get() and Set() Object Methods</h3>
+<h3 id="get-and-set-object-methods"><a class="anchor" href="#get-and-set-object-methods"></a>Get() and Set() Object Methods</h3>
 <div class="paragraph">
 <p>Through an <code>Interface</code>, it’s only possible to access an object’s methods.
 The interface encapsulates completely the object’s attributes.
@@ -2031,7 +2033,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="synthesis-and-notation"><a class="anchor" href="#synthesis-and-notation"></a>6. Synthesis and notation</h2>
+<h2 id="synthesis-and-notation"><a class="anchor" href="#synthesis-and-notation"></a>Synthesis and notation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Before presenting the final Class implementation, I’m going to spend some time summarizing in a formal notation the work made so far. Implementation of an object involved the following elements:</p>
@@ -2142,7 +2144,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="first-code-example"><a class="anchor" href="#first-code-example"></a>6.1. First Code-Example</h3>
+<h3 id="first-code-example"><a class="anchor" href="#first-code-example"></a>First Code-Example</h3>
 <div class="paragraph">
 <p>Here is an example file of inheritance in action:</p>
 </div>
@@ -2157,7 +2159,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="pb-class"><a class="anchor" href="#pb-class"></a>7. PB Class</h2>
+<h2 id="pb-class"><a class="anchor" href="#pb-class"></a>PB Class</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Now that we’ve explored OOP concepts and their possible implementations in PureBasic, it’s time to establish an implementation.</p>
@@ -2175,7 +2177,7 @@ Greatly facilitated by the <code>Interface</code> and <code>Macro</code> command
 <p>At first, I’ll present the instructions for a Class in PureBasic. Then I’ll analyze what hides behind by firing parallels with the previous pages. This chapter ends with a discussion about the choices made.</p>
 </div>
 <div class="sect2">
-<h3 id="purebasic-class"><a class="anchor" href="#purebasic-class"></a>7.1. PureBasic Class</h3>
+<h3 id="purebasic-class"><a class="anchor" href="#purebasic-class"></a>PureBasic Class</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Object class
@@ -2235,7 +2237,7 @@ EndFree</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="second-code-example"><a class="anchor" href="#second-code-example"></a>7.2. Second Code-Example</h3>
+<h3 id="second-code-example"><a class="anchor" href="#second-code-example"></a>Second Code-Example</h3>
 <div class="paragraph">
 <p>Here is a header file cotaining the definition of this set of commands, along with a usage-example file (based on the <a href="#first-code-example">previous inheritance example</a>, so that you might compare them):</p>
 </div>
@@ -2268,7 +2270,7 @@ EndFree</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="class-endclass"><a class="anchor" href="#class-endclass"></a>7.3. Class : EndClass</h3>
+<h3 id="class-endclass"><a class="anchor" href="#class-endclass"></a>Class : EndClass</h3>
 <div class="paragraph">
 <p>The <code>Class : EndClass</code> block allows declaring three types of constituent:</p>
 </div>
@@ -2314,7 +2316,7 @@ Also, the name of a class is always a parameter of the keyword, and must be encl
 <p>The explanation for this is to be found in the definition of each keyword. Here is the code:</p>
 </div>
 <div class="sect3">
-<h4 id="class-keyword"><a class="anchor" href="#class-keyword"></a>7.3.1. Class keyword</h4>
+<h4 id="class-keyword"><a class="anchor" href="#class-keyword"></a>Class keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Class(ClassName)
@@ -2328,7 +2330,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="methods-keyword"><a class="anchor" href="#methods-keyword"></a>7.3.2. Methods keyword</h4>
+<h4 id="methods-keyword"><a class="anchor" href="#methods-keyword"></a>Methods keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Methods(ClassName)
@@ -2343,7 +2345,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="members-keyword"><a class="anchor" href="#members-keyword"></a>7.3.3. Members keyword</h4>
+<h4 id="members-keyword"><a class="anchor" href="#members-keyword"></a>Members keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Members(ClassName)
@@ -2373,7 +2375,7 @@ Then follows another pointer, which will contain the address of the object itsel
 </div>
 </div>
 <div class="sect3">
-<h4 id="endclass-keyword"><a class="anchor" href="#endclass-keyword"></a>7.3.4. EndClass keyword</h4>
+<h4 id="endclass-keyword"><a class="anchor" href="#endclass-keyword"></a>EndClass keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndClass(ClassName)
@@ -2411,7 +2413,7 @@ EndMacro</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>This design puts into practice the optimizations for <code>Get()</code> and <code>Set()</code> methods presented in the <a href="#optimisation-get-and-set-methods">Appendix</a>. The benefit of this choice is twofold:</p>
+<p>This design puts into practice the optimizations for <code>Get()</code> and <code>Set()</code> methods presented in the <a href="#Optimisation: Get() and Set() methods">Appendix</a>. The benefit of this choice is twofold:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2485,7 +2487,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>7.4. Method : EndMethod</h3>
+<h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>Method : EndMethod</h3>
 <div class="paragraph">
 <p>The <code>Method : EndMethod</code> block allows to achieve implementation of the various methods of an object.</p>
 </div>
@@ -2519,7 +2521,7 @@ EndMethod(&lt;ClassName&gt;, Method1)</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="method-keyword"><a class="anchor" href="#method-keyword"></a>7.4.1. Method keyword</h4>
+<h4 id="method-keyword"><a class="anchor" href="#method-keyword"></a>Method keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Method(ClassName, Mthd)
@@ -2536,7 +2538,7 @@ It’s the user’s responsibility to close this parenthesis, as shown in the sy
 </div>
 </div>
 <div class="sect3">
-<h4 id="endmethod-keyword"><a class="anchor" href="#endmethod-keyword"></a>7.4.2. EndMethod keyword</h4>
+<h4 id="endmethod-keyword"><a class="anchor" href="#endmethod-keyword"></a>EndMethod keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndMethod(ClassName, Mthd)
@@ -2553,7 +2555,7 @@ Once defined, the method can be referenced in the <code>method table</code> (dec
 </div>
 </div>
 <div class="sect2">
-<h3 id="object-constructor"><a class="anchor" href="#object-constructor"></a>7.5. Object Constructor</h3>
+<h3 id="object-constructor"><a class="anchor" href="#object-constructor"></a>Object Constructor</h3>
 <div class="paragraph">
 <p>The <code>New : EndNew</code> block allows to instanciate a new object of the Class by declaring and initializing it.</p>
 </div>
@@ -2569,7 +2571,7 @@ EndNew</code></pre>
 <p>The <code>New</code> keyword takes the class name as parameter.</p>
 </div>
 <div class="sect3">
-<h4 id="new-keyword"><a class="anchor" href="#new-keyword"></a>7.5.1. New keyword</h4>
+<h4 id="new-keyword"><a class="anchor" href="#new-keyword"></a>New keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro New(ClassName)
@@ -2640,7 +2642,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="endnew-keyword"><a class="anchor" href="#endnew-keyword"></a>7.5.2. EndNew keyword</h4>
+<h4 id="endnew-keyword"><a class="anchor" href="#endnew-keyword"></a>EndNew keyword</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndNew
@@ -2719,7 +2721,7 @@ This bivalence — which didn’t exist in the previous implementation — leads
 </div>
 </div>
 <div class="sect3">
-<h4 id="init_mbers-endinit_mbers-private-block"><a class="anchor" href="#init_mbers-endinit_mbers-private-block"></a>7.5.3. Init_Mbers : EndInit_Mbers private block</h4>
+<h4 id="init_mbers-endinit_mbers-private-block"><a class="anchor" href="#init_mbers-endinit_mbers-private-block"></a>Init_Mbers : EndInit_Mbers private block</h4>
 <div class="paragraph">
 <p>The <code>Init_Mbers: EndInit_Mbers</code> is a private block of the OOP implementation, used by the <code>New : EndNew</code> block to initialize an object’s attributes. Explaining this internal block is important for understanding how initialization of an object will be carried out.</p>
 </div>
@@ -2797,7 +2799,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="object-destructor-2"><a class="anchor" href="#object-destructor-2"></a>7.6. Object destructor</h3>
+<h3 id="object-destructor-2"><a class="anchor" href="#object-destructor-2"></a>Object destructor</h3>
 <div class="paragraph">
 <p>The <code>Free: EndFree</code> block allows to destroy an object of the Class and to restore its memory.</p>
 </div>
@@ -2873,7 +2875,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="inheritance-4"><a class="anchor" href="#inheritance-4"></a>7.7. Inheritance</h3>
+<h3 id="inheritance-4"><a class="anchor" href="#inheritance-4"></a>Inheritance</h3>
 <div class="paragraph">
 <p>In the set of commands just exposed, nothing makes reference to the process of inheritance. It is normal, because the current commands do not support it! (<em>Damn</em>! <em>What an anguish</em>!)! We need to introduce an additional set of commands to deal with the concept (<em>Arghhh</em>! <em>Mega-anguish</em>!).</p>
 </div>
@@ -2935,7 +2937,7 @@ EndFree</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="discussion"><a class="anchor" href="#discussion"></a>7.8. Discussion</h3>
+<h3 id="discussion"><a class="anchor" href="#discussion"></a>Discussion</h3>
 <div class="paragraph">
 <p>Phew! The presentation of a PureBasic Class is finished.</p>
 </div>
@@ -3005,7 +3007,7 @@ If this is going to be repeated with each new object, it is strongly recommended
 </div>
 </div>
 <div class="sect2">
-<h3 id="reminder-of-types"><a class="anchor" href="#reminder-of-types"></a>7.9. Reminder of Types</h3>
+<h3 id="reminder-of-types"><a class="anchor" href="#reminder-of-types"></a>Reminder of Types</h3>
 <div class="paragraph">
 <p>Here is a list of the types used by a Class:</p>
 </div>
@@ -3070,17 +3072,17 @@ If this is going to be repeated with each new object, it is strongly recommended
 </div>
 </div>
 <div class="sect1">
-<h2 id="conclusion-2"><a class="anchor" href="#conclusion-2"></a>8. Conclusion</h2>
+<h2 id="conclusion-2"><a class="anchor" href="#conclusion-2"></a>Conclusion</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You will have understood that, if it is possible to adopt a Object-Oriented Programming in PureBasic, a rigor of writing is required.
-But once this task released, the object manipulation is excessively simple.</p>
+<p>You should have understood that, while it is indeed possible to implement Object-Oriented Programming in PureBasic, it require some rigor in coding.
+But once this task is dealt with, manipulation of objects becomes extremely simple.</p>
 </div>
 <div class="paragraph">
-<p>Now if the Objects languages bring a bigger flexibility in writing codes (according to a direct object concepts using), its organization is articulated on using a lot of methods which leads to some performance loses.</p>
+<p>However, while OO-Programming introduces greater flexibility in coding (through the application of object concepts), its structural organization uses lots of methods, which leads to bigger executables and some performance losses.</p>
 </div>
 <div class="paragraph">
-<p>Nevertheless, I hope that this tutorial will have allowed you, at first, to realize the underlying mechanisms in the OOP and to understand the concepts.</p>
+<p>Nevertheless, I hope that this tutorial has at least allowed you to grasp the underlying mechanisms of the OOP paradigm, and to understand its concepts.</p>
 </div>
 </div>
 </div>
@@ -3088,22 +3090,23 @@ But once this task released, the object manipulation is excessively simple.</p>
 <h2 id="optimisations"><a class="anchor" href="#optimisations"></a>Appendix A: Optimisations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The paragraphs which follow deal with considerations on our Object-oriented approach to improve the program runtime the performances of .</p>
+<p>This section offers some considerations on how to improve runtime performance of our Object-oriented approach.</p>
 </div>
 <div class="sect2">
-<h3 id="optimisation-get-and-set-methods"><a class="anchor" href="#optimisation-get-and-set-methods"></a>A.1. Optimisation: Get() and Set() methods</h3>
+<h3 id="optimisation-get-and-set-methods"><a class="anchor" href="#optimisation-get-and-set-methods"></a>Optimisation: Get() and Set() Methods</h3>
 <div class="paragraph">
-<p>By making frequent calls to Get() and Set() methods, it means many function calls and a loss of performance.
-For those who are in search of performance, there are two possibilities to accelerate the process:</p>
+<p>Making frequent calls to <code>Get()</code> and <code>Set()</code> methods means lots of function calls, and therefore a loss in performance.</p>
 </div>
 <div class="paragraph">
-<p>Both consist in coupling a pointer to the object, the second solution brings a layer to the first one.</p>
+<p>For those seeking performance, there are two possible ways to speedup the process: both consist in coupling a pointer to the object, but the second solution adds a layer to the first one.</p>
 </div>
 <div class="sect3">
-<h4 id="first-solution"><a class="anchor" href="#first-solution"></a>A.1.1. First solution:</h4>
+<h4 id="first-solution"><a class="anchor" href="#first-solution"></a>First Solution:</h4>
 <div class="paragraph">
-<p>The pointer is specified by the Class Structure.
-So, for an object Rect from the Rectangle1 Class, write:</p>
+<p>The pointer is specified by the Class’ Structure.</p>
+</div>
+<div class="paragraph">
+<p>So, for an object <code>Rect</code> of the <code>Rectangle1</code> Class, write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3112,7 +3115,7 @@ So, for an object Rect from the Rectangle1 Class, write:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To act on var2 attribute write:</p>
+<p>To act on the <code>var2</code> attribute write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3120,15 +3123,17 @@ So, for an object Rect from the Rectangle1 Class, write:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It is then possible both to examine and to modify it.
-This is the more simple solution to implement.</p>
+<p>It is then possible to both examine and modify it.</p>
+</div>
+<div class="paragraph">
+<p>This is the simpler solution to implement.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="second-solution"><a class="anchor" href="#second-solution"></a>A.1.2. Second solution:</h4>
+<h4 id="second-solution"><a class="anchor" href="#second-solution"></a>Second solution:</h4>
 <div class="paragraph">
-<p>The first solution asks to work with two different typed elements: Rect and *Rect.
-This second solution, suggests grouping these two elements in a StructureUnion block.</p>
+<p>The first solution requires that we work with two differently typed elements: <code>Rect</code> and <code>*Rect</code>.
+This second solution suggests grouping these two elements in a <code>StructureUnion</code> block.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3141,8 +3146,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Creating an object from Class Rectangle1, means declaring the object thanks to this new Structure.
-By adapting the constructor, like this:</p>
+<p>Creating an object of <code>Rectangle1</code> Class means declaring the object through this new Structure, by adapting its constructor like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3163,7 +3167,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To access to the Draw() method, write:</p>
+<p>To access to the <code>Draw()</code> method, write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3171,7 +3175,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To access to the var2 attribute, write:</p>
+<p>To access to the <code>var2</code> attribute, write:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3179,11 +3183,11 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This second solution has the advantage to have only a single element that can be deal as an object from which all the attributes are accessible from outside of the class.
-It preserves also object-oriented notation, although it presents a supplementary level of fields.</p>
+<p>The advantage of this second solution is that there is just a single element that can be dealt with, like an object whose attributes are all accessible from outside of the class.
+It also preserves object-oriented notation, although it introduces an extra level in its fields.</p>
 </div>
 <div class="paragraph">
-<p>The inconvenience concerns essentially the fact that it is necessary to maintain a new structure within the Class.</p>
+<p>The inconvenience lies in the fact that it introduces the necessity of maintaining a new structure within the Class.</p>
 </div>
 </div>
 </div>
@@ -3192,8 +3196,8 @@ It preserves also object-oriented notation, although it presents a supplementary
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.8<br>
-Last updated 2016-11-18 16:16:46 E
+Version 1.0<br>
+Last updated 2016-11-18 19:37:43 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

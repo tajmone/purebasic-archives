@@ -1,61 +1,23 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v0.8, November 18, 2016: Reprint WIP: polishing English.
+v1.0, November 18, 2016: Reprinted and revised edition.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
-:description:
 :doctype: article
 :encoding: utf-8
 :lang: en
 :toc: left
-:numbered:
+:sectnums!:
 :highlightjsdir: ../hjs
 :idprefix:
 :idseparator: -
-:version-label: Draft
 :icons: font
 
 ////
 ==============================================================================
-                               CHAPTERS STATUS                                
+                                    TODOs                                     
 ==============================================================================
---READY-- 1. Why OOP in PureBasic?
---READY-- 2. Object Concepts
---READY-- 3. Concepts Implementation
---READY-- 4. First Implementation
---READY-- 5. Interface instruction
---READY-- 6. Second Implementation
---READY-- 7. Synthesis and notation
---READY-- 8. PB Class
---------- 9. Conclusion
---------- A. Optimisations
-==============================================================================
-                                     DONE
-==============================================================================
--- All web pages imported
--- basic cleanup
--- Change 'mother' class to 'parent' in text and code
-
-==============================================================================
-                                     TODO
-==============================================================================
--- Polish EN
--- Clean PB Code
--- Capitalize according to "Chicago Manual of Style"
-   http://capitalizemytitle.com/
--- Implment consistent notation for «"XX : EndXX" block» statements:
-   -- `XX : EndXX` block        <= (thus found in PB Help)
--- "OOP-Inheritance-Ex2.pb" : Create the output of this source with all macros
-   expanded (and include file included). This might help analysis of how the
-   macros act on the code.
-==============================================================================
-                                BEFORE RELEASE                                
-==============================================================================
--- REMOVE NUMBERING: change ':numbered:' to ':sectnums!:'
--- SET VER TO 1.0
--- CORRECT DATE
--- RESET ':version-label:'
--- CLEANUP -- EOL spaces, triple \r\n, ecc.
-
+Add some HTML related attributes (description, keywords, ecc) -- eg:
+:description:
 ////
 
 .About This Tutorial
@@ -64,10 +26,10 @@ v0.8, November 18, 2016: Reprint WIP: polishing English.
 
 **LICENSE**: It was reprinted with explicit permission of the author, who released the tutorial text and source codes under https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution]  (CC BY 4.0) in response to the permission request to reproduce it inside the https://github.com/tajmone/purebasic-archives[PureBASIC Archives].
 
-**CHANGES**: The tutorial was ported from HTML to AsciiDoc by Tristano Ajmone, who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm[French tutorial] as a reference) — and made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).
+**CHANGES**: The tutorial was ported from HTML to AsciiDoc by https://github.com/tajmone[Tristano Ajmone], who also polsihed the English text — introducing slight adjustments in line with the tutorial aims (using the original http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm[French tutorial] as a reference) — and made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).
+
+First republished: 2016/11/18 — by https://github.com/tajmone[@tajmone].
 ****
-
-
 
 // Website Page 1
 
@@ -84,8 +46,6 @@ Nevertheless, besides the possibility of programming in PureBasic according to t
 
 This paper presents a programming technique that allows large projects to benefit from object oriented design. It is not intended as a course on OOP, and it assumes that the reader has good knowledge of PureBasic language.
 
-
-
 // Website Page 2
 
 == Object Concepts
@@ -94,7 +54,6 @@ The Object-Oriented Programming paradigm introduces concepts like: objects,  inh
 Before jumping into how these concepts can be implemented in PureBasic, we must first define them.
 
 === The Notion of Object
-
 
 An object has an internal state:
 
@@ -203,8 +162,6 @@ You might wonder why an abstract class should exist at all, since objects of suc
 
 Thus, abstract Classes are a kind of interface, because they describe the generic specification of all the Classes which inherit from them.
 
-
-
 // Website Page 3
 
 == First Implementation
@@ -213,7 +170,6 @@ Thus, abstract Classes are a kind of interface, because they describe the generi
 
 In this section, I shall demonstrate how the aforementioned object concepts can be implemented in PureBasic.
 This implementation doesn’t refer to what is programmed in object-oriented languages. Furthermore, this implementations is meant be improved upon, or adapted according to needs.
-
 
 ////
 ORIGINAL TEXT:
@@ -239,7 +195,7 @@ For example, if I want to represent Rectangle objects and display them on screen
 
 The `Rectangle` Class could have the following construction:
 
-// Example N. 4.1-1 
+// Example N. 4.1-1
 [source,purebasic]
 ---------------------------------------------------------------------
 Structure Rectangle
@@ -305,7 +261,6 @@ CallFunctionFast(Rect1\Draw, @Rect1)
 
 In this implementation, encapsulation doesn’t exist, simply because there is no way to hide the attributes or the methods of such an object.
 
-// TODO: MISSING LINK
 By writing ``Rect1\x1``, the user can access the `x1` attribute of the object. This is the way we used to initialize the object.
 The next implementation (<<Second Implementation>> section) will show how to fix this.
 Although significant, this feature is not essential in implementing OOP.
@@ -415,9 +370,7 @@ One limitation: the use of the `CallFunctionFast()` instruction implies paying a
 
 In this first implementation, we produced an object capable of meeting the main object-oriented concepts, albeit with certain limitations.
 
-
 We mainly just lay the foundations upon which we shall implement a more complete object — thanks to PureBasic’s `Interface` statement!
-
 
 // Website Page 4
 
@@ -554,8 +507,6 @@ And its benefits are:
 * an object-oriented notation
 * an easy way to rename procedures
 
-
-
 // Website Page 5
 
 == Second Implementation
@@ -571,13 +522,6 @@ The visible part of an object’s contents is called its **interface**, the hidd
 Therefore, an object’s interface is the only input/output access available to the user for interacting with it.
 
 This is the aim that we are going to achieve through the use of the `Interface` instruction.
-
-////
-ORIGINAL TEXT:
-It is the responsibility that I'm going to give in our use of the Interface instruction.
-
-C’est le rôle que l’on va donner dans notre utilisation de l’instruction Interface.
-////
 
 The `Interface` instruction allows to group, under the same name, all or part of an object’s methods which the user will have the right to access.
 
@@ -785,7 +729,6 @@ The Destructor could be seen as a method of the object. But to avoid weighing do
 To delete an object by its Destructor means releasing the memory area containing its information (the methods it uses, and the state of itsattributes) but not deleting the object’s infrastructure.
 So, in our example, after doing a:
 
-// CODE CHECKED!
 [source,purebasic]
 ---------------------------------------------------------------------
 Free_Rect(Rect2)
@@ -793,7 +736,6 @@ Free_Rect(Rect2)
 
 `Rect2` can be reused without specify its type again:
 
-// CODE CHECKED!
 [source,purebasic]
 ---------------------------------------------------------------------
 Rect2 = New_Rect(0, 10, 0, 20)
@@ -802,7 +744,6 @@ Rect2\Draw()
 
 Indeed, after we instantiate an object with:
 
-// CODE CHECKED!
 [source,purebasic]
 ---------------------------------------------------------------------
 Rect2.Rectangle
@@ -1046,7 +987,7 @@ Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
 EndProcedure
 ---------------------------------------------------------------------
 
-Carrying out an inheritance doesn’t consist only in extending the object’s `Interface` and Class ``Structure``, but also in adapting the initialization of its methods and attributes. 
+Carrying out an inheritance doesn’t consist only in extending the object’s `Interface` and Class ``Structure``, but also in adapting the initialization of its methods and attributes.
 The `Init_Mthds_Rect2()` and `Init_Mbers_Rect2()` procedures call, respectively, the initialization of Class ``Rectangle1``’s  methods (``Init_Mthds_Rect1()``) and attributes (``Init_Mbers_Rect1()``), rather than the `New_Rect1()` Constructor.
 This because the Child Class object (``Rectangle2``) doesn’t need to instantiate its Parent Class object (``Rectangle1``), but just to inherit its methods and attributes.
 
@@ -1514,7 +1455,6 @@ Macro Methods(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-
 The keyword `Methods` starts by closing the interface’s definition with ``EndInterface``. Then it opens the definition of the `Structure` which defines the pointers to the methods.
 
 ==== Members keyword
@@ -1541,7 +1481,6 @@ It begins by closing the `Structure` definition previously opened by ``Methods``
 Finally `Members` ends by opening the `Structure` declaration which defines the object’s members. In first position — as expected — we find the pointer to the *method table* (i.e.: to the variable just mentioned above). Its assignment will be done later, by the Constructor.
 Then follows another pointer, which will contain the address of the object itself. I shall explain later the reasons for this new member (<<admonition-on-object-being-a-pointer,no, now!>>).
 
-
 // TODO: SENTENCE BELOW NEEDS CHECKING
 
 After the `Members` keyword, the user has only to declare the other members of the object.
@@ -1552,7 +1491,6 @@ It remains for the user simply to declare the other members of the object next M
 
 Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction Members.
 ////
-
 
 ==== EndClass keyword
 
@@ -1742,7 +1680,6 @@ New keyword is dense but doesn’t change really compare to previous design.
 
 L’instruction New est dense mais ne change pas vraiment par rapport à la structuration vue auparavant.
 ////
-
 
 The goal of this keyword is to create a new object and initialize it. These tasks are performed in the `New_ClassName` procedure, which is the main part of the `New` macro.
 
@@ -2018,7 +1955,7 @@ We can envisage to split the process in two steps: step one, the user create an 
 
     *   The risk of an incorrect initialization of the object: one can forget to do it, but — more important — it’s no longer possible to automate the inheritance process: it’s up to the user to manage it!
     *   Strong class-interdependence of input parameters: as soon as the initialization method’s parameters of a parent class change, the user has to carry out this changes across all its children classes.
-    
+
 +
 In extreme — but it’s not advisable — we can imagine the user initializing all members, one after the other, by using mutators (setters).
 But members’ initialization doesn’t always boil down to mere assignment operations: it may involve more complex internal operations to reach its goal.
@@ -2049,38 +1986,33 @@ The `Mbrs_<ClassName>_` type wasn’t presented in this paper. It is an intermed
 
 // Website Page 8
 
-
-
-
-// ============== REVISED UP TO THIS POINT! ==============
-
 == Conclusion
 
-You will have understood that, if it is possible to adopt a Object-Oriented Programming in PureBasic, a rigor of writing is required.
-But once this task released, the object manipulation is excessively simple.
+You should have understood that, while it is indeed possible to implement Object-Oriented Programming in PureBasic, it require some rigor in coding.
+But once this task is dealt with, manipulation of objects becomes extremely simple.
 
-Now if the Objects languages bring a bigger flexibility in writing codes (according to a direct object concepts using), its organization is articulated on using a lot of methods which leads to some performance loses.
+However, while OO-Programming introduces greater flexibility in coding (through the application of object concepts), its structural organization uses lots of methods, which leads to bigger executables and some performance losses.
 
-Nevertheless, I hope that this tutorial will have allowed you, at first, to realize the underlying mechanisms in the OOP and to understand the concepts.
+Nevertheless, I hope that this tutorial has at least allowed you to grasp the underlying mechanisms of the OOP paradigm, and to understand its concepts.
 
 // Website Page 9
 
 [appendix]
 == Optimisations
 
-The paragraphs which follow deal with considerations on our Object-oriented approach to improve the program runtime the performances of .
+This section offers some considerations on how to improve runtime performance of our Object-oriented approach.
 
-=== Optimisation: Get() and Set() methods
+=== Optimisation: Get() and Set() Methods
 
-By making frequent calls to Get() and Set() methods, it means many function calls and a loss of performance.
-For those who are in search of performance, there are two possibilities to accelerate the process:
+Making frequent calls to `Get()` and `Set()` methods means lots of function calls, and therefore a loss in performance.
 
-Both consist in coupling a pointer to the object, the second solution brings a layer to the first one.
+For those seeking performance, there are two possible ways to speedup the process: both consist in coupling a pointer to the object, but the second solution adds a layer to the first one.
 
-==== First solution:
+==== First Solution:
 
-The pointer is specified by the Class Structure.
-So, for an object Rect from the Rectangle1 Class, write:
+The pointer is specified by the Class’ Structure.
+
+So, for an object `Rect` of the `Rectangle1` Class, write:
 
 // A.1.1-1
 [source,purebasic]
@@ -2089,7 +2021,7 @@ Rect.Rect = New_Rect()
 *Rect.Rectangle1 = Rect
 ---------------------------------------------------------------------
 
-To act on var2 attribute write:
+To act on the `var2` attribute write:
 
 // A.1.1-2
 [source,purebasic]
@@ -2097,13 +2029,14 @@ To act on var2 attribute write:
 *Rect\var2
 ---------------------------------------------------------------------
 
-It is then possible both to examine and to modify it.
-This is the more simple solution to implement.
+It is then possible to both examine and modify it.
+
+This is the simpler solution to implement.
 
 ==== Second solution:
 
-The first solution asks to work with two different typed elements: Rect and *Rect.
-This second solution, suggests grouping these two elements in a StructureUnion block.
+The first solution requires that we work with two differently typed elements: `Rect` and ``*Rect``.
+This second solution suggests grouping these two elements in a `StructureUnion` block.
 
 // A.1.2-1
 [source,purebasic]
@@ -2116,8 +2049,7 @@ Structure Rect_
 EndStructure
 ---------------------------------------------------------------------
 
-Creating an object from Class Rectangle1, means declaring the object thanks to this new Structure.
-By adapting the constructor, like this:
+Creating an object of `Rectangle1` Class means declaring the object through this new Structure, by adapting its constructor like this:
 
 // A.1.2-2
 [source,purebasic]
@@ -2138,7 +2070,7 @@ Procedure New_Rect(*Instance.Rect_)
 EndProcedure
 ---------------------------------------------------------------------
 
-To access to the Draw() method, write:
+To access to the `Draw()` method, write:
 
 // A.1.2-4
 [source,purebasic]
@@ -2146,7 +2078,7 @@ To access to the Draw() method, write:
 Rect\Mthd\Draw()
 ---------------------------------------------------------------------
 
-To access to the var2 attribute, write:
+To access to the `var2` attribute, write:
 
 // A.1.2-5
 [source,purebasic]
@@ -2154,8 +2086,8 @@ To access to the var2 attribute, write:
 Rect\Mbers\var2
 ---------------------------------------------------------------------
 
-This second solution has the advantage to have only a single element that can be deal as an object from which all the attributes are accessible from outside of the class.
-It preserves also object-oriented notation, although it presents a supplementary level of fields.
+The advantage of this second solution is that there is just a single element that can be dealt with, like an object whose attributes are all accessible from outside of the class.
+It also preserves object-oriented notation, although it introduces an extra level in its fields.
 
-The inconvenience concerns essentially the fact that it is necessary to maintain a new structure within the Class.
+The inconvenience lies in the fact that it introduces the necessity of maintaining a new structure within the Class.
 
