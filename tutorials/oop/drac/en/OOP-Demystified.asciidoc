@@ -22,7 +22,7 @@ Add some HTML related attributes (description, keywords, ecc) -- eg:
 
 .About This Tutorial
 ****
-**CREDITS**: This is a reprint of «Dräc»’s multi-paart tutorial __PureBasic and the Object-Oriented Programming__, also knwon as __the OOP demystified__, published in 2005  on http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm[drac.site.chez-alice.fr].
+**CREDITS**: This is a reprint of «Dräc»’s multi-part tutorial __PureBasic and the Object-Oriented Programming__, also knwon as __the OOP demystified__, published in 2005  on http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm[drac.site.chez-alice.fr].
 
 **LICENSE**: It was reprinted with explicit permission of the author, who released the tutorial text and source codes under https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution]  (CC BY 4.0) in response to the permission request to reproduce it inside the https://github.com/tajmone/purebasic-archives[PureBASIC Archives].
 
