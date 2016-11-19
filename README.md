@@ -5,6 +5,7 @@ A collection of PureBASIC resources.
 
 <!-- #toc -->
 -   [Introduction](#introduction)
+-   [Quick Links](#quick-links)
 -   [Resources Organization](#resources-organization)
 -   [Developement Branches](#developement-branches)
 -   [License](#license)
@@ -16,6 +17,7 @@ A collection of PureBASIC resources.
     -   [FOSS Collections](#foss-collections)
     -   [Non-FOSS Collections](#non-foss-collections)
     -   [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
+-   [Acknowledgements](#acknowledgements)
 -   [Repo History](#repo-history)
 
 <!-- /toc -->
@@ -25,6 +27,12 @@ Introduction
 -   <https://github.com/tajmone/purebasic-archives>
 
 This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) as a centralized place for gathering and sharing PureBASIC-realted resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
+
+Quick Links
+===========
+
+-   Dräc’s «[*PureBasic and Object-Oriented Programming*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc)» tutorial (English version).
+-   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
 Resources Organization
 ======================
@@ -129,12 +137,18 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 
 > Design and compilation of the PureBasic CodeArchive is (c) 2003-2007 by Andre Beer and exclusive component of the www.PureArea.net PureBasic support site. You may use the codes published on this site without restrictions for your own projects, however a publication of this code archive on other web pages, CDRom etc., require the express consent of the author. The copyright of the individual codes lies at the respective authors.
 
+Acknowledgements
+================
+
+-   Jordan Klassen «[@forivall](https://github.com/forivall)» — for releasing [gh-pandoc.css](https://gist.github.com/forivall/7d5a304a8c3c809f0ba96884a7cf9d7e) under MIT when asked reuse permission.
+-   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
+
 Repo History
 ============
 
 A record of the milestones of this repository history (reversed order).
 
--   `2016/11/18` — Republished Dräc’s tutorial *PureBasic and Object-Oriented Programming* (English version).
+-   `2016/11/18` — Republished Dräc’s tutorial [*PureBasic and OOP*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc) (English version).
 -   `2016/10/31` — Added [*Programming 2D Scrolling Games*](./books/2d-games/) PDF book and code examples.
 -   `2016/10/27` — **Highlight**: this repo becomes the home of the PureBASIC language definition and color theme files for [**Highlight** syntax highlighter](./syntax-highlighting/highlight/).
 -   `2016/10/26` — repository creation date.
