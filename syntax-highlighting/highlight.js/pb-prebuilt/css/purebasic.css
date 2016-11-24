@@ -1,0 +1,97 @@
+/*
+
+******************************************************************************
+*                                                                            *
+*                      HLJS PureBASIC native IDE style                       *
+*                                                                            *
+******************************************************************************
+
+version 1.0 - April 2016
+
+This CSS is meant for concatenation with other HJS languages, so that its style
+will only apply to "purebasic" code. It differs from the "purebasic.css" file
+found inside HJS (PureBASIC branch).
+
+by Tristano Ajmone <tajmone@gmail.com>
+
+Public Domain
+
+	This CSS file diverge from the official one contained in highlight.js package.
+	This file as been optimized to highilight PureBASIC syntax ONLY!!
+	It also include the "function_call" class, to catch Procedure calls — as is customary
+	with PureBASIC IDE syntax coloring — which didn't make it into the official package.
+
+NOTE_1:	PureBASIC code syntax highlighting only applies the following classes:
+			.hljs-comment
+			.hljs-function
+			.hljs-keywords
+			.hljs-string
+			.hljs-symbol
+			.hljs-type
+
+
+NOTE_2:	Color names provided in comments were derived using "Name that Color" online tool:
+			http://chir.ag/projects/name-that-color	
+*/
+
+/*	==============================================================================
+	                              HLJS COMMON RULES                               
+	==============================================================================
+*/
+
+.hljs { /* Common set of rules required by highlight.js (don'r remove!) */
+	display: block;
+	overflow-x: auto;
+	padding: 0.5em;
+}
+
+/*	==============================================================================
+	                               PUREBASIC STYLE                                
+	==============================================================================
+	CSS rules specific to PureBASIC code
+*/
+/* --- Code-Block Border (common to all) --- */
+.purebasic .hljs {
+	background: #FFFFDF; /* Half and Half (approx.) */
+	border: 1px solid #BEBAB0;
+	font-family: Consolas;
+}
+
+.purebasic .hljs, /* --- used for PureBASIC base color --- */
+.purebasic .hljs-type,  /* --- used for PureBASIC Procedures return type --- */
+.purebasic .hljs-function { /* --- used for wrapping PureBASIC Procedures definitions --- */
+	color: #000000; /* Black */
+}
+
+.purebasic .hljs-comment { /* --- used for PureBASIC Comments --- */
+
+	color: #00AAAA; /* Persian Green (approx.) */
+}
+
+.purebasic .hljs-function_call { /* --- used for PureBASIC Procedures Names --- */
+	color: #006666; /* Blue Stone (approx.) */
+}
+
+.purebasic .hljs-keyword { /* --- used for PureBASIC Keywords --- */
+	color: #006666; /* Blue Stone (approx.) */
+	font-weight: bold;
+}
+
+.purebasic .hljs-string { /* --- used for PureBASIC Strings --- */
+	color: #0080FF; /* Azure Radiance (approx.) */
+}
+
+.purebasic .hljs-symbol { /* --- used for PureBASIC Constants --- */
+	color: #924B72; /* Cannon Pink (approx.) */
+}
+
+/*	==============================================================================
+	                             PUREBASIC PSEUDOCODE                             
+	==============================================================================
+	Used to distinguish PB code from PB-Syntax examples: Grey BG color.
+	Use with language definition = "purebasic pseudocode"
+ */
+
+.purebasic.pseudocode .hljs {
+	background: #F7F7F8; /* Grey BG color */
+}

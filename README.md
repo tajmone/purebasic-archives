@@ -148,6 +148,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/11/24` — [**Highlight.js**](./syntax-highlighting/highlight.js/): pre-built HLJS packages («PureBASIC enhanced/modded releases») are now available in this repo, along with themes, instructions, and examples.
 -   `2016/11/18` — Republished Dräc’s tutorial [*PureBasic and OOP*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc) (English version).
 -   `2016/10/31` — Added [*Programming 2D Scrolling Games*](./books/2d-games/) PDF book and code examples.
 -   `2016/10/27` — **Highlight**: this repo becomes the home of the PureBASIC language definition and color theme files for [**Highlight** syntax highlighter](./syntax-highlighting/highlight/).

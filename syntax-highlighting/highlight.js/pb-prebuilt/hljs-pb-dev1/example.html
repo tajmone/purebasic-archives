@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Tristano Ajmone (@tajmone)">
+  <meta name="dcterms.date" content="2016-11-23">
+  <meta name="keywords" content="PureBasic, highlight.js, syntax highlighting, javascript">
+  <title>HLJS v9.8.0 :: PB-DEV1</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="highlight.css">
+  <link rel="stylesheet" href="../resources/gh-pandoc.min.css">
+  <script src="highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">HLJS v9.8.0 :: PB-DEV1</h1>
+<p class="subtitle">Pre-Built HLJS-Package Demo</p>
+<p class="author">Author: Tristano Ajmone (<a href="https://github.com/tajmone" target="_blank"><span class="citation" data-cites="tajmone">@tajmone</span></a>)</p>
+<p class="date">Date: November 23, 2016</p>
+</header>
+<nav id="TOC">
+<p class="toctitle">Contents</p>
+<ul>
+<li><a href="#highlight.js-examples">Highlight.js Examples</a><ul>
+<li><a href="#using-hljs">Using HLJS</a></li>
+<li><a href="#disable-highlighting-nohighlight">Disable Highlighting (<code>nohighlight</code>)</a></li>
+</ul></li>
+<li><a href="#purebasic">PureBASIC</a><ul>
+<li><a href="#purebasic-pseudocode">PureBASIC Pseudocode</a></li>
+</ul></li>
+<li><a href="#bash">Bash</a></li>
+<li><a href="#dos-.bat">DOS .bat</a></li>
+<li><a href="#ini">Ini</a></li>
+<li><a href="#powershell">PowerShell</a></li>
+</ul>
+</nav>
+<h1 id="highlight.js-examples">Highlight.js Examples</h1>
+<p>This page is an example (and test) page for the generated HLJS package.</p>
+<p>Highlight.js Version: 9.8.0 “New York”, «<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">PureBASIC Modded Fork</a>».</p>
+<h2 id="using-hljs">Using HLJS</h2>
+<p>HLJS is capable of auto-detecting languages withing the <code>&lt;pre&gt;&lt;code&gt;</code> blocks, but it’s advaisable to manually define the language – especially for readability of source code.</p>
+<p>To define the language in html, assign the language name to the <code>class</code> attribute of the opening <code>&lt;code&gt;</code> tag of the <code>&lt;pre&gt;&lt;code&gt;</code> block that wraps your source code:</p>
+<pre class="nohighlight"><code>&lt;pre&gt;&lt;code class=&quot;languagename&quot;&gt;
+[...your source code...]
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<p>To define the language in markdown, type the language name after the opening backticks of the fenced code block that wraps your source code:</p>
+<pre class="nohighlight"><code>```languagename
+[...your source code...]
+```</code></pre>
+<h2 id="disable-highlighting-nohighlight">Disable Highlighting (<code>nohighlight</code>)</h2>
+<p>If you want to ensure that <code>&lt;pre&gt;&lt;code&gt;</code> block is not parsed by HLJS, use “nohighlight” instead of the language name.</p>
+<p>A code block set to “nohighlight” will look something like this:</p>
+<pre class="nohighlight"><code>I am a code block with no highlighting.
+Highlight.js will ignore me: no parsing, no highlighting tags added.</code></pre>
+<p>NOTE: The above block styling doesn’t derive by the HLJS generated stylesheet: it relies instead on the CSS definitions of the current document’s stylesheet, which defines a background color, padding, and some extra attributes.</p>
+<p>It will be up to you to handle its appearance by adding some definitions in you CSS file:</p>
+<pre class="nohighlight"><code>pre.nohighlight code {
+  [...your CSS...]
+}</code></pre>
+<h1 id="purebasic">PureBASIC</h1>
+<pre class="purebasic"><code>Enumeration Test 3 Step 10
+  #Constant_One ; Will be 3
+  #Constant_Two ; Will be 13
+EndEnumeration
+
+A.i = #Constant_One
+B = A + 3
+
+STRING.s = SomeProcedure(&quot;Hello World&quot;, 2, #Empty$, #Null$)
+ESCAPED_STRING$ = ~&quot;An escaped (\\) string!\nNewline...&quot;
+
+FixedString.s{5} = &quot;12345&quot;
+
+Macro XCase(Type, Text)
+  Type#Case(Text)
+EndMacro
+
+StrangeProcedureCall (&quot;This command is split &quot; +
+                      &quot;over two lines&quot;) ; Line continuation example
+
+If B &gt; 3 : X$ = &quot;Concatenation of commands&quot; : Else : X$ = &quot;Using colons&quot; : EndIf
+
+Declare.s Attach(String1$, String2$)
+
+Procedure.s Attach(String1$, String2$)
+  ProcedureReturn String1$+&quot; &quot;+String2$
+EndProcedure</code></pre>
+<h2 id="purebasic-pseudocode">PureBASIC Pseudocode</h2>
+<p>PureBASIC Pseudocode is used for syntax-usage examples.</p>
+<pre class="purebasic pseudocode"><code>Interface &lt;Name1&gt; [Extends &lt;Name2&gt;]
+  [Procedure1]
+  [Procedure2]
+  ...
+EndInterface</code></pre>
+<p>To enable PB Pseudocode in html, add “pseudocode” after “purebasic” (separated by a space) in the <code>class</code> attribute of the <code>&lt;code&gt;</code> tag:</p>
+<pre class="nohighlight"><code>&lt;pre class=&quot;purebasic pseudocode&quot;&gt;&lt;code&gt;</code></pre>
+<p>In Pandoc’s markdown, you’ll have to use this syntax (which might not work with other markdown parsers):</p>
+<p><code class="purebasic pseudocode">{.nohighlight}</code> ```</p>
+<p>For other markdown flavors/parsers, check the relevant documentation. Basically, want you want to achieve is to have both “purebasic” and “pseudocode” to appear as classnames in the final html’s <code>&lt;code&gt;</code> tag.</p>
+<h1 id="bash">Bash</h1>
+<blockquote>
+<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
+</blockquote>
+<pre class="bash"><code>#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS=&quot;/root/.hag_accepted.conf&quot;
+BE_VERBOSE=false
+
+if [ &quot;$UID&quot; -ne 0 ]
+then
+ echo &quot;Superuser rights required&quot;
+ exit 2
+fi
+
+genApacheConf(){
+ echo -e &quot;# Host ${HOME_DIR}$1/$2 :&quot;
+}</code></pre>
+<h1 id="dos-.bat">DOS .bat</h1>
+<blockquote>
+<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
+</blockquote>
+<pre class="dos"><code>cd \
+copy a b
+ping 192.168.0.1
+@rem ping 192.168.0.1
+net stop sharedaccess
+del %tmp% /f /s /q
+del %temp% /f /s /q
+ipconfig /flushdns
+taskkill /F /IM JAVA.EXE /T
+
+cd Photoshop/Adobe Photoshop CS3/AMT/
+if exist application.sif (
+    ren application.sif _application.sif
+) else (
+    ren _application.sif application.sif
+)
+
+taskkill /F /IM proquota.exe /T
+
+sfc /SCANNOW
+
+set path = test
+
+xcopy %1\*.* %2</code></pre>
+<h1 id="ini">Ini</h1>
+<blockquote>
+<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
+</blockquote>
+<pre class="ini"><code>; boilerplate
+[package]
+name = &quot;some_name&quot;
+authors = [&quot;Author&quot;]
+description = &quot;This is \
+a description&quot;
+
+[[lib]]
+name = ${NAME}
+default = True
+auto = no
+counter = 1_000</code></pre>
+<h1 id="powershell">PowerShell</h1>
+<blockquote>
+<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
+</blockquote>
+<pre class="powershell"><code>$initialDate = [datetime]&#39;2013/1/8&#39;
+
+$rollingDate = $initialDate
+
+do {
+    $client = New-Object System.Net.WebClient
+    $results = $client.DownloadString(&quot;http://not.a.real.url&quot;)
+    Write-Host &quot;$rollingDate.ToShortDateString() - $results&quot;
+    $rollingDate = $rollingDate.AddDays(21)
+    $username = [System.Environment]::UserName
+} until ($rollingDate -ge [datetime]&#39;2013/12/31&#39;)</code></pre>
+</body>
+</html>

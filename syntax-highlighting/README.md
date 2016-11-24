@@ -3,25 +3,39 @@ PureBASIC Syntax Highlighting
 
 When it comes to publishing code, PureBASIC language is still unsupported in most syntax highlighting tools. I’ve created PB syntax files for highlight.js and highlight, and working toward the creation of syntax files for Pygments and Kate.
 
+------------------------------------------------------------------------
+
 <!-- #toc -->
 -   [In This Repo](#in-this-repo)
+    -   [Highlight.js](#highlightjs)
     -   [Highlight](#highlight)
 -   [Available Highlighters](#available-highlighters)
     -   [Backend HTML Highlighters](#backend-html-highlighters)
         -   [GeSHi — Generic Syntax Highlighter](#geshi--generic-syntax-highlighter)
     -   [In-Browser Highlighters](#in-browser-highlighters)
-        -   [highlight.js](#highlightjs)
 -   [Needed Highlighters](#needed-highlighters)
     -   [Pygments](#pygments)
 
 <!-- /toc -->
+
+------------------------------------------------------------------------
+
 In This Repo
 ============
+
+Highlight.js
+------------
+
+-   [`/highlight.js/`](./highlight.js/)
+
+Highlight.js is a JavaScript syntax highlighter that works in the browser or on the server. It allows syntax highlighting source code — including PureBASIC — in HTML based documents, and it’s used in websites, offline documentation, and ebooks.
+
+Here you’ll find prebuilt packages, with customized themes, built with PureBASIC developement in mind. The packages are ready for use: no need to install Node.js or go through the building process.
 
 Highlight
 ---------
 
--   [/highlight/](./highlight/)
+-   [`/highlight/`](./highlight/)
 
 This repo hosts the project page of the PureBASIC language definition and color theme for [**Highlight**](http://www.andre-simon.de/doku/highlight/en/highlight.php) syntax highligther (PB lang definition file and theme are now bundled in Highlight since v3.33).
 
@@ -47,19 +61,6 @@ In-Browser Highlighters
 -----------------------
 
 JavaScript tools capable of syntax highlighting code directly into the webpage.
-
-### highlight.js
-
-The author of this project has created the PureBASIC syntax files for the in-browser syntax highlighter highlight.js:
-
--   https://highlightjs.org
--   https://github.com/tajmone/highlight.js
-
-There is also an unofficial “PureBASIC enhanced release”, which emulates 100% the PureBASIC native IDE syntax coloring — maintained on a separate fork because it doesn’t comply to the highlight.js guidelines:
-
--   https://github.com/tajmone/highlight.js/tree/PureBASIC
-
-This repo will soon host pre-built versions of highlight.js “PureBASIC enhanced releases”, with different combinations of language syntaxes, to cover common usage, along with instructions and examples.
 
 Needed Highlighters
 ===================
