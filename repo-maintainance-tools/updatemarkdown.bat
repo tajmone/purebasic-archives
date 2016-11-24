@@ -25,12 +25,13 @@ ECHO:
 ECHO ==============================================================================
 ECHO                    MARKDOWN CLEANER AND AUTO-TOC GENERATOR
 ECHO:
-ECHO ----------------------------{ v1.3 - 2016/11/24 }-----------------------------
+ECHO ----------------------------{ v1.4 - 2016/11/24 }-----------------------------
 ECHO:
 ECHO                               by Tristano Ajmone
 ECHO ==============================================================================
-SET _RECURSIVE=
+SET _CURR_DIR=%CD%
 SET _TAG=
+SET _RECURSIVE=
 SET _EXITCODE=0
 :: if no paramter found...
 IF "%~1"=="" GOTO:PRINT_HELP
@@ -49,7 +50,16 @@ IF NOT "%~1" == "" (
         ECHO ERROR -- File not found: "%~1"
         SET _EXITCODE=1
         ) ELSE (
-        IF "%_TAG%"=="" (
+        CD %1 >nul 2>&1
+		IF NOT ERRORLEVEL 1 (
+			ECHO ERROR -- Parameter is a directory: "%~1"
+			SET _EXITCODE=1
+			SHIFT
+			CD %_CURR_DIR%
+			ECHO ==============================================================================
+			GOTO :NEXT_PARAM
+		)
+		IF "%_TAG%"=="" (
             CALL :CLEAN_FILE "%~1"
         ) ELSE (
             CALL :TAG_FILE "%~1"
@@ -200,13 +210,16 @@ ECHO ---------------------------------------------------------------------------
 ::                            WRAP-UP AND EXIT SCRIPT
 :: ==============================================================================
 :WRAPUP_AND_EXIT
-SET _RECURSIVE=
+SET _CURR_DIR=
 SET _TAG=
+SET _RECURSIVE=
 EXIT /B %_EXITCODE%
 
 :: ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 ::                                  Rev.History
 :: ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+:: v1.4 - 2016/11/24
+::      - BUGFIX: Now checks if paramter is a folder. If is: throw error and skip.
 :: v1.3 - 2016/11/24
 ::      - Added multiple taaget files support.
 ::      - Added "-a" and "-ar" options (process all *md files + recursively)
