@@ -1,6 +1,6 @@
 = PureBasic et la Programmation Orientée Objet
 Dräc
-v0.1, November 25, 2016: WIP Porting from HTML.
+v0.2, November 25, 2016: WIP Porting from HTML.
 :title: PureBasic et la Programmation Orientée Objet — ou «la POO démystifiée»
 :doctype: article
 :encoding: utf-8
@@ -21,7 +21,7 @@ v0.1, November 25, 2016: WIP Porting from HTML.
     -- use of space (or "thin space") before double pointed marks (?!:; %)
        and between a word and its surrounding quotes.
     -- Should I use “…” or «…» ?
-    -- How to render "thin space" in AsciiDoc?
+    -- How to render "thin space" (&#8201;) in AsciiDoc?
 ////
 
 .About This Tutorial
@@ -50,7 +50,6 @@ Néanmoins, la mise en œuvre de la méthode objet en PureBasic offre, outre la 
 
 Cet article présente une technique de programmation permettant à des projets PureBasic d’envergure de bénéficer d’une conception orienté objet. Il est entendu qu’il ne s’agit pas ici d’un cours des techniques POO et que le lecteur possède une bonne connaissance du langage PureBasic.
 
-// ============== REVISED UP TO THIS POINT! ==============
 
 // Website Page 2
 
@@ -155,6 +154,225 @@ Nous avons vu qu’une Classe regroupe la définition des attributs d’un objet
 Supposons que l’on ne puisse pas donner l’implémentation d’une des méthodes de la Classe. La méthode n’est qu’un nom sans code. On parle alors de méthode abstraite.
 Une Classe comportant au moins une méthode abstraite est qualifiée de Classe abstraite.
 
-On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_ConceptObjet.htm#Classe[Classes d’objets] qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.
+On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des <<La notion de Classe,Classes d’objets>> qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.
 
 Les Classes abstraites ont donc un rôle d’interface, car qu’elles décrivent la spécification générique de toutes les Classes qui en hérite.
+
+// Website Page 3
+
+// ============== REVISED UP TO THIS POINT! ==============
+
+== Première Implémentation
+
+Dans ce qui va suivre, nous allons voir comment les concepts objets qui viennent d’être abordés peuvent être implémentés en PureBasic.
+En aucun cas cela fait référence à ce qui est programmé dans les langages objets. De plus, le propre de l’implémentation c’est de pouvoir être amélioré ou de s’adapter au besoin.
+Nous proposons donc ici une de ces d’implémentations avec ses avantages et ses limites.
+
+=== Classe concrète et Classe abstraite
+
+Comme nous l’avons vu, la Classe définie ce que contient un objet:
+
+*   ses attributs (type de chaque variable)
+*   ses méthodes (noms, implémentation)
+
+Si, par exemple, on veut représenter des objets Rectangle et les afficher à l’écran, on définira donc une Classe `Rectangle` possédant une méthode ``Dessiner()``.
+
+La Classe `Rectangle` pourrait avoir la construction suivante:
+
+// CODE CHECKED!
+
+// Example N. 3.1-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle
+  *Dessiner
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Dessiner_Rectangle(*this.Rectangle)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+où ``x1``, ``x2``, `y1` et `y2` sont quatre attributs (les coordonnées des points diamétralement opposés du rectangle) et `*Dessiner` est un pointeur faisant référence à la fonction de dessin qui affiche les Rectangles.
+`*Dessiner` est ici un pointeur de fonction utilisé pour contenir l’adresse de la fonction désirée : ``@Dessiner_Rectangle()``.
+Il suffit d’utiliser `CallFunctionFast()` pour lancer l’exécution de la fonction ainsi référencée.
+
+Nous voyons donc que l’instruction Structure est tout à fait adaptée à la notion de Classe:
+* Nous y trouvons la définition des attributs d’un objet : ici ``x1``, ``x2``, `y1` et `y2` sont de type entier Long.
+* Nous y trouvons la définition des méthodes : ici `Dessiner()` grâce à un pointeur de fonction.
+
+Si la Classe ainsi définie est suivit de l’implémentation des méthodes (dans notre exemple il s’agit de la déclaration du bloc Procedire/EndProcedure de ``Dessiner_Rectangle()``), la Classe sera une Classe concrète.
+Dans le cas contraire elle sera abstraite.
+
+[IMPORTANT]
+====
+On appelle toujours ``*this``, le pointeur vers l’objet auquel on applique la méthode. Cette notation est appliquée dans notre exemple avec la méthode ``Dessiner_Rectangle()``.
+====
+
+=== Instanciation
+
+Si l’on désire créer maintenant un objet Rect1 issu de la classe ``Rectangle``, cela revient à écrire :
+
+// CODE CHECKED!
+
+// Example N. 3.2-1
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1.Rectangle
+---------------------------------------------------------------------
+
+Pour l’initialiser, il suffit d’écrire :
+
+// CODE CHECKED!
+
+// Example N. 3.2-2
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1\Dessiner = @Dessiner_Rectangle()
+Rect1\x1 = 0
+Rect1\x2 = 10
+Rect1\y1 = 0
+Rect1\y2 = 20
+---------------------------------------------------------------------
+
+Par la suite, pour dessiner l’objet ``Rect1``, on écrira:
+
+// CODE CHECKED!
+
+// Example N. 3.2-3
+[source,purebasic]
+---------------------------------------------------------------------
+CallFunctionFast(Rect1\Dessiner, @Rect1)
+---------------------------------------------------------------------
+
+=== Encapsulation
+
+Dans cette implémentation, l’encapsulation n’existe pas, tout simplement car il n’y a pas moyen de cacher les attributs ou les méthodes d’un tel objet.
+
+En effet, il suffit d’écrire `Rect1\x1` pour accéder à l’attribut `x1` de l’objet. C’est d’ailleurs ce moyen que nous avons utilisé pour initialiser l’objet.
+Nous verrons dans la deuxième implémentation, comment cela peut changer.
+Cependant, cette notion, bien qu’important, n’est pas la plus essentielle pour faire de la POO.
+
+=== Héritage
+
+Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet Rectangle capable en plus de s’effacer de l’écran.
+On peut se servir de la Classe existante Rectangle et y adjoindre la nouvelle méthode `Effacer()` pour créer la nouvelle Classe ``Rectangle2``.
+
+Une Classe étant une ``Structure``, nous allons profiter de la propriété qu’a une structure d’être étendue. Ainsi, la nouvelle Classe `Rectangle2` peut s’écrire :
+
+// CODE CHECKED!
+
+// Example N. 3.4-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rectangle2 Extends Rectangle
+  *Effacer
+EndStructure
+
+Procedure Effacer_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+La Classe Rectangle2 possède donc bien les membres de la Classe `Rectangle` et une nouvelle méthode ``Effacer()``.
+En effet, l’instanciation d’un objet de cette Classe donne :
+
+// CODE CHECKED!
+
+// Example N. 3.4-2
+[source,purebasic]
+---------------------------------------------------------------------
+Rect2.Rectangle2
+
+Rect2\Dessiner = @Dessiner_Rectangle()
+Rect2\Effacer = @Effacer_Rectangle()
+Rect2\x1 = 0
+Rect2\x2 = 10
+Rect2\y1 = 0
+Rect2\y2 = 20
+---------------------------------------------------------------------
+
+Pour utiliser les méthodes Dessiner() et Effacer() de Rect2, on procèdera de la même manière que précédemment.
+
+Nous pouvons donc dire que Rectangle2 a hérité des propriétés de la Classe Rectangle.
+
+[NOTE]
+====
+L’héritage est une forme de polymorphisme. L’objet `Rect2` peut etre vu comme un Objet de la Classe ``Rectangle``, il suffit de ne pas se servir de la méthode ``Effacer()``. Par héritage, l’objet revête donc plusieurs formes : celles des objets issus des différentes Classes Mères. On parle alors de polymorphisme d’héritage.
+====
+
+=== Surcharge
+
+Lors de l’initialisation d’un objet, on initialise les pointeurs de fonction en leur affectant l’adresse de la méthode qui convient à l’objet.
+
+Ainsi, pour un objet Rect de Classe ``Rectangle``, en écrivant:
+
+// CODE CHECKED!
+
+// Example N. 3.5-1
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1\Dessiner = @Dessiner_Rectangle()
+---------------------------------------------------------------------
+
+on peut utiliser la méthode Dessiner() comme suite:
+
+// CODE CHECKED!
+
+// Example N. 3.5-2
+[source,purebasic]
+---------------------------------------------------------------------
+CallFunctionFast(Rect1\Dessiner, @Rect1)
+---------------------------------------------------------------------
+
+Maintenant, imaginons qu’il soit possible d’implémenter une autre méthode pour l’affichage d’un rectangle (utilisant un algorithme distinct de celui de la premiere méthode).
+
+Appelons la ``Dessiner_Rectangle2()``:
+
+// CODE CHECKED!
+
+// Example N. 3.5-3
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure Dessiner_Rectangle2(*this.Rectangle)
+  ; [ ...some code... ]
+EndProcedure
+---------------------------------------------------------------------
+
+Il est tout à fait possible d’initialiser notre objet Rect1 avec cette nouvelle méthode sans grande peine:
+
+// CODE CHECKED!
+
+// Example N. 3.5-4
+[source,purebasic]
+---------------------------------------------------------------------
+Rect1\Dessiner = @Dessiner_Rectangle2()
+---------------------------------------------------------------------
+
+Si l’on veut utiliser la méthode on écrira à nouveau:
+
+// CODE CHECKED!
+
+// Example N. 3.5-5
+[source,purebasic]
+---------------------------------------------------------------------
+CallFunctionFast(Rect1\Dessiner, @Rect1)
+---------------------------------------------------------------------
+
+Nous constatons bien que dans un cas (méthode ``Dessiner_Rectangle()``) comme dans l’autre (méthode ``Dessiner_Rectangle2()``) l’utilisation de la méthode de l’objet `Rect1` est strictement identique.
+Il ne nous est pas possible en effet par la seule ligne "``CallFunctionFast(Rect1\Dessiner, @Rect1)``"  de distinguer la méthode `Dessiner()` que l’objet `Rect1` utilise.
+Pour y arriver, il faut remonter jusqu’à l’initialisation de l’objet.
+
+La notion de pointeur de fonction permet donc la surcharge de la méthode `Dessiner()` de la Classe ``Rectangle``.
+
+Il y a tout de même une limitation dans cette surcharge. L’utilisation de l’instruction `CallFunctionFast()` implique de faire attention au nombre de paramètres.
+
+=== Conclusion :
+
+Dans cette première implémentation, nous disposons d’un objet capable de répondre aux principaux concepts orientés objet avec certaines limitations.
+Nous venons surtout de poser les bases qui vont nous servir à réaliser un objet plus complet, ceci grâce à l’instruction `Interface` de PureBasic.
+

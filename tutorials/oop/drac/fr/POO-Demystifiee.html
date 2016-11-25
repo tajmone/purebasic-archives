@@ -443,6 +443,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#notion-de-classe-abstraite">2.7. Notion de Classe abstraite</a></li>
 </ul>
 </li>
+<li><a href="#premi-re-impl-mentation">3. Première Implémentation</a>
+<ul class="sectlevel2">
+<li><a href="#classe-concr-te-et-classe-abstraite">3.1. Classe concrète et Classe abstraite</a></li>
+<li><a href="#instanciation">3.2. Instanciation</a></li>
+<li><a href="#encapsulation">3.3. Encapsulation</a></li>
+<li><a href="#h-ritage">3.4. Héritage</a></li>
+<li><a href="#surcharge">3.5. Surcharge</a></li>
+<li><a href="#conclusion">3.6. Conclusion :</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -671,10 +681,253 @@ Supposons que l’on ne puisse pas donner l’implémentation d’une des métho
 Une Classe comportant au moins une méthode abstraite est qualifiée de Classe abstraite.</p>
 </div>
 <div class="paragraph">
-<p>On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_ConceptObjet.htm#Classe">Classes d’objets</a> qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.</p>
+<p>On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des <a href="#la-notion-de-classe">Classes d’objets</a> qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.</p>
 </div>
 <div class="paragraph">
 <p>Les Classes abstraites ont donc un rôle d’interface, car qu’elles décrivent la spécification générique de toutes les Classes qui en hérite.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="premi-re-impl-mentation"><a class="anchor" href="#premi-re-impl-mentation"></a>3. Première Implémentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dans ce qui va suivre, nous allons voir comment les concepts objets qui viennent d’être abordés peuvent être implémentés en PureBasic.
+En aucun cas cela fait référence à ce qui est programmé dans les langages objets. De plus, le propre de l’implémentation c’est de pouvoir être amélioré ou de s’adapter au besoin.
+Nous proposons donc ici une de ces d’implémentations avec ses avantages et ses limites.</p>
+</div>
+<div class="sect2">
+<h3 id="classe-concr-te-et-classe-abstraite"><a class="anchor" href="#classe-concr-te-et-classe-abstraite"></a>3.1. Classe concrète et Classe abstraite</h3>
+<div class="paragraph">
+<p>Comme nous l’avons vu, la Classe définie ce que contient un objet:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ses attributs (type de chaque variable)</p>
+</li>
+<li>
+<p>ses méthodes (noms, implémentation)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Si, par exemple, on veut représenter des objets Rectangle et les afficher à l’écran, on définira donc une Classe <code>Rectangle</code> possédant une méthode <code>Dessiner()</code>.</p>
+</div>
+<div class="paragraph">
+<p>La Classe <code>Rectangle</code> pourrait avoir la construction suivante:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle
+  *Dessiner
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Dessiner_Rectangle(*this.Rectangle)
+  ; [ ...some code... ]
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où <code>x1</code>, <code>x2</code>, <code>y1</code> et <code>y2</code> sont quatre attributs (les coordonnées des points diamétralement opposés du rectangle) et <code>*Dessiner</code> est un pointeur faisant référence à la fonction de dessin qui affiche les Rectangles.
+<code>*Dessiner</code> est ici un pointeur de fonction utilisé pour contenir l’adresse de la fonction désirée : <code>@Dessiner_Rectangle()</code>.
+Il suffit d’utiliser <code>CallFunctionFast()</code> pour lancer l’exécution de la fonction ainsi référencée.</p>
+</div>
+<div class="paragraph">
+<p>Nous voyons donc que l’instruction Structure est tout à fait adaptée à la notion de Classe:
+* Nous y trouvons la définition des attributs d’un objet : ici <code>x1</code>, <code>x2</code>, <code>y1</code> et <code>y2</code> sont de type entier Long.
+* Nous y trouvons la définition des méthodes : ici <code>Dessiner()</code> grâce à un pointeur de fonction.</p>
+</div>
+<div class="paragraph">
+<p>Si la Classe ainsi définie est suivit de l’implémentation des méthodes (dans notre exemple il s’agit de la déclaration du bloc Procedire/EndProcedure de <code>Dessiner_Rectangle()</code>), la Classe sera une Classe concrète.
+Dans le cas contraire elle sera abstraite.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On appelle toujours <code>*this</code>, le pointeur vers l’objet auquel on applique la méthode. Cette notation est appliquée dans notre exemple avec la méthode <code>Dessiner_Rectangle()</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="instanciation"><a class="anchor" href="#instanciation"></a>3.2. Instanciation</h3>
+<div class="paragraph">
+<p>Si l’on désire créer maintenant un objet Rect1 issu de la classe <code>Rectangle</code>, cela revient à écrire :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect1.Rectangle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour l’initialiser, il suffit d’écrire :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect1\Dessiner = @Dessiner_Rectangle()
+Rect1\x1 = 0
+Rect1\x2 = 10
+Rect1\y1 = 0
+Rect1\y2 = 20</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Par la suite, pour dessiner l’objet <code>Rect1</code>, on écrira:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">CallFunctionFast(Rect1\Dessiner, @Rect1)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encapsulation"><a class="anchor" href="#encapsulation"></a>3.3. Encapsulation</h3>
+<div class="paragraph">
+<p>Dans cette implémentation, l’encapsulation n’existe pas, tout simplement car il n’y a pas moyen de cacher les attributs ou les méthodes d’un tel objet.</p>
+</div>
+<div class="paragraph">
+<p>En effet, il suffit d’écrire <code>Rect1\x1</code> pour accéder à l’attribut <code>x1</code> de l’objet. C’est d’ailleurs ce moyen que nous avons utilisé pour initialiser l’objet.
+Nous verrons dans la deuxième implémentation, comment cela peut changer.
+Cependant, cette notion, bien qu’important, n’est pas la plus essentielle pour faire de la POO.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="h-ritage"><a class="anchor" href="#h-ritage"></a>3.4. Héritage</h3>
+<div class="paragraph">
+<p>Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet Rectangle capable en plus de s’effacer de l’écran.
+On peut se servir de la Classe existante Rectangle et y adjoindre la nouvelle méthode <code>Effacer()</code> pour créer la nouvelle Classe <code>Rectangle2</code>.</p>
+</div>
+<div class="paragraph">
+<p>Une Classe étant une <code>Structure</code>, nous allons profiter de la propriété qu’a une structure d’être étendue. Ainsi, la nouvelle Classe <code>Rectangle2</code> peut s’écrire :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2 Extends Rectangle
+  *Effacer
+EndStructure
+
+Procedure Effacer_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La Classe Rectangle2 possède donc bien les membres de la Classe <code>Rectangle</code> et une nouvelle méthode <code>Effacer()</code>.
+En effet, l’instanciation d’un objet de cette Classe donne :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect2.Rectangle2
+
+Rect2\Dessiner = @Dessiner_Rectangle()
+Rect2\Effacer = @Effacer_Rectangle()
+Rect2\x1 = 0
+Rect2\x2 = 10
+Rect2\y1 = 0
+Rect2\y2 = 20</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour utiliser les méthodes Dessiner() et Effacer() de Rect2, on procèdera de la même manière que précédemment.</p>
+</div>
+<div class="paragraph">
+<p>Nous pouvons donc dire que Rectangle2 a hérité des propriétés de la Classe Rectangle.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L’héritage est une forme de polymorphisme. L’objet <code>Rect2</code> peut etre vu comme un Objet de la Classe <code>Rectangle</code>, il suffit de ne pas se servir de la méthode <code>Effacer()</code>. Par héritage, l’objet revête donc plusieurs formes : celles des objets issus des différentes Classes Mères. On parle alors de polymorphisme d’héritage.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="surcharge"><a class="anchor" href="#surcharge"></a>3.5. Surcharge</h3>
+<div class="paragraph">
+<p>Lors de l’initialisation d’un objet, on initialise les pointeurs de fonction en leur affectant l’adresse de la méthode qui convient à l’objet.</p>
+</div>
+<div class="paragraph">
+<p>Ainsi, pour un objet Rect de Classe <code>Rectangle</code>, en écrivant:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect1\Dessiner = @Dessiner_Rectangle()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on peut utiliser la méthode Dessiner() comme suite:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">CallFunctionFast(Rect1\Dessiner, @Rect1)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Maintenant, imaginons qu’il soit possible d’implémenter une autre méthode pour l’affichage d’un rectangle (utilisant un algorithme distinct de celui de la premiere méthode).</p>
+</div>
+<div class="paragraph">
+<p>Appelons la <code>Dessiner_Rectangle2()</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Dessiner_Rectangle2(*this.Rectangle)
+  ; [ ...some code... ]
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il est tout à fait possible d’initialiser notre objet Rect1 avec cette nouvelle méthode sans grande peine:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect1\Dessiner = @Dessiner_Rectangle2()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si l’on veut utiliser la méthode on écrira à nouveau:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">CallFunctionFast(Rect1\Dessiner, @Rect1)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nous constatons bien que dans un cas (méthode <code>Dessiner_Rectangle()</code>) comme dans l’autre (méthode <code>Dessiner_Rectangle2()</code>) l’utilisation de la méthode de l’objet <code>Rect1</code> est strictement identique.
+Il ne nous est pas possible en effet par la seule ligne &#8220;`CallFunctionFast(Rect1\Dessiner, @Rect1)<code>&#8221;  de distinguer la méthode `Dessiner()</code> que l’objet <code>Rect1</code> utilise.
+Pour y arriver, il faut remonter jusqu’à l’initialisation de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>La notion de pointeur de fonction permet donc la surcharge de la méthode <code>Dessiner()</code> de la Classe <code>Rectangle</code>.</p>
+</div>
+<div class="paragraph">
+<p>Il y a tout de même une limitation dans cette surcharge. L’utilisation de l’instruction <code>CallFunctionFast()</code> implique de faire attention au nombre de paramètres.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>3.6. Conclusion :</h3>
+<div class="paragraph">
+<p>Dans cette première implémentation, nous disposons d’un objet capable de répondre aux principaux concepts orientés objet avec certaines limitations.
+Nous venons surtout de poser les bases qui vont nous servir à réaliser un objet plus complet, ceci grâce à l’instruction <code>Interface</code> de PureBasic.</p>
 </div>
 </div>
 </div>
@@ -683,7 +936,7 @@ Une Classe comportant au moins une méthode abstraite est qualifiée de Classe a
 <div id="footer">
 <div id="footer-text">
 Draft 0.1<br>
-Last updated 2016-11-25 01:44:32 E
+Last updated 2016-11-25 11:20:11 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">
