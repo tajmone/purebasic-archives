@@ -1,0 +1,160 @@
+= PureBasic et la Programmation Orientée Objet
+Dräc
+v0.1, November 25, 2016: WIP Porting from HTML.
+:title: PureBasic et la Programmation Orientée Objet — ou «la POO démystifiée»
+:doctype: article
+:encoding: utf-8
+:lang: fr
+:toc: left
+:sectnums:
+:highlightjsdir: ../hjs
+:idprefix:
+:idseparator: -
+:icons: font
+:version-label: Draft
+
+////
+==============================================================================
+                                    TODOs
+==============================================================================
+-- Understand better punctuation marks ruls in French:
+    -- use of space (or "thin space") before double pointed marks (?!:; %)
+       and between a word and its surrounding quotes.
+    -- Should I use “…” or «…» ?
+    -- How to render "thin space" in AsciiDoc?
+////
+
+.About This Tutorial
+****
+**CREDITS**: This is a reprint of «Dräc»’s multi-part tutorial __PureBasic et la Programmation Orientée Objet__, also knwon as __la POO démystifiée__, published in 2005  on http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi.htm[drac.site.chez-alice.fr].
+
+**LICENSE**: It was reprinted with explicit permission of the author, who released the tutorial text and source codes under https://creativecommons.org/licenses/by/4.0/deed.fr[Creative Commons Attribution]  (CC BY 4.0) in response to the permission request to reproduce it inside the https://github.com/tajmone/purebasic-archives[PureBASIC Archives].
+
+**CHANGES**: The tutorial was ported from HTML to AsciiDoc by https://github.com/tajmone[Tristano Ajmone], who also made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).
+
+First republished: 2016/11/?? — by https://github.com/tajmone[@tajmone].
+****
+
+// Website Page 1
+
+== Pourquoi de la POO en PureBasic ?
+
+Il peut sembler surprenant de chercher à réaliser en PureBasic, qui est un langage procédural, une représentation orientée objet, d’autant que de nombreux langages adaptés à la POO existent.
+
+Mais que certains langages de programmation soient « Objets » et que d’autres ne le soient pas, traduit uniquement l’existence de mots-clés supplémentaires qui facilitent l’écriture de ces programmes.
+Ainsi, les langages orientés-objets enrichissent la sémantique mais ne modifient en rien l’aspects de la compilation par rapport à un langage non-Objet. Ils ne font que rajouter une couche au-dessus de ce dernier.
+
+On peut donc tout à fait en implémenter les concepts en PureBasic au prix d’une certaine rigueur de développement et de notation. C’est là que se situe l’avantage immédiat des langages Objets.
+
+Néanmoins, la mise en œuvre de la méthode objet en PureBasic offre, outre la possibilité de programmer selon cette philosophie, l’intérêt de dévoiler certains mécanismes sous-jacents des mots-clés des langages objets.
+
+Cet article présente une technique de programmation permettant à des projets PureBasic d’envergure de bénéficer d’une conception orienté objet. Il est entendu qu’il ne s’agit pas ici d’un cours des techniques POO et que le lecteur possède une bonne connaissance du langage PureBasic.
+
+// ============== REVISED UP TO THIS POINT! ==============
+
+// Website Page 2
+
+== Les concepts objets
+
+La Programmation Orientée Objet introduit des concepts comme l’objet, l’héritage ou le polymorphisme.
+Nous allons essayer de voir comment les principaux concepts peuvent être réalisés en PureBasic.
+Mais avant cela, il nous faut définir ces concepts.
+
+=== La notion d’objet
+
+Un objet possède un état interne:
+
+*   L’état est représenté par la valeur de chacun de ses composants à un instant donné,
+*   Un composant est soit une valeur, soit un autre objet.
+
+Il utilise et met à disposition des services :
+
+*   Il interagit avec l’extérieur par l’intermédiaire de fonctions appelées méthodes
+
+Il est unique (notion d’identité)
+
+Un objet peut être vue de deux façons :
+
+*   De part les services qu’il rend : vue externe (spécification). C’est le côté utilisateur,
+*   De part la manière dont sont implémentés, en son sein, les services : vue interne (implémentation). C’est le côté développeur.
+
+Du point de vu du développeur, l’objet est donc une zone mémoire contiguë contenant des informations : des variables appelées **attributs** et des fonctions appelées **méthodes**.
+Le fait que l’on appelle les fonctions d’un objet des méthodes, tient au fait qu’elles sont propres à l’objet et permettent la manipulation des attributs de cet objet.
+
+=== La notion de Classe
+
+Il s’agit d’une extension de la notion de type que l’on trouve en PureBasic.
+
+Dans un contexte donné, plusieurs objets peuvent posséder la même structure et le même comportement.
+On les regroupe alors dans une même " Classe ".
+
+Du point de vu du développeur, la Classe définit ce que contient un objet de cette classe : la nature de ses attributs (type de chaque variable) et ses méthodes (noms, implémentations).
+
+Si le type d’une variable est un entier, le type d’un objet est sa Classe.
+
+=== La notion d’instance
+
+*   Une instance est un objet défini à partir d’une classe.
+*   Un tel processus s’appelle l’instanciation.
+*   Cela correspond à la déclaration de variables dans PureBasic.
+*   L’objet est **normalement initialisé** dès sa création.
+
+=== L’encapsulation
+
+En théorie, on ne devrait pouvoir manipuler les attributs d’un objet qu’en passant par les méthodes. Cette technique, qui permet de ne rendre visible à l’utilisateur qu’une partie de l’objet, est appelée encapsulation.
+
+L’encapsulation a comme avantage de garantir l’intégrité des attributs. En effet, c’est le développeur qui, par l’intermédiaire des méthodes mises à la disposition de l’utilisateur, maîtrise les modifications apportées à l’objet.
+
+C’est du moins, à notre niveau ce que l’on en retiendra.
+
+=== L’héritage
+
+L’héritage permet de définir de nouvelles Classes en utilisant des Classes déjà existantes.
+
+Du point de vue du développeur, cela revient à pouvoir ajouter des attributs et des méthodes à ceux existants dans une Classe pour en définir une autre, voir même à **modifier** certaines méthodes.
+
+Il existe deux types d’héritages :
+
+*   L’héritage simple : La nouvelle Classe est définie à partir d’une seule Classe existante
+*   L’héritage multiple : La nouvelle Classe est définie à partir de plusieurs Classes existantes
+
+Bien que possible à programmer, l’héritage multiple est complexe à mettre en œuvre et ne sera pas abordé ici.
+
+Nous nous limiterons à l’héritage simple.
+
+[big]##**Terminologie:**##
+
+*   La Classe qui hérite d’une autre Classe, est souvent appelée Classe Fille
+*   La Classe qui donne son héritage à une Classe Fille est souvent appelée Classe Mère.
+
+=== La surcharge
+
+On dit qu’une méthode est surchargée, si elle réalise des actions différentes selon la nature des objets visés.
+
+Prenons un exemple :
+
+Les objets suivants: cercle, rectangle et triangle sont des formes géométriques.
+On peut définir pour ces objets une même Classe qu’on appellera Forme.
+Les objets sont donc des instances de la classe Forme.
+
+Si on veut afficher les objets, il faut que la classe Forme dispose d’une méthode " Dessiner ".
+
+Ainsi doté, chaque objet dispose donc d’une méthode " Dessiner " pour s’afficher. Or, cette méthode ne peut-être la même selon que l’on veut afficher un cercle ou un rectangle.
+
+Les objets d’une même Classe utilisent donc la même méthode " Dessiner ", mais la nature de l’objet (Rectangle, Triangle) spécifie l’implémentation de la méthode.
+
+On dit que la méthode Dessiner est surchargée: du point de vu de l’utilisateur afficher un cercle ou un rectangle se fait de la même manière, ceci en toute transparence.
+
+Du point de vue du développeur, l’implémentation des méthodes diffère.
+
+Au lieu de méthode surchargée, on peut parler aussi de méthode polymorphe (ayant plusieurs formes).
+
+=== Notion de Classe abstraite
+
+Nous avons vu qu’une Classe regroupe la définition des attributs d’un objet ainsi que ces méthodes.
+Supposons que l’on ne puisse pas donner l’implémentation d’une des méthodes de la Classe. La méthode n’est qu’un nom sans code. On parle alors de méthode abstraite.
+Une Classe comportant au moins une méthode abstraite est qualifiée de Classe abstraite.
+
+On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_ConceptObjet.htm#Classe[Classes d’objets] qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.
+
+Les Classes abstraites ont donc un rôle d’interface, car qu’elles décrivent la spécification générique de toutes les Classes qui en hérite.
