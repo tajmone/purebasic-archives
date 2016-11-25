@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v1.0, November 18, 2016: Reprinted and revised edition.
+v1.1, November 25, 2016: Reprinted and revised edition.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :doctype: article
 :encoding: utf-8
@@ -220,7 +220,7 @@ Thus, the proposed `Structure` is completely adapted to the notion of Class:
 * the structure stores the definition of the object’s attributes: here ``x1``, ``x2``, `y1` and `y2` are Long variables.
 * the structure stores the definition of the object’s method: here the `Draw()` function, through to a function pointer.
 
-When a similar Class definition is followed by the implementations of its methods (in our example, `Draw_Rectangle()`’s ``Procedure``/``EndProcedure`` block statement), it becomes a concrete Class. Otherwise, it will be an abstract Class.
+When a similar Class definition is followed by the implementations of its methods (in our example, `Draw_Rectangle()`’s `Procedure EndProcedure` block statement), it becomes a concrete Class. Otherwise, it will be an abstract Class.
 
 [IMPORTANT]
 ====
