@@ -53,6 +53,7 @@ Possibly, in the future, html standalone snaphsots of the Wiki might be included
 Quick Links
 ===========
 
+-   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc)» tutorial (English version).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
@@ -165,13 +166,16 @@ Acknowledgements
 
 -   Jordan Klassen «[@forivall](https://github.com/forivall)» — for releasing [gh-pandoc.css](https://gist.github.com/forivall/7d5a304a8c3c809f0ba96884a7cf9d7e) under MIT when asked reuse permission.
 -   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
+-   [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) – for releasing [PBHGEN](https://bitbucket.org/Henry00/pbhgen) under CC BY when asked reuse permission..
 
 Repo History
 ============
 
 A record of the milestones of this repository history (reversed order).
 
--   `2016/11/26` — Started creating the [Wiki](https://github.com/tajmone/purebasic-archives/wiki).
+-   `2016/11/26`
+    -   Added [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool for auto-generating header files (`*.pbi`).
+    -   Started creating the [Wiki](https://github.com/tajmone/purebasic-archives/wiki).
 -   `2016/11/24` — [**Highlight.js**](./syntax-highlighting/highlight.js/): pre-built HLJS packages («PureBASIC enhanced/modded releases») are now available in this repo, along with themes, instructions, and examples.
 -   `2016/11/18` — Republished Dräc’s tutorial [*PureBasic and OOP*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc) (English version).
 -   `2016/10/31` — Added [*Programming 2D Scrolling Games*](./books/2d-games/) PDF book and code examples.

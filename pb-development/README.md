@@ -35,6 +35,8 @@ Here you’ll find both licenses files in plaintext format, ready to be copied i
 
 > **NOTE 2**: I’ve opted to use the `.txt` externsion and `CR+LF` linebreaks for the licenses files since it makes things easier on Windows users.
 
+------------------------------------------------------------------------
+
 PureBASIC IDE Tools
 ===================
 
@@ -47,8 +49,9 @@ Users have created a wide range of custom tools to enhance PB development workfl
 PBHGEN (PureBasic Header Generator)
 -----------------------------------
 
-by [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) | License: [CC-BY 4.0](https://bitbucket.org/Henry00/pbhgen/issues/1/release-pbhgen-under-a-foss-license)? | Supported OS: All
+by [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) | License: [CC-BY 4.0](https://bitbucket.org/Henry00/pbhgen/src/e5828286b22ca59ec6168e49c57a1c51718978b4/LICENSE?at=master&fileviewer=file-view-default) | Supported OS: All
 
+-   [`/pb-ide/tools/pbhgen/`](./pb-ide/tools/pbhgen/) – PBHGEN v5.42 (taken from [PBHGEN on Bitbucket](https://bitbucket.org/Henry00/pbhgen))
 -   [PBHGEN homepage](http://00laboratories.com/downloads/programming/purebasic-header-generator) (00laboratories)
 -   [PBHGEN on Bitbucket](https://bitbucket.org/Henry00/pbhgen)
 -   [PBHGEN thread on PB Forums](http://www.purebasic.fr/english/viewtopic.php?f=27&t=53414)
