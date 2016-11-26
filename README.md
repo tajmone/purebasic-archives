@@ -3,6 +3,12 @@ The PureBASIC Archives
 
 A collection of PureBASIC resources.
 
+------------------------------------------------------------------------
+
+**Vanity URLs**: [git.io/pb-archives](https://git.io/pb-archives) |
+
+------------------------------------------------------------------------
+
 <!-- #toc -->
 -   [Introduction](#introduction)
 -   [Quick Links](#quick-links)
@@ -21,6 +27,9 @@ A collection of PureBASIC resources.
 -   [Repo History](#repo-history)
 
 <!-- /toc -->
+
+------------------------------------------------------------------------
+
 Introduction
 ============
 
