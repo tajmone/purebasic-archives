@@ -1,6 +1,6 @@
 = PureBasic et la Programmation Orientée Objet
 Dräc
-v0.2, November 25, 2016: WIP Porting from HTML.
+v0.3, November 27, 2016: WIP Porting from HTML.
 :title: PureBasic et la Programmation Orientée Objet — ou «la POO démystifiée»
 :doctype: article
 :encoding: utf-8
@@ -160,8 +160,6 @@ Les Classes abstraites ont donc un rôle d’interface, car qu’elles décriven
 
 // Website Page 3
 
-// ============== REVISED UP TO THIS POINT! ==============
-
 == Première Implémentation
 
 Dans ce qui va suivre, nous allons voir comment les concepts objets qui viennent d’être abordés peuvent être implémentés en PureBasic.
@@ -202,8 +200,8 @@ où ``x1``, ``x2``, `y1` et `y2` sont quatre attributs (les coordonnées des poi
 Il suffit d’utiliser `CallFunctionFast()` pour lancer l’exécution de la fonction ainsi référencée.
 
 Nous voyons donc que l’instruction Structure est tout à fait adaptée à la notion de Classe:
-* Nous y trouvons la définition des attributs d’un objet : ici ``x1``, ``x2``, `y1` et `y2` sont de type entier Long.
-* Nous y trouvons la définition des méthodes : ici `Dessiner()` grâce à un pointeur de fonction.
+*   Nous y trouvons la définition des attributs d’un objet : ici ``x1``, ``x2``, `y1` et `y2` sont de type entier Long.
+*   Nous y trouvons la définition des méthodes : ici `Dessiner()` grâce à un pointeur de fonction.
 
 Si la Classe ainsi définie est suivit de l’implémentation des méthodes (dans notre exemple il s’agit de la déclaration du bloc Procedire/EndProcedure de ``Dessiner_Rectangle()``), la Classe sera une Classe concrète.
 Dans le cas contraire elle sera abstraite.
@@ -215,7 +213,7 @@ On appelle toujours ``*this``, le pointeur vers l’objet auquel on applique la 
 
 === Instanciation
 
-Si l’on désire créer maintenant un objet Rect1 issu de la classe ``Rectangle``, cela revient à écrire :
+Si l’on désire créer maintenant un objet `Rect1` issu de la classe ``Rectangle``, cela revient à écrire :
 
 // CODE CHECKED!
 
@@ -259,8 +257,8 @@ Cependant, cette notion, bien qu’important, n’est pas la plus essentielle po
 
 === Héritage
 
-Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet Rectangle capable en plus de s’effacer de l’écran.
-On peut se servir de la Classe existante Rectangle et y adjoindre la nouvelle méthode `Effacer()` pour créer la nouvelle Classe ``Rectangle2``.
+Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet `Rectangle` capable en plus de s’effacer de l’écran.
+On peut se servir de la Classe existante `Rectangle` et y adjoindre la nouvelle méthode `Effacer()` pour créer la nouvelle Classe ``Rectangle2``.
 
 Une Classe étant une ``Structure``, nous allons profiter de la propriété qu’a une structure d’être étendue. Ainsi, la nouvelle Classe `Rectangle2` peut s’écrire :
 
@@ -319,7 +317,7 @@ Ainsi, pour un objet Rect de Classe ``Rectangle``, en écrivant:
 Rect1\Dessiner = @Dessiner_Rectangle()
 ---------------------------------------------------------------------
 
-on peut utiliser la méthode Dessiner() comme suite:
+on peut utiliser la méthode `Dessiner()` comme suite:
 
 // CODE CHECKED!
 
@@ -375,4 +373,157 @@ Il y a tout de même une limitation dans cette surcharge. L’utilisation de l�
 
 Dans cette première implémentation, nous disposons d’un objet capable de répondre aux principaux concepts orientés objet avec certaines limitations.
 Nous venons surtout de poser les bases qui vont nous servir à réaliser un objet plus complet, ceci grâce à l’instruction `Interface` de PureBasic.
+
+== L’instruction Interface
+
+// CODE CHECKED!
+
+// Example N. 4-1
+.Syntaxe :
+[source,purebasic pseudocode]
+---------------------------------------------------------------------
+Interface <Nom1> [Extends <Nom2>]
+  [Procedure1]
+  [Procedure2]
+  ...
+EndInterface
+---------------------------------------------------------------------
+
+L’instruction `Interface` de PureBasic, permet de regrouper sous un même Nom (``<Nom1>`` dans l’encadré) différentes procédures.
+
+Ex :
+
+// CODE CHECKED!
+
+// Example N. 4-2
+
+[source,purebasic]
+---------------------------------------------------------------------
+Interface Mon_Objet
+  Procedure1(x1.l, y1.l)
+  Procedure2(x2.l, y2.l)
+EndInterface
+---------------------------------------------------------------------
+
+Il suffit de déclarer un élément de type `Mon_Objet` pour accéder aux procédures qu’elle détient.
+La déclaration se fait de la même manière que pour une `Structure` :
+
+// Example N. 4-3
+
+[source,purebasic]
+---------------------------------------------------------------------
+Objet.Mon_Objet
+---------------------------------------------------------------------
+
+Nous pouvons alors utiliser les fonctions de Objet directement comme suite:
+
+// CODE CHECKED!
+
+// Example N. 4-4
+
+[source,purebasic]
+---------------------------------------------------------------------
+Objet\Procedure1(10, 20)
+Objet\Procedure2(30, 40)
+---------------------------------------------------------------------
+
+Lancer une procedure grâce à l’instruction Interface se fait par une notation fort pratique et agréable.
+En écrivant " Objet\Procedure1(10, 20) ", on lance la Procedure1() de l’élément Objet.
+Cette notation est typique de la Programmation Orienté Objet.
+
+==== Initialisation :
+
+Comme toute déclaration d’une variable typée, il s’en suit normalement l’initialisation de la variable.
+Il en est de même lorsque l’on déclare un élément dont le type provient d’une ``Interface``.
+
+Contre toute attente, il ne suffit pas de donner le nom d’une procédure à l’intérieur du bloc `Interface : EndInterface` pour que cela fasse référence à l’implémentation de cette procédure, c’est à dire que l’on référence le bloc `Procédure : EndProcedure` de la procédure voulue.
+
+En réalité vous pouvez renommer les procédures dans un bloc ``Interface : EndInterface``, c’est à dire donner les noms que vous voulez aux procédures que vous allez utiliser.
+
+Comment relier alors ce nouveau nom à la vraie procédure ?
+
+Comme pour la surcharge de méthode, la solution se trouve dans les adresses de fonctions.
+Il faut voir en effet les noms contenus dans le bloc Interface/EndInterface, comme des pointeurs de fonctions auxquels on attribut les adresses des fonctions que l’on désire y mettre.
+
+Cependant, pour initialiser les pointeurs de fonctions d’un élément typé par une ``Interface``, il faut procéder différemment qu’avec un élément typé par une ``Structure``.
+Il n’est en effet pas possible d’initialiser individuellement chacun des champs définis par une Interface, car rappelez-vous que d’écrire `Objet\Procedure1()` revient à lancer une procédure.
+
+L’initialisation se réalise indirectement en donnant à l’élément l’adresse d’une variable composée des pointeurs de fonctions préalablement initialisée.
+
+Une telle variable est appelée table des méthods.
+
+Ex : Si l’on reprend l’``Interface Mon_Objet``.
+Considérons la `Structure` suivante de description des pointeurs de fonctions :
+
+// CODE CHECKED!
+
+// Example N. 4.1-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Mes_Methodes
+  *Procedure1
+  *Procedure2
+EndStructure
+---------------------------------------------------------------------
+
+et la variable initialisée associée:
+
+// CODE CHECKED!
+
+// Example N. 4.1-2
+[source,purebasic]
+---------------------------------------------------------------------
+Methodes.Mes_Methodes
+Methodes\Procedure1 = @Ma_Procedure1()
+Methodes\Procedure2 = @Ma_Procedure2()
+---------------------------------------------------------------------
+
+où `Ma_Procedure1()` et `Ma_Procedure2()` sont les implémentations des procédures que l’on veut utiliser.
+
+Alors, l’initialisation de l’élément `Objet` de type `Mon_Objet` se fera comme suite :
+
+// CODE CHECKED!
+
+// Example N. 4.1-3
+[source,purebasic]
+---------------------------------------------------------------------
+Objet.Mon_Objet = @Methodes
+---------------------------------------------------------------------
+
+Ainsi, en écrivant
+
+// CODE CHECKED!
+
+// Example N. 4.1-4
+[source,purebasic]
+---------------------------------------------------------------------
+Objet\Procedure2(30, 40)
+---------------------------------------------------------------------
+
+on lance la fonction `Procedure2()` de l’élément ``Objet``, c’est à dire ``Ma_Procedure2()``.
+
+[IMPORTANT]
+====
+Lorsque l’on déclare un élément typé par une interface, il est obligatoire de l’initialiser avant de se servir des procédures de l’élément. Il est donc vivement conseillé d’initialiser l’élément dès sa déclaration.
+====
+
+[IMPORTANT]
+====
+La composition de la Structure décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’``Interface``. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.
+====
+
+Pour résumer, utiliser une Interface c’est disposer:
+
+*   d’une `Interface` décrivant les procédures que l’on veut utiliser,
+*   d’une `Structure` décrivant les pointeurs d’adresses des fonctions,
+*   d’une **table des méthodes**: variable initialisée issue de cette structure.
+
+C’est aussi:
+
+*   bénéficier d’une notation orientée objet,
+*   pouvoir renommer facilement les procédures.
+
+// ============== REVISED UP TO THIS POINT! ==============
+
+// Website Page 5
 

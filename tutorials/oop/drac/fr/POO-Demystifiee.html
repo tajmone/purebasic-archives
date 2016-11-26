@@ -424,8 +424,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic et la Programmation Orientée Objet</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.1,</span>
-<span id="revdate">November 25, 2016</span>
+<span id="revnumber">draft 0.3,</span>
+<span id="revdate">November 27, 2016</span>
 <br><span id="revremark">WIP Porting from HTML.</span>
 </div>
 <div id="toc" class="toc2">
@@ -451,6 +451,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#h-ritage">3.4. Héritage</a></li>
 <li><a href="#surcharge">3.5. Surcharge</a></li>
 <li><a href="#conclusion">3.6. Conclusion :</a></li>
+</ul>
+</li>
+<li><a href="#l-instruction-interface">4. L’instruction Interface</a>
+<ul class="sectlevel3">
+<li><a href="#initialisation">4.1. Initialisation :</a></li>
 </ul>
 </li>
 </ul>
@@ -740,8 +745,8 @@ Il suffit d’utiliser <code>CallFunctionFast()</code> pour lancer l’exécutio
 </div>
 <div class="paragraph">
 <p>Nous voyons donc que l’instruction Structure est tout à fait adaptée à la notion de Classe:
-* Nous y trouvons la définition des attributs d’un objet : ici <code>x1</code>, <code>x2</code>, <code>y1</code> et <code>y2</code> sont de type entier Long.
-* Nous y trouvons la définition des méthodes : ici <code>Dessiner()</code> grâce à un pointeur de fonction.</p>
+*   Nous y trouvons la définition des attributs d’un objet : ici <code>x1</code>, <code>x2</code>, <code>y1</code> et <code>y2</code> sont de type entier Long.
+*   Nous y trouvons la définition des méthodes : ici <code>Dessiner()</code> grâce à un pointeur de fonction.</p>
 </div>
 <div class="paragraph">
 <p>Si la Classe ainsi définie est suivit de l’implémentation des méthodes (dans notre exemple il s’agit de la déclaration du bloc Procedire/EndProcedure de <code>Dessiner_Rectangle()</code>), la Classe sera une Classe concrète.
@@ -765,7 +770,7 @@ Dans le cas contraire elle sera abstraite.</p>
 <div class="sect2">
 <h3 id="instanciation"><a class="anchor" href="#instanciation"></a>3.2. Instanciation</h3>
 <div class="paragraph">
-<p>Si l’on désire créer maintenant un objet Rect1 issu de la classe <code>Rectangle</code>, cela revient à écrire :</p>
+<p>Si l’on désire créer maintenant un objet <code>Rect1</code> issu de la classe <code>Rectangle</code>, cela revient à écrire :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -807,8 +812,8 @@ Cependant, cette notion, bien qu’important, n’est pas la plus essentielle po
 <div class="sect2">
 <h3 id="h-ritage"><a class="anchor" href="#h-ritage"></a>3.4. Héritage</h3>
 <div class="paragraph">
-<p>Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet Rectangle capable en plus de s’effacer de l’écran.
-On peut se servir de la Classe existante Rectangle et y adjoindre la nouvelle méthode <code>Effacer()</code> pour créer la nouvelle Classe <code>Rectangle2</code>.</p>
+<p>Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet <code>Rectangle</code> capable en plus de s’effacer de l’écran.
+On peut se servir de la Classe existante <code>Rectangle</code> et y adjoindre la nouvelle méthode <code>Effacer()</code> pour créer la nouvelle Classe <code>Rectangle2</code>.</p>
 </div>
 <div class="paragraph">
 <p>Une Classe étant une <code>Structure</code>, nous allons profiter de la propriété qu’a une structure d’être étendue. Ainsi, la nouvelle Classe <code>Rectangle2</code> peut s’écrire :</p>
@@ -875,7 +880,7 @@ Rect2\y2 = 20</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>on peut utiliser la méthode Dessiner() comme suite:</p>
+<p>on peut utiliser la méthode <code>Dessiner()</code> comme suite:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -932,11 +937,194 @@ Nous venons surtout de poser les bases qui vont nous servir à réaliser un obje
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="l-instruction-interface"><a class="anchor" href="#l-instruction-interface"></a>4. L’instruction Interface</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Syntaxe :</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Interface &lt;Nom1&gt; [Extends &lt;Nom2&gt;]
+  [Procedure1]
+  [Procedure2]
+  ...
+EndInterface</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>Interface</code> de PureBasic, permet de regrouper sous un même Nom (<code>&lt;Nom1&gt;</code> dans l’encadré) différentes procédures.</p>
+</div>
+<div class="paragraph">
+<p>Ex :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Mon_Objet
+  Procedure1(x1.l, y1.l)
+  Procedure2(x2.l, y2.l)
+EndInterface</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il suffit de déclarer un élément de type <code>Mon_Objet</code> pour accéder aux procédures qu’elle détient.
+La déclaration se fait de la même manière que pour une <code>Structure</code> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Objet.Mon_Objet</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nous pouvons alors utiliser les fonctions de Objet directement comme suite:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Objet\Procedure1(10, 20)
+Objet\Procedure2(30, 40)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lancer une procedure grâce à l’instruction Interface se fait par une notation fort pratique et agréable.
+En écrivant " Objet\Procedure1(10, 20) ", on lance la Procedure1() de l’élément Objet.
+Cette notation est typique de la Programmation Orienté Objet.</p>
+</div>
+<div class="sect3">
+<h4 id="initialisation"><a class="anchor" href="#initialisation"></a>4.1. Initialisation :</h4>
+<div class="paragraph">
+<p>Comme toute déclaration d’une variable typée, il s’en suit normalement l’initialisation de la variable.
+Il en est de même lorsque l’on déclare un élément dont le type provient d’une <code>Interface</code>.</p>
+</div>
+<div class="paragraph">
+<p>Contre toute attente, il ne suffit pas de donner le nom d’une procédure à l’intérieur du bloc <code>Interface : EndInterface</code> pour que cela fasse référence à l’implémentation de cette procédure, c’est à dire que l’on référence le bloc <code>Procédure : EndProcedure</code> de la procédure voulue.</p>
+</div>
+<div class="paragraph">
+<p>En réalité vous pouvez renommer les procédures dans un bloc <code>Interface : EndInterface</code>, c’est à dire donner les noms que vous voulez aux procédures que vous allez utiliser.</p>
+</div>
+<div class="paragraph">
+<p>Comment relier alors ce nouveau nom à la vraie procédure ?</p>
+</div>
+<div class="paragraph">
+<p>Comme pour la surcharge de méthode, la solution se trouve dans les adresses de fonctions.
+Il faut voir en effet les noms contenus dans le bloc Interface/EndInterface, comme des pointeurs de fonctions auxquels on attribut les adresses des fonctions que l’on désire y mettre.</p>
+</div>
+<div class="paragraph">
+<p>Cependant, pour initialiser les pointeurs de fonctions d’un élément typé par une <code>Interface</code>, il faut procéder différemment qu’avec un élément typé par une <code>Structure</code>.
+Il n’est en effet pas possible d’initialiser individuellement chacun des champs définis par une Interface, car rappelez-vous que d’écrire <code>Objet\Procedure1()</code> revient à lancer une procédure.</p>
+</div>
+<div class="paragraph">
+<p>L’initialisation se réalise indirectement en donnant à l’élément l’adresse d’une variable composée des pointeurs de fonctions préalablement initialisée.</p>
+</div>
+<div class="paragraph">
+<p>Une telle variable est appelée table des méthods.</p>
+</div>
+<div class="paragraph">
+<p>Ex : Si l’on reprend l’<code>Interface Mon_Objet</code>.
+Considérons la <code>Structure</code> suivante de description des pointeurs de fonctions :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Mes_Methodes
+  *Procedure1
+  *Procedure2
+EndStructure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>et la variable initialisée associée:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Methodes.Mes_Methodes
+Methodes\Procedure1 = @Ma_Procedure1()
+Methodes\Procedure2 = @Ma_Procedure2()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où <code>Ma_Procedure1()</code> et <code>Ma_Procedure2()</code> sont les implémentations des procédures que l’on veut utiliser.</p>
+</div>
+<div class="paragraph">
+<p>Alors, l’initialisation de l’élément <code>Objet</code> de type <code>Mon_Objet</code> se fera comme suite :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Objet.Mon_Objet = @Methodes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ainsi, en écrivant</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Objet\Procedure2(30, 40)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on lance la fonction <code>Procedure2()</code> de l’élément <code>Objet</code>, c’est à dire <code>Ma_Procedure2()</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Lorsque l’on déclare un élément typé par une interface, il est obligatoire de l’initialiser avant de se servir des procédures de l’élément. Il est donc vivement conseillé d’initialiser l’élément dès sa déclaration.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La composition de la Structure décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’<code>Interface</code>. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Pour résumer, utiliser une Interface c’est disposer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>d’une <code>Interface</code> décrivant les procédures que l’on veut utiliser,</p>
+</li>
+<li>
+<p>d’une <code>Structure</code> décrivant les pointeurs d’adresses des fonctions,</p>
+</li>
+<li>
+<p>d’une <strong>table des méthodes</strong>: variable initialisée issue de cette structure.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>C’est aussi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>bénéficier d’une notation orientée objet,</p>
+</li>
+<li>
+<p>pouvoir renommer facilement les procédures.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.1<br>
-Last updated 2016-11-25 11:20:11 E
+Draft 0.3<br>
+Last updated 2016-11-27 00:58:02 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">
