@@ -3,6 +3,12 @@ The PureBASIC Archives
 
 A collection of PureBASIC resources.
 
+------------------------------------------------------------------------
+
+**Vanity URLs**: [git.io/pb-archives](https://git.io/pb-archives) |
+
+------------------------------------------------------------------------
+
 <!-- #toc -->
 -   [Introduction](#introduction)
 -   [Quick Links](#quick-links)
@@ -21,12 +27,15 @@ A collection of PureBASIC resources.
 -   [Repo History](#repo-history)
 
 <!-- /toc -->
+
+------------------------------------------------------------------------
+
 Introduction
 ============
 
 -   <https://github.com/tajmone/purebasic-archives>
 
-This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) as a centralized place for gathering and sharing PureBASIC-realted resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
+This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) as a centralized place for gathering and sharing PureBASIC-related resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
 
 Quick Links
 ===========
@@ -41,6 +50,7 @@ The Archives project is divided into folders according to categories:
 
 -   [`/books/`](./books/) — books on PureBASIC programming.
 -   [`/libs/`](./libs/) – 3rd party PureBASIC libraries, modules, wrappers, ecc.
+-   [`/pb-development/`](./pb-development/) – resources for developing in PureBASIC.
 -   [`/syntax-highlighting/`](./syntax-highlighting/) — publishing PureBASIC source code in colored syntax.
 -   [`/text-editors/`](./text-editors/) — PureBASIC syntax support in text editors.
 -   [`/tutorials/`](./tutorials/) — PureBASIC learning tutorials.
