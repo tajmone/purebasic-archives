@@ -1,9 +1,9 @@
-PBHGEN - PureBasic Header Generator
+PBHGEN – PureBasic Header Generator
 ===================================
 
-Will read a PureBasic source file (.pb) and generate a header out of it (.pbi). Declare statements are generated for every procedure automatically.
+Will read a [PureBasic](http://www.purebasic.com/) source file (`*.pb`) and generate a header out of it (`*.pbi`). `Declare` statements are automatically generated for every procedure.
 
-This program also works with SpiderBasic.
+This program also works with [SpiderBasic](https://www.spiderbasic.com/).
 
 ### Useful Links
 
@@ -17,16 +17,25 @@ This program also works with SpiderBasic.
 
 ### Usage Instructions
 
-    Under "Tools" in the PureBasic IDE add a new tool called "PBHGEN".
-        At Commandline select your copy of PBHGEN.exe.
-        At Arguments type %FILE.
-        At Event to trigger the tool select Sourcecode Saved.
-    Ensure you include your headers in the Source using:
-        IncludeFile #PB_Compiler_File + "i" ;- PBHGEN
-    To use automatic header generation in modules also use:
-        Module MyModule
-            IncludeFile #PB_Compiler_File + ".i" ;- PBHGEN
-        EndModule
+Under “**Tools**” in the PureBasic IDE add a new tool called “`PBHGEN`”:
+
+-   At **Commandline** select your copy of `PBHGEN.exe`.
+-   At **Arguments** type `%FILE`.
+-   At **Event to trigger the tool** select “**Sourcecode Saved**”.
+
+Ensure you include your headers in the Source using:
+
+``` {.purebasic}
+IncludeFile #PB_Compiler_File + "i" ;- PBHGEN
+```
+
+To use automatic header generation also in modules use:
+
+``` {.purebasic}
+Module MyModule
+  IncludeFile #PB_Compiler_File + ".i" ;- PBHGEN
+EndModule
+```
 
 ### Remarks
 
@@ -44,8 +53,8 @@ PureBasic is a great language but I was always annoyed about the fact I could ne
 
 **V5.31e**
 
--   Fixed a comment after EndProcedure / EndModule / EndMacro skipping the next procedure declaration.
--   Now ignoring content between Macro / EndMacro statements.
+-   Fixed a comment after `EndProcedure` / `EndModule` / `EndMacro` skipping the next procedure declaration.
+-   Now ignoring content between `Macro` / `EndMacro` statements.
 
 **V5.31d**
 
@@ -75,7 +84,7 @@ PureBasic is a great language but I was always annoyed about the fact I could ne
 
 -   Added support for case independent keyword detection.
 
--   Improved ProcedureDLL and ProcedureCDLL with appropriate DeclareDLL and DeclareCDLL.
+-   Improved `ProcedureDLL` and `ProcedureCDLL` with appropriate `DeclareDLL` and `DeclareCDLL`.
 
 **V0.9**
 
@@ -87,7 +96,7 @@ PureBasic is a great language but I was always annoyed about the fact I could ne
 
 **V0.7**
 
--   Stops when encountering the statement seperator “:” or comment “;” operators.
+-   Stops when encountering the statement seperator “`:`” or comment “`;`” operators.
 
 **V0.6**
 
@@ -99,13 +108,13 @@ PureBasic is a great language but I was always annoyed about the fact I could ne
 
 **V0.5**
 
--   Fixed issue where a \*pointer.structure had no default parameter.
+-   Fixed issue where a `*pointer.structure` had no default parameter.
 
 -   Fixed issue with a string as custom parameter, it was not escaped.
 
 **V0.4**
 
--   Fixed issue where a \*pointer would cause further Procedure Parameters to lose their types.
+-   Fixed issue where a `*pointer` would cause further Procedure Parameters to lose their types.
 
 **V0.3**
 
