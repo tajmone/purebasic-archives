@@ -5,12 +5,10 @@ A collection of PureBASIC resources.
 
 ------------------------------------------------------------------------
 
-**Vanity URLs**: [git.io/pb-archives](https://git.io/pb-archives) |
-
-------------------------------------------------------------------------
-
 <!-- #toc -->
+-   [Vanity URLs](#vanity-urls)
 -   [Introduction](#introduction)
+    -   [The Wiki](#the-wiki)
 -   [Quick Links](#quick-links)
 -   [Resources Organization](#resources-organization)
 -   [Developement Branches](#developement-branches)
@@ -30,6 +28,14 @@ A collection of PureBASIC resources.
 
 ------------------------------------------------------------------------
 
+Vanity URLs
+===========
+
+-   [git.io/pb-archives](https://git.io/pb-archives) – Links to repo master (here)
+-   [git.io/pb-wiki](https://git.io/pb-wiki) – Links to the Wiki
+
+------------------------------------------------------------------------
+
 Introduction
 ============
 
@@ -37,9 +43,17 @@ Introduction
 
 This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) as a centralized place for gathering and sharing PureBASIC-related resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
 
+The Wiki
+--------
+
+The [GitHub-hosted Wiki](https://github.com/tajmone/purebasic-archives/wiki) associated to the PureBASIC Archives project is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a Wiki entry, but any full-fledged article/tutorial should be placed instead inside the repo, and a short link to it placed in the Wiki.
+
+Possibly, in the future, html standalone snaphsots of the Wiki might be included in the PureBASIC Archives repo, for offline reading — that is, if the Wiki every reaches an interesting size and richness of contents.
+
 Quick Links
 ===========
 
+-   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc)» tutorial (English version).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
@@ -152,12 +166,16 @@ Acknowledgements
 
 -   Jordan Klassen «[@forivall](https://github.com/forivall)» — for releasing [gh-pandoc.css](https://gist.github.com/forivall/7d5a304a8c3c809f0ba96884a7cf9d7e) under MIT when asked reuse permission.
 -   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
+-   [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) – for releasing [PBHGEN](https://bitbucket.org/Henry00/pbhgen) under CC BY when asked reuse permission..
 
 Repo History
 ============
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/11/26`
+    -   Added [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool for auto-generating header files (`*.pbi`).
+    -   Started creating the [Wiki](https://github.com/tajmone/purebasic-archives/wiki).
 -   `2016/11/24` — [**Highlight.js**](./syntax-highlighting/highlight.js/): pre-built HLJS packages («PureBASIC enhanced/modded releases») are now available in this repo, along with themes, instructions, and examples.
 -   `2016/11/18` — Republished Dräc’s tutorial [*PureBasic and OOP*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc) (English version).
 -   `2016/10/31` — Added [*Programming 2D Scrolling Games*](./books/2d-games/) PDF book and code examples.

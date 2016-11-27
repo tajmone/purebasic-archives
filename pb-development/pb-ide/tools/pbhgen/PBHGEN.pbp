@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://www.purebasic.com/namespace" version="1.0" creator="PureBasic 5.42 LTS (Windows - x86)">
+  <section name="config">
+    <options closefiles="1" openmode="0" name="PBHGEN"/>
+  </section>
+  <section name="data">
+    <explorer view="" pattern="0"/>
+    <log show="1"/>
+    <lastopen date="2016-04-10 17:37" user="Henry00" host="HENRY00-PC"/>
+  </section>
+  <section name="files">
+    <file name="Entry.pb">
+      <config load="0" scan="1" panel="1" warn="1" lastopen="1" panelstate="+"/>
+      <fingerprint md5="9bcd0430c435015f83e5640db1aeab0e"/>
+    </file>
+  </section>
+  <section name="targets">
+    <target name="Default Target" enabled="1" default="1">
+      <inputfile value="Entry.pb"/>
+      <outputfile value="build\PBHGEN.exe"/>
+      <commandline value="&quot;Test.pb&quot;"/>
+      <executable value="build\PBHGEN.exe"/>
+      <options xpskin="1" debug="1"/>
+      <icon enable="1">resources\headers.ico</icon>
+      <versioninfo enable="1">
+        <field0 value="1,5,4,2"/>
+        <field1 value="1,5,4,2"/>
+        <field2 value="00laboratories"/>
+        <field3 value="PBHGEN"/>
+        <field4 value="542"/>
+        <field5 value="542"/>
+        <field6 value="PureBasic Header Generator"/>
+        <field7 value="PBHGEN"/>
+        <field8 value="PBHGEN.exe"/>
+        <field9 value="Copyright © 00laboratories 2013 - 2016"/>
+        <field13 value="henry00@live.nl"/>
+        <field14 value="http://00laboratories.com/"/>
+        <field15 value="VOS_NT_WINDOWS32"/>
+        <field16 value="VFT_APP"/>
+      </versioninfo>
+    </target>
+  </section>
+</project>
