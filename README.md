@@ -114,14 +114,14 @@ Before submitting pull requests, please read the [`CONTRIBUTING.md`](./CONTRIBUT
 
 Ideas, proposals, and corrections can be discussed by opening an Issue:
 
--   https://github.com/tajmone/purebasic-archives/issues
+-   <https://github.com/tajmone/purebasic-archives/issues>
 
 About PureBASIC
 ===============
 
 PureBASIC is a commercial programming language and IDE published by Fantaisie Software (France):
 
--   https://www.purebasic.com/
+-   <https://www.purebasic.com/>
 
 > PureBasic is a native 32-bit and 64-bit programming language based on established BASIC rules. The key features of PureBasic are portability (Windows, Linux and MacOS X are currently supported), the production of very fast and highly optimized executables and, of course, the very simple BASIC syntax. PureBasic has been created for the beginner and expert alike. We have put a lot of effort into its realization to produce a fast, reliable system friendly language.
 >
@@ -151,11 +151,11 @@ In absence of explicit licensing terms, their contents should be considered copy
 PureBasic CodeArchiv (Rebirth)
 ------------------------------
 
--   https://github.com/GPIforGit/PureBasic-CodeArchiv-Rebirth
+-   <https://github.com/GPIforGit/PureBasic-CodeArchiv-Rebirth>
 
 This project deserves a special mention. It seems to be a WIP to recreate an updated version of the historical **PureBasic CodeArchiv**, hosted at PureArea.net:
 
--   http://www.purearea.net/pb/CodeArchiv/CodeArchiv.html
+-   <http://www.purearea.net/pb/CodeArchiv/CodeArchiv.html>
 
 **PureBasic CodeArchiv** contains a wealth of resources for PureBASIC version 3 and 4. Its license terms are:
 
@@ -173,6 +173,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/11/30` — Now GFM (GitHub Flavored Markdown) is the default standard for markdown documents and cleanup operations performed via the repo-maintaiance tools.
 -   `2016/11/26`
     -   Added [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool for auto-generating header files (`*.pbi`).
     -   Started creating the [Wiki](https://github.com/tajmone/purebasic-archives/wiki).

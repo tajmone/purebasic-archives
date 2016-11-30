@@ -35,7 +35,7 @@ Files
 About Highlight
 ===============
 
--   http://www.andre-simon.de/doku/highlight/en/highlight.php
+-   <http://www.andre-simon.de/doku/highlight/en/highlight.php>
 
 Highilight is a crossplatform FOSS application for converting source code to formatted text with syntax highlighting. It’s a command line tool with an optional GUI fontend.
 
@@ -66,7 +66,7 @@ AsciiDoc Integration
 
 [AsciiDoc](http://asciidoc.org) can natively use Highlight for xhtml11, html5 and html4 outputs:
 
--   http://asciidoc.org/source-highlight-filter.html
+-   <http://asciidoc.org/source-highlight-filter.html>
 
 This opens the doors of the powerful AsciiDoc publishing toolchain to PureBASIC: eBook with elegant code can be easily created with tools like [Asciidoc FX](http://www.asciidocfx.com/).
 

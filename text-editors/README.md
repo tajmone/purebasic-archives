@@ -22,11 +22,11 @@ Direct links are provided (when available) to the source of PureBASIC syntax fil
 Atom
 ----
 
--   https://atom.io
+-   <https://atom.io>
 
 Atom is a powerful, highly customizable and extensible MIT licensed text editor, developed by GitHub Inc. with the Electron framework (Node.js/Chromium).
 
 PureBASIC is supported in Atom via the CoffeeScript package “language-purebasic” (©2014, MIT lic.) by Peter Thomas Horn ([@alomvar](https://github.com/alomvar)):
 
--   https://github.com/alomvar/language-purebasic
+-   <https://github.com/alomvar/language-purebasic>
 

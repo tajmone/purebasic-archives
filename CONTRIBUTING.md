@@ -87,7 +87,7 @@ These scripts will handle auto-generation of a Table Of Content, to be placed so
 
 … these hidden tags (invisible in HTML previews) are needed for the autogeneration of the TOC (which is handled by a Node.js tool called **gfmtoc**).
 
-Also, these scripts will reformat and cleanup markdown sources (via **Pandoc**), enforcing a standard over markdown syntax variants — apart from providing consistency, this prevents markdown diffing nightmares when resolving merge conflicts.
+Also, these scripts will reformat and cleanup markdown sources (via **Pandoc**), enforcing the GitHub flavored Markdown (GFM) standard over markdown syntax variants — apart from providing consistency, this prevents markdown diffing nightmares when resolving merge conflicts.
 
 So make sure that:
 
@@ -97,7 +97,7 @@ So make sure that:
 
 More info on how the scripts work is found in the [`/repo-maintainance-tools/`](./repo-maintainance-tools/) folder’s README file.
 
-> **NOTE**: The current automation-script setting for Pandoc reformatting is: from `markdown` to `markdown` — and not `markdown_github` (GitHub-Flavored Markdown). The reason for this is that I’ve experienced some problems with `markdown_github` reformatting, especially with linebreaks. In the future this setting might change.
+> **NOTE**: The current automation-script setting for Pandoc reformatting  are: from `markdown_github-hard_line_breaks` to `markdown_github-hard_line_breaks` — ie: GitHub-Flavored Markdown minus hard line breaks extension/behaviour. GFM hard line breaks is a feature intended for comments, issues and pull request description, not for README files; so I've disabled it here.
 
 README Files
 ============
