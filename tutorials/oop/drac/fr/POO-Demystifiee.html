@@ -424,8 +424,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic et la Programmation Orientée Objet</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.3,</span>
-<span id="revdate">November 27, 2016</span>
+<span id="revnumber">draft 0.4,</span>
+<span id="revdate">December 1, 2016</span>
 <br><span id="revremark">WIP Porting from HTML.</span>
 </div>
 <div id="toc" class="toc2">
@@ -456,6 +456,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#l-instruction-interface">4. L’instruction Interface</a>
 <ul class="sectlevel3">
 <li><a href="#initialisation">4.1. Initialisation :</a></li>
+</ul>
+</li>
+<li><a href="#deuxi-me-impl-mentation">5. Deuxième Implémentation</a>
+<ul class="sectlevel2">
+<li><a href="#notion-d-interface-objet">5.1. Notion d’interface Objet :</a></li>
+<li><a href="#instanciation-et-constructeur-d-objet">5.2. Instanciation et Constructeur d’Objet</a></li>
+<li><a href="#initialisation-d-objet">5.3. Initialisation d’Objet</a></li>
+<li><a href="#destructeur-d-objet">5.4. Destructeur d’Objet</a></li>
+<li><a href="#allocations-m-moire">5.5. Allocations Mémoire</a></li>
+<li><a href="#encapsulation-2">5.6. Encapsulation</a></li>
+<li><a href="#h-ritage-2">5.7. Héritage</a></li>
+<li><a href="#accesseur-et-modifieur-d-objet">5.8. Accesseur et Modifieur d’Objet</a></li>
 </ul>
 </li>
 </ul>
@@ -1082,7 +1094,7 @@ Methodes\Procedure2 = @Ma_Procedure2()</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>La composition de la Structure décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’<code>Interface</code>. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.</p>
+<p><a id="admonition-structure-interface-symetrie"></a>La composition de la Structure décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’<code>Interface</code>. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.</p>
 </div>
 </td>
 </tr>
@@ -1120,11 +1132,896 @@ Methodes\Procedure2 = @Ma_Procedure2()</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="deuxi-me-impl-mentation"><a class="anchor" href="#deuxi-me-impl-mentation"></a>5. Deuxième Implémentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dans notre première implémentation, nombres de concepts ont été traduits d’une manière plus ou moins étendue.
+Nous allons voir maintenant comment on peut améliorer cette implémentation grâce à l’utilisation de l’instruction Interface.</p>
+</div>
+<div class="sect2">
+<h3 id="notion-d-interface-objet"><a class="anchor" href="#notion-d-interface-objet"></a>5.1. Notion d’interface Objet :</h3>
+<div class="paragraph">
+<p>Nous avons vu que la notion d’encapsulation avait comme but premier de rendre visible à l’utilisateur qu’une partie de l’objet.
+La partie visible du contenu est appelée <strong>interface</strong>, l’autre partie cachée est appelée <strong>implémentation</strong>.</p>
+</div>
+<div class="paragraph">
+<p>L’interface d’un objet est donc la seule porte d’entrée/sortie dont dispose l’utilisateur pour agir sur un objet.</p>
+</div>
+<div class="paragraph">
+<p>C’est le rôle que l’on va donner dans notre utilisation de l’instruction Interface.</p>
+</div>
+<div class="paragraph">
+<p>L’instruction Interface va donc nous permettre de regrouper sous un même Nom, tout ou partie des méthodes d’un objet que l’utilisateur aura le droit de manipuler.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="instanciation-et-constructeur-d-objet"><a class="anchor" href="#instanciation-et-constructeur-d-objet"></a>5.2. Instanciation et Constructeur d’Objet</h3>
+<div class="paragraph">
+<p>Vouloir utiliser une interface c’est d’abord se munir :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>d’une Interface décrivant les méthodes que l’on veut utiliser,</p>
+</li>
+<li>
+<p>d’une Structure décrivant les pointeurs d’adresses des fonctions correspondantes,</p>
+</li>
+<li>
+<p>d’une table des méthodes: variable initialisée issue de cette structure.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>L’étape 1, consistant à d’écrire l’Interface d’un objet, n’est pas compliquée. Il suffit de nommer les méthodes.</p>
+</div>
+<div class="paragraph">
+<p>Les étapes 2 et 3 sont liées. Or dans notre approche objet, nous disposons déjà de la Structure adaptée: c’est celle qui décrit la Classe d’un objet.
+En effet, l’Interface et la Classe d’un objet se ressemblent: Tous deux comportent des pointeurs de fonctions.
+Simplement, l’instruction Interface ne contient pas les attributs de la Classe mais seulement tout ou partie des méthodes de la Classe.</p>
+</div>
+<div class="paragraph">
+<p>Il est donc tout à fait possible de se servir de la Classe d’un objet pour initialiser l’interface. Cette démarche est d’ailleurs des plus naturelles. Rappelons que l’interface est la partie visible de la Classe d’un objet, il est donc normal que l’interface soit déterminée par la Classe.</p>
+</div>
+<div class="paragraph">
+<p>Voyons comment procéder.
+Reprenons la Classe Rectangle2 munie des deux méthodes : Dessiner() et Effacer()</p>
+</div>
+<div class="paragraph">
+<p>Sa Classe est la suivante</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2
+  *Dessiner
+  *Effacer
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Dessiner_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+
+Procedure Effacer_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Définissons maintenant l’interface suivante:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rectangle
+  Dessiner()
+  Effacer()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Comme on veut obliger l’utilisateur à passer par l’Interface, il n’est plus question de créer un objet directement à partir de la Classe Rectangle2.</p>
+</div>
+<div class="paragraph">
+<p>L’objet sera donc créée en écrivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect.Rectangle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>au lieu de Rect.Rectangle2</p>
+</div>
+<div class="paragraph">
+<p>Cependant, il ne faut pas oublier de relier l’Interface à la Classe.
+Pour cela il faut initialiser l’objet Rect et il est conseillé de le faire lors de la déclaration de l’objet.
+Correction faite, la bonne instruction pour déclarer l’objet via l’interface est la suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect.Rectangle = New_Rect(0, 10, 0, 20)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>New_Rect() est une fonction qui réalise l’opération d’initialisation.
+Ce que l’on sait déjà d’elle, c’est qu’elle retourne comme valeur l’adresse mémoire contenant les adresses des fonctions utilisées par l’interface.</p>
+</div>
+<div class="paragraph">
+<p>Voici maintenant le corps de la fonction New_Rect()</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
+  *Rect.Rectangle2 = AllocateMemory(SizeOf(Rectangle2))
+
+  *Rect\Dessiner = @Dessiner_Rectangle()
+  *Rect\Effacer = @Effacer_Rectangle()
+
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cette fonction alloue une zone mémoire de la taille de la Classe de l’objet.
+Elle initialise ensuite les méthodes puis les attributs de l’objet.
+Elle se termine en retournant l’adresse de cette zone mémoire.
+Comme on trouve au début de cette zone mémoire d’abord les adresses des fonctions <code>Dessiner_Rectangle()</code> et <code>Effacer_Rectangle()</code>, on initialise effectivement l’interface.</p>
+</div>
+<div class="paragraph">
+<p>Pour accéder aux méthodes de l’objet <code>Rect</code>, il suffit d’écrire :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect\Dessiner()
+Rect\Effacer()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On vérifie bien que :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la Classe <code>Rectangle2</code> permet d’initialiser l’interface de l’objet.</p>
+</li>
+<li>
+<p><code>Rect</code>, déclaré via l’interface, est un objet de la Classe <code>Rectangle2</code> pouvant utiliser les méthodes <code>Dessiner()</code> et <code>Effacer()</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Nous avons donc réalisé, via l’Interface et la fonction <code>New_Rect()</code>, l’instanciation d’un objet Rect de la Classe <code>Rectangle2</code>.
+La fonction <code>New_Rect()</code> est appelée <strong>Constructeur</strong> de l’objet de Classe <code>Rectangle2</code>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Toutes les implémentations des Méthodes (blocs <code>Procedur : EndProcedure</code>) doivent comporter comme premier argument le pointeur <code>*this</code> de l’objet sur lequel on doit appliquer la fonction.
+A l’opposé, l’argument <code>*this</code> ne doit plus apparaît au niveau de l’<code>Interface</code>. En effet, comme l’instruction nous permet d’écrire <code>Rect\Dessiner()</code>, on sait que la méthode <code>Dessiner()</code> est celle de l’objet <code>Rect</code>: Il n’y a pas d’ambiguïté. Tout se passe comme si l’objet <code>Rect</code> était "conscient" de son état.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a id="admonition-constructeur-parametres"></a>Le constructeur pourrait recevoir comme paramètres supplémentaires, les adresses des fonctions implémentant les méthodes. Il n’en est rien ici car on connait l’implémentation des méthodes: c’est celle de la classe. Par contre on ne connait pas l’état initial que l’utilisateur veut donner à l’objet. Il se peut donc que le constructeur comporte des paramètres pour l’initialisation des attributs.
+C’est le cas ici pour <code>New_Rect()</code> demandant en entrée les coordonnées (<code>x1</code>, <code>y1</code>) et (<code>x2</code>, <code>y2</code>) des points diamétralement opposés du rectangle.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="initialisation-d-objet"><a class="anchor" href="#initialisation-d-objet"></a>5.3. Initialisation d’Objet</h3>
+<div class="paragraph">
+<p>Nous avons vu que le constructeur, après avoir alloué la place mémoire nécessaire à l’objet, initialise les différents membres de l’objet (méthodes et attributs).
+On peut isoler cette opération dans une procédure à part, que le constructeur appellera.
+Cette précaution permet de distinguer l’allocation mémoire de l’initialisation de l’objet. Ceci sera très utile pour mener à bien par la suite le concept d’héritage, car une seule allocation de mémoire suffit, mais plusieurs initialisations seront nécessaires.</p>
+</div>
+<div class="paragraph">
+<p>Cependant nous séparerons l’initialisation des méthodes et celle des attributs.
+En effet, l’implémentation des méthodes dépend de la classe, alors que l’initialisation des attributs dépend de l’objet lui-même (voir <a href="#admonition-constructeur-parametres">remarque précédente</a>)</p>
+</div>
+<div class="paragraph">
+<p>Dans notre exemple, nous écrirons les deux procédures suivantes :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mthds_Rect(*Rect.Rectangle2)
+  *Rect\Dessiner = @Dessiner_Rectangle()
+  *Rect\Effacer = @Effacer_Rectangle()
+EndProcedure
+
+Procedure Init_Mbers_Rect(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>et le Constructeur devient:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect(*Rect)
+  Init_Mbers_Rect(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="destructeur-d-objet"><a class="anchor" href="#destructeur-d-objet"></a>5.4. Destructeur d’Objet</h3>
+<div class="paragraph">
+<p>On associe toujours à un constructeur d’objet, son opposé : le destructeur d’objet.
+Lors de la construction d’un objet, une zone mémoire a était allouée pour stocker les définitions des méthodes et des attributs.
+Quant un objet n’est plus utile, il ne faut pas oublier de le détruire pour libérer la mémoire.
+Ce processus se fait en utilisant une fonction appelée <strong>Destructeur</strong> d’objet.</p>
+</div>
+<div class="paragraph">
+<p>Dans notre exemple d’objet de la Classe Rectangle2, le destructeur d’objet s’écrira :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Free_Rect(*Rect)
+  FreeMemory(*Rect)
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>et s’utilisera, comme suite:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Free_Rect(Rect2)</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On peut voir le Destructeur d’objet comme une méthode de l’objet. Mais pour éviter d’alourdir l’objet et garder une homogénéité avec le Constructeur, nous avons préféré le voir comme une fonction de la Classe.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Détruire un objet par son Destructeur, signifie que l’on libère la place mémoire contenant les informations de l’objet mais en aucun cas on ne détruit l’infrastructure de l’objet.
+Aussi, dans notre exemple, après avoir fait:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Free_Rect(Rect2)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on peut toujours réutiliser Rect2 sans préciser à nouveau son type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect2 = New_Rect(0, 10, 0, 20)
+Rect2\Dessiner()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>En effet, lorsque l’on réalise l’instanciation d’un objet, comme suite :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect2.Rectangle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>on crée un objet Rect2 dont la durée de vie est assujettie aux mêmes règles que celles des variables car Rect2 est d’abord une variable : C’est une variable structurée continuant les pointeurs de fonctions des méthodes de l’objet.(voir aussi le rappel qui suit)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Petit rappel : La durée de vie d’une variable est liée à la durée de vie de la partie du programme où elle est déclarée :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Si la variable est déclarée à l’intérieur d’une fonction, sa durée de vie sera liée à celle de la fonction, c’est à dire égale au temps d’utilisation de la fonction.</p>
+</li>
+<li>
+<p>Si la variable est déclarée en dehors de toute fonction, c’est à dire dans le corps principal du programme, sa durée de vie est liée à celle du programme</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allocations-m-moire"><a class="anchor" href="#allocations-m-moire"></a>5.5. Allocations Mémoire</h3>
+<div class="paragraph">
+<p>A chaque nouvelle instanciation, le constructeur doit allouer dynamiquement une place mémoire de la taille des informations décrivant l’objet.
+Pour cela, le Constructeur peut utiliser la commande <code>AllocateMemory()</code>, associée à la commande <code>FreeMemory()</code> pour le Destructeur.</p>
+</div>
+<div class="paragraph">
+<p>Mais cela peut être une toute autre commande d’allocation dynamique de mémoire.
+Sous OS Windows, on peut passer directement par les API par exemple.</p>
+</div>
+<div class="paragraph">
+<p>En standard, PureBasic propose les listes chaînées qui permettent aussi d’allouer dynamiquement de la mémoire.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encapsulation-2"><a class="anchor" href="#encapsulation-2"></a>5.6. Encapsulation</h3>
+<div class="paragraph">
+<p>Imaginons maintenant que l’on ne veuille donner à l’utilisateur seulement accès à la méthode Dessiner() de la Classe Rectangle2. On commencera par définir l’interface désirée :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rectangle
+  Dessiner()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instanciation du nouvel objet reste la même:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect.Rectangle = New_Rect()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>avec</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mthds_Rect(*Rect.Rectangle2)
+  *Rect\Dessiner = @Dessiner_Rectangle()
+  *Rect\Effacer = @Effacer_Rectangle()
+EndProcedure
+
+Procedure Init_Mbers_Rect(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect(*Rect)
+  Init_Mbers_Rect(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>car en effet, la première adresse de fonction est bien celle de la méthode Dessiner().</p>
+</div>
+<div class="paragraph">
+<p>Maintenant, imaginons que l’on veuille donner à l’utilisateur seulement accès à la méthode Effacer(). On commencera par définir l’interface suivante:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rectangle
+  Effacer()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Par contre l’instanciation du nouvel objet ne peut utiliser le constructeur New_Rect().
+Dans le cas contraire, le résultat serait identique au cas précédent.</p>
+</div>
+<div class="paragraph">
+<p>Il faut donc créer un nouveau constructeur capable de retourner l’adresse de fonction adaptée.</p>
+</div>
+<div class="paragraph">
+<p>En voici un :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mthds_Rect2(*Rect.Rectangle2)
+  *Rect\Dessiner = @Effacer_Rectangle()
+  *Rect\Effacer = @Dessiner_Rectangle()
+EndProcedure
+
+Procedure Init_Mbers_Rect(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect2(*Rect)
+  Init_Mbers_Rect(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vous constatez qu’il a suffit d’inverser les adresses de fonction dans l’initialisation des méthodes de la Classe.
+Certes, ce n’est pas très élégant de devoir affecter au champ Dessin de la Structure Rectangle2 l’adresse d’une toute autre fonction.
+Si cela permet de conserver la même Structure, celle de la Classe, cela souligne aussi une chose :
+Les noms des pointeurs de fonctions nous intéressent moins que leurs valeurs !
+Pour gommer ce faux problème, il suffit de renommer les pointeurs de la Classe comme suite :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2
+  *Methode1
+  *Methode2
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>C’est l’Interface et le Constructeur qui donnent un sens à ces pointeurs :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>en leur donnant un nom (rôle de l’interface)</p>
+</li>
+<li>
+<p>en leur affectant les adresses de fonctions adéquates (rôle du constructeur)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Malgré cette disposition concernent les noms des pointeurs de fonction, il reste bien plus pratique de conserver un nom explicite si l’on ne compte pas cacher les méthodes (ce qui est le plus courant). Cela permet de faire évoluer une Classe Mère sans retoucher à la numérotation des pointeurs des Classes Filles.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="h-ritage-2"><a class="anchor" href="#h-ritage-2"></a>5.7. Héritage</h3>
+<div class="paragraph">
+<p>Comme lors de notre première implémentation du concept d’héritage, nous allons profiter de la qualité qu’ont à la fois les instructions Structure et Interface d’être étendues grâce au mot-clé Extends.</p>
+</div>
+<div class="paragraph">
+<p>Ainsi, nous passerons de la Classe Rectangle1 possédant une seule méthode Dessiner()…</p>
+</div>
+<div class="listingblock">
+<div class="title">Interface</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rect1
+  Dessiner()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Classe</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle1
+  *Methode1
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Dessiner_Rectangle(*this.Rectangle1)
+  ; [ ...some code... ]
+EndProcedure
+
+Procedure Init_Mthds_Rect1(*Rect.Rectangle1)
+  *Rect\Methode1 = @Dessiner_Rectangle()
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Constructeur</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mbers_Rect1(*Rect.Rectangle1, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect1(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle1))
+  Init_Mthds_Rect1(*Rect)
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>…à la Classe Rectangle2, possédant 2 méthodes : Dessiner() et Effacer() en écrivant :</p>
+</div>
+<div class="listingblock">
+<div class="title">Interface</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rect2 Extends Rect1
+  Effacer()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Classe</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2 Extends Rectangle1
+  *Methode2
+EndStructure
+
+Procedure Effacer_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+
+Procedure Init_Mthds_Rect2(*Rect.Rectangle2)
+  Init_Mthds_Rect1(*Rect)
+  *Rect\Methode2 = @Effacer_Rectangle()
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Constructeur</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mbers_Rect2(*Rect.Rectangle2, x1.l, x2.l, y1.l, y2.l)
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+EndProcedure
+
+Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
+  *Rect = AllocateMemory(SizeOf(Rectangle2))
+  Init_Mthds_Rect2(*Rect)
+  Init_Mbers_Rect2(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Accomplir un héritage consiste non seulement à étendre l’<code>Interface</code> et la Classe mais aussi à adapter l’initialisation des méthodes et des attributs.
+Les deux procédures <code>Init_Mthds_Rect2()</code> et <code>Init_Mbers_Rect2()</code> font appel respectivement à l’initialisation des méthodes et à l’initialisation des attributs de la Classe <code>Rectangle1</code> (<code>Init_Mthds_Rect1()</code> et <code>Init_Mbers_Rect1()</code>) et non au constructeur <code>New_Rect1()</code>.</p>
+</div>
+<div class="paragraph">
+<p>En effet, il n’est pas question d’instancier un objet de la Classe Mère (<code>Rectangle1</code>) pour construire un objet de la Classe Fille (<code>Rectangle2</code>).
+Il est question simplement d’hériter des méthodes et des attributs, ce à quoi contribue l’emploi des initialisations de la Classe Mère dans la Classe Fille.</p>
+</div>
+<div class="paragraph">
+<p>D’autre part, on vérifie bien qu’en modifiant la Classe Mère (en ajoutant une méthode ou une variable), la Classe Fille bénéficie instantanément des changements.</p>
+</div>
+<div class="paragraph">
+<p>L’héritage est-il pour autant correct? Non, car dans l’état actuel, il ne permet pas à l’objet de la Classe Fille (<code>Rectangle2</code>) d’utiliser la nouvelle méthode <code>Effacer()</code> !
+Ceci tout simplement car le pointeur de fonction *Methode2 ne se trouve pas directement à la suite du pointeur de fonction <code>*Methode1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Si on explicite la Structure de la Classe <code>Rectangle2</code>, on a :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2
+  *Methode1
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+  *Methode2
+EndStructure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>au lieu de disposer de la Structure ci-dessous, autorisant une initialisation correcte de l’interface:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2
+  *Methode1
+  *Methode2
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Rappelez-vous qu’il faut des adresses de fonction qui se suivent et qui soient ordonnées à l’image de l’Interface (<a href="#admonition-structure-interface-symetrie">voir remarque précédente</a>)</p>
+</div>
+<div class="paragraph">
+<p>On résout ce problème en regroupant dans une structure spécifique les méthodes entre-elles !
+Il suffit alors que la Structure de la Classe garde un pointeur sur cette nouvelle structure comme le montre l’exemple suivant :</p>
+</div>
+<div class="listingblock">
+<div class="title">Interface</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rect1
+  Dessiner()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Classe</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle1
+  *Methodes
+  x1.l
+  x2.l
+  y1.l
+  y2.l
+EndStructure
+
+Procedure Dessiner_Rectangle(*this.Rectangle1)
+  ; [ ...some code... ]
+EndProcedure
+
+Structure Mthds_Rect1
+  *Methode1
+EndStructure
+
+Procedure Init_Mthds_Rect1(*Mthds.Mthds_Rect1)
+  *Mthds\Methode1 = @Dessiner_Rectangle()
+EndProcedure
+
+Mthds_Rect1. Mthds_Rect1
+Init_Mthds_Rect1(@Mthds_Rect1)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Constructeur</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mbers_Rect1(*Rect.Rectangle1, x1.l, x2.l, y1.l, y2.l)
+  *Rect\x1 = x1
+  *Rect\x2 = x2
+  *Rect\y1 = y1
+  *Rect\y2 = y2
+EndProcedure
+
+Procedure New_Rect1(x1.l, x2.l, y1.l, y2.l)
+  Shared Mthds_Rect1
+  *Rect.Rectangle1 = AllocateMemory(SizeOf(Rectangle1))
+  *Rect\Methodes = @Mthds_Rect1
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y3)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La structure <code>Mthds_Rect1</code> décrit tous les pointeurs de fonction des méthodes de la Classe.
+S’en suit la déclaration de la variable Mthds_Rect1 de type Mthds_Rect1 ainsi que son initialisation grace à Init_Mthds_Rect1().</p>
+</div>
+<div class="paragraph">
+<p>La variable Mthds_Rect1 est appelée <strong>la table des méthodes</strong> de la class car elle contient l’ensemble des adresses des méthodes de la class.</p>
+</div>
+<div class="paragraph">
+<p>Cet ensemble constitue la description complète des méthodes de la Classe.</p>
+</div>
+<div class="paragraph">
+<p>La structure <code>Rectangle1</code>, comporte maintenant un pointeur <code>*Methodes</code>, initialisé par le constructeur en donnant l’adresse de la variable <code>Mthds_Rect1</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L’expression</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Mthds_Rect1.Mthds_Rect1
+Init_Mthds_Rect1(@Mthds_Rect1)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>peut etre condensée en</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Init_Mthds_Rect1(@Mthds_Rect1.Mthds_Rect1)</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>L’héritage est alors possible car en étendant la Structure Methd_Rect1 en une nouvelle Methd_Rect2, les adresses de fonction vont se suivre:</p>
+</div>
+<div class="listingblock">
+<div class="title">Interface</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Interface Rect2 Extends Rect1
+  Effacer()
+EndInterface</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Classe</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rectangle2 Extends Rectangle1
+EndStructure
+
+Procedure Effacer_Rectangle(*this.Rectangle2)
+  ; [ ...some code... ]
+EndProcedure
+
+Structure Mthds_Rect2 Extends Mthds_Rect1
+  *Methode2
+EndStructure
+
+Procedure Init_Mthds_Rect2(*Mthds.Mthds_Rect2)
+  Init_Mthds_Rect1(*Mthds)
+  *Mthds\Methode2 = @Effacer_Rectangle()
+EndProcedure
+
+Mthds_Rect2. Mthds_Rect2
+Init_Mthds_Rect2(@Mthds_Rect2)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Constructeur</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Init_Mbers_Rect2(*Rect.Rectangle2 , x1.l, x2.l, y1.l, y2.l)
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+EndProcedure
+
+Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
+  Shared Mthds_Rect2
+  *Rect.Rectangle2 = AllocateMemory(SizeOf(Rectangle2))
+  *Rect\Methodes = @Mthds_Rect2
+  Init_Mbers_Rect2(*Rect, x1, x2, y1, y2)
+  ProcedureReturn *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dans cet exemple, la Structure <code>Rectangle2</code> est vide, ce qui n’est pas gênant en soit.
+Deux raisons à cela :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>D’abord le pointeur <code>*Methodes</code> n’a besoin d’exister qu’une seule fois et ceci dans la Classe Mère.</p>
+</li>
+<li>
+<p>Ensuite, nous n’avons pas souhaitez ajouter d’attributs supplémentaires, auquel cas elle aurait dû les contenir.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le fait d’avoir externalisé l’initialisation des méthodes hors du constructeur combiné à des pointeurs de fonctions disponiblent dans une variable fixe a trois avantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les pointeurs de fonction des méthodes de la Classe sont initialisés une fois pour toute et non plus à chaque instanciation d’un objet</p>
+</li>
+<li>
+<p>Les objets instanciés ne disposent plus que d’un pointeur vers les pointeurs des méthodes: le gain en place mémoire est substantiel.</p>
+</li>
+<li>
+<p>Comme tous les objets pointent vers les mêmes pointeurs de fonction, cela garantit un comportement identique des objets de même Classe.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accesseur-et-modifieur-d-objet"><a class="anchor" href="#accesseur-et-modifieur-d-objet"></a>5.8. Accesseur et Modifieur d’Objet</h3>
+<div class="paragraph">
+<p>En passant par l’<code>Interface</code>, il n’est possible de manipuler que des méthodes de l’objet.
+L’interface encapsule donc entièrement les attributs des objets, c’est à dire qu’elle les cache.
+Pour accéder aux attributs, soit pour les lires, soit pour les modifier, il faut donc disposer de méthodes spécifiques et les mettre à disposition de l’utilisateur.
+Les méthodes qui permettent de lire les attributs d’un objet sont appelées les <strong>Accesseur</strong> de l’objet.
+Les méthodes qui permettent de modifier les attributs d’un objet sont appelées les <strong>Modifieurs</strong> de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>Dans notre exemple de Classe <code>Rectangle1</code>, si nous voulons lire la valeur de l’attribut var2, on créera l’Accesseur suivant:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Get_var2(*this.Rectangle1)
+  ProcedureReturn *this\var2
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De même, pour modifier la valeur de l’attribut var2, on écrira le Modifieur suivant</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Set_var2(*this.Rectangle1, value)
+  *this\var2 = value
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Comme les Accesseurs et les Modifieurs n’existent que pour permettre à l’utilisateur de modifier tout ou partie des attributs d’un objet, ils sont obligatoirement présents dans l’interface.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Voir l’annexe <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Annexes.htm#Optimisations_Get_Set">Optimisation</a> du tutorial pour étudier de quelle manière on peut optimiser les performances des accesseurs et des modifieurs lors de l’exécution</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.3<br>
-Last updated 2016-11-27 00:58:02 E
+Draft 0.4<br>
+Last updated 2016-12-01 13:08:04 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">
