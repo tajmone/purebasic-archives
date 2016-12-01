@@ -424,8 +424,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic and Object-Oriented Programming</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">version 1.2,</span>
-<span id="revdate">November 25, 2016</span>
+<span id="revnumber">version 1.3,</span>
+<span id="revdate">December 1, 2016</span>
 <br><span id="revremark">Reprinted and revised edition.</span>
 </div>
 <div id="toc" class="toc2">
@@ -1324,11 +1324,11 @@ Rect\Erase()</code></pre>
 <p>Thus the <code>Interface</code> instruction and the <code>New_Rect()</code> function perform the instanciation of a <code>Rect</code> object from the <code>Rectangle2</code> Class.
 The <code>New_Rect()</code> function is the <strong>Constructor</strong> for objects of the <code>Rectangle2</code> Class.</p>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -1338,15 +1338,15 @@ The <code>New_Rect()</code> function is the <strong>Constructor</strong> for obj
 </tr>
 </table>
 </div>
-<div class="admonitionblock important">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-important" title="Important"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The Constructor could receive, as parameters, the whole functions addresses which implement the methods. This is not the case here, because we know the implemented methods: the ones from the class. On the other hand the initial state desired by the user is unknown. Thus, the Constructor may contain parameters for attributes initialization.
+<p><a id="admonition-constructor-parameters"></a>The Constructor could receive, as parameters, the whole functions addresses which implement the methods. This is not the case here, because we know the implemented methods: the ones from the class. On the other hand the initial state desired by the user is unknown. Thus, the Constructor may contain parameters for attributes initialization.
 This case applyes here: the paramters required by <code>New_Rect()</code> are the two coordinates (<code>x1</code>, <code>y1</code>) and (<code>x2</code>, <code>y2</code>) of the diametrically opposite points of the rectangle.</p>
 </div>
 </td>
@@ -1362,7 +1362,7 @@ This operation can be isolated in a specific procedure, called by the Constructo
 This precaution allows to make a distinction between an object’s memory allocation and its initialization. This approach will turn out to be very useful later on, when implementing the concept of Inheritance, because a single memory allocation is sufficient, but several initializations are required.</p>
 </div>
 <div class="paragraph">
-<p>In addition, initialization of methods and attributes are separated too — because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see previous remark).</p>
+<p>In addition, initialization of methods and attributes are separated too — because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see <a href="#admonition-constructor-parameters">previous remark</a>).</p>
 </div>
 <div class="paragraph">
 <p>In our example, the two initialization procedures will be implemented as:</p>
@@ -3196,8 +3196,8 @@ It also preserves object-oriented notation, although it introduces an extra leve
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.2<br>
-Last updated 2016-11-25 11:36:15 E
+Version 1.3<br>
+Last updated 2016-12-01 13:08:02 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

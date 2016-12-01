@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v1.2, November 25, 2016: Reprinted and revised edition.
+v1.3, December 1, 2016: Reprinted and revised edition.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :doctype: article
 :encoding: utf-8
@@ -644,14 +644,14 @@ Therefore, we have ascertained that:
 Thus the `Interface` instruction and the `New_Rect()` function perform the instanciation of a `Rect` object from the `Rectangle2` Class.
 The `New_Rect()` function is the *Constructor* for objects of the `Rectangle2` Class.
 
-[WARNING]
+[IMPORTANT]
 ====
 All the Methods implementations (``Procedure : EndProcedure`` blocks) must contain, as first argument, the `*this` pointer of the object. On the other hand, the `*this` argument mustn’t appear at the `Interface` level. In fact, as this instruction allows to write ``Rect\Draw()``, it knows that the `Draw()` method involves the `Rect` object: no ambiguity! Everything happens as if the object `Rect` was «aware» of its state.
 ====
 
-[IMPORTANT]
+[NOTE]
 ====
-The Constructor could receive, as parameters, the whole functions addresses which implement the methods. This is not the case here, because we know the implemented methods: the ones from the class. On the other hand the initial state desired by the user is unknown. Thus, the Constructor may contain parameters for attributes initialization.
+[[admonition-constructor-parameters]]The Constructor could receive, as parameters, the whole functions addresses which implement the methods. This is not the case here, because we know the implemented methods: the ones from the class. On the other hand the initial state desired by the user is unknown. Thus, the Constructor may contain parameters for attributes initialization.
 This case applyes here: the paramters required by `New_Rect()` are the two coordinates (``x1``, ``y1``) and (``x2``, ``y2``) of the diametrically opposite points of the rectangle.
 ====
 
@@ -661,7 +661,7 @@ We’ve seen that after allocating the required memory area for an object, the C
 This operation can be isolated in a specific procedure, called by the Constructor.
 This precaution allows to make a distinction between an object’s memory allocation and its initialization. This approach will turn out to be very useful later on, when implementing the concept of Inheritance, because a single memory allocation is sufficient, but several initializations are required.
 
-In addition, initialization of methods and attributes are separated too — because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see previous remark).
+In addition, initialization of methods and attributes are separated too — because the methods implementation depends on the class, while the attributes initialization depends on the object itself (see <<admonition-constructor-parameters,previous remark>>).
 
 In our example, the two initialization procedures will be implemented as:
 
