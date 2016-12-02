@@ -8,7 +8,9 @@ A collection of PureBASIC resources.
 <!-- #toc -->
 -   [Vanity URLs](#vanity-urls)
 -   [Introduction](#introduction)
+    -   [PureBASIC Archives Repository](#purebasic-archives-repository)
     -   [The Wiki](#the-wiki)
+    -   [PureBASIC Archives Website](#purebasic-archives-website)
 -   [Quick Links](#quick-links)
 -   [Resources Organization](#resources-organization)
 -   [Developement Branches](#developement-branches)
@@ -31,24 +33,53 @@ A collection of PureBASIC resources.
 Vanity URLs
 ===========
 
--   [git.io/pb-archives](https://git.io/pb-archives) – Links to repo master (here)
--   [git.io/pb-wiki](https://git.io/pb-wiki) – Links to the Wiki
+-   [git.io/purebasic-archives](https://git.io/purebasic-archives) – Links to PB-Archives’ website
+-   [git.io/pb-archives](https://git.io/pb-archives) – Links to PB-Archives’ repo master (here)
+-   [git.io/pb-wiki](https://git.io/pb-wiki) – Links to PB-Archives’ Wiki
 
 ------------------------------------------------------------------------
 
 Introduction
 ============
 
+The PB-Archives is a threefold project consisting of:
+
+1.  [PureBASIC Archives repository](https://github.com/tajmone/purebasic-archives)
+2.  [PureBASIC Archives Wiki](https://github.com/tajmone/purebasic-archives/wiki)
+3.  [PureBASIC Archives website](https://tajmone.github.io/purebasic-archives/)
+
+The project was started by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) in October 2016. The goal of the project is to create a collaborative centralized place for gathering and sharing PureBASIC-related resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
+
+PureBASIC Archives Repository
+-----------------------------
+
 -   <https://github.com/tajmone/purebasic-archives>
 
-This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) as a centralized place for gathering and sharing PureBASIC-related resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
+The Git repository is the core of the PB-Archives project: resources of various types are herein stored, organized into categories through folders structure. Documents and tutorials are stored in the repository both in source format (Markdown or AsciiDoc) and in distribution format (HTML, doc, PDF, ecc.).
+
+By cloning the repo, the end user downloads a copy of all of the project’s reosurces, which then become locally available at all times and extremely easy to update and maintain through Git. Hopefully, this should also encourage users to contribute their own resources to the project.
+
+The idea of creating this repo dawned on me when I realized that in the course of time, while working on various PureBASIC projects, I’ve been cumulating lots of resources and notes – mostly buried within each project’s working folders. At the end of each project – when the dev-frenzy cools down – I always try to reorganize my notes and resources in a systematic way, so next time I’ll need them they’ll be at hand (without having to sift through all my past projects because I forgot where I save them). Well, this project is something along these lines, but on a collaborative scale.
+
+I hope that developers can benefit from having a pool of resources to fish from, and that they might contribute back by sharing their own findings too. It only takes a handful of PureBASIC developers to quickly populate a project like this one.
 
 The Wiki
 --------
 
-The [GitHub-hosted Wiki](https://github.com/tajmone/purebasic-archives/wiki) associated to the PureBASIC Archives project is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a Wiki entry, but any full-fledged article/tutorial should be placed instead inside the repo, and a short link to it placed in the Wiki.
+-   <https://github.com/tajmone/purebasic-archives/wiki>
 
-Possibly, in the future, html standalone snaphsots of the Wiki might be included in the PureBASIC Archives repo, for offline reading — that is, if the Wiki every reaches an interesting size and richness of contents.
+The GitHub-hosted Wiki associated to the PureBASIC Archives repo is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a Wiki entry, but any full-fledged article/tutorial should be placed instead inside the repo and linked from the Wiki.
+
+Possibly, in the future, html standalone snaphsots of the Wiki might be included in the PureBASIC Archives repo, for offline reading — that is, if the Wiki ever reaches an interesting size and richness of contents.
+
+PureBASIC Archives Website
+--------------------------
+
+-   <https://tajmone.github.io/purebasic-archives/>
+
+Right now, it’s just a single-page website, created with [GitHub’s Automatic Page Generator](https://help.github.com/articles/creating-pages-with-the-automatic-generator/) and freely hosted on [GitHub Pages](https://pages.github.com/). When the documents and tutorials of PB-Archives’ repo and wiki will reach a mature stage, I’m planning to make it a full-fledged and well organized portal – but this is a long-term project, unlikely to happen soon.
+
+For the time being, a single presentation-page is all the website can offer.
 
 Quick Links
 ===========
