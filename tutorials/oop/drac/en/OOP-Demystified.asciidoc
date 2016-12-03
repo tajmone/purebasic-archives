@@ -1,6 +1,6 @@
 = PureBasic and Object-Oriented Programming
 Dräc
-v1.3, December 1, 2016: Reprinted and revised edition.
+v1.4, December 3, 2016: Reprinted and revised edition.
 :title: PureBasic and Object-Oriented Programming — or «the OOP demystified»
 :doctype: article
 :encoding: utf-8
@@ -1383,8 +1383,6 @@ As shown, a PureBasic Class revolves around four main themes:
 
 Here is a header file cotaining the definition of this set of commands, along with a usage-example file (based on the <<First Code-Example,previous inheritance example>>, so that you might compare them):
 
-// TODO: MISSING LINK
-
 * link:OOP.pbi[``OOP.pbi``]
 * link:OOP-Inheritance-Ex2.pb[``OOP-Inheritance-Ex2.pb``]
 
@@ -1401,7 +1399,7 @@ The `Class : EndClass` block allows declaring three types of constituent:
 
 *   The object’s **Interface**, i.e: the only part of the object that the user can handle.
 *   The object’s *Methods* — implementation excluded — which are reduced to pointers to the methods.
-*   The object’s *Members* — methods excluded. Henceforth, the terms «**member**» and (more correctly) «``attribute``» will mainly refer to just these elements of an object (not including its methods, which are also members of the object, strictly speaking).
+*   The object’s *Members* — methods excluded. Henceforth, the terms «**member**» and (more correctly) «**attribute**» will mainly refer to just these elements of an object (not including its methods, which are also members of the object, strictly speaking).
 
 // Example N. 8.2-1
 [source,purebasic pseudocode]
