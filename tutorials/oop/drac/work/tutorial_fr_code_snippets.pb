@@ -645,3 +645,442 @@ EndProcedure
 ; *                                                                            *
 ; ******************************************************************************
 
+; ==============================================================================
+;                              Synthèse et notation                             
+; ==============================================================================
+
+; ------------------------------------------------------------------------------
+; 6-1                               Interface
+; ------------------------------------------------------------------------------
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+Interface <Interface> {Extends <InterfaceMere>}
+  Methode1()
+  [Methode2()]
+  [Methode3()]
+  ...
+EndInterface
+
+; ------------------------------------------------------------------------------
+; 6-2                                 Classe                                    
+; ------------------------------------------------------------------------------
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+Structure <Classe> {Extends <ClasseMere>}
+  *Methods
+  [Attribut1]
+  [Attribut2]
+  ...
+EndStructure
+
+Procedure Methode1(*this.Classe, [arg1]…)
+  ...
+EndProcedure
+
+Procedure Methode2(*this.Classe, [arg1]…)
+  ...
+EndProcedure
+  ...
+
+Structure <Mthds_Classe> {Extends <Mthds_ClasseMere>}
+  *Method1
+  *Method2
+  ...
+EndStructure
+
+Procedure Init_Mthds_Classe(*Mthds.Mthds_Classe)
+  {Init_Mthds_ClasseMere(*Mthds)}
+  *Mthds\Method1 = @Methode1()
+  *Mthds\Method2 = @Methode2()
+  ...
+EndProcedure
+
+Mthds_Classe.Mthds_Classe
+Init_Mthds_Classe(@Mthds_Classe)
+
+; ------------------------------------------------------------------------------
+; 6-3                              Constructeur                                 
+; ------------------------------------------------------------------------------
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+Procedure Init_Mbers_Classe(*this.Classe, [var1]…)
+  {Init_Mbers_ClasseMere(*this)}
+  [*this\Attibut1 = var1]
+  ...
+EndProcedure
+
+Procedure New_Classe([var1]…)
+  Shared Mthds_Classe
+  *this.Classe = AllocateMemory(SizeOf(Classe))
+  *this\Methods = @Mthds_Classe 
+  Init_Mbers_Classe(*this, [var1]…)
+  ProcedureReturn *this
+EndProcedure
+
+; ------------------------------------------------------------------------------
+; 6-4                              Destructeur                                  
+; ------------------------------------------------------------------------------
+
+Procedure Free_Classe(*this)
+  FreeMemory(*this)
+EndProcedure
+
+; ******************************************************************************
+; *                                                                            *
+; *                                 WEB PAGE 7                                 *
+; *                                                                            *
+; ******************************************************************************
+
+; ==============================================================================
+; 7.1-1                          Classe PureBasic                               
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+;Classe de l’objet
+Class(<ClassName>) 
+  [Methode1()]
+  [Methode2()]
+  [Methode3()]
+  ...
+  Methods(<ClassName>) 
+    [<*Methode1>]
+    [<*Methode2>]
+    [<*Methode3>]
+    ...
+  Members(<ClassName>) 
+    [<Attribut1>]
+    [<Attribut2>]
+    ...
+EndClass(<ClassName>)
+
+; Méthodes de l’object (implémentation)
+  Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(<ClassName>, Method1) 
+
+; ...(idem pour déclarer chaque methode)
+
+; Constructeur de l’objet
+New(<ClassName>)
+  ...
+EndNew
+
+; Destructeur de l’objet
+Free(<ClassName>)
+  ...
+EndFree
+
+; ==============================================================================
+; 7.2-1                         Class : EndClass 1
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+; Classe de l’objet
+Class(<ClassName>) 
+  [Methode1()]
+  [Methode2()]
+  [Methode3()]
+  ...
+  Methods(<ClassName>) 
+    [<*Methode1>]
+    [<*Methode2>]
+    [<*Methode3>]
+    ...
+  Members(<ClassName>) 
+    [<Attribut1>]
+    [<Attribut2>]
+    ...
+EndClass(<ClassName>)
+
+; ==============================================================================
+; 7.2-2                         Class : EndClass 2
+; ==============================================================================
+
+Macro Class(ClassName) 
+  ; Declare the class interface
+  Interface ClassName#_ 
+EndMacro
+
+; ==============================================================================
+; 7.2-3                         Class : EndClass 3
+; ==============================================================================
+
+Macro Methods(ClassName)
+  EndInterface
+  ; Declare the method-table structure
+  Structure Mthds_#ClassName
+EndMacro
+
+; ==============================================================================
+; 7.2-4                         Class : EndClass 4
+; ==============================================================================
+
+Macro Members(ClassName)
+  EndStructure
+  ; Create the method-table
+  Mthds_#ClassName.Mthds_#ClassName
+  ; Declare the members
+  ; No parent class: implement pointers for the Methods and the instance
+  Structure Mbrs_#ClassName
+    *Methods
+    *Instance.ClassName
+EndMacro
+
+; ==============================================================================
+; 7.2-5                         Class : EndClass 5
+; ==============================================================================
+
+Macro EndClass(ClassName) 
+  EndStructure
+  
+  Structure ClassName
+    StructureUnion
+      *Md.ClassName#_     ; les méthodes
+      *Mb.Mbrs_#ClassName ; les membres
+    EndStructureUnion
+  EndStructure
+EndMacro
+
+; ==============================================================================
+; 7.2-6                         Class : EndClass 6
+; ==============================================================================
+
+*Rect\Md\Draw()
+
+; ==============================================================================
+; 7.2-7                         Class : EndClass 7
+; ==============================================================================
+
+*Rect\Mb\var1
+
+; ==============================================================================
+; 7.2-8                    Class : EndClass | Important
+; ==============================================================================
+
+Structure ClassName
+  StructureUnion
+    *Md.ClassName#_       ; les méthodes
+    *Get.Mbrs_#ClassName  ; utilisé pour lire un membre
+    *Set.Mbrs_#ClassName  ; utilisé pour modifier un menbre
+  EndStructureUnion
+EndStructure
+
+; ==============================================================================
+; 7.3-1                        Method : EndMethod 1
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+; Méthodes de l’object (implémentation)
+Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(<ClassName>, Method1)
+
+; ==============================================================================
+; 7.3-2                        Method : EndMethod 2
+; ==============================================================================
+
+Macro Method(ClassName, Mthd)
+  Procedure Mthd#_#ClassName(*this.Mbrs_#ClassName
+EndMacro
+
+
+; ==============================================================================
+; 7.3-3                        Method : EndMethod 3
+; ==============================================================================
+
+Macro EndMethod(ClassName, Mthd)
+  EndProcedure
+  ; Save the method’s address into the method-table
+  Mthds_#ClassName\Mthd=@Mthd#_#ClassName()
+EndMacro
+
+; ==============================================================================
+; 7.4-1                    Le constructeur de l’objet 1                         
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+; Constructeur de l’objet
+New(<ClassName>)
+  ...
+EndNew
+
+; ==============================================================================
+; 7.4-2                    Le constructeur de l’objet 2                         
+; ==============================================================================
+
+Macro New(ClassName)
+  Declare Init_Mbers_#ClassName(*this, *input.Mbrs_#ClassName=0)
+
+  Procedure.l New_#ClassName(*input.Mbrs_#ClassName =0)
+    Shared Mthds_#ClassName
+    ; Réserve la place mémoire nécéssaire à l’objet
+    *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
+    ; Lui attache la table des méthodes
+    *this\Methods=@Mthds_#ClassName
+    ; L’objet est d’abord crée puis initialisé
+    ; Crée l’objet
+    *this\Instance= AllocateMemory(SizeOf(ClassName))
+    *this\Instance\Md = *this
+    ; Inititialise l’objet
+    Init_Mbers_#ClassName(*this, *input)
+    ProcedureReturn *this\Instance
+  EndProcedure
+
+  Init_Mbers(ClassName)
+EndMacro
+
+; ==============================================================================
+; 7.4-3                    Le constructeur de l’objet 3                         
+; ==============================================================================
+
+Macro EndNew
+  EndInit_Mbers
+EndMacro
+
+; ==============================================================================
+; 7.4-4                    Le constructeur de l’objet 4                         
+; ==============================================================================
+
+New(Rect1)
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
+EndNew
+
+; ==============================================================================
+; 7.4-5                    Le constructeur de l’objet 5                         
+; ==============================================================================
+
+input.Mbrs_Rect1
+input\var1 = 10
+input\var2 = 20
+
+; *Rect est un nouvel objet de la classe Rect1
+*Rect.Rect1 = New_Rect1(input)
+
+; ==============================================================================
+; 7.4-6         L’instruction privée Init_Mbers : EndInit_Mbers 1               
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+; Initialisation de l’objet
+Init_Mbers(<ClassName>)
+  ...
+EndInit_Mbers
+
+; ==============================================================================
+; 7.4-7         L’instruction privée Init_Mbers : EndInit_Mbers 2               
+; ==============================================================================
+
+Macro Init_Mbers(ClassName)
+  Method(ClassName, Init_Mbers), *input.Mbrs_#ClassName =0)
+EndMacro
+
+; ==============================================================================
+; 7.4-8         L’instruction privée Init_Mbers : EndInit_Mbers 3               
+; ==============================================================================
+
+Init_Mbers(Rect1)
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
+EndInit_Mbers
+
+; ==============================================================================
+; 7.4-9         L’instruction privée Init_Mbers : EndInit_Mbers 4               
+; ==============================================================================
+
+Macro EndInit_Mbers
+  EndProcedure
+EndMacro
+
+; ==============================================================================
+; 7.5-1                      Destructeur de l’objet 1                           
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+; Destructeur de l’objet
+Free(<ClassName>)
+ ...
+EndFree
+
+; ==============================================================================
+; 7.5-2                      Destructeur de l’objet 2                           
+; ==============================================================================
+
+Macro Free(ClassName)
+  Procedure Free_#ClassName(*Instance.ClassName)
+    If *Instance
+EndMacro
+
+Macro EndFree
+      FreeMemory(*Instance\Md)
+      FreeMemory(*Instance)
+    EndIf
+  EndProcedure
+EndMacro
+
+; ==============================================================================
+; 7.5-3                      Destructeur de l’objet 2                           
+; ==============================================================================
+
+Free_Rect1(*Rect)
+
+; ==============================================================================
+; 8.6-1                              Héritage                                   
+; ==============================================================================
+;                              PSEUDOCODE - SYNTAX!
+; ------------------------------------------------------------------------------
+
+; Classe de l’objet
+ClassEx(<ClassName>,<ParentClass>)
+  [Method1()]
+  [Method2()]
+  [Method3()]
+  ...
+  MethodsEx(<ClassName>,<ParentClass>)
+    [<*Method1>]
+    [<*Method2>]
+    [<*Method3>]
+    ...
+  MembersEx(<ClassName>,<ParentClass>)
+    [<Attribute1>]
+    [<Attribute2>]
+    ...
+EndClass(<ClassName>)
+
+; Méthodes de l’object (implémentation)
+Method(<ClassName>, Method1) [,<variable1 [= DefaultValue]>,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(<ClassName>, Method1)
+
+; ...(idem pour déclarer chaque méthode)...
+
+; Constructeur de l’objet
+NewEx(<ClassName>,<ParentClass>)
+  ...
+EndNew
+
+; Destructeur de l’objet
+Free(<ClassName>)
+  ...
+EndFree
+
+; ******************************************************************************
+; *                                                                            *
+; *                                 WEB PAGE 9                                 *
+; *                                                                            *
+; ******************************************************************************
+

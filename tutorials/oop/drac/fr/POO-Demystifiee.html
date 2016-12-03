@@ -424,8 +424,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic et la Programmation Orientée Objet</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.4,</span>
-<span id="revdate">December 1, 2016</span>
+<span id="revnumber">draft 0.5,</span>
+<span id="revdate">December 3, 2016</span>
 <br><span id="revremark">WIP Porting from HTML.</span>
 </div>
 <div id="toc" class="toc2">
@@ -468,6 +468,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#encapsulation-2">5.6. Encapsulation</a></li>
 <li><a href="#h-ritage-2">5.7. Héritage</a></li>
 <li><a href="#accesseur-et-modifieur-d-objet">5.8. Accesseur et Modifieur d’Objet</a></li>
+</ul>
+</li>
+<li><a href="#synth-se-et-notation">6. Synthèse et notation</a>
+<ul class="sectlevel2">
+<li><a href="#premier-exemple-de-code">6.1. Premier Exemple de Code</a></li>
+</ul>
+</li>
+<li><a href="#classe-pb">7. Classe PB</a>
+<ul class="sectlevel2">
+<li><a href="#classe-purebasic">7.1. Classe PureBasic</a></li>
+<li><a href="#deuxi-me-exemple-de-code">7.2. Deuxième Exemple de Code</a></li>
+<li><a href="#class-endclass">7.3. Class : EndClass</a></li>
+<li><a href="#method-endmethod">7.4. Method : EndMethod</a></li>
+<li><a href="#le-constructeur-de-l-objet">7.5. Le constructeur de l’objet</a></li>
+<li><a href="#destructeur-de-l-objet">7.6. Destructeur de l’objet</a></li>
+<li><a href="#h-ritage-3">7.7. Héritage</a></li>
+<li><a href="#discussion">7.8. Discussion</a></li>
+<li><a href="#rappel-des-types">7.9. Rappel des types</a></li>
 </ul>
 </li>
 </ul>
@@ -2017,11 +2035,1041 @@ EndProcedure</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="synth-se-et-notation"><a class="anchor" href="#synth-se-et-notation"></a>6. Synthèse et notation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Avant d’aborder la suite, dans laquelle nous allons assoire notre implémentation d’un objet en PureBasic, je vous propose de faire une synthèse de tout ce qui vient d’etre vu. L’implémentation que nous venons de voir d’un objet se présente sous la forme suivante :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Une <strong>Interface</strong>,</p>
+</li>
+<li>
+<p>Une <strong>Classe</strong> (concrète/abstraire) regroupant la définition des méthodes,</p>
+</li>
+<li>
+<p>Un <strong>Constructeur</strong> muni d’une routine d’initialisation des attributs,</p>
+</li>
+<li>
+<p>Un <strong>Destructeur</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Le tableau suivant synthétise ce qu’est notre Objet en PureBasic.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Le mot <code>Classe</code> fait référence au nom de la Classe (ex : <code>Methd_Classe</code>)</p>
+</li>
+<li>
+<p>Le mot <code>ClasseMere</code> fait référence au nom de la Classe Mère lors d’un héritage (ex : <code>Methd_ClasseMere</code>)</p>
+</li>
+<li>
+<p>Les expressions entre accolades <code>{…}</code> sont à utiliser lors d’un héritage</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Interface</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Interface &lt;Interface&gt; {Extends &lt;InterfaceMere&gt;}
+  Methode1()
+  [Methode2()]
+  [Methode3()]
+  ...
+EndInterface</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Classe</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Structure &lt;Classe&gt; {Extends &lt;ClasseMere&gt;}
+  *Methods
+  [Attribut1]
+  [Attribut2]
+  ...
+EndStructure
+
+Procedure Methode1(*this.Classe, [arg1]…)
+  ...
+EndProcedure
+
+Procedure Methode2(*this.Classe, [arg1]…)
+  ...
+EndProcedure
+  ...
+
+Structure &lt;Mthds_Classe&gt; {Extends &lt;Mthds_ClasseMere&gt;}
+  *Method1
+  *Method2
+  ...
+EndStructure
+
+Procedure Init_Mthds_Classe(*Mthds.Mthds_Classe)
+  {Init_Mthds_ClasseMere(*Mthds)}
+  *Mthds\Method1 = @Methode1()
+  *Mthds\Method2 = @Methode2()
+  ...
+EndProcedure
+
+Mthds_Classe.Mthds_Classe
+Init_Mthds_Classe(@Mthds_Classe)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Constructeur</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">Procedure Init_Mbers_Classe(*this.Classe, [var1]…)
+  {Init_Mbers_ClasseMere(*this)}
+  [*this\Attibut1 = var1]
+  ...
+EndProcedure
+
+Procedure New_Classe([var1]…)
+  Shared Mthds_Classe
+  *this.Classe = AllocateMemory(SizeOf(Classe))
+  *this\Methods = @Mthds_Classe
+  Init_Mbers_Classe(*this, [var1]…)
+  ProcedureReturn *this
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Destructeur</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure Free_Classe(*this)
+  FreeMemory(*this)
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="premier-exemple-de-code"><a class="anchor" href="#premier-exemple-de-code"></a>6.1. Premier Exemple de Code</h3>
+<div class="paragraph">
+<p>Voici un exemple de code où l’héritage est utilisé:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="POO-Heritage-Ex1.pb"><code>POO-Heritage-Ex1.pb</code></a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="classe-pb"><a class="anchor" href="#classe-pb"></a>7. Classe PB</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Maintenant que nous avons vu les concepts objets et leurs possibles implémentations en PureBasic, il est grand temps de se fixer une implémentation.</p>
+</div>
+<div class="paragraph">
+<p>Je vous propose ici l’implémentation qui me semble, à l’heure actuelle de mes connaissances, la plus adaptée à la programmation objet via PureBasic.</p>
+</div>
+<div class="paragraph">
+<p>Elle s’appuie sur l’ensemble du travail exposé précédemment mais aussi de ma pratique du sujet.
+L’autre objectif affiché est de tendre à simplifier l’utilisation des concepts objets, par la clarté des instructions et l’automatisation des opérations autant que possible.
+Dans cette démarche les <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/DirectivesCompilateur/DirectivesCompilateur_Macro.htm">macros</a> vont jouer un rôle décisif.
+Grandement facilitée par les instructions Interface et Macro, l’implémentation proposée reste tout naturellement limitée par le langage lui-même.</p>
+</div>
+<div class="paragraph">
+<p>Dans un premier temps, nous découvrirons les instructions d’une Classe en PureBasic. Puis nous analyserons ensemble ce qui se cache derrière en tirant des parallèles avec les pages précédentes pour terminer sur une discussion des choix adoptés.</p>
+</div>
+<div class="sect2">
+<h3 id="classe-purebasic"><a class="anchor" href="#classe-purebasic"></a>7.1. Classe PureBasic</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">;Classe de l’objet
+Class(&lt;ClassName&gt;)
+  [Methode1()]
+  [Methode2()]
+  [Methode3()]
+  ...
+  Methods(&lt;ClassName&gt;)
+    [&lt;*Methode1&gt;]
+    [&lt;*Methode2&gt;]
+    [&lt;*Methode3&gt;]
+    ...
+  Members(&lt;ClassName&gt;)
+    [&lt;Attribut1&gt;]
+    [&lt;Attribut2&gt;]
+    ...
+EndClass(&lt;ClassName&gt;)
+
+; Méthodes de l’object (implémentation)
+  Method(&lt;ClassName&gt;, Method1) [,&lt;variable1 [= DefaultValue]&gt;,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(&lt;ClassName&gt;, Method1)
+
+; ...(idem pour déclarer chaque methode)
+
+; Constructeur de l’objet
+New(&lt;ClassName&gt;)
+  ...
+EndNew
+
+; Destructeur de l’objet
+Free(&lt;ClassName&gt;)
+  ...
+EndFree</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Comme on peut le voir, la Classe PureBasic s’articule autour de quatre grands thèmes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La définition de la classe via l’instruction <code>Class : EndClass</code>.</p>
+</li>
+<li>
+<p>L’implémentation des méthodes de la classe via l’instruction <code>Method : EndMethod</code>.</p>
+</li>
+<li>
+<p>La construction de l’objet avec le constructeur <code>New : EndNew</code>.</p>
+</li>
+<li>
+<p>La destructeur de l’objet avec le destructeur <code>Free : EndFree</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deuxi-me-exemple-de-code"><a class="anchor" href="#deuxi-me-exemple-de-code"></a>7.2. Deuxième Exemple de Code</h3>
+<div class="paragraph">
+<p>Vous trouverez ici le fichier comportant la déclaration de ce jeu d’instructions ainsi qu’un exemple d’utilisation basé sur <a href="#premier-exemple-de-code">l’exemple d’héritage précédent</a>, ce qui vous permettra de comparer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="POO.pbi"><code>POO.pbi</code></a></p>
+</li>
+<li>
+<p><a href="POO-Heritage-Ex2.pb"><code>POO-Heritage-Ex2.pb</code></a></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si vous avez jetté un coup d’oeil au source OOP.pbi, vous aurez remarqué que l’implémentation finale est légèrement plus compliquée que ce qui est exposé ici. Cela s’explique par quelques dispositions prises dans le source pour maintenir plus facilement le code.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Passons en revue maintenant cette Classe Purebasic&#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="class-endclass"><a class="anchor" href="#class-endclass"></a>7.3. Class : EndClass</h3>
+<div class="paragraph">
+<p>L’instruction Class : EndClass permet de déclarer trois types de composantes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>L’<strong>interface</strong> de l’objet, seule partie —rappelons le— que l’utilisateur peut manipuler.</p>
+</li>
+<li>
+<p>Les <strong>méthodes</strong> de l’objet hors implémentation qui se réduisent aux seuls pointeurs des méthodes.</p>
+</li>
+<li>
+<p>Les <strong>membres</strong> (hors méthodes) de l’objet. Par la suite, de fait, les mots «<strong>membre</strong>» et plus correctement «<strong>attribut</strong>» feront souvent référence à ces seuls éléments (et non aux méthodes qui sont aussi des membres de l’objet au sens strict).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Classe de l’objet
+Class(&lt;ClassName&gt;)
+  [Methode1()]
+  [Methode2()]
+  [Methode3()]
+  ...
+  Methods(&lt;ClassName&gt;)
+    [&lt;*Methode1&gt;]
+    [&lt;*Methode2&gt;]
+    [&lt;*Methode3&gt;]
+    ...
+  Members(&lt;ClassName&gt;)
+    [&lt;Attribut1&gt;]
+    [&lt;Attribut2&gt;]
+    ...
+EndClass(&lt;ClassName&gt;)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Chaque composante est clairement identifiée par les mots clés Class/Methods/Members. Cet ordre doit être respecté et les mots clés doivent toujours figurer même si aucune méthode ou aucun membre ne sera déclaré. De même, à chaque fois le nom de la classe se doit d’apparaître entre parenthèses.</p>
+</div>
+<div class="paragraph">
+<p>L’explication trouve son origine dans la définition de chaque mot clé dont voici le code:</p>
+</div>
+<div class="sect3">
+<h4 id="instruction-class"><a class="anchor" href="#instruction-class"></a>7.3.1. Instruction Class</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Class(ClassName)
+  ; Declare the class interface
+  Interface ClassName#_
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction Class se limite à l’entête de la déclaration de l’interface avec pour nom d’interface celui de la classe suivi de "_". Ce qui suit l’instruction Class sera donc la définition de l’interface de l’objet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="instruction-methods"><a class="anchor" href="#instruction-methods"></a>7.3.2. Instruction Methods</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Methods(ClassName)
+  EndInterface
+  ; Declare the method-table structure
+  Structure Mthds_#ClassName
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>Methods</code> commence par fermer la définition de l’interface avec l’instruction <code>EndInterface</code>. Puis elle débute la déclaration de la structure qui définit les pointeurs des méthodes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="instruction-members"><a class="anchor" href="#instruction-members"></a>7.3.3. Instruction Members</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Members(ClassName)
+  EndStructure
+  ; Create the method-table
+  Mthds_#ClassName.Mthds_#ClassName
+  ; Declare the members
+  ; No parent class: implement pointers for the Methods and the instance
+  Structure Mbrs_#ClassName
+    *Methods
+    *Instance.ClassName
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction Members est plus compliquée que les deux précédentes.</p>
+</div>
+<div class="paragraph">
+<p>Elle commence par fermer la définition de la structure précédemment ouverte par l’instruction Methods. Ensuite elle déclare tout naturellement la table des methodes basée sur la structure fraîchement acquise. Pour l’instant cette table est vide et se remplira au fur et à mesure de la déclaration des méthodes. Nous aborderons cela plus loin (<a href="#instruction-endmethod">j’peux pas attendre</a>).</p>
+</div>
+<div class="paragraph">
+<p>Enfin l’instruction Members se termine en ouvrant la déclaration de la structure qui définit les membres de l’objet. On trouve en début -comme il convient- le pointeur porteur de l’adresse de la table des méthodes de l’objet, c.a.d celle de la variable juste au-dessus. Rappelons que c’est le constructeur qui initialisera le tout. Puis nous trouvons un autre pointeur qui contiendra l’adresse de l’objet lui-même. J’expliquerai plus tard la raison de ce nouveau membre (<a href="#admonition-on-objet-toujours-pointeur">non! maintenant</a>).</p>
+</div>
+<div class="paragraph">
+<p>Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction Members.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="instruction-endclass"><a class="anchor" href="#instruction-endclass"></a>7.3.4. Instruction EndClass</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndClass(ClassName)
+  EndStructure
+
+  Structure ClassName
+    StructureUnion
+      *Md.ClassName#_     ; les méthodes
+      *Mb.Mbrs_#ClassName ; les membres
+    EndStructureUnion
+  EndStructure
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>EndClass</code> est à l’origine du choix d’implémentation de notre objet. Nous allons donc nous attarder à la décrire correctement.</p>
+</div>
+<div class="paragraph">
+<p>Comme pour Methods et Members, elle commence par fermer ce qui a été ouvert par l’instruction précédente, ici la structure décrivant les membres de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>Ensuite, nous trouvons la structure qui porte le nom de la classe et qui servira donc à l’utilisateur pour déclarer son objet.</p>
+</div>
+<div class="paragraph">
+<p>Cette structure est en fait l’union de deux éléments:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Le premier est un pointeur typé par l’interface qui permet d’appeler les méthodes de l’objet.</p>
+</li>
+<li>
+<p>Le second est un pointeur typé par la structure définissant les membres. Il sert à accéder aux membres de l’objet.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Cette architecture met en pratique l’optimisation sur les accesseurs d’un objet exposée en <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Annexes.htm#Optimisations_Get_Set">annexe</a>. L’intérêt de ce choix est double:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Il permet à l’utilisateur d’appliquer un même processus pour accéder aux méthodes et aux membres d’un objet.</p>
+<div class="paragraph">
+<p>Pour accéder à une méthode, il suffira d’écrire:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">*Rect\Md\Dessiner()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour accéder à un attribut, il suffira d’écrire:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">*Rect\Mb\var1</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Il évite à l’utilisateur de déclarer systématiquement les accesseurs/modifieurs de l’objet lorsque ceux-ci sont triviaux. Le gain en temps et en commodité est des plus appréciable. On limite du même coup le recourt à des méthodes (petite optimisation).</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>En contre partie de ce choix, tous les membres d’un objet sont visibles par l’utilisateur.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il est possible d’agrémenter un peu cette structure. Comme les termes “<code>Md</code>” et “<code>Mb</code>” sont visuellement très proches on peut être tenté de mieux les distinguer. Bien que ce choix n’ai pas été retenu, voici une possibilité intéressante:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure ClassName
+  StructureUnion
+    *Md.ClassName#_       ; les méthodes
+    *Get.Mbrs_#ClassName  ; utilisé pour lire un membre
+    *Set.Mbrs_#ClassName  ; utilisé pour modifier un menbre
+  EndStructureUnion
+EndStructure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ici, le pointeur <code>*Mb</code> a été remplacé par deux pointeurs <code>*Get</code> et <code>*Set</code>. Bien que servant à la même chose, ils peuvent rendre le code plus lisible en précisant si l’on veut lire ou modifier la valeur d’un attribut.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>7.4. Method : EndMethod</h3>
+<div class="paragraph">
+<p>L’instruction <code>Method : EndMethod</code> permet de réaliser l’implémentation des différentes méthodes de l’objet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Méthodes de l’object (implémentation)
+Method(&lt;ClassName&gt;, Method1) [,&lt;variable1 [= DefaultValue]&gt;,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(&lt;ClassName&gt;, Method1)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Chaque mot clé est suivi du nom de la classe et du nom de la méthode.</p>
+</div>
+<div class="paragraph">
+<p>A l’usage, cette instruction se travaille comme l’instruction <code>Procedure : EndProcedure</code>. Nous allons voir qu’il s’agit là d’un habillage ce cette instruction.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Notez la syntaxe très particulière des méthodes qui nécessite deux parenthèses fermées. Cette spécificité vient de l’utilisation d’une macro combinée à un nombre variable d’arguments possible pour chaque méthode.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="instruction-method"><a class="anchor" href="#instruction-method"></a>7.4.1. Instruction Method</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Method(ClassName, Mthd)
+  Procedure Mthd#_#ClassName(*this.Mbrs_#ClassName
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>Method</code> n’est rien d’autre que l’instruction <code>Procedure</code> à laquelle on aura pris soin de déclarer la variable <code>*this</code> exigée en début d’arguments.</p>
+</div>
+<div class="paragraph">
+<p>Le code ne se termine pas par une parenthèse afin de permette à l’utilisateur de compléter par les paramètres spécifiques de sa méthode. A lui de fermer cette parenthèse comme la syntaxe le montre, sinon le compilateur ne manquera pas de le signaler!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="instruction-endmethod"><a class="anchor" href="#instruction-endmethod"></a>7.4.2. Instruction EndMethod</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndMethod(ClassName, Mthd)
+  EndProcedure
+  ; Save the method’s address into the method-table
+  Mthds_#ClassName\Mthd=@Mthd#_#ClassName()
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>EndMethod</code> commence par fermer la procédure ouverte par l’instruction <code>Method</code>.
+Maintenant que la méthode est définie, on peut la référencer dans la <strong>table des méthodes</strong> déclarée lors du mot clé Members de la classe. De fait, déclarer une méthode revient aussi à la référencer automatiquement.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="le-constructeur-de-l-objet"><a class="anchor" href="#le-constructeur-de-l-objet"></a>7.5. Le constructeur de l’objet</h3>
+<div class="paragraph">
+<p>L’instruction New : EndNew permet d’instancier et d’initialiser un objet de la classe.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Constructeur de l’objet
+New(&lt;ClassName&gt;)
+  ...
+EndNew</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le mots clé <code>New</code> exige le nom de la classe comme paramètre.</p>
+</div>
+<div class="sect3">
+<h4 id="instruction-new"><a class="anchor" href="#instruction-new"></a>7.5.1. Instruction New</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro New(ClassName)
+  Declare Init_Mbers_#ClassName(*this, *input.Mbrs_#ClassName=0)
+
+  Procedure.l New_#ClassName(*input.Mbrs_#ClassName =0)
+    Shared Mthds_#ClassName
+    ; Réserve la place mémoire nécéssaire à l’objet
+    *this.Mbrs_#ClassName = AllocateMemory(SizeOf(Mbrs_#ClassName))
+    ; Lui attache la table des méthodes
+    *this\Methods=@Mthds_#ClassName
+    ; L’objet est d’abord crée puis initialisé
+    ; Crée l’objet
+    *this\Instance= AllocateMemory(SizeOf(ClassName))
+    *this\Instance\Md = *this
+    ; Inititialise l’objet
+    Init_Mbers_#ClassName(*this, *input)
+    ProcedureReturn *this\Instance
+  EndProcedure
+
+  Init_Mbers(ClassName)
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>New</code> est dense mais ne change pas vraiment par rapport à la structuration vue auparavant.</p>
+</div>
+<div class="paragraph">
+<p>Le but de ce mot clé est de créer un nouvel objet et de l’initialiser. L’ensemble de ces taches est réalisé au sein de la procédure <code>New_ClassName</code> qui est l’essentiel de la commande New.</p>
+</div>
+<div class="paragraph">
+<p>Cette procédure accepte un seul argument, celui nécessaire à l’instruction <code>Init_Mbers</code> pour initialiser les attributs de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>Elle commence par réserver la place mémoire requise par les membres de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>Puis elle y attache la table des méthodes de la classe.</p>
+</div>
+<div class="paragraph">
+<p>Elle s’attaque alors à l’instanciation de l’objet en attribuant une adresse à l’objet et en initialisant l’interface.</p>
+</div>
+<div class="paragraph">
+<p>Vient alors l’initialisation des attributs de l’objet via la méthode <code>Init_Mbers</code>.</p>
+</div>
+<div class="paragraph">
+<p>Et pour finir, l’instruction retourne l’adresse de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>L’astruce de cette macro réside dans la déclaration de Init_Mbers en toute fin. De la sorte, tout ce que l’utilisateur aura à ajouter à l’intérieur du block <code>New : EndNew</code> se limitera à l’initialisation des attributs. Cet aspect sera abordé plus en détail dans un moment(<a href="#l-instruction-priv-e-init_mbers-endinit_mbers">Où ça? Où ça?</a>).</p>
+</div>
+<div class="paragraph">
+<p>Ceci est rendu possible en declarant la method Init_Mbers en début de macro.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On peut remarquer que la procedure <code>New_ClassName</code> est générique quelque soit la classe. Ceci s’explique car la partie qui varie (et donc spécifique à l’objet), est déportée hors de la procédure dans la methode <code>Init_Mbers</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="instruction-endnew"><a class="anchor" href="#instruction-endnew"></a>7.5.2. Instruction EndNew</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndNew
+  EndInit_Mbers
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>EndNew</code> se limite à l’appel de l’instruction <code>EndInit_Mbers</code> qui termine la déclaration des attributs débutée par l’instruction New.</p>
+</div>
+<div class="paragraph">
+<p>Conclusion: l’objectif est atteint. l’instruction <code>New : EndNew</code> permet bien de créer un nouvel objet initialisé.</p>
+</div>
+<div class="paragraph">
+<p>A l’usage, l’instruction New : EndNew permettra d’initialiser les attributs d’un objet comme suite:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">New(Rect1)
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
+EndNew</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>l’instanciation d’un objet par l’utilisateur se fera alors ainsi:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">input.Mbrs_Rect1
+input\var1 = 10
+input\var2 = 20
+
+; *Rect est un nouvel objet de la classe Rect1
+*Rect.Rect1 = New_Rect1(input)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notez que l’on appelle le constructeur par <code>New</code> suivi du nom de la classe séparé par “<code>_</code>”.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a id="admonition-on-objet-toujours-pointeur"></a>Par rapport à ce qui a été étudié jusqu’à présent, l’objet sera toujours un pointeur (car recevant une adresse). Loin d’etre gênant, cela s’explique par le choix fait de regrouper l’accès des méthodes et des membres (<a href="#instruction-endclass">Quoi!? J’me rappelle pas…</a>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a id="admonition-sur-this-instance"></a>C’est ce même choix qui requis deux allocations mémoire distinctes: celle des membres et celle pour le regroupent des méthodes et des membres (4 octets ici).
+Cette bivalence qui n’existait pas lors de l’implémentation précédente, nous conduit à conserver cette information dans l’objet lui-même. Ainsi dans les méthodes de l’objet, vous aurait accès à l’adresse des membres avec <code>*this</code> et à l’adresse de l’instance (méthode et membres) par <code>*this\Instance</code>.</p>
+</div>
+<div class="paragraph">
+<p>Une des conséquences importante est la possibilité d’utiliser <code>*this\Instance</code> pour appeler les méthodes de l’objet au sein même de ses méthodes (<em>Non je n’ai pas bu</em>!). Cette fonctionnalité est la meilleure manière pour y parvenir car on n’a pas a connaître le nom de la procédure présente derrière la méthode, ce qui est essentiel dans le processus d’héritage.</p>
+</div>
+<div class="paragraph">
+<p>A cet effet, une macro Mtd est proposée dans le source <a href="POO.pbi"><code>POO.pbi</code></a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="l-instruction-priv-e-init_mbers-endinit_mbers"><a class="anchor" href="#l-instruction-priv-e-init_mbers-endinit_mbers"></a>7.5.3. L’instruction privée Init_Mbers : EndInit_Mbers</h4>
+<div class="paragraph">
+<p>L’instruction <code>Init_Mbers : EndInit_Mbers</code> est une instruction privée que seul l’instruction <code>New : EndNew</code> va utiliser. Néanmoins, il est interessant de présenter cette instruction pour bien comprend comment procéder à l’initialisation d’un objet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Initialisation de l’objet
+Init_Mbers(&lt;ClassName&gt;)
+  ...
+EndInit_Mbers</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On trouvera donc entre les deux mots clés une série d’initialisation de membres.
+Notez que seul Init_Mbers est suivi du nom de la classe.</p>
+</div>
+<div class="sect5">
+<h6 id="instruction-init_mbers"><a class="anchor" href="#instruction-init_mbers"></a>Instruction Init_Mbers</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Init_Mbers(ClassName)
+  Method(ClassName, Init_Mbers), *input.Mbrs_#ClassName =0)
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>Init_Mbers</code> est définie comme une méthode de l’objet acceptant un seul argument.</p>
+</div>
+<div class="paragraph">
+<p>Afin d’initialiser l’objet en fonction des souhaits de l’utilisateur et ne sachant pas à l’avance le nombre de membres, le choix c’est porté sur un passage de l’information par référent.</p>
+</div>
+<div class="paragraph">
+<p>Ce choix s’explique aussi par le parti pris que le constructeur à la responsabilité d’initialiser l’objet.
+Enfin, et non des moindres, cette disposition permet d’automatiser la tache lors du processus d’héritage.</p>
+</div>
+<div class="paragraph">
+<p>A l’usage, l’initialisation de membres ressemblera le plus souvent à ce qui suit:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Init_Mbers(Rect1)
+  *this\var1 = *input\var1
+  *this\var2 = *input\var2
+  ; [ ...some code... ]
+EndInit_Mbers</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="instruction-endinit_mbers"><a class="anchor" href="#instruction-endinit_mbers"></a>Instruction EndInit_Mbers</h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndInit_Mbers
+  EndProcedure
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction EndInit_Mbers est ni plus ni moins que l’instruction EndProcedure qui termine la déclaration de la méthode d’initialisation de l’objet</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Dans le code source final OOP.pbi, l’instruction <code>Init_Mbers : EndInit_Mbers</code> comporte des arguments falcutatifs supplémentaires appelés <code>arg1</code> à <code>arg5</code>. Dans certaines situations, il peut être utile de faire appel à ces arguments pour compléter les données d’entrées du pointeur <code>*input</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="destructeur-de-l-objet"><a class="anchor" href="#destructeur-de-l-objet"></a>7.6. Destructeur de l’objet</h3>
+<div class="paragraph">
+<p>L’instruction <code>Free : EndFree</code> permet de détruire un objet de la classe afin de restituer la mémoire allouée.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Destructeur de l’objet
+Free(&lt;ClassName&gt;)
+ ...
+EndFree</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>Free</code> exige le nom de la classe en paramètre.</p>
+</div>
+<div class="sect4">
+<h5 id="instruction-free-endfree"><a class="anchor" href="#instruction-free-endfree"></a>Instruction Free : EndFree</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Free(ClassName)
+  Procedure Free_#ClassName(*Instance.ClassName)
+    If *Instance
+EndMacro
+
+Macro EndFree
+      FreeMemory(*Instance\Md)
+      FreeMemory(*Instance)
+    EndIf
+  EndProcedure
+EndMacro</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>L’instruction <code>Free : EndFree</code> est assez simple:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Free ouvre une procédure avec pour argument l’adresse de l’objet. On vérifie au passage que l’adresse est non nulle (cela ne garanti malheireusement pas une adresse valide pour FreeMemory).</p>
+</li>
+<li>
+<p>EndFree libère dans l’ordre la zone mémoire allouée aux membres puis celle de l’objet.
+A l’usage, la destruction d’un objet se fait ainsi:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Free_Rect1(*Rect)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Comme pour le constructeur, notez bien que l’on appelle le destructeur par Free suivi du nom de la classe séparé par "_".</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si votre objet se compose d’autres objets, c.a.d que des objets sont des membres de l’objet en question et qu’ils existent par cet objet (<em>hic</em>!), il est important de les détruire en appelant leurs destructeurs entre les mots clés <code>Free</code> et <code>EndFree</code>.</p>
+</div>
+<div class="paragraph">
+<p>Bien que PureBasic se charge de restituer toute mémoire utilisée, cela se produira uniquement une fois le programme terminé. Au court de l’exécution du programme, c’est à l’utilisateur de veiller aux grains pour éviter toute gourmandise binaire.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="h-ritage-3"><a class="anchor" href="#h-ritage-3"></a>7.7. Héritage</h3>
+<div class="paragraph">
+<p>Dans l’ensemble des commandes qui vient d’être exposé rien ne fait référence au processus d’héritage. Et c’est normal, puisque les instructions présentées ne le permettent pas et ne le peuvent pas (<em>Moua ! l’angoisse !</em>) ! Il est nécessaire de décliner un jeu d’instructions complémentaire pour traiter ce concept(<em>Arghhh ! Mega angoisse</em>).</p>
+</div>
+<div class="paragraph">
+<p>Fort heureusement, il y a peu d’effort à fournir pour y parvenir puisque notre conception y est préparée (<em>Ouf ! Ca va mieux</em>).</p>
+</div>
+<div class="paragraph">
+<p>Voici donc à quoi ressemble la classe dans ce cas de figure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">; Classe de l’objet
+ClassEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
+  [Method1()]
+  [Method2()]
+  [Method3()]
+  ...
+  MethodsEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
+    [&lt;*Method1&gt;]
+    [&lt;*Method2&gt;]
+    [&lt;*Method3&gt;]
+    ...
+  MembersEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
+    [&lt;Attribute1&gt;]
+    [&lt;Attribute2&gt;]
+    ...
+EndClass(&lt;ClassName&gt;)
+
+; Méthodes de l’object (implémentation)
+Method(&lt;ClassName&gt;, Method1) [,&lt;variable1 [= DefaultValue]&gt;,...])
+  ...
+  [ProcedureReturn value]
+EndMethod(&lt;ClassName&gt;, Method1)
+
+; ...(idem pour déclarer chaque méthode)...
+
+; Constructeur de l’objet
+NewEx(&lt;ClassName&gt;,&lt;ParentClass&gt;)
+  ...
+EndNew
+
+; Destructeur de l’objet
+Free(&lt;ClassName&gt;)
+  ...
+EndFree</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quatre nouvelles instructions font leur apparition: <code>ClassEx</code>, <code>MethodsEx</code>, <code>MembersEx</code> et <code>NewEx</code> en remplacement de <code>Class</code>, <code>Methods</code>, <code>Members</code> et <code>New</code>.</p>
+</div>
+<div class="paragraph">
+<p>Pour chacune d’elle, en plus du nom de la classe, doit être précisé le nom de la classe mère.</p>
+</div>
+<div class="paragraph">
+<p>L’opération est finalement assez simple pour l’utilisateur rendant le processus d’héritage très facile d’accès.</p>
+</div>
+<div class="paragraph">
+<p>Je vous laisse le soin d’aller regarder le code pour analyser comment cela a été implémenté (<a href="POO.pbi"><code>POO.pbi</code></a>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="discussion"><a class="anchor" href="#discussion"></a>7.8. Discussion</h3>
+<div class="paragraph">
+<p>Ouf! la présentation d’une Classe PureBasic est terminée.</p>
+</div>
+<div class="paragraph">
+<p>Que peut-on en dire? Déjà, les macros ont permis de définir un jeu d’instructions permettant de:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Clarifier la structure d’un objet</p>
+</li>
+<li>
+<p>Faciliter voir d’automatiser certaines taches, comme l’initialisation des méthodes ou l’héritage.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Je liste ici les choix de conception qui conduisent à la spécificité de l’objet. Comme nous allons le voir, il est possible d’en adapter certains pour vous approprier l’objet sans fondamentalement le modifier:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Utilisation d’une structure d’union pour définir l’objet. Cela lui confère la particularité de pouvoir accéder aux membres sans générer obligatoirement un accesseur.</p>
+</li>
+<li>
+<p>La <strong>table des méthodes</strong> est propre à la classe et non à l’objet.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Elle est initialisée une fois pour toute et non plus à chaque instanciation d’un objet,</p>
+</li>
+<li>
+<p>Les objets instanciés ne disposent que d’un pointeur vers la <strong>table des méthodes</strong>: le gain en place mémoire est substantiel,</p>
+</li>
+<li>
+<p>Tous les objets pointent vers la même <strong>table des méthodes</strong>, cela garantit un comportement identique des objets de même Classe.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Un constructeur qui initialise l’objet, conduisant à utiliser un seul paramètre d’entré par référent pour passer les valeurs d’initialisation de l’objet. Le processus d’héritage en est grandement facilité.
+Hors, on peut tout à fait imaginer créer un objet, puis que l’utilisateur appelle lui-même la routine d’initialisation: auquel cas, la méthode <code>Init_Mbers</code> n’est plus appelée par New et peut de ce fait comporter un nombre d’arguments quelconque. J’y vois au moins deux inconvénients:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Le risque d’une initialisation incorrecte de l’objet: on peut oublier de faire cet appel, mais surtout il n’est plus possible d’automatiser le processus d’héritage: c’est à l’utilisateur de le gérer!</p>
+</li>
+<li>
+<p>Une forte interdépendance entre classe mère et classe fille : dès que les paramètres d’entrée de la méthode d’initialisation changent pour la classe mère, l’utilisateur doit procéder à cette modification dans toutes les classes filles.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Malgré tout cette disposition ne change pas fondamentalement notre objet.A l’extrême, mais je le déconseille fortement, on peut imaginer que l’utilisateur initialise membre après membre en utilisant les accesseurs. Mais initialiser les membres d’un objet ne se limite pas toujours à une opération d’affectation. Elle peut nécessiter d’autres opérations internes plus complexes pour y parvenir. Si cela doit être répété à chaque nouvel objet, il est vivement conseillé de conserver une méthode dédiée.</p>
+</div>
+</li>
+<li>
+<p>Un destructeur homogène avec le constructeur. Il ne fait pas partie de l’interface bien que cela soit envisageable. Dans le cas contraire on écrirait <code>Objet\Md\Free()</code> au lieu d’écrire <code>Free_ClassName(Objet)</code>. Cette disposition est aisée à opérer et ne modifie en rien la conception de l’objet.</p>
+</li>
+<li>
+<p>Je ne suis pas arrivé à automatiser la génération de la table des méthodes. Il est important de rappeler ici pourquoi elle s’articule autour d’une structure. La structure permet de créer des classes abstraites, c’est à dire des classes où toutes les méthodes ne sont pas implémentées. C’est une notion très important de la conception objet et on respecte ainsi l’ordre des adresses dans la table quelque soient les méthodes implémentées de la classe tout en s’accordant avec le processus d’héritage. Utiliser un tableau, une liste chaînée ou une table de hâchage en remplacement d’une structure n’aurai pas cette souplesse (du moins je ne l’ai pas trouvé).</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rappel-des-types"><a class="anchor" href="#rappel-des-types"></a>7.9. Rappel des types</h3>
+<div class="paragraph">
+<p>Vous trouverez ici la liste des types qu’utilise une classe:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">S’applique à</th>
+<th class="tableblock halign-left valign-top">Origine</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mbrs_&lt;ClassName&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La Structure des membrese</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EndClass</code></p></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;ClassName&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L’objet instancié</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>EndClass</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;ClassName&gt;_</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L’Interface</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Class</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mthds_&lt;ClassName&gt;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La table des méthodes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Methods</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Mbrs_&lt;ClassName&gt;_</code> <span class="icon red"><i class="fa fa-warning"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La Structure des membres</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Members</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>Mbrs_&lt;ClassName&gt;_</code> n’a pas été présenté dans cet article. Il s’agit d’une étape intermédiaire utilisée pour construire la structure des membres <code>Mbrs_&lt;ClassName&gt;</code>. Cette disposition permet de réaliser la fonctionnalité <code>*this\Instance</code> <a href="#admonition-sur-this-instance">exposée ici</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.4<br>
-Last updated 2016-12-01 13:08:04 E
+Draft 0.5<br>
+Last updated 2016-12-03 14:49:45 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">

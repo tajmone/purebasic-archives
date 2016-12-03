@@ -14,7 +14,7 @@
 ; Dräc - Sept 2007
 ; [http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO]
 ;=====================================================
-XIncludeFile "OOP.pbi"
+XIncludeFile "POO.pbi"
 
 ;=====================================================
 ;Abstract Class Form
