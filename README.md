@@ -3,6 +3,11 @@ The PureBASIC Archives
 
 A collection of PureBASIC resources.
 
+**DIRECT DOWNLOAD** – You can download a full copy of The PB-Archives without using Git:
+
+-   [`master.zip`](https://github.com/tajmone/purebasic-archives/archive/master.zip) – download the production ready version.
+-   [`dev-tutorials.zip`](https://github.com/tajmone/purebasic-archives/archive/dev-tutorials.zip) – download also the WIP drafts of upcoming tutorials.
+
 ------------------------------------------------------------------------
 
 <!-- #toc -->
@@ -59,7 +64,7 @@ The Git repository is the core of the PB-Archives project: resources of various 
 
 By cloning the repo, the end user downloads a copy of all of the project’s reosurces, which then become locally available at all times and extremely easy to update and maintain through Git. Hopefully, this should also encourage users to contribute their own resources to the project.
 
-The idea of creating this repo dawned on me when I realized that in the course of time, while working on various PureBASIC projects, I’ve been cumulating lots of resources and notes – mostly buried within each project’s working folders. At the end of each project – when the dev-frenzy cools down – I always try to reorganize my notes and resources in a systematic way, so next time I’ll need them they’ll be at hand (without having to sift through all my past projects because I forgot where I save them). Well, this project is something along these lines, but on a collaborative scale.
+The idea of creating this repo dawned on me when I realized that in the course of time, while working on various PureBASIC projects, I’ve been cumulating lots of resources and notes – mostly buried within each project’s working folders. At the end of each project – when the dev-frenzy cools down – I always try to reorganize my collected notes and resources in a systematic way, so next time I’ll need them they’ll be at my fingertips (without having to sift through all my past projects just because I forgot where I saved them). Well, this project is something along these lines, but on a collaborative scale.
 
 I hope that developers can benefit from having a pool of resources to fish from, and that they might contribute back by sharing their own findings too. It only takes a handful of PureBASIC developers to quickly populate a project like this one.
 
@@ -68,7 +73,7 @@ The Wiki
 
 -   <https://github.com/tajmone/purebasic-archives/wiki>
 
-The GitHub-hosted Wiki associated to the PureBASIC Archives repo is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a Wiki entry, but any full-fledged article/tutorial should be placed instead inside the repo and linked from the Wiki.
+The GitHub-hosted Wiki associated to the PureBASIC Archives repo is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc., but as place where one can quickly find tech specs, FAQs, cross-platform setup and development guidelines, and any answers relating to PureBASIC as a language and application. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a given Wiki entry, but any full-fledged article/tutorial should go inside the repo and linked from the Wiki.
 
 Possibly, in the future, html standalone snaphsots of the Wiki might be included in the PureBASIC Archives repo, for offline reading — that is, if the Wiki ever reaches an interesting size and richness of contents.
 
@@ -85,7 +90,7 @@ Quick Links
 ===========
 
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
--   Dräc’s «[*PureBasic and Object-Oriented Programming*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc)» tutorial (English version).
+-   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial (English) – [source folder](./tutorials/oop/drac/).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
 Resources Organization

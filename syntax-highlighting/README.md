@@ -27,6 +27,7 @@ Highlight.js
 ------------
 
 -   [`/highlight.js/`](./highlight.js/)
+-   [HTML online live demo](https://cdn.rawgit.com/tajmone/purebasic-archives/master/syntax-highlighting/highlight.js/pb-prebuilt/hljs-all/example.html) (needed if you are on GitHub)
 
 Highlight.js is a JavaScript syntax highlighter that works in the browser or on the server. It allows syntax highlighting source code — including PureBASIC — in HTML based documents, and it’s used in websites, offline documentation, and ebooks.
 
