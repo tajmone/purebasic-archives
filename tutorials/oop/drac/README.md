@@ -3,7 +3,14 @@ Dräc’s *PureBasic and OOP*
 
 By «Dräc,» (c) 2005, license: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
--   [English version](./en/OOP-Demystified.html)
+**HTML PREVIEW:**
+
+-   [English: local version](./en/OOP-Demystified.html) – if viewing from your hardisk
+-   [English: online version](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html) – needed if you are on GitHub
+
+**DOWNLOAD**
+
+-   [Download Tutorial as Zip](https://kinolien.github.com/gitzip/?download=https://github.com/tajmone/purebasic-archives/tree/master/tutorials/oop/drac) – save this folder on your PC
 
 ------------------------------------------------------------------------
 

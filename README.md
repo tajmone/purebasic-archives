@@ -8,6 +8,8 @@ A collection of PureBASIC resources.
 -   [`master.zip`](https://github.com/tajmone/purebasic-archives/archive/master.zip) – download the production ready version.
 -   [`dev-tutorials.zip`](https://github.com/tajmone/purebasic-archives/archive/dev-tutorials.zip) – download also the WIP drafts of upcoming tutorials.
 
+or you may download selected resources as **Zip archives** from the [“Download Links” section](#download-links).
+
 ------------------------------------------------------------------------
 
 <!-- #toc -->
@@ -17,6 +19,7 @@ A collection of PureBASIC resources.
     -   [The Wiki](#the-wiki)
     -   [PureBASIC Archives Website](#purebasic-archives-website)
 -   [Quick Links](#quick-links)
+-   [Download Links](#download-links)
 -   [Resources Organization](#resources-organization)
 -   [Developement Branches](#developement-branches)
 -   [License](#license)
@@ -92,6 +95,13 @@ Quick Links
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial (English) – [source folder](./tutorials/oop/drac/).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
+
+Download Links
+==============
+
+These links allow you to download specific isolated resources by creating a **Zip archive** copy of their folder (via [@KinoLien](https://github.com/KinoLien)’s [GitZip](https://github.com/KinoLien/gitzip)). The Zipped files will be as in the latest version of the master branch.
+
+-   Dräc’s «[*PureBasic and Object-Oriented Programming*](https://kinolien.github.com/gitzip/?download=https://github.com/tajmone/purebasic-archives/tree/master/tutorials/oop/drac)» – tutorial in AsciiDoc and HTML5 (all languages versions), plus PB source code of examples and OOP library.
 
 Resources Organization
 ======================
