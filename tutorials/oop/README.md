@@ -17,7 +17,8 @@ Dräc’s *PureBasic and OOP*
 
 **PureBASIC Archives** has reprinted (with its author’s permission) Dräc’s famous tutorial *PureBasic and OOP* — also known as *OOP Demystified*:
 
--   [`/drac/`](./drac/)
+-   [`/drac/`](./drac/) – tutorial folder with source files
+-   [HTML online preview](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html) (needed if you are on GitHub)
 
 External Links
 ==============

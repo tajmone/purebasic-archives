@@ -4,6 +4,7 @@ Highlight.js v9.8.0 “New York”
 This repo npw host pre-built versions of **highlight.js**’ «PureBASIC enhanced/modded releases», with different combinations of language syntaxes, to cover common usage scenarios, along with instructions and examples:
 
 -   [`/pb-prebuilt/`](./pb-prebuilt/)
+-   [HTML online live demo](https://cdn.rawgit.com/tajmone/purebasic-archives/master/syntax-highlighting/highlight.js/pb-prebuilt/hljs-all/example.html) (needed if you are on GitHub)
 
 ------------------------------------------------------------------------
 
@@ -19,8 +20,8 @@ This repo npw host pre-built versions of **highlight.js**’ «PureBASIC enhance
 Highlight.js
 ============
 
--   https://highlightjs.org
--   https://github.com/isagalaev/highlight.js
+-   <https://highlightjs.org>
+-   <https://github.com/isagalaev/highlight.js>
 
 Highlight.js is a syntax highlighter written in JavaScript. It works in the browser as well as on the server. It works with pretty much any markup, doesn’t depend on any framework and has automatic language detection.
 
@@ -36,7 +37,7 @@ PureBASIC & Highlight.js
 
 I’ve created the PureBASIC syntax files for highlight.js:
 
--   https://github.com/tajmone/highlight.js
+-   <https://github.com/tajmone/highlight.js>
 
 These are included in HLJS since v9.4.0.
 

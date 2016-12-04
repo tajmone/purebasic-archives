@@ -34,7 +34,7 @@ Creative Commons Announcement
 
 On the 6th of February, 2014, author John P. Logsdon (aka “Krylar”) announced of PureBASIC forums that the book was released under Creative Commons (CC BY-NC-SA 4.0):
 
--   http://www.purebasic.fr/english/viewtopic.php?f=14&t=58232
+-   <http://www.purebasic.fr/english/viewtopic.php?f=14&t=58232>
 
 > Hey all,
 >
@@ -44,7 +44,7 @@ On the 6th of February, 2014, author John P. Logsdon (aka “Krylar”) announce
 >
 > You may copy, update, distribute, and transmit this work for non-commercial purposes as long as you give attribution to the original authors, provide a link to my website at www.johnplogsdon.com, and distribute the resulting work under the same license as this one.
 >
-> Here is the link to the content: http://www.mediafire.com/folder/aajnae2bi4ta4/Pure\_Basic
+> Here is the link to the content: <http://www.mediafire.com/folder/aajnae2bi4ta4/Pure_Basic>
 >
 > Best of luck and thanks for all of your support over the years. :mrgreen:
 >

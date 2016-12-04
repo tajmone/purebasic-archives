@@ -3,12 +3,19 @@ The PureBASIC Archives
 
 A collection of PureBASIC resources.
 
+**DIRECT DOWNLOAD** – You can download a full copy of The PB-Archives without using Git:
+
+-   [`master.zip`](https://github.com/tajmone/purebasic-archives/archive/master.zip) – download the production ready version.
+-   [`dev-tutorials.zip`](https://github.com/tajmone/purebasic-archives/archive/dev-tutorials.zip) – download also the WIP drafts of upcoming tutorials.
+
 ------------------------------------------------------------------------
 
 <!-- #toc -->
 -   [Vanity URLs](#vanity-urls)
 -   [Introduction](#introduction)
+    -   [PureBASIC Archives Repository](#purebasic-archives-repository)
     -   [The Wiki](#the-wiki)
+    -   [PureBASIC Archives Website](#purebasic-archives-website)
 -   [Quick Links](#quick-links)
 -   [Resources Organization](#resources-organization)
 -   [Developement Branches](#developement-branches)
@@ -31,30 +38,59 @@ A collection of PureBASIC resources.
 Vanity URLs
 ===========
 
--   [git.io/pb-archives](https://git.io/pb-archives) – Links to repo master (here)
--   [git.io/pb-wiki](https://git.io/pb-wiki) – Links to the Wiki
+-   [git.io/purebasic-archives](https://git.io/purebasic-archives) – Links to PB-Archives’ website
+-   [git.io/pb-archives](https://git.io/pb-archives) – Links to PB-Archives’ repo master (here)
+-   [git.io/pb-wiki](https://git.io/pb-wiki) – Links to PB-Archives’ Wiki
 
 ------------------------------------------------------------------------
 
 Introduction
 ============
 
+The PB-Archives is a threefold project consisting of:
+
+1.  [PureBASIC Archives repository](https://github.com/tajmone/purebasic-archives)
+2.  [PureBASIC Archives Wiki](https://github.com/tajmone/purebasic-archives/wiki)
+3.  [PureBASIC Archives website](https://tajmone.github.io/purebasic-archives/)
+
+The project was started by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) in October 2016. The goal of the project is to create a collaborative centralized place for gathering and sharing PureBASIC-related resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
+
+PureBASIC Archives Repository
+-----------------------------
+
 -   <https://github.com/tajmone/purebasic-archives>
 
-This repo was created by Tristano Ajmone ([@tajmone](https://github.com/tajmone)) as a centralized place for gathering and sharing PureBASIC-related resources: code examples and snippets, libraries, tutorials, books, and links — anything that can simplify a programmer’s life by either being herein archived or linked/reviewed.
+The Git repository is the core of the PB-Archives project: resources of various types are herein stored, organized into categories through folders structure. Documents and tutorials are stored in the repository both in source format (Markdown or AsciiDoc) and in distribution format (HTML, doc, PDF, ecc.).
+
+By cloning the repo, the end user downloads a copy of all of the project’s reosurces, which then become locally available at all times and extremely easy to update and maintain through Git. Hopefully, this should also encourage users to contribute their own resources to the project.
+
+The idea of creating this repo dawned on me when I realized that in the course of time, while working on various PureBASIC projects, I’ve been cumulating lots of resources and notes – mostly buried within each project’s working folders. At the end of each project – when the dev-frenzy cools down – I always try to reorganize my collected notes and resources in a systematic way, so next time I’ll need them they’ll be at my fingertips (without having to sift through all my past projects just because I forgot where I saved them). Well, this project is something along these lines, but on a collaborative scale.
+
+I hope that developers can benefit from having a pool of resources to fish from, and that they might contribute back by sharing their own findings too. It only takes a handful of PureBASIC developers to quickly populate a project like this one.
 
 The Wiki
 --------
 
-The [GitHub-hosted Wiki](https://github.com/tajmone/purebasic-archives/wiki) associated to the PureBASIC Archives project is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a Wiki entry, but any full-fledged article/tutorial should be placed instead inside the repo, and a short link to it placed in the Wiki.
+-   <https://github.com/tajmone/purebasic-archives/wiki>
 
-Possibly, in the future, html standalone snaphsots of the Wiki might be included in the PureBASIC Archives repo, for offline reading — that is, if the Wiki every reaches an interesting size and richness of contents.
+The GitHub-hosted Wiki associated to the PureBASIC Archives repo is intended as an online reference for PureBASIC – ie: not for tutorials, reviews of third party tools, ecc., but as place where one can quickly find tech specs, FAQs, cross-platform setup and development guidelines, and any answers relating to PureBASIC as a language and application. Tips and tricks might be mentioned therein, as well as links to external resources that are pertinent to the subject matter of a given Wiki entry, but any full-fledged article/tutorial should go inside the repo and linked from the Wiki.
+
+Possibly, in the future, html standalone snaphsots of the Wiki might be included in the PureBASIC Archives repo, for offline reading — that is, if the Wiki ever reaches an interesting size and richness of contents.
+
+PureBASIC Archives Website
+--------------------------
+
+-   <https://tajmone.github.io/purebasic-archives/>
+
+Right now, it’s just a single-page website, created with [GitHub’s Automatic Page Generator](https://help.github.com/articles/creating-pages-with-the-automatic-generator/) and freely hosted on [GitHub Pages](https://pages.github.com/). When the documents and tutorials of PB-Archives’ repo and wiki will reach a mature stage, I’m planning to make it a full-fledged and well organized portal – but this is a long-term project, unlikely to happen soon.
+
+For the time being, a single presentation-page is all the website can offer.
 
 Quick Links
 ===========
 
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
--   Dräc’s «[*PureBasic and Object-Oriented Programming*](./tutorials/oop/drac/en/OOP-Demystified.asciidoc)» tutorial (English version).
+-   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial (English) – [source folder](./tutorials/oop/drac/).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
 Resources Organization
@@ -114,14 +150,14 @@ Before submitting pull requests, please read the [`CONTRIBUTING.md`](./CONTRIBUT
 
 Ideas, proposals, and corrections can be discussed by opening an Issue:
 
--   https://github.com/tajmone/purebasic-archives/issues
+-   <https://github.com/tajmone/purebasic-archives/issues>
 
 About PureBASIC
 ===============
 
 PureBASIC is a commercial programming language and IDE published by Fantaisie Software (France):
 
--   https://www.purebasic.com/
+-   <https://www.purebasic.com/>
 
 > PureBasic is a native 32-bit and 64-bit programming language based on established BASIC rules. The key features of PureBasic are portability (Windows, Linux and MacOS X are currently supported), the production of very fast and highly optimized executables and, of course, the very simple BASIC syntax. PureBasic has been created for the beginner and expert alike. We have put a lot of effort into its realization to produce a fast, reliable system friendly language.
 >
@@ -151,11 +187,11 @@ In absence of explicit licensing terms, their contents should be considered copy
 PureBasic CodeArchiv (Rebirth)
 ------------------------------
 
--   https://github.com/GPIforGit/PureBasic-CodeArchiv-Rebirth
+-   <https://github.com/GPIforGit/PureBasic-CodeArchiv-Rebirth>
 
 This project deserves a special mention. It seems to be a WIP to recreate an updated version of the historical **PureBasic CodeArchiv**, hosted at PureArea.net:
 
--   http://www.purearea.net/pb/CodeArchiv/CodeArchiv.html
+-   <http://www.purearea.net/pb/CodeArchiv/CodeArchiv.html>
 
 **PureBasic CodeArchiv** contains a wealth of resources for PureBASIC version 3 and 4. Its license terms are:
 
@@ -173,6 +209,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/11/30` — Now GFM (GitHub Flavored Markdown) is the default standard for markdown documents and cleanup operations performed via the repo-maintaiance tools.
 -   `2016/11/26`
     -   Added [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool for auto-generating header files (`*.pbi`).
     -   Started creating the [Wiki](https://github.com/tajmone/purebasic-archives/wiki).

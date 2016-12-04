@@ -2,7 +2,7 @@
 
 ::   ******************************************************************************
 ::   *                                                                            *
-::   *                        MARKDOWN CLEAN UP + AUTO-TOC                        *
+::   *                      GFM MARKDOWN CLEAN UP + AUTO-TOC                      *
 ::   *                                                                            *
 ::   ******************************************************************************
 ::   |                             by Tristano Ajmone                             |
@@ -10,7 +10,7 @@
 ::   | Released into the public domain according to the Unlicense license terms:  |
 ::   |                           http://unlicense.org                             |
 ::   ==============================================================================
-::   | This batch file processes target markdown files and either:                |
+::   | This batch file processes target GFM markdown files and either:            |
 ::   |  -- cleans up the markdown source and re-generates its TOC (default)       |
 ::   |  -- appends to the file gfmtoc's TOC-tags (via "-t" option)                |
 ::   | Invoke from CMD with target filenames as argument, or drag-and-drop target |
@@ -23,9 +23,9 @@
 ::   |     https://github.com/hail2u/node-gfmtoc                                  |
 ECHO:
 ECHO ==============================================================================
-ECHO                    MARKDOWN CLEANER AND AUTO-TOC GENERATOR
+ECHO                        GFM MARKDOWN CLEAN UP + AUTO-TOC
 ECHO:
-ECHO ----------------------------{ v1.4 - 2016/11/24 }-----------------------------
+ECHO ----------------------------{ v1.5 - 2016/11/30 }-----------------------------
 ECHO:
 ECHO                               by Tristano Ajmone
 ECHO ==============================================================================
@@ -147,7 +147,7 @@ ECHO    DONE!
 ::
 ECHO:
 ECHO 2) Invoking Pandoc on "%~1" for markdown source cleanup
-pandoc --smart --wrap=none --normalize -f markdown -t markdown -o "%~1" "%~1"
+pandoc --smart --wrap=none --normalize -f markdown_github-hard_line_breaks -t markdown_github-hard_line_breaks -o "%~1" "%~1"
 IF ERRORLEVEL 1 (
     SET _EXITCODE=1
     ECHO:
@@ -161,7 +161,7 @@ EXIT /B
 ECHO ==============================================================================
 ECHO                          USAGE AND SETUP INSTRUCTIONS
 ECHO ==============================================================================
-ECHO This batch file auto-cleans up the markdown source and re-generates its TOC.
+ECHO This batch file auto-cleans up a GFM markdown source and re-generates its TOC.
 ECHO It requires Pandoc and gfmtoc to be installed on the OS:
 ECHO  -- Pandoc: http://pandoc.org
 ECHO  -- gfmtoc: https://github.com/hail2u/node-gfmtoc
@@ -218,6 +218,10 @@ EXIT /B %_EXITCODE%
 :: ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 ::                                  Rev.History
 :: ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+:: v1.5 - 2016/11/30
+::      - Pandoc now uses GitHub-Flavored Markdown (but no hard line breaks) for
+::        cleanup operations (`markdown_github-hard_line_breaks`) as this tool is
+::        mainly intended for use with GitHub related MD files.
 :: v1.4 - 2016/11/24
 ::      - BUGFIX: Now checks if paramter is a folder. If is: throw error and skip.
 :: v1.3 - 2016/11/24
