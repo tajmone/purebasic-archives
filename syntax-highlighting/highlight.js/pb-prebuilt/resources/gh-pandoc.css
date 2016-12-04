@@ -845,3 +845,24 @@ p.toctitle {
   font-size: 1.5em;
   margin: 0 0.5em 0.5em 0.5em;
 }
+
+div.warningnote {
+  width: 100%;
+  border: 1px solid #FFB280;
+  background: #FFF080;
+  border-radius: 5px;
+  padding: 0.75em;
+  color: #996B4D;
+  font-size: 0.75em;
+}
+.warningnote a {
+    color: #CC6666;
+}
+.warningnote strong {
+  letter-spacing: 0.075em;
+  display:inline-block;
+  background: #CC6666;
+  color: #FFF080;
+  padding: 0 0.4em;
+}
+

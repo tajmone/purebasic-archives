@@ -6,7 +6,7 @@
 *                                                                            *
 ******************************************************************************
 
-version 1.0 - April 2016
+version 1.1 - December 2016
 
 This CSS is meant for concatenation with other HJS languages, so that its style
 will only apply to "purebasic" code. It differs from the "purebasic.css" file
@@ -28,6 +28,7 @@ NOTE_1:	PureBASIC code syntax highlighting only applies the following classes:
 			.hljs-string
 			.hljs-symbol
 			.hljs-type
+			.hljs-title
 
 
 NOTE_2:	Color names provided in comments were derived using "Name that Color" online tool:
@@ -68,6 +69,7 @@ NOTE_2:	Color names provided in comments were derived using "Name that Color" on
 	color: #00AAAA; /* Persian Green (approx.) */
 }
 
+.hljs-title,
 .purebasic .hljs-function_call { /* --- used for PureBASIC Procedures Names --- */
 	color: #006666; /* Blue Stone (approx.) */
 }
