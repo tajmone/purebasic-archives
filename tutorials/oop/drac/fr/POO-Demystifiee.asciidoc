@@ -1,17 +1,17 @@
 = PureBasic et la Programmation Orientée Objet
 Dräc
-v0.5, December 3, 2016: WIP Porting from HTML.
+v1.0, December 6, 2016: Reprinted and revised edition.
 :title: PureBasic et la Programmation Orientée Objet — ou «la POO démystifiée»
 :doctype: article
 :encoding: utf-8
 :lang: fr
 :toc: left
-:sectnums:
+:sectnums!:
 :highlightjsdir: ../hjs
 :idprefix:
 :idseparator: -
 :icons: font
-:version-label: Draft
+:appendix-caption: Annexe
 
 ////
 ==============================================================================
@@ -32,7 +32,7 @@ v0.5, December 3, 2016: WIP Porting from HTML.
 
 **CHANGES**: The tutorial was ported from HTML to AsciiDoc by https://github.com/tajmone[Tristano Ajmone], who also made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).
 
-First republished: 2016/11/?? — by https://github.com/tajmone[@tajmone].
+First republished: 2016/12/06 — by https://github.com/tajmone[@tajmone].
 ****
 
 // Website Page 1
@@ -49,7 +49,6 @@ On peut donc tout à fait en implémenter les concepts en PureBasic au prix d’
 Néanmoins, la mise en œuvre de la méthode objet en PureBasic offre, outre la possibilité de programmer selon cette philosophie, l’intérêt de dévoiler certains mécanismes sous-jacents des mots-clés des langages objets.
 
 Cet article présente une technique de programmation permettant à des projets PureBasic d’envergure de bénéficer d’une conception orienté objet. Il est entendu qu’il ne s’agit pas ici d’un cours des techniques POO et que le lecteur possède une bonne connaissance du langage PureBasic.
-
 
 // Website Page 2
 
@@ -82,10 +81,10 @@ Le fait que l’on appelle les fonctions d’un objet des méthodes, tient au fa
 
 === La notion de Classe
 
-Il s’agit d’une extension de la notion de type que l’on trouve en PureBasic.
+Il s’agit d’une extension de la notion de *type* que l’on trouve en PureBasic.
 
 Dans un contexte donné, plusieurs objets peuvent posséder la même structure et le même comportement.
-On les regroupe alors dans une même " Classe ".
+On les regroupe alors dans une même " *Classe* ".
 
 Du point de vu du développeur, la Classe définit ce que contient un objet de cette classe : la nature de ses attributs (type de chaque variable) et ses méthodes (noms, implémentations).
 
@@ -94,13 +93,13 @@ Si le type d’une variable est un entier, le type d’un objet est sa Classe.
 === La notion d’instance
 
 *   Une instance est un objet défini à partir d’une classe.
-*   Un tel processus s’appelle l’instanciation.
+*   Un tel processus s’appelle l’**instanciation**.
 *   Cela correspond à la déclaration de variables dans PureBasic.
 *   L’objet est **normalement initialisé** dès sa création.
 
 === L’encapsulation
 
-En théorie, on ne devrait pouvoir manipuler les attributs d’un objet qu’en passant par les méthodes. Cette technique, qui permet de ne rendre visible à l’utilisateur qu’une partie de l’objet, est appelée encapsulation.
+En théorie, on ne devrait pouvoir manipuler les attributs d’un objet qu’en passant par les méthodes. Cette technique, qui permet de ne rendre visible à l’utilisateur qu’une partie de l’objet, est appelée **encapsulation**.
 
 L’encapsulation a comme avantage de garantir l’intégrité des attributs. En effet, c’est le développeur qui, par l’intermédiaire des méthodes mises à la disposition de l’utilisateur, maîtrise les modifications apportées à l’objet.
 
@@ -114,8 +113,8 @@ Du point de vue du développeur, cela revient à pouvoir ajouter des attributs e
 
 Il existe deux types d’héritages :
 
-*   L’héritage simple : La nouvelle Classe est définie à partir d’une seule Classe existante
-*   L’héritage multiple : La nouvelle Classe est définie à partir de plusieurs Classes existantes
+*   *L’héritage simple* : La nouvelle Classe est définie à partir d’une seule Classe existante
+*   *L’héritage multiple* : La nouvelle Classe est définie à partir de plusieurs Classes existantes
 
 Bien que possible à programmer, l’héritage multiple est complexe à mettre en œuvre et ne sera pas abordé ici.
 
@@ -123,8 +122,8 @@ Nous nous limiterons à l’héritage simple.
 
 [big]##**Terminologie:**##
 
-*   La Classe qui hérite d’une autre Classe, est souvent appelée Classe Fille
-*   La Classe qui donne son héritage à une Classe Fille est souvent appelée Classe Mère.
+*   La Classe qui hérite d’une autre Classe, est souvent appelée **Classe Fille**.
+*   La Classe qui donne son héritage à une Classe Fille est souvent appelée **Classe Mère**.
 
 === La surcharge
 
@@ -133,14 +132,14 @@ On dit qu’une méthode est surchargée, si elle réalise des actions différen
 Prenons un exemple :
 
 Les objets suivants: cercle, rectangle et triangle sont des formes géométriques.
-On peut définir pour ces objets une même Classe qu’on appellera Forme.
-Les objets sont donc des instances de la classe Forme.
+On peut définir pour ces objets une même Classe qu’on appellera ``Forme``.
+Les objets sont donc des instances de la classe ``Forme``.
 
-Si on veut afficher les objets, il faut que la classe Forme dispose d’une méthode " Dessiner ".
+Si on veut afficher les objets, il faut que la classe `Forme` dispose d’une méthode ``Dessiner``.
 
-Ainsi doté, chaque objet dispose donc d’une méthode " Dessiner " pour s’afficher. Or, cette méthode ne peut-être la même selon que l’on veut afficher un cercle ou un rectangle.
+Ainsi doté, chaque objet dispose donc d’une méthode `Dessiner` pour s’afficher. Or, cette méthode ne peut-être la même selon que l’on veut afficher un cercle ou un rectangle.
 
-Les objets d’une même Classe utilisent donc la même méthode " Dessiner ", mais la nature de l’objet (Rectangle, Triangle) spécifie l’implémentation de la méthode.
+Les objets d’une même Classe utilisent donc la même méthode ``Dessiner``, mais la nature de l’objet (Rectangle, Triangle) spécifie l’implémentation de la méthode.
 
 On dit que la méthode Dessiner est surchargée: du point de vu de l’utilisateur afficher un cercle ou un rectangle se fait de la même manière, ceci en toute transparence.
 
@@ -151,8 +150,8 @@ Au lieu de méthode surchargée, on peut parler aussi de méthode polymorphe (ay
 === Notion de Classe abstraite
 
 Nous avons vu qu’une Classe regroupe la définition des attributs d’un objet ainsi que ces méthodes.
-Supposons que l’on ne puisse pas donner l’implémentation d’une des méthodes de la Classe. La méthode n’est qu’un nom sans code. On parle alors de méthode abstraite.
-Une Classe comportant au moins une méthode abstraite est qualifiée de Classe abstraite.
+Supposons que l’on ne puisse pas donner l’implémentation d’une des méthodes de la Classe. La méthode n’est qu’un nom sans code. On parle alors de **méthode abstraite**.
+Une Classe comportant au moins une méthode abstraite est qualifiée de **Classe abstraite**.
 
 On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des <<La notion de Classe,Classes d’objets>> qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.
 
@@ -164,6 +163,7 @@ Les Classes abstraites ont donc un rôle d’interface, car qu’elles décriven
 
 Dans ce qui va suivre, nous allons voir comment les concepts objets qui viennent d’être abordés peuvent être implémentés en PureBasic.
 En aucun cas cela fait référence à ce qui est programmé dans les langages objets. De plus, le propre de l’implémentation c’est de pouvoir être amélioré ou de s’adapter au besoin.
+
 Nous proposons donc ici une de ces d’implémentations avec ses avantages et ses limites.
 
 === Classe concrète et Classe abstraite
@@ -176,8 +176,6 @@ Comme nous l’avons vu, la Classe définie ce que contient un objet:
 Si, par exemple, on veut représenter des objets Rectangle et les afficher à l’écran, on définira donc une Classe `Rectangle` possédant une méthode ``Dessiner()``.
 
 La Classe `Rectangle` pourrait avoir la construction suivante:
-
-// CODE CHECKED!
 
 // Example N. 3.1-1
 [source,purebasic]
@@ -196,6 +194,7 @@ EndProcedure
 ---------------------------------------------------------------------
 
 où ``x1``, ``x2``, `y1` et `y2` sont quatre attributs (les coordonnées des points diamétralement opposés du rectangle) et `*Dessiner` est un pointeur faisant référence à la fonction de dessin qui affiche les Rectangles.
+
 `*Dessiner` est ici un pointeur de fonction utilisé pour contenir l’adresse de la fonction désirée : ``@Dessiner_Rectangle()``.
 Il suffit d’utiliser `CallFunctionFast()` pour lancer l’exécution de la fonction ainsi référencée.
 
@@ -215,8 +214,6 @@ On appelle toujours ``*this``, le pointeur vers l’objet auquel on applique la 
 
 Si l’on désire créer maintenant un objet `Rect1` issu de la classe ``Rectangle``, cela revient à écrire :
 
-// CODE CHECKED!
-
 // Example N. 3.2-1
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -224,8 +221,6 @@ Rect1.Rectangle
 ---------------------------------------------------------------------
 
 Pour l’initialiser, il suffit d’écrire :
-
-// CODE CHECKED!
 
 // Example N. 3.2-2
 [source,purebasic]
@@ -238,8 +233,6 @@ Rect1\y2 = 20
 ---------------------------------------------------------------------
 
 Par la suite, pour dessiner l’objet ``Rect1``, on écrira:
-
-// CODE CHECKED!
 
 // Example N. 3.2-3
 [source,purebasic]
@@ -262,8 +255,6 @@ On peut se servir de la Classe existante `Rectangle` et y adjoindre la nouvelle 
 
 Une Classe étant une ``Structure``, nous allons profiter de la propriété qu’a une structure d’être étendue. Ainsi, la nouvelle Classe `Rectangle2` peut s’écrire :
 
-// CODE CHECKED!
-
 // Example N. 3.4-1
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -276,10 +267,9 @@ Procedure Effacer_Rectangle(*this.Rectangle2)
 EndProcedure
 ---------------------------------------------------------------------
 
-La Classe Rectangle2 possède donc bien les membres de la Classe `Rectangle` et une nouvelle méthode ``Effacer()``.
-En effet, l’instanciation d’un objet de cette Classe donne :
+La Classe `Rectangle2` possède donc bien les membres de la Classe `Rectangle` et une nouvelle méthode ``Effacer()``.
 
-// CODE CHECKED!
+En effet, l’instanciation d’un objet de cette Classe donne :
 
 // Example N. 3.4-2
 [source,purebasic]
@@ -294,9 +284,9 @@ Rect2\y1 = 0
 Rect2\y2 = 20
 ---------------------------------------------------------------------
 
-Pour utiliser les méthodes Dessiner() et Effacer() de Rect2, on procèdera de la même manière que précédemment.
+Pour utiliser les méthodes `Dessiner()` et `Effacer()` de ``Rect2``, on procèdera de la même manière que précédemment.
 
-Nous pouvons donc dire que Rectangle2 a hérité des propriétés de la Classe Rectangle.
+Nous pouvons donc dire que `Rectangle2` a hérité des propriétés de la Classe ``Rectangle``.
 
 [NOTE]
 ====
@@ -307,9 +297,7 @@ L’héritage est une forme de polymorphisme. L’objet `Rect2` peut etre vu com
 
 Lors de l’initialisation d’un objet, on initialise les pointeurs de fonction en leur affectant l’adresse de la méthode qui convient à l’objet.
 
-Ainsi, pour un objet Rect de Classe ``Rectangle``, en écrivant:
-
-// CODE CHECKED!
+Ainsi, pour un objet `Rect` de Classe ``Rectangle``, en écrivant:
 
 // Example N. 3.5-1
 [source,purebasic]
@@ -318,8 +306,6 @@ Rect1\Dessiner = @Dessiner_Rectangle()
 ---------------------------------------------------------------------
 
 on peut utiliser la méthode `Dessiner()` comme suite:
-
-// CODE CHECKED!
 
 // Example N. 3.5-2
 [source,purebasic]
@@ -331,8 +317,6 @@ Maintenant, imaginons qu’il soit possible d’implémenter une autre méthode 
 
 Appelons la ``Dessiner_Rectangle2()``:
 
-// CODE CHECKED!
-
 // Example N. 3.5-3
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -341,9 +325,7 @@ Procedure Dessiner_Rectangle2(*this.Rectangle)
 EndProcedure
 ---------------------------------------------------------------------
 
-Il est tout à fait possible d’initialiser notre objet Rect1 avec cette nouvelle méthode sans grande peine:
-
-// CODE CHECKED!
+Il est tout à fait possible d’initialiser notre objet `Rect1` avec cette nouvelle méthode sans grande peine:
 
 // Example N. 3.5-4
 [source,purebasic]
@@ -353,8 +335,6 @@ Rect1\Dessiner = @Dessiner_Rectangle2()
 
 Si l’on veut utiliser la méthode on écrira à nouveau:
 
-// CODE CHECKED!
-
 // Example N. 3.5-5
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -362,7 +342,8 @@ CallFunctionFast(Rect1\Dessiner, @Rect1)
 ---------------------------------------------------------------------
 
 Nous constatons bien que dans un cas (méthode ``Dessiner_Rectangle()``) comme dans l’autre (méthode ``Dessiner_Rectangle2()``) l’utilisation de la méthode de l’objet `Rect1` est strictement identique.
-Il ne nous est pas possible en effet par la seule ligne "``CallFunctionFast(Rect1\Dessiner, @Rect1)``"  de distinguer la méthode `Dessiner()` que l’objet `Rect1` utilise.
+
+Il ne nous est pas possible en effet par la seule ligne “``CallFunctionFast(Rect1\Dessiner, @Rect1)``”  de distinguer la méthode `Dessiner()` que l’objet `Rect1` utilise.
 Pour y arriver, il faut remonter jusqu’à l’initialisation de l’objet.
 
 La notion de pointeur de fonction permet donc la surcharge de la méthode `Dessiner()` de la Classe ``Rectangle``.
@@ -372,11 +353,10 @@ Il y a tout de même une limitation dans cette surcharge. L’utilisation de l�
 === Conclusion :
 
 Dans cette première implémentation, nous disposons d’un objet capable de répondre aux principaux concepts orientés objet avec certaines limitations.
+
 Nous venons surtout de poser les bases qui vont nous servir à réaliser un objet plus complet, ceci grâce à l’instruction `Interface` de PureBasic.
 
 == L’instruction Interface
-
-// CODE CHECKED!
 
 // Example N. 4-1
 .Syntaxe :
@@ -392,8 +372,6 @@ EndInterface
 L’instruction `Interface` de PureBasic, permet de regrouper sous un même Nom (``<Nom1>`` dans l’encadré) différentes procédures.
 
 Ex :
-
-// CODE CHECKED!
 
 // Example N. 4-2
 
@@ -415,9 +393,7 @@ La déclaration se fait de la même manière que pour une `Structure` :
 Objet.Mon_Objet
 ---------------------------------------------------------------------
 
-Nous pouvons alors utiliser les fonctions de Objet directement comme suite:
-
-// CODE CHECKED!
+Nous pouvons alors utiliser les fonctions de `Objet` directement comme suite:
 
 // Example N. 4-4
 
@@ -427,8 +403,8 @@ Objet\Procedure1(10, 20)
 Objet\Procedure2(30, 40)
 ---------------------------------------------------------------------
 
-Lancer une procedure grâce à l’instruction Interface se fait par une notation fort pratique et agréable.
-En écrivant " Objet\Procedure1(10, 20) ", on lance la Procedure1() de l’élément Objet.
+Lancer une procedure grâce à l’instruction `Interface` se fait par une notation fort pratique et agréable.
+En écrivant “``Objet\Procedure1(10, 20)``”, on lance la `Procedure1()` de l’élément ``Objet``.
 Cette notation est typique de la Programmation Orienté Objet.
 
 ==== Initialisation :
@@ -443,7 +419,7 @@ En réalité vous pouvez renommer les procédures dans un bloc ``Interface : End
 Comment relier alors ce nouveau nom à la vraie procédure ?
 
 Comme pour la surcharge de méthode, la solution se trouve dans les adresses de fonctions.
-Il faut voir en effet les noms contenus dans le bloc Interface/EndInterface, comme des pointeurs de fonctions auxquels on attribut les adresses des fonctions que l’on désire y mettre.
+Il faut voir en effet les noms contenus dans le bloc ``Interface : EndInterface``, comme des pointeurs de fonctions auxquels on attribut les adresses des fonctions que l’on désire y mettre.
 
 Cependant, pour initialiser les pointeurs de fonctions d’un élément typé par une ``Interface``, il faut procéder différemment qu’avec un élément typé par une ``Structure``.
 Il n’est en effet pas possible d’initialiser individuellement chacun des champs définis par une Interface, car rappelez-vous que d’écrire `Objet\Procedure1()` revient à lancer une procédure.
@@ -453,9 +429,8 @@ L’initialisation se réalise indirectement en donnant à l’élément l’adr
 Une telle variable est appelée table des méthods.
 
 Ex : Si l’on reprend l’``Interface Mon_Objet``.
-Considérons la `Structure` suivante de description des pointeurs de fonctions :
 
-// CODE CHECKED!
+Considérons la `Structure` suivante de description des pointeurs de fonctions :
 
 // Example N. 4.1-1
 [source,purebasic]
@@ -467,8 +442,6 @@ EndStructure
 ---------------------------------------------------------------------
 
 et la variable initialisée associée:
-
-// CODE CHECKED!
 
 // Example N. 4.1-2
 [source,purebasic]
@@ -482,8 +455,6 @@ où `Ma_Procedure1()` et `Ma_Procedure2()` sont les implémentations des procéd
 
 Alors, l’initialisation de l’élément `Objet` de type `Mon_Objet` se fera comme suite :
 
-// CODE CHECKED!
-
 // Example N. 4.1-3
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -491,8 +462,6 @@ Objet.Mon_Objet = @Methodes
 ---------------------------------------------------------------------
 
 Ainsi, en écrivant
-
-// CODE CHECKED!
 
 // Example N. 4.1-4
 [source,purebasic]
@@ -509,7 +478,7 @@ Lorsque l’on déclare un élément typé par une interface, il est obligatoire
 
 [IMPORTANT]
 ====
-[[admonition-structure-interface-symetrie]]La composition de la Structure décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’``Interface``. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.
+[[admonition-structure-interface-symetrie]]La composition de la `Structure` décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’``Interface``. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.
 ====
 
 Pour résumer, utiliser une Interface c’est disposer:
@@ -523,14 +492,12 @@ C’est aussi:
 *   bénéficier d’une notation orientée objet,
 *   pouvoir renommer facilement les procédures.
 
-
-
 // Website Page 5
 
 == Deuxième Implémentation
 
 Dans notre première implémentation, nombres de concepts ont été traduits d’une manière plus ou moins étendue.
-Nous allons voir maintenant comment on peut améliorer cette implémentation grâce à l’utilisation de l’instruction Interface.
+Nous allons voir maintenant comment on peut améliorer cette implémentation grâce à l’utilisation de l’instruction ``Interface``.
 
 === Notion d’interface Objet :
 
@@ -541,30 +508,28 @@ L’interface d’un objet est donc la seule porte d’entrée/sortie dont dispo
 
 C’est le rôle que l’on va donner dans notre utilisation de l’instruction Interface.
 
-L’instruction Interface va donc nous permettre de regrouper sous un même Nom, tout ou partie des méthodes d’un objet que l’utilisateur aura le droit de manipuler.
+L’instruction `Interface` va donc nous permettre de regrouper sous un même Nom, tout ou partie des méthodes d’un objet que l’utilisateur aura le droit de manipuler.
 
 === Instanciation et Constructeur d’Objet
 
 Vouloir utiliser une interface c’est d’abord se munir :
 
-1.  d’une Interface décrivant les méthodes que l’on veut utiliser,
-2.  d’une Structure décrivant les pointeurs d’adresses des fonctions correspondantes,
-3.  d’une table des méthodes: variable initialisée issue de cette structure.
+1.  d’une `Interface` décrivant les méthodes que l’on veut utiliser,
+2.  d’une `Structure` décrivant les pointeurs d’adresses des fonctions correspondantes,
+3.  d’une **table des méthodes**: variable initialisée issue de cette structure.
 
-L’étape 1, consistant à d’écrire l’Interface d’un objet, n’est pas compliquée. Il suffit de nommer les méthodes.
+L’étape 1, consistant à d’écrire l’``Interface`` d’un objet, n’est pas compliquée. Il suffit de nommer les méthodes.
 
-Les étapes 2 et 3 sont liées. Or dans notre approche objet, nous disposons déjà de la Structure adaptée: c’est celle qui décrit la Classe d’un objet.
+Les étapes 2 et 3 sont liées. Or dans notre approche objet, nous disposons déjà de la `Structure` adaptée: c’est celle qui décrit la Classe d’un objet.
 En effet, l’Interface et la Classe d’un objet se ressemblent: Tous deux comportent des pointeurs de fonctions.
 Simplement, l’instruction Interface ne contient pas les attributs de la Classe mais seulement tout ou partie des méthodes de la Classe.
 
 Il est donc tout à fait possible de se servir de la Classe d’un objet pour initialiser l’interface. Cette démarche est d’ailleurs des plus naturelles. Rappelons que l’interface est la partie visible de la Classe d’un objet, il est donc normal que l’interface soit déterminée par la Classe.
 
 Voyons comment procéder.
-Reprenons la Classe Rectangle2 munie des deux méthodes : Dessiner() et Effacer()
+Reprenons la Classe Rectangle2 munie des deux méthodes : `Dessiner()` et `Effacer()`
 
 Sa Classe est la suivante
-
-// CODE CHECKED!
 
 // Example N. 5.2-1
 [source,purebasic]
@@ -589,8 +554,6 @@ EndProcedure
 
 Définissons maintenant l’interface suivante:
 
-// CODE CHECKED!
-
 // Example N. 5.2-2
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -600,11 +563,9 @@ Interface Rectangle
 EndInterface
 ---------------------------------------------------------------------
 
-Comme on veut obliger l’utilisateur à passer par l’Interface, il n’est plus question de créer un objet directement à partir de la Classe Rectangle2.
+Comme on veut obliger l’utilisateur à passer par l’``Interface``, il n’est plus question de créer un objet directement à partir de la Classe ``Rectangle2``.
 
 L’objet sera donc créée en écrivant :
-
-// CODE CHECKED!
 
 // Example N. 5.2-3
 [source,purebasic]
@@ -612,13 +573,12 @@ L’objet sera donc créée en écrivant :
 Rect.Rectangle
 ---------------------------------------------------------------------
 
-au lieu de Rect.Rectangle2
+au lieu de `Rect.Rectangle2`
 
-Cependant, il ne faut pas oublier de relier l’Interface à la Classe.
-Pour cela il faut initialiser l’objet Rect et il est conseillé de le faire lors de la déclaration de l’objet.
+Cependant, il ne faut pas oublier de relier l’``Interface`` à la Classe.
+Pour cela il faut initialiser l’objet `Rect` et il est conseillé de le faire lors de la déclaration de l’objet.
+
 Correction faite, la bonne instruction pour déclarer l’objet via l’interface est la suivante :
-
-// CODE CHECKED!
 
 // Example N. 5.2-4
 [source,purebasic]
@@ -626,12 +586,10 @@ Correction faite, la bonne instruction pour déclarer l’objet via l’interfac
 Rect.Rectangle = New_Rect(0, 10, 0, 20)
 ---------------------------------------------------------------------
 
-New_Rect() est une fonction qui réalise l’opération d’initialisation.
+`New_Rect()` est une fonction qui réalise l’opération d’initialisation.
 Ce que l’on sait déjà d’elle, c’est qu’elle retourne comme valeur l’adresse mémoire contenant les adresses des fonctions utilisées par l’interface.
 
-Voici maintenant le corps de la fonction New_Rect()
-
-// CODE CHECKED!
+Voici maintenant le corps de la fonction `New_Rect()`
 
 // Example N. 5.2-5
 [source,purebasic]
@@ -658,8 +616,6 @@ Comme on trouve au début de cette zone mémoire d’abord les adresses des fonc
 
 Pour accéder aux méthodes de l’objet ``Rect``, il suffit d’écrire :
 
-// CODE CHECKED!
-
 // Example N. 5.2-6
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -667,13 +623,12 @@ Rect\Dessiner()
 Rect\Effacer()
 ---------------------------------------------------------------------
 
-
 On vérifie bien que :
 
 *   la Classe `Rectangle2` permet d’initialiser l’interface de l’objet.
 *   ``Rect``, déclaré via l’interface, est un objet de la Classe `Rectangle2` pouvant utiliser les méthodes `Dessiner()` et ``Effacer()``.
 
-Nous avons donc réalisé, via l’Interface et la fonction ``New_Rect()``, l’instanciation d’un objet Rect de la Classe ``Rectangle2``.
+Nous avons donc réalisé, via l’``Interface`` et la fonction ``New_Rect()``, l’instanciation d’un objet Rect de la Classe ``Rectangle2``.
 La fonction `New_Rect()` est appelée **Constructeur** de l’objet de Classe ``Rectangle2``.
 
 [IMPORTANT]
@@ -699,8 +654,6 @@ En effet, l’implémentation des méthodes dépend de la classe, alors que l’
 
 Dans notre exemple, nous écrirons les deux procédures suivantes :
 
-// CODE CHECKED!
-
 // Example N. 5.3-1
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -718,8 +671,6 @@ EndProcedure
 ---------------------------------------------------------------------
 
 et le Constructeur devient:
-
-// CODE CHECKED!
 
 // Example N. 5.3-2
 [source,purebasic]
@@ -739,9 +690,7 @@ Lors de la construction d’un objet, une zone mémoire a était allouée pour s
 Quant un objet n’est plus utile, il ne faut pas oublier de le détruire pour libérer la mémoire.
 Ce processus se fait en utilisant une fonction appelée **Destructeur** d’objet.
 
-Dans notre exemple d’objet de la Classe Rectangle2, le destructeur d’objet s’écrira :
-
-// CODE CHECKED!
+Dans notre exemple d’objet de la Classe ``Rectangle2``, le destructeur d’objet s’écrira :
 
 // Example N. 5.3-3
 [source,purebasic]
@@ -752,8 +701,6 @@ EndProcedure
 ---------------------------------------------------------------------
 
 et s’utilisera, comme suite:
-
-// CODE CHECKED!
 
 // Example N. 5.3-4
 [source,purebasic]
@@ -776,7 +723,7 @@ Aussi, dans notre exemple, après avoir fait:
 Free_Rect(Rect2)
 ---------------------------------------------------------------------
 
-on peut toujours réutiliser Rect2 sans préciser à nouveau son type:
+on peut toujours réutiliser `Rect2` sans préciser à nouveau son type:
 
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -791,7 +738,7 @@ En effet, lorsque l’on réalise l’instanciation d’un objet, comme suite :
 Rect2.Rectangle
 ---------------------------------------------------------------------
 
-on crée un objet Rect2 dont la durée de vie est assujettie aux mêmes règles que celles des variables car Rect2 est d’abord une variable : C’est une variable structurée continuant les pointeurs de fonctions des méthodes de l’objet.(voir aussi le rappel qui suit)
+on crée un objet `Rect2` dont la durée de vie est assujettie aux mêmes règles que celles des variables car Rect2 est d’abord une variable : C’est une variable structurée continuant les pointeurs de fonctions des méthodes de l’objet.(voir aussi le rappel qui suit)
 ====
 
 [IMPORTANT]
@@ -814,9 +761,7 @@ En standard, PureBasic propose les listes chaînées qui permettent aussi d’al
 
 === Encapsulation
 
-Imaginons maintenant que l’on ne veuille donner à l’utilisateur seulement accès à la méthode Dessiner() de la Classe Rectangle2. On commencera par définir l’interface désirée :
-
-// CODE CHECKED!
+Imaginons maintenant que l’on ne veuille donner à l’utilisateur seulement accès à la méthode `Dessiner()` de la Classe ``Rectangle2``. On commencera par définir l’interface désirée :
 
 // Example N. 5.6-1
 [source,purebasic]
@@ -828,8 +773,6 @@ EndInterface
 
 L’instanciation du nouvel objet reste la même:
 
-// CODE CHECKED!
-
 // Example N. 5.6-2
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -837,8 +780,6 @@ Rect.Rectangle = New_Rect()
 ---------------------------------------------------------------------
 
 avec
-
-// CODE CHECKED!
 
 // Example N. 5.6-3
 [source,purebasic]
@@ -863,11 +804,9 @@ Procedure New_Rect(x1.l, x2.l, y1.l, y2.l)
 EndProcedure
 ---------------------------------------------------------------------
 
-car en effet, la première adresse de fonction est bien celle de la méthode Dessiner().
+car en effet, la première adresse de fonction est bien celle de la méthode ``Dessiner()``.
 
-Maintenant, imaginons que l’on veuille donner à l’utilisateur seulement accès à la méthode Effacer(). On commencera par définir l’interface suivante:
-
-// CODE CHECKED!
+Maintenant, imaginons que l’on veuille donner à l’utilisateur seulement accès à la méthode ``Effacer()``. On commencera par définir l’interface suivante:
 
 // Example N. 5.6-4
 [source,purebasic]
@@ -877,14 +816,12 @@ Interface Rectangle
 EndInterface
 ---------------------------------------------------------------------
 
-Par contre l’instanciation du nouvel objet ne peut utiliser le constructeur New_Rect().
+Par contre l’instanciation du nouvel objet ne peut utiliser le constructeur ``New_Rect()``.
 Dans le cas contraire, le résultat serait identique au cas précédent.
 
 Il faut donc créer un nouveau constructeur capable de retourner l’adresse de fonction adaptée.
 
 En voici un :
-
-// CODE CHECKED!
 
 // Example N. 5.6-5
 [source,purebasic]
@@ -910,12 +847,10 @@ EndProcedure
 ---------------------------------------------------------------------
 
 Vous constatez qu’il a suffit d’inverser les adresses de fonction dans l’initialisation des méthodes de la Classe.
-Certes, ce n’est pas très élégant de devoir affecter au champ Dessin de la Structure Rectangle2 l’adresse d’une toute autre fonction.
-Si cela permet de conserver la même Structure, celle de la Classe, cela souligne aussi une chose :
+Certes, ce n’est pas très élégant de devoir affecter au champ Dessin de la Structure `Rectangle2` l’adresse d’une toute autre fonction.
+Si cela permet de conserver la même ``Structure``, celle de la Classe, cela souligne aussi une chose :
 Les noms des pointeurs de fonctions nous intéressent moins que leurs valeurs !
 Pour gommer ce faux problème, il suffit de renommer les pointeurs de la Classe comme suite :
-
-// CODE CHECKED!
 
 // Example N. 5.6-6
 [source,purebasic]
@@ -942,11 +877,9 @@ Malgré cette disposition concernent les noms des pointeurs de fonction, il rest
 
 === Héritage
 
-Comme lors de notre première implémentation du concept d’héritage, nous allons profiter de la qualité qu’ont à la fois les instructions Structure et Interface d’être étendues grâce au mot-clé Extends.
+Comme lors de notre première implémentation du concept d’héritage, nous allons profiter de la qualité qu’ont à la fois les instructions `Structure` et `Interface` d’être étendues grâce au mot-clé Extends.
 
-Ainsi, nous passerons de la Classe Rectangle1 possédant une seule méthode Dessiner()…
-
-// CODE CHECKED!
+Ainsi, nous passerons de la Classe `Rectangle1` possédant une seule méthode ``Dessiner()``…
 
 // Example N. 5.7-1
 .Interface
@@ -956,8 +889,6 @@ Interface Rect1
   Dessiner()
 EndInterface
 ---------------------------------------------------------------------
-
-// CODE CHECKED!
 
 // Example N. 5.7-2
 .Classe
@@ -980,8 +911,6 @@ Procedure Init_Mthds_Rect1(*Rect.Rectangle1)
 EndProcedure
 ---------------------------------------------------------------------
 
-// CODE CHECKED!
-
 // Example N. 5.7-3
 .Constructeur
 [source,purebasic]
@@ -1001,9 +930,7 @@ Procedure New_Rect1(x1.l, x2.l, y1.l, y2.l)
 EndProcedure
 ---------------------------------------------------------------------
 
-…à la Classe Rectangle2, possédant 2 méthodes : Dessiner() et Effacer() en écrivant :
-
-// CODE CHECKED!
+…à la Classe ``Rectangle2``, possédant 2 méthodes : `Dessiner()` et `Effacer()` en écrivant :
 
 // Example N. 5.7-4
 .Interface
@@ -1013,8 +940,6 @@ Interface Rect2 Extends Rect1
   Effacer()
 EndInterface
 ---------------------------------------------------------------------
-
-// CODE CHECKED!
 
 // Example N. 5.7-5
 .Classe
@@ -1033,8 +958,6 @@ Procedure Init_Mthds_Rect2(*Rect.Rectangle2)
   *Rect\Methode2 = @Effacer_Rectangle()
 EndProcedure
 ---------------------------------------------------------------------
-
-// CODE CHECKED!
 
 // Example N. 5.7-6
 .Constructeur
@@ -1065,8 +988,6 @@ Ceci tout simplement car le pointeur de fonction *Methode2 ne se trouve pas dire
 
 Si on explicite la Structure de la Classe ``Rectangle2``, on a :
 
-// CODE CHECKED!
-
 // Example N. 5.7-7
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -1082,8 +1003,6 @@ EndStructure
 
 au lieu de disposer de la Structure ci-dessous, autorisant une initialisation correcte de l’interface:
 
-// CODE CHECKED!
-
 // Example N. 5.7-8
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -1097,12 +1016,10 @@ Structure Rectangle2
 EndStructure
 ---------------------------------------------------------------------
 
-Rappelez-vous qu’il faut des adresses de fonction qui se suivent et qui soient ordonnées à l’image de l’Interface (<<admonition-structure-interface-symetrie,voir remarque précédente>>)
+Rappelez-vous qu’il faut des adresses de fonction qui se suivent et qui soient ordonnées à l’image de l’``Interface`` (<<admonition-structure-interface-symetrie,voir remarque précédente>>)
 
 On résout ce problème en regroupant dans une structure spécifique les méthodes entre-elles !
 Il suffit alors que la Structure de la Classe garde un pointeur sur cette nouvelle structure comme le montre l’exemple suivant :
-
-// CODE CHECKED!
 
 // Example N. 5.7-9
 .Interface
@@ -1162,7 +1079,7 @@ EndProcedure
 ---------------------------------------------------------------------
 
 La structure `Mthds_Rect1` décrit tous les pointeurs de fonction des méthodes de la Classe.
-S’en suit la déclaration de la variable Mthds_Rect1 de type Mthds_Rect1 ainsi que son initialisation grace à Init_Mthds_Rect1().
+S’en suit la déclaration de la variable `Mthds_Rect1` de type `Mthds_Rect1` ainsi que son initialisation grace à ``Init_Mthds_Rect1()``.
 
 La variable Mthds_Rect1 est appelée **la table des méthodes** de la class car elle contient l’ensemble des adresses des méthodes de la class.
 
@@ -1174,8 +1091,6 @@ La structure ``Rectangle1``, comporte maintenant un pointeur ``*Methodes``, init
 ====
 L’expression
 
-// CODE CHECKED!
-
 // Example N. 5.7-12
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -1185,8 +1100,6 @@ Init_Mthds_Rect1(@Mthds_Rect1)
 
 peut etre condensée en
 
-// CODE CHECKED!
-
 // Example N. 5.7-13
 [source,purebasic]
 ---------------------------------------------------------------------
@@ -1195,9 +1108,7 @@ Init_Mthds_Rect1(@Mthds_Rect1.Mthds_Rect1)
 
 ====
 
-L’héritage est alors possible car en étendant la Structure Methd_Rect1 en une nouvelle Methd_Rect2, les adresses de fonction vont se suivre:
-
-// CODE CHECKED!
+L’héritage est alors possible car en étendant la `Structure` `Methd_Rect1` en une nouvelle ``Methd_Rect2``, les adresses de fonction vont se suivre:
 
 // Example N. 5.7-14
 .Interface
@@ -1207,8 +1118,6 @@ Interface Rect2 Extends Rect1
   Effacer()
 EndInterface
 ---------------------------------------------------------------------
-
-// CODE CHECKED!
 
 // Example N. 5.7-15
 .Classe
@@ -1234,8 +1143,6 @@ Mthds_Rect2. Mthds_Rect2
 Init_Mthds_Rect2(@Mthds_Rect2)
 ---------------------------------------------------------------------
 
-// CODE CHECKED!
-
 // Example N. 5.7-16
 .Constructeur
 [source,purebasic]
@@ -1252,7 +1159,6 @@ Procedure New_Rect2(x1.l, x2.l, y1.l, y2.l)
   ProcedureReturn *Rect
 EndProcedure
 ---------------------------------------------------------------------
-
 
 Dans cet exemple, la Structure `Rectangle2` est vide, ce qui n’est pas gênant en soit.
 Deux raisons à cela :
@@ -1277,9 +1183,7 @@ Pour accéder aux attributs, soit pour les lires, soit pour les modifier, il fau
 Les méthodes qui permettent de lire les attributs d’un objet sont appelées les **Accesseur** de l’objet.
 Les méthodes qui permettent de modifier les attributs d’un objet sont appelées les **Modifieurs** de l’objet.
 
-Dans notre exemple de Classe ``Rectangle1``, si nous voulons lire la valeur de l’attribut var2, on créera l’Accesseur suivant:
-
-// CODE CHECKED!
+Dans notre exemple de Classe ``Rectangle1``, si nous voulons lire la valeur de l’attribut ``var2``, on créera l’Accesseur suivant:
 
 // Example N. 5.8-1
 [source,purebasic]
@@ -1289,9 +1193,7 @@ Procedure Get_var2(*this.Rectangle1)
 EndProcedure
 ---------------------------------------------------------------------
 
-De même, pour modifier la valeur de l’attribut var2, on écrira le Modifieur suivant
-
-// CODE CHECKED!
+De même, pour modifier la valeur de l’attribut ``var2``, on écrira le Modifieur suivant
 
 // Example N. 5.8-2
 [source,purebasic]
@@ -1303,12 +1205,9 @@ EndProcedure
 
 Comme les Accesseurs et les Modifieurs n’existent que pour permettre à l’utilisateur de modifier tout ou partie des attributs d’un objet, ils sont obligatoirement présents dans l’interface.
 
-
-// TODO: MISSING LINK
-
 [NOTE]
 ====
-Voir l’annexe http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Annexes.htm#Optimisations_Get_Set[Optimisation] du tutorial pour étudier de quelle manière on peut optimiser les performances des accesseurs et des modifieurs lors de l’exécution
+Voir l’annexe <<Optimisation: Accesseurs et aux Modifieurs:,Optimisation>> du tutorial pour étudier de quelle manière on peut optimiser les performances des accesseurs et des modifieurs lors de l’exécution
 ====
 
 // Website Page 6
@@ -1328,9 +1227,6 @@ Le tableau suivant synthétise ce qu’est notre Objet en PureBasic.
 *   Le mot `ClasseMere` fait référence au nom de la Classe Mère lors d’un héritage (ex : ``Methd_ClasseMere``)
 *   Les expressions entre accolades `{…}` sont à utiliser lors d’un héritage
 
-
-// PSEUDOCODE CHECKED!
-
 // Example N. 6-1
 .Interface
 [source,purebasic pseudocode]
@@ -1342,8 +1238,6 @@ Interface <Interface> {Extends <InterfaceMere>}
   ...
 EndInterface
 ---------------------------------------------------------------------
-
-// PSEUDOCODE CHECKED!
 
 // Example N. 6-2
 .Classe
@@ -1382,8 +1276,6 @@ Mthds_Classe.Mthds_Classe
 Init_Mthds_Classe(@Mthds_Classe)
 ---------------------------------------------------------------------
 
-// PSEUDOCODE CHECKED!
-
 // Example N. 6-3
 .Constructeur
 [source,purebasic pseudocode]
@@ -1403,8 +1295,6 @@ Procedure New_Classe([var1]…)
 EndProcedure
 ---------------------------------------------------------------------
 
-// CODE CHECKED!
-
 // Example N. 6-4
 .Destructeur
 [source,purebasic]
@@ -1422,7 +1312,6 @@ Voici un exemple de code où l’héritage est utilisé:
 
 // Website Page 7
 
-
 == Classe PB
 
 Maintenant que nous avons vu les concepts objets et leurs possibles implémentations en PureBasic, il est grand temps de se fixer une implémentation.
@@ -1437,8 +1326,6 @@ Grandement facilitée par les instructions Interface et Macro, l’implémentati
 Dans un premier temps, nous découvrirons les instructions d’une Classe en PureBasic. Puis nous analyserons ensemble ce qui se cache derrière en tirant des parallèles avec les pages précédentes pour terminer sur une discussion des choix adoptés.
 
 === Classe PureBasic
-
-// PSEUDOCODE CHECKED!
 
 // Example N. 7.1-1
 [source,purebasic pseudocode]
@@ -1479,7 +1366,6 @@ Free(<ClassName>)
 EndFree
 ---------------------------------------------------------------------
 
-
 Comme on peut le voir, la Classe PureBasic s’articule autour de quatre grands thèmes:
 
 *   La définition de la classe via l’instruction ``Class : EndClass``.
@@ -1496,20 +1382,18 @@ Vous trouverez ici le fichier comportant la déclaration de ce jeu d’instructi
 
 [NOTE]
 ====
-Si vous avez jetté un coup d’oeil au source OOP.pbi, vous aurez remarqué que l’implémentation finale est légèrement plus compliquée que ce qui est exposé ici. Cela s’explique par quelques dispositions prises dans le source pour maintenir plus facilement le code.
+Si vous avez jetté un coup d’oeil au source link:POO.pbi[``POO.pbi``], vous aurez remarqué que l’implémentation finale est légèrement plus compliquée que ce qui est exposé ici. Cela s’explique par quelques dispositions prises dans le source pour maintenir plus facilement le code.
 ====
 
-Passons en revue maintenant cette Classe Purebasic...
+Passons en revue maintenant cette Classe Purebasic…
 
 === Class : EndClass
 
-L’instruction Class : EndClass permet de déclarer trois types de composantes:
+L’instruction `Class : EndClass` permet de déclarer trois types de composantes:
 
 *   L’**interface** de l’objet, seule partie —rappelons le— que l’utilisateur peut manipuler.
 *   Les *méthodes* de l’objet hors implémentation qui se réduisent aux seuls pointeurs des méthodes.
 *   Les *membres* (hors méthodes) de l’objet. Par la suite, de fait, les mots «**membre**» et plus correctement «**attribut**» feront souvent référence à ces seuls éléments (et non aux méthodes qui sont aussi des membres de l’objet au sens strict).
-
-// PSEUDOCODE CHECKED!
 
 // Example N. 7.2-1
 [source,purebasic pseudocode]
@@ -1532,13 +1416,11 @@ Class(<ClassName>)
 EndClass(<ClassName>)
 ---------------------------------------------------------------------
 
-Chaque composante est clairement identifiée par les mots clés Class/Methods/Members. Cet ordre doit être respecté et les mots clés doivent toujours figurer même si aucune méthode ou aucun membre ne sera déclaré. De même, à chaque fois le nom de la classe se doit d’apparaître entre parenthèses.
+Chaque composante est clairement identifiée par les mots clés ``Class``/``Methods``/``Members``. Cet ordre doit être respecté et les mots clés doivent toujours figurer même si aucune méthode ou aucun membre ne sera déclaré. De même, à chaque fois le nom de la classe se doit d’apparaître entre parenthèses.
 
 L’explication trouve son origine dans la définition de chaque mot clé dont voici le code:
 
 ==== Instruction Class
-
-// CODE CHECKED!
 
 // Example N. 7.2-2
 [source,purebasic]
@@ -1549,12 +1431,9 @@ Macro Class(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-
-L’instruction Class se limite à l’entête de la déclaration de l’interface avec pour nom d’interface celui de la classe suivi de "_". Ce qui suit l’instruction Class sera donc la définition de l’interface de l’objet.
+L’instruction `Class` se limite à l’entête de la déclaration de l’interface avec pour nom d’interface celui de la classe suivi de “``_``”. Ce qui suit l’instruction `Class` sera donc la définition de l’interface de l’objet.
 
 ==== Instruction Methods
-
-// CODE CHECKED!
 
 // Example N. 7.2-3
 [source,purebasic]
@@ -1569,8 +1448,6 @@ EndMacro
 L’instruction `Methods` commence par fermer la définition de l’interface avec l’instruction ``EndInterface``. Puis elle débute la déclaration de la structure qui définit les pointeurs des méthodes.
 
 ==== Instruction Members
-
-// CODE CHECKED!
 
 // Example N. 7.2-4
 [source,purebasic]
@@ -1587,16 +1464,13 @@ Macro Members(ClassName)
 EndMacro
 ---------------------------------------------------------------------
 
-
-L’instruction Members est plus compliquée que les deux précédentes.
-
+L’instruction `Members` est plus compliquée que les deux précédentes.
 
 Elle commence par fermer la définition de la structure précédemment ouverte par l’instruction Methods. Ensuite elle déclare tout naturellement la table des methodes basée sur la structure fraîchement acquise. Pour l’instant cette table est vide et se remplira au fur et à mesure de la déclaration des méthodes. Nous aborderons cela plus loin (<<Instruction EndMethod,j’peux pas attendre>>).
 
+Enfin l’instruction `Members` se termine en ouvrant la déclaration de la structure qui définit les membres de l’objet. On trouve en début —comme il convient— le pointeur porteur de l’adresse de la table des méthodes de l’objet, c.a.d celle de la variable juste au-dessus. Rappelons que c’est le constructeur qui initialisera le tout. Puis nous trouvons un autre pointeur qui contiendra l’adresse de l’objet lui-même. J’expliquerai plus tard la raison de ce nouveau membre (<<admonition-on-objet-toujours-pointeur,non! maintenant>>).
 
-Enfin l’instruction Members se termine en ouvrant la déclaration de la structure qui définit les membres de l’objet. On trouve en début -comme il convient- le pointeur porteur de l’adresse de la table des méthodes de l’objet, c.a.d celle de la variable juste au-dessus. Rappelons que c’est le constructeur qui initialisera le tout. Puis nous trouvons un autre pointeur qui contiendra l’adresse de l’objet lui-même. J’expliquerai plus tard la raison de ce nouveau membre (<<admonition-on-objet-toujours-pointeur,non! maintenant>>).
-
-Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction Members.
+Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction ``Members``.
 
 ==== Instruction EndClass
 
@@ -1617,7 +1491,7 @@ EndMacro
 
 L’instruction `EndClass` est à l’origine du choix d’implémentation de notre objet. Nous allons donc nous attarder à la décrire correctement.
 
-Comme pour Methods et Members, elle commence par fermer ce qui a été ouvert par l’instruction précédente, ici la structure décrivant les membres de l’objet.
+Comme pour `Methods` et ``Members``, elle commence par fermer ce qui a été ouvert par l’instruction précédente, ici la structure décrivant les membres de l’objet.
 
 Ensuite, nous trouvons la structure qui porte le nom de la classe et qui servira donc à l’utilisateur pour déclarer son objet.
 
@@ -1626,9 +1500,7 @@ Cette structure est en fait l’union de deux éléments:
 1.  Le premier est un pointeur typé par l’interface qui permet d’appeler les méthodes de l’objet.
 2.  Le second est un pointeur typé par la structure définissant les membres. Il sert à accéder aux membres de l’objet.
 
-// TODO: MISSING LINK
-
-Cette architecture met en pratique l’optimisation sur les accesseurs d’un objet exposée en http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Annexes.htm#Optimisations_Get_Set[annexe]. L’intérêt de ce choix est double:
+Cette architecture met en pratique l’optimisation sur les accesseurs d’un objet exposée en <<Optimisation: Accesseurs et aux Modifieurs:,annexe>>. L’intérêt de ce choix est double:
 
 *   Il permet à l’utilisateur d’appliquer un même processus pour accéder aux méthodes et aux membres d’un objet.
 +
@@ -1674,7 +1546,6 @@ EndStructure
 Ici, le pointeur `*Mb` a été remplacé par deux pointeurs `*Get` et ``*Set``. Bien que servant à la même chose, ils peuvent rendre le code plus lisible en précisant si l’on veut lire ou modifier la valeur d’un attribut.
 ====
 
-
 === Method : EndMethod
 
 L’instruction `Method : EndMethod` permet de réaliser l’implémentation des différentes méthodes de l’objet.
@@ -1708,11 +1579,9 @@ Macro Method(ClassName, Mthd)
 EndMacro
 ---------------------------------------------------------------------
 
-
 L’instruction `Method` n’est rien d’autre que l’instruction `Procedure` à laquelle on aura pris soin de déclarer la variable `*this` exigée en début d’arguments.
 
 Le code ne se termine pas par une parenthèse afin de permette à l’utilisateur de compléter par les paramètres spécifiques de sa méthode. A lui de fermer cette parenthèse comme la syntaxe le montre, sinon le compilateur ne manquera pas de le signaler!
-
 
 ==== Instruction EndMethod
 
@@ -1726,13 +1595,12 @@ Macro EndMethod(ClassName, Mthd)
 EndMacro
 ---------------------------------------------------------------------
 
-
 L’instruction `EndMethod` commence par fermer la procédure ouverte par l’instruction ``Method``.
 Maintenant que la méthode est définie, on peut la référencer dans la *table des méthodes* déclarée lors du mot clé Members de la classe. De fait, déclarer une méthode revient aussi à la référencer automatiquement.
 
 === Le constructeur de l’objet
 
-L’instruction New : EndNew permet d’instancier et d’initialiser un objet de la classe.
+L’instruction `New : EndNew` permet d’instancier et d’initialiser un objet de la classe.
 
 // Example N. 7.4-1
 [source,purebasic pseudocode]
@@ -1788,9 +1656,9 @@ Vient alors l’initialisation des attributs de l’objet via la méthode ``Init
 
 Et pour finir, l’instruction retourne l’adresse de l’objet.
 
-L’astruce de cette macro réside dans la déclaration de Init_Mbers en toute fin. De la sorte, tout ce que l’utilisateur aura à ajouter à l’intérieur du block `New : EndNew` se limitera à l’initialisation des attributs. Cet aspect sera abordé plus en détail dans un moment(<<L’instruction privée Init_Mbers : EndInit_Mbers,Où ça? Où ça?>>).
+L’astruce de cette macro réside dans la déclaration de `Init_Mbers` en toute fin. De la sorte, tout ce que l’utilisateur aura à ajouter à l’intérieur du block `New : EndNew` se limitera à l’initialisation des attributs. Cet aspect sera abordé plus en détail dans un moment(<<L’instruction privée Init_Mbers : EndInit_Mbers,Où ça? Où ça?>>).
 
-Ceci est rendu possible en declarant la method Init_Mbers en début de macro.
+Ceci est rendu possible en declarant la method `Init_Mbers` en début de macro.
 
 [NOTE]
 ====
@@ -1807,12 +1675,11 @@ Macro EndNew
 EndMacro
 ---------------------------------------------------------------------
 
-
 L’instruction `EndNew` se limite à l’appel de l’instruction `EndInit_Mbers` qui termine la déclaration des attributs débutée par l’instruction New.
 
 Conclusion: l’objectif est atteint. l’instruction `New : EndNew` permet bien de créer un nouvel objet initialisé.
 
-A l’usage, l’instruction New : EndNew permettra d’initialiser les attributs d’un objet comme suite:
+A l’usage, l’instruction `New : EndNew` permettra d’initialiser les attributs d’un objet comme suite:
 
 // Example N. 7.4-4
 [source,purebasic]
@@ -1823,7 +1690,6 @@ New(Rect1)
   ; [ ...some code... ]
 EndNew
 ---------------------------------------------------------------------
-
 
 l’instanciation d’un objet par l’utilisateur se fera alors ainsi:
 
@@ -1837,7 +1703,6 @@ input\var2 = 20
 ; *Rect est un nouvel objet de la classe Rect1
 *Rect.Rect1 = New_Rect1(input)
 ---------------------------------------------------------------------
-
 
 Notez que l’on appelle le constructeur par `New` suivi du nom de la classe séparé par “``_``”.
 
@@ -1853,7 +1718,7 @@ Cette bivalence qui n’existait pas lors de l’implémentation précédente, n
 
 Une des conséquences importante est la possibilité d’utiliser `*this\Instance` pour appeler les méthodes de l’objet au sein même de ses méthodes (__Non je n’ai pas bu__!). Cette fonctionnalité est la meilleure manière pour y parvenir car on n’a pas a connaître le nom de la procédure présente derrière la méthode, ce qui est essentiel dans le processus d’héritage.
 
-A cet effet, une macro Mtd est proposée dans le source link:POO.pbi[``POO.pbi``].
+A cet effet, une macro `Mtd` est proposée dans le source link:POO.pbi[``POO.pbi``].
 ====
 
 // ==================================================
@@ -1871,9 +1736,8 @@ Init_Mbers(<ClassName>)
 EndInit_Mbers
 ---------------------------------------------------------------------
 
-
 On trouvera donc entre les deux mots clés une série d’initialisation de membres.
-Notez que seul Init_Mbers est suivi du nom de la classe.
+Notez que seul `Init_Mbers` est suivi du nom de la classe.
 
 ====== Instruction Init_Mbers
 
@@ -1904,7 +1768,6 @@ Init_Mbers(Rect1)
 EndInit_Mbers
 ---------------------------------------------------------------------
 
-
 ====== Instruction EndInit_Mbers
 
 // Example N. 7.4-9
@@ -1915,12 +1778,11 @@ Macro EndInit_Mbers
 EndMacro
 ---------------------------------------------------------------------
 
-
-L’instruction EndInit_Mbers est ni plus ni moins que l’instruction EndProcedure qui termine la déclaration de la méthode d’initialisation de l’objet
+L’instruction `EndInit_Mbers` est ni plus ni moins que l’instruction `EndProcedure` qui termine la déclaration de la méthode d’initialisation de l’objet
 
 [NOTE]
 ====
-Dans le code source final OOP.pbi, l’instruction `Init_Mbers : EndInit_Mbers` comporte des arguments falcutatifs supplémentaires appelés `arg1` à ``arg5``. Dans certaines situations, il peut être utile de faire appel à ces arguments pour compléter les données d’entrées du pointeur ``*input``.
+Dans le code source final link:POO.pbi[``POO.pbi``], l’instruction `Init_Mbers : EndInit_Mbers` comporte des arguments falcutatifs supplémentaires appelés `arg1` à ``arg5``. Dans certaines situations, il peut être utile de faire appel à ces arguments pour compléter les données d’entrées du pointeur ``*input``.
 ====
 
 === Destructeur de l’objet
@@ -1958,8 +1820,9 @@ EndMacro
 
 L’instruction `Free : EndFree` est assez simple:
 
-*   Free ouvre une procédure avec pour argument l’adresse de l’objet. On vérifie au passage que l’adresse est non nulle (cela ne garanti malheireusement pas une adresse valide pour FreeMemory).
-*   EndFree libère dans l’ordre la zone mémoire allouée aux membres puis celle de l’objet.
+*   `Free` ouvre une procédure avec pour argument l’adresse de l’objet. On vérifie au passage que l’adresse est non nulle (cela ne garanti malheireusement pas une adresse valide pour ``FreeMemory``).
+*   `EndFree` libère dans l’ordre la zone mémoire allouée aux membres puis celle de l’objet.
+
 A l’usage, la destruction d’un objet se fait ainsi:
 
 // Example N. 7.5-3
@@ -1968,7 +1831,7 @@ A l’usage, la destruction d’un objet se fait ainsi:
 Free_Rect1(*Rect)
 ---------------------------------------------------------------------
 
-Comme pour le constructeur, notez bien que l’on appelle le destructeur par Free suivi du nom de la classe séparé par "_".
+Comme pour le constructeur, notez bien que l’on appelle le destructeur par `Free` suivi du nom de la classe séparé par “``_``”.
 
 [CAUTION]
 ====
@@ -2062,8 +1925,7 @@ Malgré tout cette disposition ne change pas fondamentalement notre objet.A l’
 
 4.  Un destructeur homogène avec le constructeur. Il ne fait pas partie de l’interface bien que cela soit envisageable. Dans le cas contraire on écrirait `Objet\Md\Free()` au lieu d’écrire ``Free_ClassName(Objet)``. Cette disposition est aisée à opérer et ne modifie en rien la conception de l’objet.
 
-5.  Je ne suis pas arrivé à automatiser la génération de la table des méthodes. Il est important de rappeler ici pourquoi elle s’articule autour d’une structure. La structure permet de créer des classes abstraites, c’est à dire des classes où toutes les méthodes ne sont pas implémentées. C’est une notion très important de la conception objet et on respecte ainsi l’ordre des adresses dans la table quelque soient les méthodes implémentées de la classe tout en s’accordant avec le processus d’héritage. Utiliser un tableau, une liste chaînée ou une table de hâchage en remplacement d’une structure n’aurai pas cette souplesse (du moins je ne l’ai pas trouvé).
-
+5.  Je ne suis pas arrivé à automatiser la génération de la **table des méthodes**. Il est important de rappeler ici pourquoi elle s’articule autour d’une structure. La structure permet de créer des classes abstraites, c’est à dire des classes où toutes les méthodes ne sont pas implémentées. C’est une notion très important de la conception objet et on respecte ainsi l’ordre des adresses dans la table quelque soient les méthodes implémentées de la classe tout en s’accordant avec le processus d’héritage. Utiliser un tableau, une liste chaînée ou une table de hâchage en remplacement d’une structure n’aurai pas cette souplesse (du moins je ne l’ai pas trouvé).
 
 === Rappel des types
 
@@ -2079,7 +1941,6 @@ Vous trouverez ici la liste des types qu’utilise une classe:
 | `Mbrs_<ClassName>`                         | La Structure des membrese | `EndClass`
 |====================
 
-
 [WARNING]
 ====
 `Mbrs_<ClassName>_` n’a pas été présenté dans cet article. Il s’agit d’une étape intermédiaire utilisée pour construire la structure des membres ``Mbrs_<ClassName>``. Cette disposition permet de réaliser la fonctionnalité `*this\Instance` <<admonition-sur-this-instance,exposée ici>>.
@@ -2087,7 +1948,111 @@ Vous trouverez ici la liste des types qu’utilise une classe:
 
 // ============== REVISED UP TO THIS POINT! ==============
 
-
 // Website Page 8
 
+== Conclusion
 
+Vous l’aurez compris, s’il est possible d’adopter une Programmation Orientée Objet en PureBasic, celle-ci demande un peu de rigeur d’écriture.
+Mais une fois acquitté de cette tâche, la manipulation de l’objet est excessivement simple.
+
+Or si les langages Objets apportent une plus grande souplesse dans l’ écriture de son code (via l’application des concepts objets), nous avons vu qu’elle favorise la multiplication de méthodes produisant un exécutable souvent plus imposant et pouvant perdre ainsi en performance pure.
+
+Néanmoins, j’espère que ce tutorial vous aura permis de saisir les mécanismes sous-jacents à la POO et d’en comprendre les concepts.
+
+// Website Page 9
+
+[appendix]
+== Optimisations
+
+Les paragraphes qui suivent, traitent de considérations possibles à adopter afin d’améliorer, lors de l’exécution du programme, les performances de notre approche Orientée Objet.
+
+=== Optimisation: Accesseurs et aux Modifieurs:
+
+Si on est amené à faire de nombreux appels aux Accesseurs et aux Modifieurs, cela revient à faire de nombreux appels de fonction, d’où une perte de performance.
+Pour ceux qui sont en quête de performance, il y a deux possibilités pour accélérer le processus :
+
+Tous deux consistent à jumeler un pointeur à l’objet instancié, la deuxième solution étant un habillage de la première.
+
+==== Première solution :
+
+Le pointeur en question sera typé de la `Structure` de la Classe.
+Ainsi pour un objet `Rect` de la Classe ``Rectangle1``, nous pouvons écrire :
+
+// A.1.1-1
+[source,purebasic]
+---------------------------------------------------------------------
+Rect.Rect = New_Rect()
+*Rect.Rectangle1 = Rect
+---------------------------------------------------------------------
+
+On accède ainsi à l’attribut var2 en écrivant :
+
+// A.1.1-2
+[source,purebasic]
+---------------------------------------------------------------------
+*Rect\var2
+---------------------------------------------------------------------
+
+Il est alors possible de le lire comme de le modifier.
+C’est la solution de loin la plus simple à mettre en œuvre.
+
+==== Deuxième solution :
+
+La première solution demande à travailler avec deux éléments de type différents: `Rect` et ``*Rect``.
+Cette deuxième solution, propose de réunir ces deux éléments dans un ``StructureUnion``.
+
+// A.1.2-1
+[source,purebasic]
+---------------------------------------------------------------------
+Structure Rect_
+  StructureUnion
+    Mthd.Rect
+    *Mbers.Rectangle1
+  EndStructureUnion
+EndStructure
+---------------------------------------------------------------------
+
+Créer un objet de Classe ``Rectangle1``, reviendra à déclarer l’objet grâce à cette nouvelle ``Structure``.
+
+En modifiant en conséquence le constructeur, cela donne :
+
+// A.1.2-2
+[source,purebasic]
+---------------------------------------------------------------------
+New_Rect(@Rect.Rect_)
+---------------------------------------------------------------------
+
+Avec,
+
+// A.1.2-3
+[source,purebasic]
+---------------------------------------------------------------------
+Procedure New_Rect1(*Instance.Rect_, x1.l, x2.l, y1.l, y2.l)
+  Shared Mthds_Rect1
+  *Rect.Rectangle1 = AllocateMemory(SizeOf(Rectangle1))
+  *Rect \Methodes = @Mthds_Rect1
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+  *Instance\Mthds = *Rect
+EndProcedure
+---------------------------------------------------------------------
+
+On accède à la méthode `Dessiner()` de l’objet en écrivant :
+
+// A.1.2-4
+[source,purebasic]
+---------------------------------------------------------------------
+Rect\Mthds\Dessiner()
+---------------------------------------------------------------------
+
+On accède à l’attribut `var2` en écrivant :
+
+// A.1.2-5
+[source,purebasic]
+---------------------------------------------------------------------
+Rect\Mbers\var2
+---------------------------------------------------------------------
+
+Cette deuxième solution a pour avantage de ne disposer que d’un seul élément que l’on peut confondre avec un objet dont tous les attributs sont accessibles.
+On conserve une notation Objet, bien qu’elle présente un niveau de champs supplémentaire.
+
+L’inconvénient porte essentiellement sur le fait qu’il faut entretenir une nouvelle structure au sein de la Classe.

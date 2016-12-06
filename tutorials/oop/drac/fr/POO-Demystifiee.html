@@ -424,68 +424,74 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h1>PureBasic et la Programmation Orientée Objet</h1>
 <div class="details">
 <span id="author" class="author">Dräc</span><br>
-<span id="revnumber">draft 0.5,</span>
-<span id="revdate">December 3, 2016</span>
-<br><span id="revremark">WIP Porting from HTML.</span>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">December 6, 2016</span>
+<br><span id="revremark">Reprinted and revised edition.</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#pourquoi-de-la-poo-en-purebasic">1. Pourquoi de la POO en PureBasic ?</a></li>
-<li><a href="#les-concepts-objets">2. Les concepts objets</a>
+<li><a href="#pourquoi-de-la-poo-en-purebasic">Pourquoi de la POO en PureBasic ?</a></li>
+<li><a href="#les-concepts-objets">Les concepts objets</a>
 <ul class="sectlevel2">
-<li><a href="#la-notion-d-objet">2.1. La notion d’objet</a></li>
-<li><a href="#la-notion-de-classe">2.2. La notion de Classe</a></li>
-<li><a href="#la-notion-d-instance">2.3. La notion d’instance</a></li>
-<li><a href="#l-encapsulation">2.4. L’encapsulation</a></li>
-<li><a href="#l-h-ritage">2.5. L’héritage</a></li>
-<li><a href="#la-surcharge">2.6. La surcharge</a></li>
-<li><a href="#notion-de-classe-abstraite">2.7. Notion de Classe abstraite</a></li>
+<li><a href="#la-notion-d-objet">La notion d’objet</a></li>
+<li><a href="#la-notion-de-classe">La notion de Classe</a></li>
+<li><a href="#la-notion-d-instance">La notion d’instance</a></li>
+<li><a href="#l-encapsulation">L’encapsulation</a></li>
+<li><a href="#l-h-ritage">L’héritage</a></li>
+<li><a href="#la-surcharge">La surcharge</a></li>
+<li><a href="#notion-de-classe-abstraite">Notion de Classe abstraite</a></li>
 </ul>
 </li>
-<li><a href="#premi-re-impl-mentation">3. Première Implémentation</a>
+<li><a href="#premi-re-impl-mentation">Première Implémentation</a>
 <ul class="sectlevel2">
-<li><a href="#classe-concr-te-et-classe-abstraite">3.1. Classe concrète et Classe abstraite</a></li>
-<li><a href="#instanciation">3.2. Instanciation</a></li>
-<li><a href="#encapsulation">3.3. Encapsulation</a></li>
-<li><a href="#h-ritage">3.4. Héritage</a></li>
-<li><a href="#surcharge">3.5. Surcharge</a></li>
-<li><a href="#conclusion">3.6. Conclusion :</a></li>
+<li><a href="#classe-concr-te-et-classe-abstraite">Classe concrète et Classe abstraite</a></li>
+<li><a href="#instanciation">Instanciation</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#h-ritage">Héritage</a></li>
+<li><a href="#surcharge">Surcharge</a></li>
+<li><a href="#conclusion">Conclusion :</a></li>
 </ul>
 </li>
-<li><a href="#l-instruction-interface">4. L’instruction Interface</a>
+<li><a href="#l-instruction-interface">L’instruction Interface</a>
 <ul class="sectlevel3">
-<li><a href="#initialisation">4.1. Initialisation :</a></li>
+<li><a href="#initialisation">Initialisation :</a></li>
 </ul>
 </li>
-<li><a href="#deuxi-me-impl-mentation">5. Deuxième Implémentation</a>
+<li><a href="#deuxi-me-impl-mentation">Deuxième Implémentation</a>
 <ul class="sectlevel2">
-<li><a href="#notion-d-interface-objet">5.1. Notion d’interface Objet :</a></li>
-<li><a href="#instanciation-et-constructeur-d-objet">5.2. Instanciation et Constructeur d’Objet</a></li>
-<li><a href="#initialisation-d-objet">5.3. Initialisation d’Objet</a></li>
-<li><a href="#destructeur-d-objet">5.4. Destructeur d’Objet</a></li>
-<li><a href="#allocations-m-moire">5.5. Allocations Mémoire</a></li>
-<li><a href="#encapsulation-2">5.6. Encapsulation</a></li>
-<li><a href="#h-ritage-2">5.7. Héritage</a></li>
-<li><a href="#accesseur-et-modifieur-d-objet">5.8. Accesseur et Modifieur d’Objet</a></li>
+<li><a href="#notion-d-interface-objet">Notion d’interface Objet :</a></li>
+<li><a href="#instanciation-et-constructeur-d-objet">Instanciation et Constructeur d’Objet</a></li>
+<li><a href="#initialisation-d-objet">Initialisation d’Objet</a></li>
+<li><a href="#destructeur-d-objet">Destructeur d’Objet</a></li>
+<li><a href="#allocations-m-moire">Allocations Mémoire</a></li>
+<li><a href="#encapsulation-2">Encapsulation</a></li>
+<li><a href="#h-ritage-2">Héritage</a></li>
+<li><a href="#accesseur-et-modifieur-d-objet">Accesseur et Modifieur d’Objet</a></li>
 </ul>
 </li>
-<li><a href="#synth-se-et-notation">6. Synthèse et notation</a>
+<li><a href="#synth-se-et-notation">Synthèse et notation</a>
 <ul class="sectlevel2">
-<li><a href="#premier-exemple-de-code">6.1. Premier Exemple de Code</a></li>
+<li><a href="#premier-exemple-de-code">Premier Exemple de Code</a></li>
 </ul>
 </li>
-<li><a href="#classe-pb">7. Classe PB</a>
+<li><a href="#classe-pb">Classe PB</a>
 <ul class="sectlevel2">
-<li><a href="#classe-purebasic">7.1. Classe PureBasic</a></li>
-<li><a href="#deuxi-me-exemple-de-code">7.2. Deuxième Exemple de Code</a></li>
-<li><a href="#class-endclass">7.3. Class : EndClass</a></li>
-<li><a href="#method-endmethod">7.4. Method : EndMethod</a></li>
-<li><a href="#le-constructeur-de-l-objet">7.5. Le constructeur de l’objet</a></li>
-<li><a href="#destructeur-de-l-objet">7.6. Destructeur de l’objet</a></li>
-<li><a href="#h-ritage-3">7.7. Héritage</a></li>
-<li><a href="#discussion">7.8. Discussion</a></li>
-<li><a href="#rappel-des-types">7.9. Rappel des types</a></li>
+<li><a href="#classe-purebasic">Classe PureBasic</a></li>
+<li><a href="#deuxi-me-exemple-de-code">Deuxième Exemple de Code</a></li>
+<li><a href="#class-endclass">Class : EndClass</a></li>
+<li><a href="#method-endmethod">Method : EndMethod</a></li>
+<li><a href="#le-constructeur-de-l-objet">Le constructeur de l’objet</a></li>
+<li><a href="#destructeur-de-l-objet">Destructeur de l’objet</a></li>
+<li><a href="#h-ritage-3">Héritage</a></li>
+<li><a href="#discussion">Discussion</a></li>
+<li><a href="#rappel-des-types">Rappel des types</a></li>
+</ul>
+</li>
+<li><a href="#conclusion-2">Conclusion</a></li>
+<li><a href="#optimisations">Annexe A: Optimisations</a>
+<ul class="sectlevel2">
+<li><a href="#optimisation-accesseurs-et-aux-modifieurs">Optimisation: Accesseurs et aux Modifieurs:</a></li>
 </ul>
 </li>
 </ul>
@@ -507,14 +513,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><strong>CHANGES</strong>: The tutorial was ported from HTML to AsciiDoc by <a href="https://github.com/tajmone">Tristano Ajmone</a>, who also made minor changes to code examples (either aesthetic, or minor corrections, or to ensure compatibility with latest version of PureBASIC).</p>
 </div>
 <div class="paragraph">
-<p>First republished: 2016/11/?? — by <a href="https://github.com/tajmone">@tajmone</a>.</p>
+<p>First republished: 2016/12/06 — by <a href="https://github.com/tajmone">@tajmone</a>.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="pourquoi-de-la-poo-en-purebasic"><a class="anchor" href="#pourquoi-de-la-poo-en-purebasic"></a>1. Pourquoi de la POO en PureBasic ?</h2>
+<h2 id="pourquoi-de-la-poo-en-purebasic"><a class="anchor" href="#pourquoi-de-la-poo-en-purebasic"></a>Pourquoi de la POO en PureBasic ?</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Il peut sembler surprenant de chercher à réaliser en PureBasic, qui est un langage procédural, une représentation orientée objet, d’autant que de nombreux langages adaptés à la POO existent.</p>
@@ -535,7 +541,7 @@ Ainsi, les langages orientés-objets enrichissent la sémantique mais ne modifie
 </div>
 </div>
 <div class="sect1">
-<h2 id="les-concepts-objets"><a class="anchor" href="#les-concepts-objets"></a>2. Les concepts objets</h2>
+<h2 id="les-concepts-objets"><a class="anchor" href="#les-concepts-objets"></a>Les concepts objets</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>La Programmation Orientée Objet introduit des concepts comme l’objet, l’héritage ou le polymorphisme.
@@ -543,7 +549,7 @@ Nous allons essayer de voir comment les principaux concepts peuvent être réali
 Mais avant cela, il nous faut définir ces concepts.</p>
 </div>
 <div class="sect2">
-<h3 id="la-notion-d-objet"><a class="anchor" href="#la-notion-d-objet"></a>2.1. La notion d’objet</h3>
+<h3 id="la-notion-d-objet"><a class="anchor" href="#la-notion-d-objet"></a>La notion d’objet</h3>
 <div class="paragraph">
 <p>Un objet possède un état interne:</p>
 </div>
@@ -589,13 +595,13 @@ Le fait que l’on appelle les fonctions d’un objet des méthodes, tient au fa
 </div>
 </div>
 <div class="sect2">
-<h3 id="la-notion-de-classe"><a class="anchor" href="#la-notion-de-classe"></a>2.2. La notion de Classe</h3>
+<h3 id="la-notion-de-classe"><a class="anchor" href="#la-notion-de-classe"></a>La notion de Classe</h3>
 <div class="paragraph">
-<p>Il s’agit d’une extension de la notion de type que l’on trouve en PureBasic.</p>
+<p>Il s’agit d’une extension de la notion de <strong>type</strong> que l’on trouve en PureBasic.</p>
 </div>
 <div class="paragraph">
 <p>Dans un contexte donné, plusieurs objets peuvent posséder la même structure et le même comportement.
-On les regroupe alors dans une même " Classe ".</p>
+On les regroupe alors dans une même " <strong>Classe</strong> ".</p>
 </div>
 <div class="paragraph">
 <p>Du point de vu du développeur, la Classe définit ce que contient un objet de cette classe : la nature de ses attributs (type de chaque variable) et ses méthodes (noms, implémentations).</p>
@@ -605,14 +611,14 @@ On les regroupe alors dans une même " Classe ".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="la-notion-d-instance"><a class="anchor" href="#la-notion-d-instance"></a>2.3. La notion d’instance</h3>
+<h3 id="la-notion-d-instance"><a class="anchor" href="#la-notion-d-instance"></a>La notion d’instance</h3>
 <div class="ulist">
 <ul>
 <li>
 <p>Une instance est un objet défini à partir d’une classe.</p>
 </li>
 <li>
-<p>Un tel processus s’appelle l’instanciation.</p>
+<p>Un tel processus s’appelle l’<strong>instanciation</strong>.</p>
 </li>
 <li>
 <p>Cela correspond à la déclaration de variables dans PureBasic.</p>
@@ -624,9 +630,9 @@ On les regroupe alors dans une même " Classe ".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="l-encapsulation"><a class="anchor" href="#l-encapsulation"></a>2.4. L’encapsulation</h3>
+<h3 id="l-encapsulation"><a class="anchor" href="#l-encapsulation"></a>L’encapsulation</h3>
 <div class="paragraph">
-<p>En théorie, on ne devrait pouvoir manipuler les attributs d’un objet qu’en passant par les méthodes. Cette technique, qui permet de ne rendre visible à l’utilisateur qu’une partie de l’objet, est appelée encapsulation.</p>
+<p>En théorie, on ne devrait pouvoir manipuler les attributs d’un objet qu’en passant par les méthodes. Cette technique, qui permet de ne rendre visible à l’utilisateur qu’une partie de l’objet, est appelée <strong>encapsulation</strong>.</p>
 </div>
 <div class="paragraph">
 <p>L’encapsulation a comme avantage de garantir l’intégrité des attributs. En effet, c’est le développeur qui, par l’intermédiaire des méthodes mises à la disposition de l’utilisateur, maîtrise les modifications apportées à l’objet.</p>
@@ -636,7 +642,7 @@ On les regroupe alors dans une même " Classe ".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="l-h-ritage"><a class="anchor" href="#l-h-ritage"></a>2.5. L’héritage</h3>
+<h3 id="l-h-ritage"><a class="anchor" href="#l-h-ritage"></a>L’héritage</h3>
 <div class="paragraph">
 <p>L’héritage permet de définir de nouvelles Classes en utilisant des Classes déjà existantes.</p>
 </div>
@@ -649,10 +655,10 @@ On les regroupe alors dans une même " Classe ".</p>
 <div class="ulist">
 <ul>
 <li>
-<p>L’héritage simple : La nouvelle Classe est définie à partir d’une seule Classe existante</p>
+<p><strong>L’héritage simple</strong> : La nouvelle Classe est définie à partir d’une seule Classe existante</p>
 </li>
 <li>
-<p>L’héritage multiple : La nouvelle Classe est définie à partir de plusieurs Classes existantes</p>
+<p><strong>L’héritage multiple</strong> : La nouvelle Classe est définie à partir de plusieurs Classes existantes</p>
 </li>
 </ul>
 </div>
@@ -668,16 +674,16 @@ On les regroupe alors dans une même " Classe ".</p>
 <div class="ulist">
 <ul>
 <li>
-<p>La Classe qui hérite d’une autre Classe, est souvent appelée Classe Fille</p>
+<p>La Classe qui hérite d’une autre Classe, est souvent appelée <strong>Classe Fille</strong>.</p>
 </li>
 <li>
-<p>La Classe qui donne son héritage à une Classe Fille est souvent appelée Classe Mère.</p>
+<p>La Classe qui donne son héritage à une Classe Fille est souvent appelée <strong>Classe Mère</strong>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="la-surcharge"><a class="anchor" href="#la-surcharge"></a>2.6. La surcharge</h3>
+<h3 id="la-surcharge"><a class="anchor" href="#la-surcharge"></a>La surcharge</h3>
 <div class="paragraph">
 <p>On dit qu’une méthode est surchargée, si elle réalise des actions différentes selon la nature des objets visés.</p>
 </div>
@@ -686,17 +692,17 @@ On les regroupe alors dans une même " Classe ".</p>
 </div>
 <div class="paragraph">
 <p>Les objets suivants: cercle, rectangle et triangle sont des formes géométriques.
-On peut définir pour ces objets une même Classe qu’on appellera Forme.
-Les objets sont donc des instances de la classe Forme.</p>
+On peut définir pour ces objets une même Classe qu’on appellera <code>Forme</code>.
+Les objets sont donc des instances de la classe <code>Forme</code>.</p>
 </div>
 <div class="paragraph">
-<p>Si on veut afficher les objets, il faut que la classe Forme dispose d’une méthode " Dessiner ".</p>
+<p>Si on veut afficher les objets, il faut que la classe <code>Forme</code> dispose d’une méthode <code>Dessiner</code>.</p>
 </div>
 <div class="paragraph">
-<p>Ainsi doté, chaque objet dispose donc d’une méthode " Dessiner " pour s’afficher. Or, cette méthode ne peut-être la même selon que l’on veut afficher un cercle ou un rectangle.</p>
+<p>Ainsi doté, chaque objet dispose donc d’une méthode <code>Dessiner</code> pour s’afficher. Or, cette méthode ne peut-être la même selon que l’on veut afficher un cercle ou un rectangle.</p>
 </div>
 <div class="paragraph">
-<p>Les objets d’une même Classe utilisent donc la même méthode " Dessiner ", mais la nature de l’objet (Rectangle, Triangle) spécifie l’implémentation de la méthode.</p>
+<p>Les objets d’une même Classe utilisent donc la même méthode <code>Dessiner</code>, mais la nature de l’objet (Rectangle, Triangle) spécifie l’implémentation de la méthode.</p>
 </div>
 <div class="paragraph">
 <p>On dit que la méthode Dessiner est surchargée: du point de vu de l’utilisateur afficher un cercle ou un rectangle se fait de la même manière, ceci en toute transparence.</p>
@@ -709,11 +715,11 @@ Les objets sont donc des instances de la classe Forme.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notion-de-classe-abstraite"><a class="anchor" href="#notion-de-classe-abstraite"></a>2.7. Notion de Classe abstraite</h3>
+<h3 id="notion-de-classe-abstraite"><a class="anchor" href="#notion-de-classe-abstraite"></a>Notion de Classe abstraite</h3>
 <div class="paragraph">
 <p>Nous avons vu qu’une Classe regroupe la définition des attributs d’un objet ainsi que ces méthodes.
-Supposons que l’on ne puisse pas donner l’implémentation d’une des méthodes de la Classe. La méthode n’est qu’un nom sans code. On parle alors de méthode abstraite.
-Une Classe comportant au moins une méthode abstraite est qualifiée de Classe abstraite.</p>
+Supposons que l’on ne puisse pas donner l’implémentation d’une des méthodes de la Classe. La méthode n’est qu’un nom sans code. On parle alors de <strong>méthode abstraite</strong>.
+Une Classe comportant au moins une méthode abstraite est qualifiée de <strong>Classe abstraite</strong>.</p>
 </div>
 <div class="paragraph">
 <p>On peut se demander la raison d’être d’une classe abstraite puisque l’on ne peut créer d’objet d’une telle Classe. Les Classes abstraites permettent de définir des <a href="#la-notion-de-classe">Classes d’objets</a> qualifiées par opposition de concrètes. Le passage de l’une à l’autre se fait par héritage en prenant le soin de donner les implémentations nécessaires aux méthodes abstraites.</p>
@@ -725,15 +731,17 @@ Une Classe comportant au moins une méthode abstraite est qualifiée de Classe a
 </div>
 </div>
 <div class="sect1">
-<h2 id="premi-re-impl-mentation"><a class="anchor" href="#premi-re-impl-mentation"></a>3. Première Implémentation</h2>
+<h2 id="premi-re-impl-mentation"><a class="anchor" href="#premi-re-impl-mentation"></a>Première Implémentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Dans ce qui va suivre, nous allons voir comment les concepts objets qui viennent d’être abordés peuvent être implémentés en PureBasic.
-En aucun cas cela fait référence à ce qui est programmé dans les langages objets. De plus, le propre de l’implémentation c’est de pouvoir être amélioré ou de s’adapter au besoin.
-Nous proposons donc ici une de ces d’implémentations avec ses avantages et ses limites.</p>
+En aucun cas cela fait référence à ce qui est programmé dans les langages objets. De plus, le propre de l’implémentation c’est de pouvoir être amélioré ou de s’adapter au besoin.</p>
+</div>
+<div class="paragraph">
+<p>Nous proposons donc ici une de ces d’implémentations avec ses avantages et ses limites.</p>
 </div>
 <div class="sect2">
-<h3 id="classe-concr-te-et-classe-abstraite"><a class="anchor" href="#classe-concr-te-et-classe-abstraite"></a>3.1. Classe concrète et Classe abstraite</h3>
+<h3 id="classe-concr-te-et-classe-abstraite"><a class="anchor" href="#classe-concr-te-et-classe-abstraite"></a>Classe concrète et Classe abstraite</h3>
 <div class="paragraph">
 <p>Comme nous l’avons vu, la Classe définie ce que contient un objet:</p>
 </div>
@@ -769,8 +777,10 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>où <code>x1</code>, <code>x2</code>, <code>y1</code> et <code>y2</code> sont quatre attributs (les coordonnées des points diamétralement opposés du rectangle) et <code>*Dessiner</code> est un pointeur faisant référence à la fonction de dessin qui affiche les Rectangles.
-<code>*Dessiner</code> est ici un pointeur de fonction utilisé pour contenir l’adresse de la fonction désirée : <code>@Dessiner_Rectangle()</code>.
+<p>où <code>x1</code>, <code>x2</code>, <code>y1</code> et <code>y2</code> sont quatre attributs (les coordonnées des points diamétralement opposés du rectangle) et <code>*Dessiner</code> est un pointeur faisant référence à la fonction de dessin qui affiche les Rectangles.</p>
+</div>
+<div class="paragraph">
+<p><code>*Dessiner</code> est ici un pointeur de fonction utilisé pour contenir l’adresse de la fonction désirée : <code>@Dessiner_Rectangle()</code>.
 Il suffit d’utiliser <code>CallFunctionFast()</code> pour lancer l’exécution de la fonction ainsi référencée.</p>
 </div>
 <div class="paragraph">
@@ -798,7 +808,7 @@ Dans le cas contraire elle sera abstraite.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="instanciation"><a class="anchor" href="#instanciation"></a>3.2. Instanciation</h3>
+<h3 id="instanciation"><a class="anchor" href="#instanciation"></a>Instanciation</h3>
 <div class="paragraph">
 <p>Si l’on désire créer maintenant un objet <code>Rect1</code> issu de la classe <code>Rectangle</code>, cela revient à écrire :</p>
 </div>
@@ -829,7 +839,7 @@ Rect1\y2 = 20</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encapsulation"><a class="anchor" href="#encapsulation"></a>3.3. Encapsulation</h3>
+<h3 id="encapsulation"><a class="anchor" href="#encapsulation"></a>Encapsulation</h3>
 <div class="paragraph">
 <p>Dans cette implémentation, l’encapsulation n’existe pas, tout simplement car il n’y a pas moyen de cacher les attributs ou les méthodes d’un tel objet.</p>
 </div>
@@ -840,7 +850,7 @@ Cependant, cette notion, bien qu’important, n’est pas la plus essentielle po
 </div>
 </div>
 <div class="sect2">
-<h3 id="h-ritage"><a class="anchor" href="#h-ritage"></a>3.4. Héritage</h3>
+<h3 id="h-ritage"><a class="anchor" href="#h-ritage"></a>Héritage</h3>
 <div class="paragraph">
 <p>Imaginons maintenant que l’on souhaite créer une nouvelle Classe d’objet <code>Rectangle</code> capable en plus de s’effacer de l’écran.
 On peut se servir de la Classe existante <code>Rectangle</code> et y adjoindre la nouvelle méthode <code>Effacer()</code> pour créer la nouvelle Classe <code>Rectangle2</code>.</p>
@@ -860,8 +870,10 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La Classe Rectangle2 possède donc bien les membres de la Classe <code>Rectangle</code> et une nouvelle méthode <code>Effacer()</code>.
-En effet, l’instanciation d’un objet de cette Classe donne :</p>
+<p>La Classe <code>Rectangle2</code> possède donc bien les membres de la Classe <code>Rectangle</code> et une nouvelle méthode <code>Effacer()</code>.</p>
+</div>
+<div class="paragraph">
+<p>En effet, l’instanciation d’un objet de cette Classe donne :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -876,10 +888,10 @@ Rect2\y2 = 20</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Pour utiliser les méthodes Dessiner() et Effacer() de Rect2, on procèdera de la même manière que précédemment.</p>
+<p>Pour utiliser les méthodes <code>Dessiner()</code> et <code>Effacer()</code> de <code>Rect2</code>, on procèdera de la même manière que précédemment.</p>
 </div>
 <div class="paragraph">
-<p>Nous pouvons donc dire que Rectangle2 a hérité des propriétés de la Classe Rectangle.</p>
+<p>Nous pouvons donc dire que <code>Rectangle2</code> a hérité des propriétés de la Classe <code>Rectangle</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -897,12 +909,12 @@ Rect2\y2 = 20</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="surcharge"><a class="anchor" href="#surcharge"></a>3.5. Surcharge</h3>
+<h3 id="surcharge"><a class="anchor" href="#surcharge"></a>Surcharge</h3>
 <div class="paragraph">
 <p>Lors de l’initialisation d’un objet, on initialise les pointeurs de fonction en leur affectant l’adresse de la méthode qui convient à l’objet.</p>
 </div>
 <div class="paragraph">
-<p>Ainsi, pour un objet Rect de Classe <code>Rectangle</code>, en écrivant:</p>
+<p>Ainsi, pour un objet <code>Rect</code> de Classe <code>Rectangle</code>, en écrivant:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -931,7 +943,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Il est tout à fait possible d’initialiser notre objet Rect1 avec cette nouvelle méthode sans grande peine:</p>
+<p>Il est tout à fait possible d’initialiser notre objet <code>Rect1</code> avec cette nouvelle méthode sans grande peine:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -947,8 +959,10 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Nous constatons bien que dans un cas (méthode <code>Dessiner_Rectangle()</code>) comme dans l’autre (méthode <code>Dessiner_Rectangle2()</code>) l’utilisation de la méthode de l’objet <code>Rect1</code> est strictement identique.
-Il ne nous est pas possible en effet par la seule ligne &#8220;`CallFunctionFast(Rect1\Dessiner, @Rect1)<code>&#8221;  de distinguer la méthode `Dessiner()</code> que l’objet <code>Rect1</code> utilise.
+<p>Nous constatons bien que dans un cas (méthode <code>Dessiner_Rectangle()</code>) comme dans l’autre (méthode <code>Dessiner_Rectangle2()</code>) l’utilisation de la méthode de l’objet <code>Rect1</code> est strictement identique.</p>
+</div>
+<div class="paragraph">
+<p>Il ne nous est pas possible en effet par la seule ligne “<code>CallFunctionFast(Rect1\Dessiner, @Rect1)</code>”  de distinguer la méthode <code>Dessiner()</code> que l’objet <code>Rect1</code> utilise.
 Pour y arriver, il faut remonter jusqu’à l’initialisation de l’objet.</p>
 </div>
 <div class="paragraph">
@@ -959,16 +973,18 @@ Pour y arriver, il faut remonter jusqu’à l’initialisation de l’objet.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>3.6. Conclusion :</h3>
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion :</h3>
 <div class="paragraph">
-<p>Dans cette première implémentation, nous disposons d’un objet capable de répondre aux principaux concepts orientés objet avec certaines limitations.
-Nous venons surtout de poser les bases qui vont nous servir à réaliser un objet plus complet, ceci grâce à l’instruction <code>Interface</code> de PureBasic.</p>
+<p>Dans cette première implémentation, nous disposons d’un objet capable de répondre aux principaux concepts orientés objet avec certaines limitations.</p>
+</div>
+<div class="paragraph">
+<p>Nous venons surtout de poser les bases qui vont nous servir à réaliser un objet plus complet, ceci grâce à l’instruction <code>Interface</code> de PureBasic.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="l-instruction-interface"><a class="anchor" href="#l-instruction-interface"></a>4. L’instruction Interface</h2>
+<h2 id="l-instruction-interface"><a class="anchor" href="#l-instruction-interface"></a>L’instruction Interface</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="title">Syntaxe :</div>
@@ -1004,7 +1020,7 @@ La déclaration se fait de la même manière que pour une <code>Structure</code>
 </div>
 </div>
 <div class="paragraph">
-<p>Nous pouvons alors utiliser les fonctions de Objet directement comme suite:</p>
+<p>Nous pouvons alors utiliser les fonctions de <code>Objet</code> directement comme suite:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1013,12 +1029,12 @@ Objet\Procedure2(30, 40)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Lancer une procedure grâce à l’instruction Interface se fait par une notation fort pratique et agréable.
-En écrivant " Objet\Procedure1(10, 20) ", on lance la Procedure1() de l’élément Objet.
+<p>Lancer une procedure grâce à l’instruction <code>Interface</code> se fait par une notation fort pratique et agréable.
+En écrivant “<code>Objet\Procedure1(10, 20)</code>”, on lance la <code>Procedure1()</code> de l’élément <code>Objet</code>.
 Cette notation est typique de la Programmation Orienté Objet.</p>
 </div>
 <div class="sect3">
-<h4 id="initialisation"><a class="anchor" href="#initialisation"></a>4.1. Initialisation :</h4>
+<h4 id="initialisation"><a class="anchor" href="#initialisation"></a>Initialisation :</h4>
 <div class="paragraph">
 <p>Comme toute déclaration d’une variable typée, il s’en suit normalement l’initialisation de la variable.
 Il en est de même lorsque l’on déclare un élément dont le type provient d’une <code>Interface</code>.</p>
@@ -1034,7 +1050,7 @@ Il en est de même lorsque l’on déclare un élément dont le type provient d�
 </div>
 <div class="paragraph">
 <p>Comme pour la surcharge de méthode, la solution se trouve dans les adresses de fonctions.
-Il faut voir en effet les noms contenus dans le bloc Interface/EndInterface, comme des pointeurs de fonctions auxquels on attribut les adresses des fonctions que l’on désire y mettre.</p>
+Il faut voir en effet les noms contenus dans le bloc <code>Interface : EndInterface</code>, comme des pointeurs de fonctions auxquels on attribut les adresses des fonctions que l’on désire y mettre.</p>
 </div>
 <div class="paragraph">
 <p>Cependant, pour initialiser les pointeurs de fonctions d’un élément typé par une <code>Interface</code>, il faut procéder différemment qu’avec un élément typé par une <code>Structure</code>.
@@ -1047,8 +1063,10 @@ Il n’est en effet pas possible d’initialiser individuellement chacun des cha
 <p>Une telle variable est appelée table des méthods.</p>
 </div>
 <div class="paragraph">
-<p>Ex : Si l’on reprend l’<code>Interface Mon_Objet</code>.
-Considérons la <code>Structure</code> suivante de description des pointeurs de fonctions :</p>
+<p>Ex : Si l’on reprend l’<code>Interface Mon_Objet</code>.</p>
+</div>
+<div class="paragraph">
+<p>Considérons la <code>Structure</code> suivante de description des pointeurs de fonctions :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1112,7 +1130,7 @@ Methodes\Procedure2 = @Ma_Procedure2()</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p><a id="admonition-structure-interface-symetrie"></a>La composition de la Structure décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’<code>Interface</code>. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.</p>
+<p><a id="admonition-structure-interface-symetrie"></a>La composition de la <code>Structure</code> décrivant les pointeurs de fonctions, doit être le reflet exact de la composition de l’<code>Interface</code>. C’est à dire qu’elle doit comporter le même nombre de champs et respecter l’ordre pour que l’attribution entre les noms et les adresses de chaque fonction soit celle attendue. C’est seulement à ces conditions que l’élément sera correctement initialisé.</p>
 </div>
 </td>
 </tr>
@@ -1151,14 +1169,14 @@ Methodes\Procedure2 = @Ma_Procedure2()</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="deuxi-me-impl-mentation"><a class="anchor" href="#deuxi-me-impl-mentation"></a>5. Deuxième Implémentation</h2>
+<h2 id="deuxi-me-impl-mentation"><a class="anchor" href="#deuxi-me-impl-mentation"></a>Deuxième Implémentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Dans notre première implémentation, nombres de concepts ont été traduits d’une manière plus ou moins étendue.
-Nous allons voir maintenant comment on peut améliorer cette implémentation grâce à l’utilisation de l’instruction Interface.</p>
+Nous allons voir maintenant comment on peut améliorer cette implémentation grâce à l’utilisation de l’instruction <code>Interface</code>.</p>
 </div>
 <div class="sect2">
-<h3 id="notion-d-interface-objet"><a class="anchor" href="#notion-d-interface-objet"></a>5.1. Notion d’interface Objet :</h3>
+<h3 id="notion-d-interface-objet"><a class="anchor" href="#notion-d-interface-objet"></a>Notion d’interface Objet :</h3>
 <div class="paragraph">
 <p>Nous avons vu que la notion d’encapsulation avait comme but premier de rendre visible à l’utilisateur qu’une partie de l’objet.
 La partie visible du contenu est appelée <strong>interface</strong>, l’autre partie cachée est appelée <strong>implémentation</strong>.</p>
@@ -1170,32 +1188,32 @@ La partie visible du contenu est appelée <strong>interface</strong>, l’autre 
 <p>C’est le rôle que l’on va donner dans notre utilisation de l’instruction Interface.</p>
 </div>
 <div class="paragraph">
-<p>L’instruction Interface va donc nous permettre de regrouper sous un même Nom, tout ou partie des méthodes d’un objet que l’utilisateur aura le droit de manipuler.</p>
+<p>L’instruction <code>Interface</code> va donc nous permettre de regrouper sous un même Nom, tout ou partie des méthodes d’un objet que l’utilisateur aura le droit de manipuler.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="instanciation-et-constructeur-d-objet"><a class="anchor" href="#instanciation-et-constructeur-d-objet"></a>5.2. Instanciation et Constructeur d’Objet</h3>
+<h3 id="instanciation-et-constructeur-d-objet"><a class="anchor" href="#instanciation-et-constructeur-d-objet"></a>Instanciation et Constructeur d’Objet</h3>
 <div class="paragraph">
 <p>Vouloir utiliser une interface c’est d’abord se munir :</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>d’une Interface décrivant les méthodes que l’on veut utiliser,</p>
+<p>d’une <code>Interface</code> décrivant les méthodes que l’on veut utiliser,</p>
 </li>
 <li>
-<p>d’une Structure décrivant les pointeurs d’adresses des fonctions correspondantes,</p>
+<p>d’une <code>Structure</code> décrivant les pointeurs d’adresses des fonctions correspondantes,</p>
 </li>
 <li>
-<p>d’une table des méthodes: variable initialisée issue de cette structure.</p>
+<p>d’une <strong>table des méthodes</strong>: variable initialisée issue de cette structure.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>L’étape 1, consistant à d’écrire l’Interface d’un objet, n’est pas compliquée. Il suffit de nommer les méthodes.</p>
+<p>L’étape 1, consistant à d’écrire l’<code>Interface</code> d’un objet, n’est pas compliquée. Il suffit de nommer les méthodes.</p>
 </div>
 <div class="paragraph">
-<p>Les étapes 2 et 3 sont liées. Or dans notre approche objet, nous disposons déjà de la Structure adaptée: c’est celle qui décrit la Classe d’un objet.
+<p>Les étapes 2 et 3 sont liées. Or dans notre approche objet, nous disposons déjà de la <code>Structure</code> adaptée: c’est celle qui décrit la Classe d’un objet.
 En effet, l’Interface et la Classe d’un objet se ressemblent: Tous deux comportent des pointeurs de fonctions.
 Simplement, l’instruction Interface ne contient pas les attributs de la Classe mais seulement tout ou partie des méthodes de la Classe.</p>
 </div>
@@ -1204,7 +1222,7 @@ Simplement, l’instruction Interface ne contient pas les attributs de la Classe
 </div>
 <div class="paragraph">
 <p>Voyons comment procéder.
-Reprenons la Classe Rectangle2 munie des deux méthodes : Dessiner() et Effacer()</p>
+Reprenons la Classe Rectangle2 munie des deux méthodes : <code>Dessiner()</code> et <code>Effacer()</code></p>
 </div>
 <div class="paragraph">
 <p>Sa Classe est la suivante</p>
@@ -1241,7 +1259,7 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Comme on veut obliger l’utilisateur à passer par l’Interface, il n’est plus question de créer un objet directement à partir de la Classe Rectangle2.</p>
+<p>Comme on veut obliger l’utilisateur à passer par l’<code>Interface</code>, il n’est plus question de créer un objet directement à partir de la Classe <code>Rectangle2</code>.</p>
 </div>
 <div class="paragraph">
 <p>L’objet sera donc créée en écrivant :</p>
@@ -1252,12 +1270,14 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>au lieu de Rect.Rectangle2</p>
+<p>au lieu de <code>Rect.Rectangle2</code></p>
 </div>
 <div class="paragraph">
-<p>Cependant, il ne faut pas oublier de relier l’Interface à la Classe.
-Pour cela il faut initialiser l’objet Rect et il est conseillé de le faire lors de la déclaration de l’objet.
-Correction faite, la bonne instruction pour déclarer l’objet via l’interface est la suivante :</p>
+<p>Cependant, il ne faut pas oublier de relier l’<code>Interface</code> à la Classe.
+Pour cela il faut initialiser l’objet <code>Rect</code> et il est conseillé de le faire lors de la déclaration de l’objet.</p>
+</div>
+<div class="paragraph">
+<p>Correction faite, la bonne instruction pour déclarer l’objet via l’interface est la suivante :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1265,11 +1285,11 @@ Correction faite, la bonne instruction pour déclarer l’objet via l’interfac
 </div>
 </div>
 <div class="paragraph">
-<p>New_Rect() est une fonction qui réalise l’opération d’initialisation.
+<p><code>New_Rect()</code> est une fonction qui réalise l’opération d’initialisation.
 Ce que l’on sait déjà d’elle, c’est qu’elle retourne comme valeur l’adresse mémoire contenant les adresses des fonctions utilisées par l’interface.</p>
 </div>
 <div class="paragraph">
-<p>Voici maintenant le corps de la fonction New_Rect()</p>
+<p>Voici maintenant le corps de la fonction <code>New_Rect()</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1317,7 +1337,7 @@ Rect\Effacer()</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Nous avons donc réalisé, via l’Interface et la fonction <code>New_Rect()</code>, l’instanciation d’un objet Rect de la Classe <code>Rectangle2</code>.
+<p>Nous avons donc réalisé, via l’<code>Interface</code> et la fonction <code>New_Rect()</code>, l’instanciation d’un objet Rect de la Classe <code>Rectangle2</code>.
 La fonction <code>New_Rect()</code> est appelée <strong>Constructeur</strong> de l’objet de Classe <code>Rectangle2</code>.</p>
 </div>
 <div class="admonitionblock important">
@@ -1352,7 +1372,7 @@ C’est le cas ici pour <code>New_Rect()</code> demandant en entrée les coordon
 </div>
 </div>
 <div class="sect2">
-<h3 id="initialisation-d-objet"><a class="anchor" href="#initialisation-d-objet"></a>5.3. Initialisation d’Objet</h3>
+<h3 id="initialisation-d-objet"><a class="anchor" href="#initialisation-d-objet"></a>Initialisation d’Objet</h3>
 <div class="paragraph">
 <p>Nous avons vu que le constructeur, après avoir alloué la place mémoire nécessaire à l’objet, initialise les différents membres de l’objet (méthodes et attributs).
 On peut isoler cette opération dans une procédure à part, que le constructeur appellera.
@@ -1395,7 +1415,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="destructeur-d-objet"><a class="anchor" href="#destructeur-d-objet"></a>5.4. Destructeur d’Objet</h3>
+<h3 id="destructeur-d-objet"><a class="anchor" href="#destructeur-d-objet"></a>Destructeur d’Objet</h3>
 <div class="paragraph">
 <p>On associe toujours à un constructeur d’objet, son opposé : le destructeur d’objet.
 Lors de la construction d’un objet, une zone mémoire a était allouée pour stocker les définitions des méthodes et des attributs.
@@ -1403,7 +1423,7 @@ Quant un objet n’est plus utile, il ne faut pas oublier de le détruire pour l
 Ce processus se fait en utilisant une fonction appelée <strong>Destructeur</strong> d’objet.</p>
 </div>
 <div class="paragraph">
-<p>Dans notre exemple d’objet de la Classe Rectangle2, le destructeur d’objet s’écrira :</p>
+<p>Dans notre exemple d’objet de la Classe <code>Rectangle2</code>, le destructeur d’objet s’écrira :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1451,7 +1471,7 @@ Aussi, dans notre exemple, après avoir fait:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>on peut toujours réutiliser Rect2 sans préciser à nouveau son type:</p>
+<p>on peut toujours réutiliser <code>Rect2</code> sans préciser à nouveau son type:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1468,7 +1488,7 @@ Rect2\Dessiner()</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>on crée un objet Rect2 dont la durée de vie est assujettie aux mêmes règles que celles des variables car Rect2 est d’abord une variable : C’est une variable structurée continuant les pointeurs de fonctions des méthodes de l’objet.(voir aussi le rappel qui suit)</p>
+<p>on crée un objet <code>Rect2</code> dont la durée de vie est assujettie aux mêmes règles que celles des variables car Rect2 est d’abord une variable : C’est une variable structurée continuant les pointeurs de fonctions des méthodes de l’objet.(voir aussi le rappel qui suit)</p>
 </div>
 </td>
 </tr>
@@ -1500,7 +1520,7 @@ Rect2\Dessiner()</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="allocations-m-moire"><a class="anchor" href="#allocations-m-moire"></a>5.5. Allocations Mémoire</h3>
+<h3 id="allocations-m-moire"><a class="anchor" href="#allocations-m-moire"></a>Allocations Mémoire</h3>
 <div class="paragraph">
 <p>A chaque nouvelle instanciation, le constructeur doit allouer dynamiquement une place mémoire de la taille des informations décrivant l’objet.
 Pour cela, le Constructeur peut utiliser la commande <code>AllocateMemory()</code>, associée à la commande <code>FreeMemory()</code> pour le Destructeur.</p>
@@ -1514,9 +1534,9 @@ Sous OS Windows, on peut passer directement par les API par exemple.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encapsulation-2"><a class="anchor" href="#encapsulation-2"></a>5.6. Encapsulation</h3>
+<h3 id="encapsulation-2"><a class="anchor" href="#encapsulation-2"></a>Encapsulation</h3>
 <div class="paragraph">
-<p>Imaginons maintenant que l’on ne veuille donner à l’utilisateur seulement accès à la méthode Dessiner() de la Classe Rectangle2. On commencera par définir l’interface désirée :</p>
+<p>Imaginons maintenant que l’on ne veuille donner à l’utilisateur seulement accès à la méthode <code>Dessiner()</code> de la Classe <code>Rectangle2</code>. On commencera par définir l’interface désirée :</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1559,10 +1579,10 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>car en effet, la première adresse de fonction est bien celle de la méthode Dessiner().</p>
+<p>car en effet, la première adresse de fonction est bien celle de la méthode <code>Dessiner()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Maintenant, imaginons que l’on veuille donner à l’utilisateur seulement accès à la méthode Effacer(). On commencera par définir l’interface suivante:</p>
+<p>Maintenant, imaginons que l’on veuille donner à l’utilisateur seulement accès à la méthode <code>Effacer()</code>. On commencera par définir l’interface suivante:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1572,7 +1592,7 @@ EndInterface</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Par contre l’instanciation du nouvel objet ne peut utiliser le constructeur New_Rect().
+<p>Par contre l’instanciation du nouvel objet ne peut utiliser le constructeur <code>New_Rect()</code>.
 Dans le cas contraire, le résultat serait identique au cas précédent.</p>
 </div>
 <div class="paragraph">
@@ -1605,8 +1625,8 @@ EndProcedure</code></pre>
 </div>
 <div class="paragraph">
 <p>Vous constatez qu’il a suffit d’inverser les adresses de fonction dans l’initialisation des méthodes de la Classe.
-Certes, ce n’est pas très élégant de devoir affecter au champ Dessin de la Structure Rectangle2 l’adresse d’une toute autre fonction.
-Si cela permet de conserver la même Structure, celle de la Classe, cela souligne aussi une chose :
+Certes, ce n’est pas très élégant de devoir affecter au champ Dessin de la Structure <code>Rectangle2</code> l’adresse d’une toute autre fonction.
+Si cela permet de conserver la même <code>Structure</code>, celle de la Classe, cela souligne aussi une chose :
 Les noms des pointeurs de fonctions nous intéressent moins que leurs valeurs !
 Pour gommer ce faux problème, il suffit de renommer les pointeurs de la Classe comme suite :</p>
 </div>
@@ -1651,12 +1671,12 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="h-ritage-2"><a class="anchor" href="#h-ritage-2"></a>5.7. Héritage</h3>
+<h3 id="h-ritage-2"><a class="anchor" href="#h-ritage-2"></a>Héritage</h3>
 <div class="paragraph">
-<p>Comme lors de notre première implémentation du concept d’héritage, nous allons profiter de la qualité qu’ont à la fois les instructions Structure et Interface d’être étendues grâce au mot-clé Extends.</p>
+<p>Comme lors de notre première implémentation du concept d’héritage, nous allons profiter de la qualité qu’ont à la fois les instructions <code>Structure</code> et <code>Interface</code> d’être étendues grâce au mot-clé Extends.</p>
 </div>
 <div class="paragraph">
-<p>Ainsi, nous passerons de la Classe Rectangle1 possédant une seule méthode Dessiner()…</p>
+<p>Ainsi, nous passerons de la Classe <code>Rectangle1</code> possédant une seule méthode <code>Dessiner()</code>…</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1705,7 +1725,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>…à la Classe Rectangle2, possédant 2 méthodes : Dessiner() et Effacer() en écrivant :</p>
+<p>…à la Classe <code>Rectangle2</code>, possédant 2 méthodes : <code>Dessiner()</code> et <code>Effacer()</code> en écrivant :</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1793,7 +1813,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Rappelez-vous qu’il faut des adresses de fonction qui se suivent et qui soient ordonnées à l’image de l’Interface (<a href="#admonition-structure-interface-symetrie">voir remarque précédente</a>)</p>
+<p>Rappelez-vous qu’il faut des adresses de fonction qui se suivent et qui soient ordonnées à l’image de l’<code>Interface</code> (<a href="#admonition-structure-interface-symetrie">voir remarque précédente</a>)</p>
 </div>
 <div class="paragraph">
 <p>On résout ce problème en regroupant dans une structure spécifique les méthodes entre-elles !
@@ -1855,7 +1875,7 @@ EndProcedure</code></pre>
 </div>
 <div class="paragraph">
 <p>La structure <code>Mthds_Rect1</code> décrit tous les pointeurs de fonction des méthodes de la Classe.
-S’en suit la déclaration de la variable Mthds_Rect1 de type Mthds_Rect1 ainsi que son initialisation grace à Init_Mthds_Rect1().</p>
+S’en suit la déclaration de la variable <code>Mthds_Rect1</code> de type <code>Mthds_Rect1</code> ainsi que son initialisation grace à <code>Init_Mthds_Rect1()</code>.</p>
 </div>
 <div class="paragraph">
 <p>La variable Mthds_Rect1 est appelée <strong>la table des méthodes</strong> de la class car elle contient l’ensemble des adresses des méthodes de la class.</p>
@@ -1895,7 +1915,7 @@ Init_Mthds_Rect1(@Mthds_Rect1)</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>L’héritage est alors possible car en étendant la Structure Methd_Rect1 en une nouvelle Methd_Rect2, les adresses de fonction vont se suivre:</p>
+<p>L’héritage est alors possible car en étendant la <code>Structure</code> <code>Methd_Rect1</code> en une nouvelle <code>Methd_Rect2</code>, les adresses de fonction vont se suivre:</p>
 </div>
 <div class="listingblock">
 <div class="title">Interface</div>
@@ -1987,7 +2007,7 @@ Deux raisons à cela :</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="accesseur-et-modifieur-d-objet"><a class="anchor" href="#accesseur-et-modifieur-d-objet"></a>5.8. Accesseur et Modifieur d’Objet</h3>
+<h3 id="accesseur-et-modifieur-d-objet"><a class="anchor" href="#accesseur-et-modifieur-d-objet"></a>Accesseur et Modifieur d’Objet</h3>
 <div class="paragraph">
 <p>En passant par l’<code>Interface</code>, il n’est possible de manipuler que des méthodes de l’objet.
 L’interface encapsule donc entièrement les attributs des objets, c’est à dire qu’elle les cache.
@@ -1996,7 +2016,7 @@ Les méthodes qui permettent de lire les attributs d’un objet sont appelées l
 Les méthodes qui permettent de modifier les attributs d’un objet sont appelées les <strong>Modifieurs</strong> de l’objet.</p>
 </div>
 <div class="paragraph">
-<p>Dans notre exemple de Classe <code>Rectangle1</code>, si nous voulons lire la valeur de l’attribut var2, on créera l’Accesseur suivant:</p>
+<p>Dans notre exemple de Classe <code>Rectangle1</code>, si nous voulons lire la valeur de l’attribut <code>var2</code>, on créera l’Accesseur suivant:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2006,7 +2026,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>De même, pour modifier la valeur de l’attribut var2, on écrira le Modifieur suivant</p>
+<p>De même, pour modifier la valeur de l’attribut <code>var2</code>, on écrira le Modifieur suivant</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2026,7 +2046,7 @@ EndProcedure</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Voir l’annexe <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Annexes.htm#Optimisations_Get_Set">Optimisation</a> du tutorial pour étudier de quelle manière on peut optimiser les performances des accesseurs et des modifieurs lors de l’exécution</p>
+<p>Voir l’annexe <a href="#optimisation-accesseurs-et-aux-modifieurs">Optimisation</a> du tutorial pour étudier de quelle manière on peut optimiser les performances des accesseurs et des modifieurs lors de l’exécution</p>
 </div>
 </td>
 </tr>
@@ -2036,7 +2056,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="synth-se-et-notation"><a class="anchor" href="#synth-se-et-notation"></a>6. Synthèse et notation</h2>
+<h2 id="synth-se-et-notation"><a class="anchor" href="#synth-se-et-notation"></a>Synthèse et notation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Avant d’aborder la suite, dans laquelle nous allons assoire notre implémentation d’un objet en PureBasic, je vous propose de faire une synthèse de tout ce qui vient d’etre vu. L’implémentation que nous venons de voir d’un objet se présente sous la forme suivante :</p>
@@ -2147,7 +2167,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="premier-exemple-de-code"><a class="anchor" href="#premier-exemple-de-code"></a>6.1. Premier Exemple de Code</h3>
+<h3 id="premier-exemple-de-code"><a class="anchor" href="#premier-exemple-de-code"></a>Premier Exemple de Code</h3>
 <div class="paragraph">
 <p>Voici un exemple de code où l’héritage est utilisé:</p>
 </div>
@@ -2162,7 +2182,7 @@ EndProcedure</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="classe-pb"><a class="anchor" href="#classe-pb"></a>7. Classe PB</h2>
+<h2 id="classe-pb"><a class="anchor" href="#classe-pb"></a>Classe PB</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Maintenant que nous avons vu les concepts objets et leurs possibles implémentations en PureBasic, il est grand temps de se fixer une implémentation.</p>
@@ -2180,7 +2200,7 @@ Grandement facilitée par les instructions Interface et Macro, l’implémentati
 <p>Dans un premier temps, nous découvrirons les instructions d’une Classe en PureBasic. Puis nous analyserons ensemble ce qui se cache derrière en tirant des parallèles avec les pages précédentes pour terminer sur une discussion des choix adoptés.</p>
 </div>
 <div class="sect2">
-<h3 id="classe-purebasic"><a class="anchor" href="#classe-purebasic"></a>7.1. Classe PureBasic</h3>
+<h3 id="classe-purebasic"><a class="anchor" href="#classe-purebasic"></a>Classe PureBasic</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic pseudocode" data-lang="purebasic pseudocode">;Classe de l’objet
@@ -2240,7 +2260,7 @@ EndFree</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deuxi-me-exemple-de-code"><a class="anchor" href="#deuxi-me-exemple-de-code"></a>7.2. Deuxième Exemple de Code</h3>
+<h3 id="deuxi-me-exemple-de-code"><a class="anchor" href="#deuxi-me-exemple-de-code"></a>Deuxième Exemple de Code</h3>
 <div class="paragraph">
 <p>Vous trouverez ici le fichier comportant la déclaration de ce jeu d’instructions ainsi qu’un exemple d’utilisation basé sur <a href="#premier-exemple-de-code">l’exemple d’héritage précédent</a>, ce qui vous permettra de comparer:</p>
 </div>
@@ -2262,20 +2282,20 @@ EndFree</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Si vous avez jetté un coup d’oeil au source OOP.pbi, vous aurez remarqué que l’implémentation finale est légèrement plus compliquée que ce qui est exposé ici. Cela s’explique par quelques dispositions prises dans le source pour maintenir plus facilement le code.</p>
+<p>Si vous avez jetté un coup d’oeil au source <a href="POO.pbi"><code>POO.pbi</code></a>, vous aurez remarqué que l’implémentation finale est légèrement plus compliquée que ce qui est exposé ici. Cela s’explique par quelques dispositions prises dans le source pour maintenir plus facilement le code.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Passons en revue maintenant cette Classe Purebasic&#8230;&#8203;</p>
+<p>Passons en revue maintenant cette Classe Purebasic…</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="class-endclass"><a class="anchor" href="#class-endclass"></a>7.3. Class : EndClass</h3>
+<h3 id="class-endclass"><a class="anchor" href="#class-endclass"></a>Class : EndClass</h3>
 <div class="paragraph">
-<p>L’instruction Class : EndClass permet de déclarer trois types de composantes:</p>
+<p>L’instruction <code>Class : EndClass</code> permet de déclarer trois types de composantes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2311,13 +2331,13 @@ EndClass(&lt;ClassName&gt;)</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Chaque composante est clairement identifiée par les mots clés Class/Methods/Members. Cet ordre doit être respecté et les mots clés doivent toujours figurer même si aucune méthode ou aucun membre ne sera déclaré. De même, à chaque fois le nom de la classe se doit d’apparaître entre parenthèses.</p>
+<p>Chaque composante est clairement identifiée par les mots clés <code>Class</code>/<code>Methods</code>/<code>Members</code>. Cet ordre doit être respecté et les mots clés doivent toujours figurer même si aucune méthode ou aucun membre ne sera déclaré. De même, à chaque fois le nom de la classe se doit d’apparaître entre parenthèses.</p>
 </div>
 <div class="paragraph">
 <p>L’explication trouve son origine dans la définition de chaque mot clé dont voici le code:</p>
 </div>
 <div class="sect3">
-<h4 id="instruction-class"><a class="anchor" href="#instruction-class"></a>7.3.1. Instruction Class</h4>
+<h4 id="instruction-class"><a class="anchor" href="#instruction-class"></a>Instruction Class</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Class(ClassName)
@@ -2327,11 +2347,11 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>L’instruction Class se limite à l’entête de la déclaration de l’interface avec pour nom d’interface celui de la classe suivi de "_". Ce qui suit l’instruction Class sera donc la définition de l’interface de l’objet.</p>
+<p>L’instruction <code>Class</code> se limite à l’entête de la déclaration de l’interface avec pour nom d’interface celui de la classe suivi de “<code>_</code>”. Ce qui suit l’instruction <code>Class</code> sera donc la définition de l’interface de l’objet.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="instruction-methods"><a class="anchor" href="#instruction-methods"></a>7.3.2. Instruction Methods</h4>
+<h4 id="instruction-methods"><a class="anchor" href="#instruction-methods"></a>Instruction Methods</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Methods(ClassName)
@@ -2346,7 +2366,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="instruction-members"><a class="anchor" href="#instruction-members"></a>7.3.3. Instruction Members</h4>
+<h4 id="instruction-members"><a class="anchor" href="#instruction-members"></a>Instruction Members</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Members(ClassName)
@@ -2362,20 +2382,20 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>L’instruction Members est plus compliquée que les deux précédentes.</p>
+<p>L’instruction <code>Members</code> est plus compliquée que les deux précédentes.</p>
 </div>
 <div class="paragraph">
 <p>Elle commence par fermer la définition de la structure précédemment ouverte par l’instruction Methods. Ensuite elle déclare tout naturellement la table des methodes basée sur la structure fraîchement acquise. Pour l’instant cette table est vide et se remplira au fur et à mesure de la déclaration des méthodes. Nous aborderons cela plus loin (<a href="#instruction-endmethod">j’peux pas attendre</a>).</p>
 </div>
 <div class="paragraph">
-<p>Enfin l’instruction Members se termine en ouvrant la déclaration de la structure qui définit les membres de l’objet. On trouve en début -comme il convient- le pointeur porteur de l’adresse de la table des méthodes de l’objet, c.a.d celle de la variable juste au-dessus. Rappelons que c’est le constructeur qui initialisera le tout. Puis nous trouvons un autre pointeur qui contiendra l’adresse de l’objet lui-même. J’expliquerai plus tard la raison de ce nouveau membre (<a href="#admonition-on-objet-toujours-pointeur">non! maintenant</a>).</p>
+<p>Enfin l’instruction <code>Members</code> se termine en ouvrant la déclaration de la structure qui définit les membres de l’objet. On trouve en début —comme il convient— le pointeur porteur de l’adresse de la table des méthodes de l’objet, c.a.d celle de la variable juste au-dessus. Rappelons que c’est le constructeur qui initialisera le tout. Puis nous trouvons un autre pointeur qui contiendra l’adresse de l’objet lui-même. J’expliquerai plus tard la raison de ce nouveau membre (<a href="#admonition-on-objet-toujours-pointeur">non! maintenant</a>).</p>
 </div>
 <div class="paragraph">
-<p>Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction Members.</p>
+<p>Il reste simplement pour l’utilisateur qu’à déclarer les autres membres de l’objet à la suite de l’instruction <code>Members</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="instruction-endclass"><a class="anchor" href="#instruction-endclass"></a>7.3.4. Instruction EndClass</h4>
+<h4 id="instruction-endclass"><a class="anchor" href="#instruction-endclass"></a>Instruction EndClass</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndClass(ClassName)
@@ -2394,7 +2414,7 @@ EndMacro</code></pre>
 <p>L’instruction <code>EndClass</code> est à l’origine du choix d’implémentation de notre objet. Nous allons donc nous attarder à la décrire correctement.</p>
 </div>
 <div class="paragraph">
-<p>Comme pour Methods et Members, elle commence par fermer ce qui a été ouvert par l’instruction précédente, ici la structure décrivant les membres de l’objet.</p>
+<p>Comme pour <code>Methods</code> et <code>Members</code>, elle commence par fermer ce qui a été ouvert par l’instruction précédente, ici la structure décrivant les membres de l’objet.</p>
 </div>
 <div class="paragraph">
 <p>Ensuite, nous trouvons la structure qui porte le nom de la classe et qui servira donc à l’utilisateur pour déclarer son objet.</p>
@@ -2413,7 +2433,7 @@ EndMacro</code></pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>Cette architecture met en pratique l’optimisation sur les accesseurs d’un objet exposée en <a href="http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Annexes.htm#Optimisations_Get_Set">annexe</a>. L’intérêt de ce choix est double:</p>
+<p>Cette architecture met en pratique l’optimisation sur les accesseurs d’un objet exposée en <a href="#optimisation-accesseurs-et-aux-modifieurs">annexe</a>. L’intérêt de ce choix est double:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2486,7 +2506,7 @@ EndStructure</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>7.4. Method : EndMethod</h3>
+<h3 id="method-endmethod"><a class="anchor" href="#method-endmethod"></a>Method : EndMethod</h3>
 <div class="paragraph">
 <p>L’instruction <code>Method : EndMethod</code> permet de réaliser l’implémentation des différentes méthodes de l’objet.</p>
 </div>
@@ -2520,7 +2540,7 @@ EndMethod(&lt;ClassName&gt;, Method1)</code></pre>
 </table>
 </div>
 <div class="sect3">
-<h4 id="instruction-method"><a class="anchor" href="#instruction-method"></a>7.4.1. Instruction Method</h4>
+<h4 id="instruction-method"><a class="anchor" href="#instruction-method"></a>Instruction Method</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro Method(ClassName, Mthd)
@@ -2536,7 +2556,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="instruction-endmethod"><a class="anchor" href="#instruction-endmethod"></a>7.4.2. Instruction EndMethod</h4>
+<h4 id="instruction-endmethod"><a class="anchor" href="#instruction-endmethod"></a>Instruction EndMethod</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndMethod(ClassName, Mthd)
@@ -2553,9 +2573,9 @@ Maintenant que la méthode est définie, on peut la référencer dans la <strong
 </div>
 </div>
 <div class="sect2">
-<h3 id="le-constructeur-de-l-objet"><a class="anchor" href="#le-constructeur-de-l-objet"></a>7.5. Le constructeur de l’objet</h3>
+<h3 id="le-constructeur-de-l-objet"><a class="anchor" href="#le-constructeur-de-l-objet"></a>Le constructeur de l’objet</h3>
 <div class="paragraph">
-<p>L’instruction New : EndNew permet d’instancier et d’initialiser un objet de la classe.</p>
+<p>L’instruction <code>New : EndNew</code> permet d’instancier et d’initialiser un objet de la classe.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2569,7 +2589,7 @@ EndNew</code></pre>
 <p>Le mots clé <code>New</code> exige le nom de la classe comme paramètre.</p>
 </div>
 <div class="sect3">
-<h4 id="instruction-new"><a class="anchor" href="#instruction-new"></a>7.5.1. Instruction New</h4>
+<h4 id="instruction-new"><a class="anchor" href="#instruction-new"></a>Instruction New</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro New(ClassName)
@@ -2619,10 +2639,10 @@ EndMacro</code></pre>
 <p>Et pour finir, l’instruction retourne l’adresse de l’objet.</p>
 </div>
 <div class="paragraph">
-<p>L’astruce de cette macro réside dans la déclaration de Init_Mbers en toute fin. De la sorte, tout ce que l’utilisateur aura à ajouter à l’intérieur du block <code>New : EndNew</code> se limitera à l’initialisation des attributs. Cet aspect sera abordé plus en détail dans un moment(<a href="#l-instruction-priv-e-init_mbers-endinit_mbers">Où ça? Où ça?</a>).</p>
+<p>L’astruce de cette macro réside dans la déclaration de <code>Init_Mbers</code> en toute fin. De la sorte, tout ce que l’utilisateur aura à ajouter à l’intérieur du block <code>New : EndNew</code> se limitera à l’initialisation des attributs. Cet aspect sera abordé plus en détail dans un moment(<a href="#l-instruction-priv-e-init_mbers-endinit_mbers">Où ça? Où ça?</a>).</p>
 </div>
 <div class="paragraph">
-<p>Ceci est rendu possible en declarant la method Init_Mbers en début de macro.</p>
+<p>Ceci est rendu possible en declarant la method <code>Init_Mbers</code> en début de macro.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2640,7 +2660,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="instruction-endnew"><a class="anchor" href="#instruction-endnew"></a>7.5.2. Instruction EndNew</h4>
+<h4 id="instruction-endnew"><a class="anchor" href="#instruction-endnew"></a>Instruction EndNew</h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Macro EndNew
@@ -2655,7 +2675,7 @@ EndMacro</code></pre>
 <p>Conclusion: l’objectif est atteint. l’instruction <code>New : EndNew</code> permet bien de créer un nouvel objet initialisé.</p>
 </div>
 <div class="paragraph">
-<p>A l’usage, l’instruction New : EndNew permettra d’initialiser les attributs d’un objet comme suite:</p>
+<p>A l’usage, l’instruction <code>New : EndNew</code> permettra d’initialiser les attributs d’un objet comme suite:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2711,7 +2731,7 @@ Cette bivalence qui n’existait pas lors de l’implémentation précédente, n
 <p>Une des conséquences importante est la possibilité d’utiliser <code>*this\Instance</code> pour appeler les méthodes de l’objet au sein même de ses méthodes (<em>Non je n’ai pas bu</em>!). Cette fonctionnalité est la meilleure manière pour y parvenir car on n’a pas a connaître le nom de la procédure présente derrière la méthode, ce qui est essentiel dans le processus d’héritage.</p>
 </div>
 <div class="paragraph">
-<p>A cet effet, une macro Mtd est proposée dans le source <a href="POO.pbi"><code>POO.pbi</code></a>.</p>
+<p>A cet effet, une macro <code>Mtd</code> est proposée dans le source <a href="POO.pbi"><code>POO.pbi</code></a>.</p>
 </div>
 </td>
 </tr>
@@ -2719,7 +2739,7 @@ Cette bivalence qui n’existait pas lors de l’implémentation précédente, n
 </div>
 </div>
 <div class="sect3">
-<h4 id="l-instruction-priv-e-init_mbers-endinit_mbers"><a class="anchor" href="#l-instruction-priv-e-init_mbers-endinit_mbers"></a>7.5.3. L’instruction privée Init_Mbers : EndInit_Mbers</h4>
+<h4 id="l-instruction-priv-e-init_mbers-endinit_mbers"><a class="anchor" href="#l-instruction-priv-e-init_mbers-endinit_mbers"></a>L’instruction privée Init_Mbers : EndInit_Mbers</h4>
 <div class="paragraph">
 <p>L’instruction <code>Init_Mbers : EndInit_Mbers</code> est une instruction privée que seul l’instruction <code>New : EndNew</code> va utiliser. Néanmoins, il est interessant de présenter cette instruction pour bien comprend comment procéder à l’initialisation d’un objet.</p>
 </div>
@@ -2733,7 +2753,7 @@ EndInit_Mbers</code></pre>
 </div>
 <div class="paragraph">
 <p>On trouvera donc entre les deux mots clés une série d’initialisation de membres.
-Notez que seul Init_Mbers est suivi du nom de la classe.</p>
+Notez que seul <code>Init_Mbers</code> est suivi du nom de la classe.</p>
 </div>
 <div class="sect5">
 <h6 id="instruction-init_mbers"><a class="anchor" href="#instruction-init_mbers"></a>Instruction Init_Mbers</h6>
@@ -2777,7 +2797,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>L’instruction EndInit_Mbers est ni plus ni moins que l’instruction EndProcedure qui termine la déclaration de la méthode d’initialisation de l’objet</p>
+<p>L’instruction <code>EndInit_Mbers</code> est ni plus ni moins que l’instruction <code>EndProcedure</code> qui termine la déclaration de la méthode d’initialisation de l’objet</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2787,7 +2807,7 @@ EndMacro</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Dans le code source final OOP.pbi, l’instruction <code>Init_Mbers : EndInit_Mbers</code> comporte des arguments falcutatifs supplémentaires appelés <code>arg1</code> à <code>arg5</code>. Dans certaines situations, il peut être utile de faire appel à ces arguments pour compléter les données d’entrées du pointeur <code>*input</code>.</p>
+<p>Dans le code source final <a href="POO.pbi"><code>POO.pbi</code></a>, l’instruction <code>Init_Mbers : EndInit_Mbers</code> comporte des arguments falcutatifs supplémentaires appelés <code>arg1</code> à <code>arg5</code>. Dans certaines situations, il peut être utile de faire appel à ces arguments pour compléter les données d’entrées du pointeur <code>*input</code>.</p>
 </div>
 </td>
 </tr>
@@ -2797,7 +2817,7 @@ EndMacro</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="destructeur-de-l-objet"><a class="anchor" href="#destructeur-de-l-objet"></a>7.6. Destructeur de l’objet</h3>
+<h3 id="destructeur-de-l-objet"><a class="anchor" href="#destructeur-de-l-objet"></a>Destructeur de l’objet</h3>
 <div class="paragraph">
 <p>L’instruction <code>Free : EndFree</code> permet de détruire un objet de la classe afin de restituer la mémoire allouée.</p>
 </div>
@@ -2835,13 +2855,15 @@ EndMacro</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Free ouvre une procédure avec pour argument l’adresse de l’objet. On vérifie au passage que l’adresse est non nulle (cela ne garanti malheireusement pas une adresse valide pour FreeMemory).</p>
+<p><code>Free</code> ouvre une procédure avec pour argument l’adresse de l’objet. On vérifie au passage que l’adresse est non nulle (cela ne garanti malheireusement pas une adresse valide pour <code>FreeMemory</code>).</p>
 </li>
 <li>
-<p>EndFree libère dans l’ordre la zone mémoire allouée aux membres puis celle de l’objet.
-A l’usage, la destruction d’un objet se fait ainsi:</p>
+<p><code>EndFree</code> libère dans l’ordre la zone mémoire allouée aux membres puis celle de l’objet.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>A l’usage, la destruction d’un objet se fait ainsi:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2849,7 +2871,7 @@ A l’usage, la destruction d’un objet se fait ainsi:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Comme pour le constructeur, notez bien que l’on appelle le destructeur par Free suivi du nom de la classe séparé par "_".</p>
+<p>Comme pour le constructeur, notez bien que l’on appelle le destructeur par <code>Free</code> suivi du nom de la classe séparé par “<code>_</code>”.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -2871,7 +2893,7 @@ A l’usage, la destruction d’un objet se fait ainsi:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="h-ritage-3"><a class="anchor" href="#h-ritage-3"></a>7.7. Héritage</h3>
+<h3 id="h-ritage-3"><a class="anchor" href="#h-ritage-3"></a>Héritage</h3>
 <div class="paragraph">
 <p>Dans l’ensemble des commandes qui vient d’être exposé rien ne fait référence au processus d’héritage. Et c’est normal, puisque les instructions présentées ne le permettent pas et ne le peuvent pas (<em>Moua ! l’angoisse !</em>) ! Il est nécessaire de décliner un jeu d’instructions complémentaire pour traiter ce concept(<em>Arghhh ! Mega angoisse</em>).</p>
 </div>
@@ -2933,7 +2955,7 @@ EndFree</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="discussion"><a class="anchor" href="#discussion"></a>7.8. Discussion</h3>
+<h3 id="discussion"><a class="anchor" href="#discussion"></a>Discussion</h3>
 <div class="paragraph">
 <p>Ouf! la présentation d’une Classe PureBasic est terminée.</p>
 </div>
@@ -2995,13 +3017,13 @@ Hors, on peut tout à fait imaginer créer un objet, puis que l’utilisateur ap
 <p>Un destructeur homogène avec le constructeur. Il ne fait pas partie de l’interface bien que cela soit envisageable. Dans le cas contraire on écrirait <code>Objet\Md\Free()</code> au lieu d’écrire <code>Free_ClassName(Objet)</code>. Cette disposition est aisée à opérer et ne modifie en rien la conception de l’objet.</p>
 </li>
 <li>
-<p>Je ne suis pas arrivé à automatiser la génération de la table des méthodes. Il est important de rappeler ici pourquoi elle s’articule autour d’une structure. La structure permet de créer des classes abstraites, c’est à dire des classes où toutes les méthodes ne sont pas implémentées. C’est une notion très important de la conception objet et on respecte ainsi l’ordre des adresses dans la table quelque soient les méthodes implémentées de la classe tout en s’accordant avec le processus d’héritage. Utiliser un tableau, une liste chaînée ou une table de hâchage en remplacement d’une structure n’aurai pas cette souplesse (du moins je ne l’ai pas trouvé).</p>
+<p>Je ne suis pas arrivé à automatiser la génération de la <strong>table des méthodes</strong>. Il est important de rappeler ici pourquoi elle s’articule autour d’une structure. La structure permet de créer des classes abstraites, c’est à dire des classes où toutes les méthodes ne sont pas implémentées. C’est une notion très important de la conception objet et on respecte ainsi l’ordre des adresses dans la table quelque soient les méthodes implémentées de la classe tout en s’accordant avec le processus d’héritage. Utiliser un tableau, une liste chaînée ou une table de hâchage en remplacement d’une structure n’aurai pas cette souplesse (du moins je ne l’ai pas trouvé).</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="rappel-des-types"><a class="anchor" href="#rappel-des-types"></a>7.9. Rappel des types</h3>
+<h3 id="rappel-des-types"><a class="anchor" href="#rappel-des-types"></a>Rappel des types</h3>
 <div class="paragraph">
 <p>Vous trouverez ici la liste des types qu’utilise une classe:</p>
 </div>
@@ -3065,11 +3087,134 @@ Hors, on peut tout à fait imaginer créer un objet, puis que l’utilisateur ap
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="conclusion-2"><a class="anchor" href="#conclusion-2"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous l’aurez compris, s’il est possible d’adopter une Programmation Orientée Objet en PureBasic, celle-ci demande un peu de rigeur d’écriture.
+Mais une fois acquitté de cette tâche, la manipulation de l’objet est excessivement simple.</p>
+</div>
+<div class="paragraph">
+<p>Or si les langages Objets apportent une plus grande souplesse dans l’ écriture de son code (via l’application des concepts objets), nous avons vu qu’elle favorise la multiplication de méthodes produisant un exécutable souvent plus imposant et pouvant perdre ainsi en performance pure.</p>
+</div>
+<div class="paragraph">
+<p>Néanmoins, j’espère que ce tutorial vous aura permis de saisir les mécanismes sous-jacents à la POO et d’en comprendre les concepts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="optimisations"><a class="anchor" href="#optimisations"></a>Annexe A: Optimisations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Les paragraphes qui suivent, traitent de considérations possibles à adopter afin d’améliorer, lors de l’exécution du programme, les performances de notre approche Orientée Objet.</p>
+</div>
+<div class="sect2">
+<h3 id="optimisation-accesseurs-et-aux-modifieurs"><a class="anchor" href="#optimisation-accesseurs-et-aux-modifieurs"></a>Optimisation: Accesseurs et aux Modifieurs:</h3>
+<div class="paragraph">
+<p>Si on est amené à faire de nombreux appels aux Accesseurs et aux Modifieurs, cela revient à faire de nombreux appels de fonction, d’où une perte de performance.
+Pour ceux qui sont en quête de performance, il y a deux possibilités pour accélérer le processus :</p>
+</div>
+<div class="paragraph">
+<p>Tous deux consistent à jumeler un pointeur à l’objet instancié, la deuxième solution étant un habillage de la première.</p>
+</div>
+<div class="sect3">
+<h4 id="premi-re-solution"><a class="anchor" href="#premi-re-solution"></a>Première solution :</h4>
+<div class="paragraph">
+<p>Le pointeur en question sera typé de la <code>Structure</code> de la Classe.
+Ainsi pour un objet <code>Rect</code> de la Classe <code>Rectangle1</code>, nous pouvons écrire :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect.Rect = New_Rect()
+*Rect.Rectangle1 = Rect</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On accède ainsi à l’attribut var2 en écrivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">*Rect\var2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il est alors possible de le lire comme de le modifier.
+C’est la solution de loin la plus simple à mettre en œuvre.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deuxi-me-solution"><a class="anchor" href="#deuxi-me-solution"></a>Deuxième solution :</h4>
+<div class="paragraph">
+<p>La première solution demande à travailler avec deux éléments de type différents: <code>Rect</code> et <code>*Rect</code>.
+Cette deuxième solution, propose de réunir ces deux éléments dans un <code>StructureUnion</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Structure Rect_
+  StructureUnion
+    Mthd.Rect
+    *Mbers.Rectangle1
+  EndStructureUnion
+EndStructure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Créer un objet de Classe <code>Rectangle1</code>, reviendra à déclarer l’objet grâce à cette nouvelle <code>Structure</code>.</p>
+</div>
+<div class="paragraph">
+<p>En modifiant en conséquence le constructeur, cela donne :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">New_Rect(@Rect.Rect_)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Avec,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Procedure New_Rect1(*Instance.Rect_, x1.l, x2.l, y1.l, y2.l)
+  Shared Mthds_Rect1
+  *Rect.Rectangle1 = AllocateMemory(SizeOf(Rectangle1))
+  *Rect \Methodes = @Mthds_Rect1
+  Init_Mbers_Rect1(*Rect, x1, x2, y1, y2)
+  *Instance\Mthds = *Rect
+EndProcedure</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On accède à la méthode <code>Dessiner()</code> de l’objet en écrivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect\Mthds\Dessiner()</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On accède à l’attribut <code>var2</code> en écrivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-purebasic" data-lang="purebasic">Rect\Mbers\var2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Cette deuxième solution a pour avantage de ne disposer que d’un seul élément que l’on peut confondre avec un objet dont tous les attributs sont accessibles.
+On conserve une notation Objet, bien qu’elle présente un niveau de champs supplémentaire.</p>
+</div>
+<div class="paragraph">
+<p>L’inconvénient porte essentiellement sur le fait qu’il faut entretenir une nouvelle structure au sein de la Classe.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Draft 0.5<br>
-Last updated 2016-12-03 14:49:45 E
+Version 1.0<br>
+Last updated 2016-12-06 15:56:04 E
 </div>
 </div>
 <link rel="stylesheet" href="../hjs/styles/github.min.css">
