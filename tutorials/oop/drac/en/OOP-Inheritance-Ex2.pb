@@ -1,19 +1,35 @@
-;=====================================================
-; OOP_Heritage.pb
+; ··············································································
+; ··············································································
+; ························ OOP Inheritance in PureBASIC ························
+; ··············································································
+; ································· Example 2 ··································
+; ··············································································
+; ··············································································
+; by Dräc, (c) Sept 2007.
+; ------------------------------------------------------------------------------
+; "OOP-Inheritance-Ex2.pb"
+; «PureBASIC Archives» release v1.1, December 6, 2016
+; (first reprint: in January 9, 2016)
 ;
-; Cet exemple montre comment une Classe concrète (Rect1)
-; hérite d'une Classe abstraite (Shape) 
-; Elle montre aussi comment accéder aux attributs d'un
-; objet: soit par des méthodes, soit par accès 'intégré'. 
-; 
-; This example shows how a concrete Class (Rect1)
-; inherits from an abstract Class (Shape) 
-; It shows also how to access to object attributes:
-; either by Methods or by 'embedded' accessor.
-;
-; Dräc - Sept 2007
-; [http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO]
-;=====================================================
+; Minor changes to the original code, by Tristano Ajmone (@tajmone):
+;   -- renamed some vars, procedures
+;   -- added/changed source comments
+;   -- removed French comments
+; ------------------------------------------------------------------------------
+; Released under Creative Common Attribution (CC BY 4.0) license:
+;   -- https://creativecommons.org/licenses/by/4.0/
+; ------------------------------------------------------------------------------
+; original file: "OOP_Inheritance.pb"
+;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO 
+; ==============================================================================
+;                                  DESCRIPTION                                  
+; ==============================================================================
+; This example shows how a concrete Class ('Rect1') inherits from an abstract
+; Class ('Shape').
+; It also shows how to access an object’s attributes: either by Methods, or by
+; «embedded» mutators (getter an setter accessors). 
+; ------------------------------------------------------------------------------
+
 XIncludeFile "OOP.pbi"
 
 ;=====================================================

@@ -19,7 +19,7 @@
 ;   -- https://creativecommons.org/licenses/by/4.0/
 ; ------------------------------------------------------------------------------
 ; original file: "POO_Heritage.pb"
-;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO 
+;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO
 ; ==============================================================================
 ;                                  DESCRIPTION                                  
 ; ==============================================================================
