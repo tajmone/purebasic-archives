@@ -3,7 +3,15 @@ Dräc’s *PureBasic and OOP*
 
 By «Dräc,» (c) 2005, license: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
--   [English version](./en/OOP-Demystified.html)
+------------------------------------------------------------------------
+
+**TUTORIAL HTML-PREVIEW LINKS:**
+
+-   English version: ( [local preview](./en/OOP-Demystified.html) | [live preview](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html) )
+
+-   French version: ( [local preview](./fr/POO-Demystifiee.html) | [live preview](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html) )
+
+**NOTE**: If you are viewing this page on GitHub, you’ll need to click the `live preview` links in order to view the tutorial in HTML.
 
 ------------------------------------------------------------------------
 
@@ -13,8 +21,10 @@ By «Dräc,» (c) 2005, license: [CC BY 4.0](https://creativecommons.org/license
     -   [AsciiDoc Format](#asciidoc-format)
 -   [Files List](#files-list)
     -   [English Tutorial Files](#english-tutorial-files)
+    -   [French Tutorial Files](#french-tutorial-files)
     -   [Shared Files](#shared-files)
     -   [Dev-Files](#dev-files)
+-   [HELP NEEDED (FRENCH)!](#help-needed-french)
 
 <!-- /toc -->
 About This Article
@@ -51,14 +61,25 @@ English Tutorial Files
 -   [`/en/OOP-Demystified.asciidoc`](./en/OOP-Demystified.asciidoc) – AsciiDoc source of English article.
 -   [`/en/OOP-Demystified.html`](./en/OOP-Demystified.html) – HTML output of English article.
 -   [`/en/OOP-Inheritance-Ex1.pb`](./en/OOP-Inheritance-Ex1.pb) – PureBASIC source of First Example of OOP implementation (English comments and naming convention).
--   [`/en/OOP-Inheritance-Ex2.pb`](./en/OOP-Inheritance-Ex1.pb) – PureBASIC source of Second Example of OOP implementation (EN ver.).
--   [`/en/OOP-Inheritance-Ex2_preprocessed.pb`](./en/OOP-Inheritance-Ex2_preprocessed.pb) – The preprocessed version of `./en/OOP-Inheritance-Ex1.pb`: contains all included external code, and macros are expanded (orignal macros are kept as comments next to their expanded code), comments are preserved. Included by Tristano Ajmone to simplify analysis of source code.
+-   [`/en/OOP-Inheritance-Ex2.pb`](./en/OOP-Inheritance-Ex2.pb) – PureBASIC source of Second Example of OOP implementation (EN ver.).
+-   [`/en/OOP-Inheritance-Ex2_preprocessed.pb`](./en/OOP-Inheritance-Ex2_preprocessed.pb) – The preprocessed version of `./en/OOP-Inheritance-Ex2.pb`: contains all included external code, and macros are expanded (orignal macros are kept as comments next to their expanded code), comments are preserved. Included by Tristano Ajmone to simplify analysis of source code.
 -   [`/en/OOP.pbi`](./en/OOP.pbi) – PureBASIC include file, imported by Second Example, and reusable in custom OOP-projects (EN ver.).
+
+French Tutorial Files
+---------------------
+
+-   [`/fr/`](./fr/) – Folder of French article.
+-   [`/fr/POO-Demystifiee.asciidoc`](./fr/POO-Demystifiee.asciidoc) – AsciiDoc source of French article.
+-   [`/fr/POO-Demystifiee.html`](./fr/POO-Demystifiee.html) – TML output of French article.
+-   [`/fr/POO-Heritage-Ex1.pb`](./fr/POO-Heritage-Ex1.pb) – PureBASIC source of First Example of OOP implementation (French comments and naming convention).
+-   [`/fr/POO-Heritage-Ex2.pb`](./fr/POO-Heritage-Ex2.pb) – PureBASIC source of Second Example of OOP implementation (FR ver.).
+-   [`/fr/POO-Heritage-Ex2_preprocessed.pb`](./fr/POO-Heritage-Ex2_preprocessed.pb) – – The preprocessed version of `./fr/POO-Heritage-Ex2.pb`: contains all included external code, and macros are expanded (orignal macros are kept as comments next to their expanded code), comments are preserved. Included by Tristano Ajmone to simplify analysis of source code.
+-   [`/fr/POO.pbi`](./fr/POO.pbi) – PureBASIC include file, imported by Second Example, and reusable in custom OOP-projects (FR ver.).
 
 Shared Files
 ------------
 
-These files are required by, and common to, all locale versions of the tutorial. Don’t rename these files and folders.
+These files are required by, and common to, all locale-versions of the tutorial. Don’t rename these files and folders.
 
 -   [`/hjs/`](./hjs/) – Folder containing JavaScript and CSS resources for PureBASIC syntax highlighting in final HTML articles (common to both English and French versions).
 -   [`/hjs/highlight.min.js`](./hjs/highlight.min.js) – Highlight.js v9.3.0 prebuilt for PureBASIC (only) syntax highlighting — [modded version](https://github.com/tajmone/highlight.js/tree/PureBASIC), mimicking 100% PB native IDE.
@@ -74,6 +95,20 @@ Work files used during republishing the tutorial from HTML to AsciiDoc. Stored h
 -   [`/work/DEV-NOTES.md`](./work/DEV-NOTES.md) — Some work notes left behind for contributors.
 -   [`/work/ppEnEx2.bat`](./work/ppEnEx2.bat) — The batch script used for creating `/en/OOP-Inheritance-Ex2_preprocessed.pb`. Works by invoking `/work/pppbsource.bat`.
 -   [`/work/ppEnEx2_header`](./work/ppEnEx2_header) — Text file of the header injected in the final preprocessed version of `/en/OOP-Inheritance-Ex2.pb`. Adds a description (PB comments) to the preprocessed source.
+-   [`/work/ppFrEx2.bat`](./work/ppEnEx2.bat) — The batch script used for creating `/fr/POO-Heritage-Ex2_preprocessed.pb`. Works by invoking `/work/pppbsource.bat`.
+-   [`/work/ppFrEx2_header`](./work/ppEnEx2_header) — Text file of the header injected in the final preprocessed version of `/fr/POO-Heritage-Ex2.pb`. Adds a description (PB comments) to the preprocessed source.
 -   [`/work/pppbsource.bat`](./work/pppbsource.bat) — The common batch script that handles preprocessing Examples for all locales.
 -   [`/work/tutorial_en_code_snippets.pb`](./work/tutorial_en_code_snippets.pb) – All the snippets of PB code and pseudocode found in English tutorial, with reference numbers pointing to HTML comments in AsciiDoc source. This source file was used to auto-indent the snippets in PB IDE and carry out S&R operations.
+-   [`/work/tutorial_fr_code_snippets.pb`](./work/tutorial_fr_code_snippets.pb) — same as above, but for French version.
+
+HELP NEEDED (FRENCH)!
+=====================
+
+The following files need checking their French, and translation of some parts in English (either is source comments, or added notices or headers/banners):
+
+-   [`/fr/POO-Demystifiee.asciidoc`](./fr/POO-Demystifiee.asciidoc) (translation of copyright notice, proofreading)
+-   [`/en/OOP-Inheritance-Ex1.pb`](./en/OOP-Inheritance-Ex1.pb) (translation of header comments)
+-   [`/en/OOP-Inheritance-Ex2.pb`](./en/OOP-Inheritance-Ex2.pb) (translation of header comments)
+-   [`/fr/POO.pbi`](./fr/POO.pbi) (translation of comments)
+-   [`/work/ppFrEx2_header`](./work/ppEnEx2_header) (translation of header comments text)
 

@@ -90,7 +90,7 @@ Quick Links
 ===========
 
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
--   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial (English) – [source folder](./tutorials/oop/drac/).
+-   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial ([Also in French](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html)) – [source folder](./tutorials/oop/drac/).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
 Resources Organization
@@ -209,6 +209,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/12/06` — Republished Dräc’s French tutorial [*PureBasic et la POO*](./tutorials/oop/drac/fr/POO-Demystifiee.asciidoc)
 -   `2016/11/30` — Now GFM (GitHub Flavored Markdown) is the default standard for markdown documents and cleanup operations performed via the repo-maintaiance tools.
 -   `2016/11/26`
     -   Added [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool for auto-generating header files (`*.pbi`).
