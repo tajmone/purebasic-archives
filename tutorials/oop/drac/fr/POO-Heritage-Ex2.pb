@@ -1,36 +1,35 @@
 ; ··············································································
 ; ··············································································
-; ························ OOP Inheritance in PureBASIC ························
+; ··························· PureBasicPOO Héritage ····························
 ; ··············································································
-; ································· Example 2 ··································
+; ································· Exemple 2 ··································
 ; ··············································································
 ; ··············································································
 ; by Dräc, (c) Sept 2007.
 ; ------------------------------------------------------------------------------
 ; "OOP-Inheritance-Ex2.pb"
-; «PureBASIC Archives» release v1.1, December 6, 2016
-; (first reprint: in January 9, 2016)
+; «PureBASIC Archives» release v1.0, December 6, 2016
 ;
 ; Minor changes to the original code, by Tristano Ajmone (@tajmone):
 ;   -- renamed some vars, procedures
 ;   -- added/changed source comments
-;   -- removed French comments
+;   -- removed English comments
 ; ------------------------------------------------------------------------------
 ; Released under Creative Common Attribution (CC BY 4.0) license:
-;   -- https://creativecommons.org/licenses/by/4.0/
+;   -- https://creativecommons.org/licenses/by/4.0/deed.fr
 ; ------------------------------------------------------------------------------
 ; original file: "OOP_Inheritance.pb"
 ;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO 
 ; ==============================================================================
 ;                                  DESCRIPTION                                  
 ; ==============================================================================
-; This example shows how a concrete Class ('Rect1') inherits from an abstract
-; Class ('Shape').
-; It also shows how to access an object’s attributes: either by Methods, or by
-; «embedded» mutators (getter an setter accessors). 
+; Cet exemple montre comment une Classe concrète ('Rect1') hérite d’une Classe
+; abstraite ('Shape'). 
+; Elle montre aussi comment accéder aux attributs d’un objet: soit par des méthodes,
+; soit par accès « intégré ».
 ; ------------------------------------------------------------------------------
 
-XIncludeFile "OOP.pbi"
+XIncludeFile "POO.pbi"
 
 ;=====================================================
 ; Abstract Class Shape
@@ -39,8 +38,8 @@ XIncludeFile "OOP.pbi"
 Class(Shape)
   Draw() 
   Cut() 
-  Get_var1()                ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
-  Get_var2()    
+  Get_var1()                ; <-- Class abstraite: la méthode Get_var1() n’est pas impémentée par la classe Shape
+  Get_var2()
   Methods(Shape)
     *Draw
     *Cut
@@ -72,7 +71,7 @@ New(Shape)
   EndWith
 EndNew
 
-; New(Shape)                ; <-- Abstract class : New and Free constructors are not required
+; New(Shape)                ; <-- Class abstraite: les constructeur New et Free ne sont pas nécéssaires
 ; Free(Shape)
 ; EndFree
 
@@ -82,19 +81,19 @@ EndNew
 ; Concrete Class Rect1
 ;
 ;=====================================================
-ClassEx(Rect1, Shape)       ; <-- Inheritance
+ClassEx(Rect1,Shape)        ; <-- Héritage
   Erase() 
   Get_var4()
-  MethodsEx(Rect1, Shape)   ; <-- Inheritance
+MethodsEx(Rect1,Shape)      ; <-- Héritage
     *Erase
     *Get_var4
-  MembersEx(Rect1, Shape)   ; <-- Inheritance
+MembersEx(Rect1,Shape)      ; <-- Héritage
     var3.l 
     var4.l 
     rectname.s
 EndClass(Rect1)
 
-Method(Rect1, Draw))        ; <-- Polymorphism : Rect1 Class implement its own Draw() method
+Method(Rect1, Draw))        ; <-- Polymorphisme: la classe Rect1 implémente sa propre méthode Draw()
   Debug "Draw from Rect Class: " + *this\rectname 
 EndMethod(Rect1, Draw)
 
@@ -102,7 +101,7 @@ Method(Rect1, Erase))
   Debug "Erase from Rect Class: " + *this\rectname
 EndMethod(Rect1, Erase)
 
-Method(Rect1, Get_var1))    ; <-- Concrete class : all the methods of the Rect1 Class are implemented
+Method(Rect1, Get_var1))    ; <-- Class concrète: toute les méthodes de la classe Rect1 sont implémentées
   With *this
     ProcedureReturn \var1 
   EndWith
@@ -114,7 +113,7 @@ Method(Rect1, Get_var4))
   EndWith
 EndMethod(Rect1, Get_var4)
 
-NewEx(Rect1, Shape)         ; <-- Concrete class : constructor and destructor exist
+NewEx(Rect1,Shape)          ; <-- Class concrète: le constructeur et le destructeur de la classe existent
   With *this
     \var4= *input\var4 
     \rectname= *input\rectname
@@ -155,18 +154,18 @@ Debug""
 Debug ">> Access Test"
 
 Debug""
-Debug " <var1> of "+*RectA\Mb\rectname
+Debug " <var1> de "+*RectA\Mb\rectname
 Debug *RectA\Mb\var1 
 Debug *RectA\Md\Get_var1() 
-Debug " <var4> of "+*RectA\Mb\rectname
+Debug " <var4> de "+*RectA\Mb\rectname
 Debug *RectA\Mb\var4 
 Debug *RectA\Md\Get_var4() 
 
 Debug""
-Debug " <var1> of "+*RectB\Mb\rectname  
+Debug " <var1> de "+*RectB\Mb\rectname  
 Debug *RectB\Mb\var1 
 Debug *RectB\Md\Get_var1() 
-Debug " <var4> of "+*RectB\Mb\rectname 
+Debug " <var4> de "+*RectB\Mb\rectname 
 Debug *RectB\Mb\var4 
 Debug *RectB\Md\Get_var4()  
 
@@ -175,4 +174,4 @@ Debug ">> Destruction Test"
 Free_Rect1(*RectA) 
 Free_Rect1(*RectB) 
 
-;*Rect1\Md\Draw()           ; --> Impossible to do because Rect object doesn't exist anymore! 
+;*Rect1\Md\Draw()           ; --> Impossible car l’objet Rect n’existe plus!

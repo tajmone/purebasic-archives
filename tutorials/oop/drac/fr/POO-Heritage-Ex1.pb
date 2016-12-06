@@ -1,32 +1,32 @@
 ; ··············································································
 ; ··············································································
-; ························ OOP Inheritance in PureBASIC ························
+; ··························· PureBasicPOO Héritage ····························
 ; ··············································································
-; ································· Example 1 ··································
+; ································· Exemple 1 ··································
 ; ··············································································
 ; ··············································································
 ; by Dräc, (c) 2005.
 ; ------------------------------------------------------------------------------
-; "OOP-Inheritance-Ex1.pb"
-; «PureBASIC Archives» release v1.0, January 9, 2016.
+; "POO-Heritage-Ex1.pb"
+; «PureBASIC Archives» release v1.0, December 6, 2016.
 ;
 ; Minor changes to the original code, by Tristano Ajmone (@tajmone):
 ;   -- renamed some vars, procedures
 ;   -- added/changed source comments
-;   -- removed French comments
+;   -- removed English comments
 ; ------------------------------------------------------------------------------
 ; Released under Creative Common Attribution (CC BY 4.0) license:
-;   -- https://creativecommons.org/licenses/by/4.0/
+;   -- https://creativecommons.org/licenses/by/4.0/deed.fr
 ; ------------------------------------------------------------------------------
 ; original file: "POO_Heritage.pb"
-;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO
+;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO 
 ; ==============================================================================
 ;                                  DESCRIPTION                                  
 ; ==============================================================================
-; This example shows how a concrete Class ('Rect1') inherits from an abstract
-; Class ('Shape').
-; It also shows how to access an object’s attributes: either by Methods, or by a
-; pointer on the object. 
+; Cet exemple montre comment une Classe concrète ('Rect1') hérite d’une Classe
+; abstraite ('Shape'). 
+; Elle montre aussi comment accéder aux attributs d’un objet: soit par des
+; méthodes, soit par un pointeur sur l’objet. 
 ; ------------------------------------------------------------------------------
 
 Interface Shape
@@ -71,8 +71,8 @@ Mthds_Shape.Mthds_Shape
 
 Init_Mthds_Shape(@Mthds_Shape) 
 
-; Here the method Get_var1() is not implemented: the Class Shape is an Abstract Class 
-; Thus we don't need to declare a Constructor or a Destructor of this Class 
+; Ici la méthode Get_var1() n’est pas implémentée: la Classe Form est une Classe Abstraite 
+; On n’a donc pas besoin de déclarer de Constructeur ni de Destructeur de cette Classe 
 
 Procedure Init_Mbers_Shape(*this.Shape_, var1.l, var2.l) 
   *this\var1=var1 
@@ -129,8 +129,8 @@ Procedure Init_Mthds_Rect1(*Mthds.Mthds_Rect1)
   Init_Mthds_Shape(*Mthds)
   *Mthds\Draw=@Draw_Rect1() 
   *Mthds\Erase=@Erase_Rect1() 
-  *Mthds\Get_var1=@Get_var1_Rect1() ; The concrete Class Rect1 takes care to provide the implementation of Get_var1() method
-  *Mthds\Get_var4=@Get_var4_Rect1()  
+  *Mthds\Get_var1=@Get_var1_Rect1() ; La Classe concrète Rect1 se charge de donner l’implémentation de Get_var1() 
+  *Mthds\Get_var4=@Get_var4_Rect1()
 EndProcedure 
 
 Mthds_Rect1.Mthds_Rect1 
@@ -173,19 +173,19 @@ Debug ">> Access Test"
 
 Debug""
 *Rect.Rect1_= RectA
-Debug " <var1> of "+*Rect\rectname  
+Debug " <var1> de "+*Rect\rectname  
 Debug *Rect\var1 
 Debug RectA\Get_var1()
-Debug " <var4> of "+*Rect\rectname
+Debug " <var4> de "+*Rect\rectname
 Debug *Rect\var4 
 Debug RectA\Get_var4() 
 
 Debug""
 *Rect.Rect1_= RectB
-Debug " <var1> of "+*Rect\rectname  
+Debug " <var1> de "+*Rect\rectname  
 Debug *Rect\var1 
 Debug RectB\Get_var1() 
-Debug " <var4> of "+*Rect\rectname 
+Debug " <var4> de "+*Rect\rectname 
 Debug *Rect\var4 
 Debug RectB\Get_var4()
 
@@ -194,5 +194,5 @@ Debug ">> Destruction Test"
 Free_Rect1(RectA) 
 Free_Rect1(RectB) 
 
-;Rect\Draw() ; --> Impossible to do because Rect object doesn't exist anymore! 
+;Rect\Draw() ; --> Impossible car l’objet Rect n’existe plus!
 
