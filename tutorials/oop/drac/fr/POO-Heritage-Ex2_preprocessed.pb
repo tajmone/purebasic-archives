@@ -1,9 +1,9 @@
 ; ******************************************************************************
 ; *                                                                            *
-; *                   "OOP-Inheritance-Ex2.pb" Pre-Processed                   *
+; *                    "POO-Heritage-Ex2.pb" Pre-Processed                     *
 ; *                                                                            *
 ; ******************************************************************************
-; This file is the pre-processed version of "OOP-Inheritance-Ex2.pb":
+; This file is the pre-processed version of "POO-Heritage-Ex2.pb":
 ;  -- It contains all its external included files,
 ;  -- All macros are expanded: original macro is kept as comment (single ";")
 ;     next to the code it produced during expansion.
@@ -16,37 +16,36 @@
 
 ; ; ··············································································
 ; ; ··············································································
-; ; ························ OOP Inheritance in PureBASIC ························
+; ; ··························· PureBasicPOO Héritage ····························
 ; ; ··············································································
-; ; ································· Example 2 ··································
+; ; ································· Exemple 2 ··································
 ; ; ··············································································
 ; ; ··············································································
 ; ; by Dräc, (c) Sept 2007.
 ; ; ------------------------------------------------------------------------------
 ; ; "OOP-Inheritance-Ex2.pb"
-; ; «PureBASIC Archives» release v1.1, December 6, 2016
-; ; (first reprint: in January 9, 2016)
+; ; «PureBASIC Archives» release v1.0, December 6, 2016
 ; ;
 ; ; Minor changes to the original code, by Tristano Ajmone (@tajmone):
 ; ;   -- renamed some vars, procedures
 ; ;   -- added/changed source comments
-; ;   -- removed French comments
+; ;   -- removed English comments
 ; ; ------------------------------------------------------------------------------
 ; ; Released under Creative Common Attribution (CC BY 4.0) license:
-; ;   -- https://creativecommons.org/licenses/by/4.0/
+; ;   -- https://creativecommons.org/licenses/by/4.0/deed.fr
 ; ; ------------------------------------------------------------------------------
 ; ; original file: "OOP_Inheritance.pb"
 ; ;   -- http://drac.site.chez.tiscali.fr/Tutorials Programming PureBasic/indexTutorials.htm#POO 
 ; ; ==============================================================================
 ; ;                                  DESCRIPTION                                  
 ; ; ==============================================================================
-; ; This example shows how a concrete Class ('Rect1') inherits from an abstract
-; ; Class ('Shape').
-; ; It also shows how to access an object’s attributes: either by Methods, or by
-; ; «embedded» mutators (getter an setter accessors). 
+; ; Cet exemple montre comment une Classe concrète ('Rect1') hérite d’une Classe
+; ; abstraite ('Shape'). 
+; ; Elle montre aussi comment accéder aux attributs d’un objet: soit par des méthodes,
+; ; soit par accès « intégré ».
 ; ; ------------------------------------------------------------------------------
 ; 
-; XIncludeFile "OOP.pbi"
+; XIncludeFile "POO.pbi"
 ; ;=======================================================================
 ; ; OOP
 ; ;
@@ -513,10 +512,10 @@ Interface Shape_
   Draw() 
 ;   Cut() 
   Cut() 
-;   Get_var1()                ; <-- Abstract class : the Get_var1() method is not implemented into Shape Class
+;   Get_var1()                ; <-- Class abstraite: la méthode Get_var1() n’est pas impémentée par la classe Shape
   Get_var1()                
-;   Get_var2()    
-  Get_var2()    
+;   Get_var2()
+  Get_var2()
 ;   Methods(Shape)
 EndInterface 
 Structure Mthds_Shape 
@@ -600,7 +599,7 @@ Procedure Init_Mbers_Shape(*this.Mbrs_Shape , *input.Mbrs_Shape =0, arg1.l=0, ar
 ; EndNew
 EndProcedure
 ; 
-; ; New(Shape)                ; <-- Abstract class : New and Free constructors are not required
+; ; New(Shape)                ; <-- Class abstraite: les constructeur New et Free ne sont pas nécéssaires
 ; ; Free(Shape)
 ; ; EndFree
 ; 
@@ -610,24 +609,24 @@ EndProcedure
 ; ; Concrete Class Rect1
 ; ;
 ; ;=====================================================
-; ClassEx(Rect1, Shape)       ; <-- Inheritance
-Interface Rect1_ Extends Shape_       
+; ClassEx(Rect1,Shape)        ; <-- Héritage
+Interface Rect1_ Extends Shape_        
 ;   Erase() 
   Erase() 
 ;   Get_var4()
   Get_var4()
-;   MethodsEx(Rect1, Shape)   ; <-- Inheritance
+; MethodsEx(Rect1,Shape)      ; <-- Héritage
 EndInterface
-Structure Mthds_Rect1 Extends Mthds_Shape   
+Structure Mthds_Rect1 Extends Mthds_Shape      
 ;     *Erase
     *Erase
 ;     *Get_var4
     *Get_var4
-;   MembersEx(Rect1, Shape)   ; <-- Inheritance
+; MembersEx(Rect1,Shape)      ; <-- Héritage
 EndStructure
 Mthds_Rect1.Mthds_Rect1
 CopyMemory(@Mthds_Shape, Mthds_Rect1, SizeOf(Mthds_Shape))
-Structure Mbrs_Rect1_ Extends Mbrs_Shape_   
+Structure Mbrs_Rect1_ Extends Mbrs_Shape_      
 ;     var3.l 
     var3.l 
 ;     var4.l 
@@ -646,7 +645,7 @@ StructureUnion
 EndStructureUnion
 EndStructure
 ; 
-; Method(Rect1, Draw))        ; <-- Polymorphism : Rect1 Class implement its own Draw() method
+; Method(Rect1, Draw))        ; <-- Polymorphisme: la classe Rect1 implémente sa propre méthode Draw()
 Procedure Draw_Rect1(*this.Mbrs_Rect1 )        
 ;   Debug "Draw from Rect Class: " + *this\rectname 
   Debug "Draw from Rect Class: " + *this\rectname 
@@ -662,7 +661,7 @@ Procedure Erase_Rect1(*this.Mbrs_Rect1 )
 EndProcedure
 Mthds_Rect1\Erase=@Erase_Rect1()
 ; 
-; Method(Rect1, Get_var1))    ; <-- Concrete class : all the methods of the Rect1 Class are implemented
+; Method(Rect1, Get_var1))    ; <-- Class concrète: toute les méthodes de la classe Rect1 sont implémentées
 Procedure Get_var1_Rect1(*this.Mbrs_Rect1 )    
 ;   With *this
   With *this
@@ -686,7 +685,7 @@ ProcedureReturn *this\var4
 EndProcedure
 Mthds_Rect1\Get_var4=@Get_var4_Rect1()
 ; 
-; NewEx(Rect1, Shape)         ; <-- Concrete class : constructor and destructor exist
+; NewEx(Rect1,Shape)          ; <-- Class concrète: le constructeur et le destructeur de la classe existent
 Declare Init_Mbers_Rect1(*this.Mbrs_Rect1 , *input.Mbrs_Rect1 =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0)
 Procedure.l New_Rect1(*input.Mbrs_Rect1 =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0)
 Shared Mthds_Rect1
@@ -698,7 +697,7 @@ Init_Mbers_Rect1(*this, *input, arg1, arg2, arg3, arg4, arg5)
 ProcedureReturn *this\Instance  
 EndProcedure
 Procedure Init_Mbers_Rect1(*this.Mbrs_Rect1 , *input.Mbrs_Rect1 =0, arg1.l=0, arg2.l=0, arg3.l=0, arg4.l=0, arg5.l=0)
-Init_Mbers_Shape(*this, *input, arg1, arg2, arg3, arg4, arg5)         
+Init_Mbers_Shape(*this, *input, arg1, arg2, arg3, arg4, arg5)          
 ;   With *this
   With *this
 ;     \var4= *input\var4 
@@ -773,14 +772,14 @@ Debug ">> Access Test"
 ; 
 ; Debug""
 Debug""
-; Debug " <var1> of "+*RectA\Mb\rectname
-Debug " <var1> of "+*RectA\Mb\rectname
+; Debug " <var1> de "+*RectA\Mb\rectname
+Debug " <var1> de "+*RectA\Mb\rectname
 ; Debug *RectA\Mb\var1 
 Debug *RectA\Mb\var1 
 ; Debug *RectA\Md\Get_var1() 
 Debug *RectA\Md\Get_var1() 
-; Debug " <var4> of "+*RectA\Mb\rectname
-Debug " <var4> of "+*RectA\Mb\rectname
+; Debug " <var4> de "+*RectA\Mb\rectname
+Debug " <var4> de "+*RectA\Mb\rectname
 ; Debug *RectA\Mb\var4 
 Debug *RectA\Mb\var4 
 ; Debug *RectA\Md\Get_var4() 
@@ -788,14 +787,14 @@ Debug *RectA\Md\Get_var4()
 ; 
 ; Debug""
 Debug""
-; Debug " <var1> of "+*RectB\Mb\rectname  
-Debug " <var1> of "+*RectB\Mb\rectname  
+; Debug " <var1> de "+*RectB\Mb\rectname  
+Debug " <var1> de "+*RectB\Mb\rectname  
 ; Debug *RectB\Mb\var1 
 Debug *RectB\Mb\var1 
 ; Debug *RectB\Md\Get_var1() 
 Debug *RectB\Md\Get_var1() 
-; Debug " <var4> of "+*RectB\Mb\rectname 
-Debug " <var4> of "+*RectB\Mb\rectname 
+; Debug " <var4> de "+*RectB\Mb\rectname 
+Debug " <var4> de "+*RectB\Mb\rectname 
 ; Debug *RectB\Mb\var4 
 Debug *RectB\Mb\var4 
 ; Debug *RectB\Md\Get_var4()  
@@ -810,5 +809,5 @@ Free_Rect1(*RectA)
 ; Free_Rect1(*RectB) 
 Free_Rect1(*RectB) 
 ; 
-; ;*Rect1\Md\Draw()           ; --> Impossible to do because Rect object doesn't exist anymore! 
+; ;*Rect1\Md\Draw()           ; --> Impossible car l’objet Rect n’existe plus!
 ; 
