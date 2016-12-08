@@ -19,6 +19,11 @@ Documents
 
 The following documents were taken from Scintilla 3.7.1 package, and are licensed under the [Historical Permission Notice and Disclaimer (HPND)](https://en.wikipedia.org/wiki/Historical_Permission_Notice_and_Disclaimer) license:
 
+-   [`Design.html`](Design.html) – «*Scintilla Component Design*».
+-   [`ScintillaDoc.html`](ScintillaDoc.html) – «*Scintilla Documentation*».
+-   [`ScintillaHistory.html`](ScintillaHistory.html) – «*History of Scintilla and SciTE*».
+-   [`ScintillaUsage.html`](ScintillaUsage.html) – «*Scintilla Usage Notes*» (Implementing Auto-Indent, Syntax Styling, and Calltips).
+-   [`Steps.html`](Steps.html) – «*How to use the Scintilla Edit Control in windows?*».
 -   [`Lexer.txt`](Lexer.txt) – «*How to Write a Scintilla Lexer*», C++ tutorial by Edward K. Ream.
 -   [`Lexer.md`](Lexer.md) – markdown adaptation of `Lexer.txt`, formatting added.
 -   [`Scintilla_License`](Scintilla_License) – License for Scintilla and SciTE (HPND), as required.
