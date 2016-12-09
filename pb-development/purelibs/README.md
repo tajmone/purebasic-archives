@@ -4,6 +4,8 @@ PureLibraries
 <!-- #toc -->
 -   [3rd Party Components](#3rd-party-components)
     -   [Scintilla](#scintilla)
+    -   [RegularExpression (PCRE)](#regularexpression-pcre)
+-   [Folders Organization](#folders-organization)
 
 <!-- /toc -->
 
@@ -33,3 +35,23 @@ Scintilla
 -   [`/scintilla/`](./scintilla/)
 
 Scintilla is a free source code editing component.
+
+RegularExpression (PCRE)
+------------------------
+
+-   [`/regex/`](./regex/)
+
+From [PureBASIC documentation](http://www.purebasic.com/documentation/regularexpression/index.html):
+
+> Regular expressions allow to do advanced pattern matching to quickly match, extract or replace an arbitrary information in a string. These kind of expressions are often difficult to read an write, but once you master them it makes a lot of things easier.
+
+«**RegularExpression**» PureLib uses the **PCRE** (Perl Compatible Regular Expressions) library component, an open source implementation of the Perl regular expressions.
+
+Folders Organization
+====================
+
+PureLibraries are organized according to their names as they appear in PB’s documentation – eg: «**Scintilla**» will be in the `/scintilla/` folder.
+
+This approach should make it easier to locate PureLibs resources, and can handle neatly those cases in which a PureLib has more than one third party component. For example, the «**Database**» PureLib relies on **SQLite** and **PostgreSQL** (**libpq**); so it will have a `/database/` folder with two subfolders: `/sqlite/` and `/libpq/`.
+
+Wherever feasible, shorter folder names will be adopted – eg: `/regex/` instead of `/regularexpression/`. It’s intuitive, easier to read, type and manage.

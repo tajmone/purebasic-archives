@@ -6,13 +6,20 @@ Scintilla
     License: Historical Permission Notice and Disclaimer (HPND)
 
 <!-- #toc -->
+-   [External Refrence Links](#external-refrence-links)
 -   [Documents](#documents)
 -   [Icons](#icons)
--   [External Links](#external-links)
 
 <!-- /toc -->
 
 ------------------------------------------------------------------------
+
+External Refrence Links
+=======================
+
+-   [Scintilla Homepage](http://www.scintilla.org/)
+-   [Scintilla – PureBASIC Documentation](http://www.purebasic.com/documentation/scintilla/index.html)
+-   [Scintilla – WikiPedia](https://en.wikipedia.org/wiki/Scintilla_(software))
 
 Documents
 =========
@@ -46,11 +53,4 @@ From [Wikipedia](https://en.wikipedia.org/wiki/X_PixMap):
 The `*.png` and `*.bmp` version of the icons were added by @tajmone via [**ImageMagick**](https://www.imagemagick.org)’s `convert` utility, using the following batch script:
 
 -   [`/icons1/convert-icons.bat`](./icons1/convert-icons.bat)
-
-External Links
-==============
-
--   [Scintilla Homepage](http://www.scintilla.org/)
--   [Scintilla – PureBASIC Documentation](http://www.purebasic.com/documentation/scintilla/index.html)
--   [Scintilla – WikiPedia](https://en.wikipedia.org/wiki/Scintilla_(software))
 
