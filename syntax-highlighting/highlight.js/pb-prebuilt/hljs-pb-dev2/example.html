@@ -5,9 +5,9 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Tristano Ajmone (@tajmone)">
-  <meta name="dcterms.date" content="2016-11-23">
+  <meta name="dcterms.date" content="2016-12-18">
   <meta name="keywords" content="PureBasic, highlight.js, syntax highlighting, javascript">
-  <title>HLJS-PB v9.8.0b :: PB-DEV2</title>
+  <title>HLJS-PB v9.9.0a :: PB-DEV2</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="highlight.css">
   <link rel="stylesheet" href="../resources/gh-pandoc.min.css">
@@ -19,10 +19,10 @@
 </head>
 <body>
 <header>
-<h1 class="title">HLJS-PB v9.8.0b :: PB-DEV2</h1>
+<h1 class="title">HLJS-PB v9.9.0a :: PB-DEV2</h1>
 <p class="subtitle">Pre-Built HLJS-Package Demo</p>
 <p class="author">Author: Tristano Ajmone (<a href="https://github.com/tajmone" target="_blank"><span class="citation" data-cites="tajmone">@tajmone</span></a>)</p>
-<p class="date">Date: November 23, 2016</p>
+<p class="date">Date: December 18, 2016</p>
 </header>
 <nav id="TOC">
 <p class="toctitle">Contents</p>
@@ -45,7 +45,7 @@
 </nav>
 <h1 id="highlight.js-examples">Highlight.js Examples</h1>
 <p>This page is an example (and test) page for the generated HLJS package.</p>
-<p>Highlight.js Version: 9.8.0 “New York”, «<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">PureBASIC Modded Fork</a>» rev “B”.</p>
+<p>«<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">Highlight.js PureBASIC Modded Fork</a>» <strong>v9.9.0a</strong> (2016/12/18), based on Highlight.js <strong>v9.9.0</strong> (2016/12/13).</p>
 <h2 id="using-hljs">Using HLJS</h2>
 <p>HLJS is capable of auto-detecting languages withing the <code>&lt;pre&gt;&lt;code&gt;</code> blocks, but it’s advaisable to manually define the language – especially for readability of source code.</p>
 <p>To define the language in html, assign the language name to the <code>class</code> attribute of the opening <code>&lt;code&gt;</code> tag of the <code>&lt;pre&gt;&lt;code&gt;</code> block that wraps your source code:</p>
@@ -67,6 +67,7 @@ Highlight.js will ignore me: no parsing, no highlighting tags added.</code></pre
   [...your CSS...]
 }</code></pre>
 <h1 id="purebasic">PureBASIC</h1>
+<p>PureBASIC CSS Theme based on the original <a href="https://github.com/isagalaev/highlight.js/blob/master/src/styles/purebasic.css"><code>purebasic.css</code></a> by Tristano Ajmone (extended to include PB mod extra lang token).</p>
 <pre class="purebasic"><code>Enumeration Test 3 Step 10
   #Constant_One ; Will be 3
   #Constant_Two ; Will be 13
@@ -107,9 +108,7 @@ EndInterface</code></pre>
 <p><code class="purebasic pseudocode">{.nohighlight}</code> ```</p>
 <p>For other markdown flavors/parsers, check the relevant documentation. Basically, want you want to achieve is to have both “purebasic” and “pseudocode” to appear as classnames in the final html’s <code>&lt;code&gt;</code> tag.</p>
 <h1 id="bash">Bash</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
-</blockquote>
+<p>Custom CSS theme by Tristano Ajmone, based on xterm default palette.</p>
 <pre class="bash"><code>#!/bin/bash
 
 ###### CONFIG
@@ -185,6 +184,7 @@ do {
     $username = [System.Environment]::UserName
 } until ($rollingDate -ge [datetime]&#39;2013/12/31&#39;)</code></pre>
 <h1 id="diff">Diff</h1>
+<p>Custom theme by Tristano Ajmone, loosely inspired on <a href="https://github.com/blog/612-introducing-github-compare-view">GitHub Compare View</a> (<a href="https://github.com/tajmone/highlight.js/commit/cef34e110a2f1f302fed624db2aa39e45aacc8a9">see an example</a>).</p>
 <pre class="diff"><code>Index: languages/ini.js
 ===================================================================
 --- languages/ini.js    (revision 199)

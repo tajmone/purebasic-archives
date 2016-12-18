@@ -219,6 +219,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/12/18` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to v9.9.0.
 -   `2016/12/06` — Republished Dräc’s French tutorial [*PureBasic et la POO*](./tutorials/oop/drac/fr/POO-Demystifiee.asciidoc)
 -   `2016/11/30` — Now GFM (GitHub Flavored Markdown) is the default standard for markdown documents and cleanup operations performed via the repo-maintaiance tools.
 -   `2016/11/26`

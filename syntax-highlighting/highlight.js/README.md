@@ -1,4 +1,4 @@
-Highlight.js v9.8.0 “New York”
+Highlight.js v9.9.0
 ==============================
 
 This repo npw host pre-built versions of **highlight.js**’ «PureBASIC enhanced/modded releases», with different combinations of language syntaxes, to cover common usage scenarios, along with instructions and examples:
