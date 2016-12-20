@@ -17,7 +17,7 @@ Pandoc 2 BBCode
 
 -   [`/pandoc2bbcode/`](/pandoc2bbcode/)
 
-BSD 3-Clause License. “`bbcode_phpbb.lua`” v1.0.
+BSD 3-Clause License. “`bbcode_phpbb.lua`” v1.1.
 
 > The `/pandoc2bbcode/` folder contains selected files from [@lilydjwg](https://github.com/lilydjwg)’s and [@tajmone](https://github.com/tajmone)’s **2bbcode** repo:
 >

@@ -3,7 +3,7 @@
      *                         Pandoc 2 BBCode for phpBB                          *
      *                                                                            *
      ******************************************************************************
-     "bbcode_phpbb.lua" v1.0 (2016-12-10)
+     "bbcode_phpbb.lua" v1.1 (2016-12-20)
 	 adapted by Tristano Ajmone (@tajmone):
 	 -- https://github.com/tajmone/2bbcode
      ------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ end
 
 -- CHANGES BY @tajmone: CaptionedImage
 --   *  Added CaptionedImage function (missing in original)
---		Caused error for GFM images with Alt text (even if Alt was empty)
+--		  Caused error for GFM images with Alt text (even if Alt was empty)
 function CaptionedImage(src, tit, caption, attr)
   return "[img]" .. src .. "[/img]"
 end
@@ -235,7 +235,7 @@ end
 
 -- CHANGES BY @tajmone: Table
 --   *  Now presence of a Table in input doesn't throw an error and abort,
---		it just returns empty string, suppressing the table in converted output!
+--		  it just returns empty string, suppressing the table in converted output!
 --   *  Warning is printed to STDERR showing the omitted Table's headers
 --		(so user can understand what was left out).
 
@@ -284,6 +284,32 @@ meta.__index =
   end
 setmetatable(_G, meta)
 
+-- CHANGES BY @tajmone: DoubleQuoted
+--   *  Added DoubleQuoted function (missing in original)
+--      Caused error for text within double quotes
+--   *  Returns text in nice UTF-8 curly double quotes (always)
+function DoubleQuoted(s)
+  return "“" .. s .. '”'
+end
+
+-- CHANGES BY @tajmone: SingleQuoted
+--   *  Added SingleQuoted function (missing in original)
+--      Caused error for text within single quotes
+--   *  Returns text in nice UTF-8 curly single quotes (always)
+function SingleQuoted(s)
+  return "‘" .. s .. '’'
+end
+
+-- CHANGES BY @tajmone: SoftBreak
+--   *  Added SoftBreak function (missing in original)
+--      This element was added in pandoc 1.16 as a matter of editing convenience
+--      to preserve line breaks (as opposed to paragraph breaks) from input source to output. 
+--   *  Returns text followed by \n
+function SoftBreak()
+  return "\n"
+end
+
+
 -- CHANGES BY @tajmone: PrintWarning function
 --   *  I've added this function to warn the user (on STDERR) when
 --      some BBCode-unsupported input is suppressed from output.
@@ -294,6 +320,11 @@ end
 ==============================================================================
                                  FILE HISTORY                                 
 ==============================================================================
+v1.1 - 2016/12/20
+     - Bug Fix: Added missing fucntions:
+       - DoubleQuoted()
+       - SingleQuoted()
+       - SoftBreak()
 v1.0 - 2016/12/10
      - Forked from `2bbcode.lua` and created 1st release.
 ]]
