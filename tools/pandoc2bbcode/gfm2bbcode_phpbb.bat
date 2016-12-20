@@ -1,0 +1,1 @@
+pandoc --smart --wrap=none --normalize -f markdown_github-hard_line_breaks -t "%~dp0bbcode_phpbb.lua" -o "%~pn1.bbcode" "%1"

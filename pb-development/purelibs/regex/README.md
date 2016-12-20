@@ -1,7 +1,7 @@
 RegularExpression (PCRE)
 ========================
 
-    PureBASIC 5.50
+    PureBASIC 5.51
     PCRE version 8.30 (2012-02-04)
     License: New BSD
 
@@ -57,7 +57,7 @@ Knowing the exact library version in use is important for knowing which PCRE pac
 PCRE Version
 ------------
 
-In the [`Get_PCRE_Version.pb`](Get_PCRE_Version.pb) file (inside this folder) you’ll find this code hack to extract the version number and release date of the PCRE lib used by PureBASIC:
+In the [`Get_PCRE_Version.pb`](Get_PCRE_Version.pb) file (inside this folder) you’ll find this code hack to extract the version number and release date of the PCRE lib used by PureBASIC.
 
 ``` purebasic
 ; PureBASIC 5.50
@@ -77,19 +77,21 @@ Running it produces the following output in the Debugger:
 
     8.30 2012-02-04
 
-Which means that PureBASIC 5.50 is using PCRE libary version 8.30, released on February 4th, 2012.
+Which means that PureBASIC 5.10 is using PCRE libary version 8.30, released on February 4th, 2012.
 
 PCRE Build-Time Options
 -----------------------
 
 The following Table resumes the technical details of the compiler-options used for building PureBASIC’s built-in PCRE component. It was automatically generated with the [`Get_PCRE_Info.pb`](Get_PCRE_Info.pb) tool found in this folder (by @tajmone).
 
+This is info was obtained under MS __Windows 10__ x64:
+
 | Feature Name                         | Value            | Description                           |
 |--------------------------------------|------------------|---------------------------------------|
-| PCRE Version                         | 8.30             | PCRE lib used by PureBASIC 5.50.      |
+| PCRE Version                         | 8.30             | PCRE lib used by PureBASIC 5.51.      |
 | `PCRE_CONFIG_UTF8`                   | True             | UTF-8 support.                        |
 | `PCRE_CONFIG_UNICODE_PROPERTIES`     | True             | Unicode property support.             |
-| `PCRE_CONFIG_NEWLINE`                | `LF`             | Default “newline” sequence.           |
+| `PCRE_CONFIG_NEWLINE`                | `LF`             | Default "newline" sequence.           |
 | `PCRE_CONFIG_BSR`                    | All Unicode EOLs | Default EOLs matched by `\R`.         |
 | `PCRE_CONFIG_STACKRECURSE`           | heap             | Heap-based recursion (data-blocks).   |
 | `PCRE_CONFIG_LINK_SIZE`              | 2 bytes          | RegExs internal link size.            |

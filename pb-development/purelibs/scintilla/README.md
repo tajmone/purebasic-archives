@@ -1,7 +1,7 @@
 Scintilla
 =========
 
-    PureBASIC 5.50
+    PureBASIC 5.51
     Scintilla version (unknown)
     License: Historical Permission Notice and Disclaimer (HPND)
 

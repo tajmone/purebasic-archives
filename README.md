@@ -92,6 +92,7 @@ For the time being, a single presentation-page is all the website can offer.
 Quick Links
 ===========
 
+-   [**pandoc2bbcode**](./tools/pandoc2bbcode/) by [lilydjwg](https://github.com/lilydjwg/2bbcode) (依云) and [Tristano Ajmone](https://github.com/tajmone/2bbcode): a script for converting documents to PureBASIC Forums’ BBCode from over 20 input formats (including markdown, html, ODT and docx). Useful for writing elegantly formatted posts on PB forums using Markdown, or to quickly convert existing documents to BBCode.
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial ([Also in French](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html)) – [source folder](./tutorials/oop/drac/).
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
@@ -113,6 +114,7 @@ The Archives project is divided into folders according to categories:
 -   [`/pb-development/`](./pb-development/) – resources for developing in PureBASIC.
 -   [`/syntax-highlighting/`](./syntax-highlighting/) — publishing PureBASIC source code in colored syntax.
 -   [`/text-editors/`](./text-editors/) — PureBASIC syntax support in text editors.
+-   [`/tools/`](./tools/) — any PureBASIC related tools that don’t quite fit anywhere else.
 -   [`/tutorials/`](./tutorials/) — PureBASIC learning tutorials.
 
 Some folders contain material specific to this repo’s developement and maintainance:
@@ -219,6 +221,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2016/12/20` — Added [**pandoc2bbcode**](./tools/pandoc2bbcode/), a script for converting documents to PureBASIC Forums BBCode from a variety of input formats.
 -   `2016/12/18` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to v9.9.0.
 -   `2016/12/06` — Republished Dräc’s French tutorial [*PureBasic et la POO*](./tutorials/oop/drac/fr/POO-Demystifiee.asciidoc)
 -   `2016/11/30` — Now GFM (GitHub Flavored Markdown) is the default standard for markdown documents and cleanup operations performed via the repo-maintaiance tools.

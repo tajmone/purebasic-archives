@@ -1,0 +1,6 @@
+#!/bin/bash
+
+format=${1:-markdown_github}
+me=$(dirname $(realpath $0))
+
+exec pandoc -f $format -t "$me"/bbcode_phpbb.lua
