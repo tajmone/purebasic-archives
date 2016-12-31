@@ -2,7 +2,7 @@ Scintilla
 =========
 
     PureBASIC 5.51
-    Scintilla version (unknown)
+    Scintilla version: 3.4.2 (2014-05-22)
     License: Historical Permission Notice and Disclaimer (HPND)
 
 <!-- #toc -->
@@ -24,11 +24,11 @@ External Refrence Links
 Documents
 =========
 
-The following documents were taken from Scintilla 3.7.1 package, and are licensed under the [Historical Permission Notice and Disclaimer (HPND)](https://en.wikipedia.org/wiki/Historical_Permission_Notice_and_Disclaimer) license:
+The following documents were taken from Scintilla 3.4.2 package — with the exception of  `ScintillaHistory.html`, which is taken from Scintilla 3.7.2 package — and are licensed under the [Historical Permission Notice and Disclaimer (HPND)](https://en.wikipedia.org/wiki/Historical_Permission_Notice_and_Disclaimer) license:
 
 -   [`Design.html`](Design.html) – «*Scintilla Component Design*».
 -   [`ScintillaDoc.html`](ScintillaDoc.html) – «*Scintilla Documentation*».
--   [`ScintillaHistory.html`](ScintillaHistory.html) – «*History of Scintilla and SciTE*».
+-   [`ScintillaHistory.html`](ScintillaHistory.html) – «*History of Scintilla and SciTE*» updated to Scintilla 3.7.2 (2016/12/30).
 -   [`ScintillaUsage.html`](ScintillaUsage.html) – «*Scintilla Usage Notes*» (Implementing Auto-Indent, Syntax Styling, and Calltips).
 -   [`Steps.html`](Steps.html) – «*How to use the Scintilla Edit Control in windows?*».
 -   [`Lexer.txt`](Lexer.txt) – «*How to Write a Scintilla Lexer*», C++ tutorial by Edward K. Ream.
