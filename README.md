@@ -92,6 +92,7 @@ For the time being, a single presentation-page is all the website can offer.
 Quick Links
 ===========
 
+-   [**GoScintilla 3**](./pb-development/purelibs/scintilla/GoScintilla3/) by Stephen Rodriguez (updated to PB 5.x): source-code helpers which wrap a lot of the Scintilla API in order to simplify use of Scintilla within applications.
 -   [**pandoc2bbcode**](./tools/pandoc2bbcode/) by [lilydjwg](https://github.com/lilydjwg/2bbcode) (依云) and [Tristano Ajmone](https://github.com/tajmone/2bbcode): a script for converting documents to PureBASIC Forums’ BBCode from over 20 input formats (including markdown, html, ODT and docx). Useful for writing elegantly formatted posts on PB forums using Markdown, or to quickly convert existing documents to BBCode.
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial ([Also in French](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html)) – [source folder](./tutorials/oop/drac/).
@@ -221,6 +222,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2017/01/02` — Added [**GoScintilla 3**](./pb-development/purelibs/scintilla/GoScintilla3/) by Stephen Rodriguez — updated to work with PB 5.x.
 -   `2016/12/20` — Added [**pandoc2bbcode**](./tools/pandoc2bbcode/), a script for converting documents to PureBASIC Forums BBCode from a variety of input formats.
 -   `2016/12/18` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to v9.9.0.
 -   `2016/12/06` — Republished Dräc’s French tutorial [*PureBasic et la POO*](./tutorials/oop/drac/fr/POO-Demystifiee.asciidoc)

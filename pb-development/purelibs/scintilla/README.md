@@ -32,6 +32,7 @@ External Refrence Links
 In This Repo
 ============
 
+- [`/GoScintilla3/`](./GoScintilla3/) — __GoScintilla__ updated to PB 5.x.
 -   [`/icons1/`](./icons1/) — Icons that can be used with Scintilla.
 -   [`/pb-scidoc/`](./pb-scidoc/) — Scintilla documentation adapted to PB usage (empty)
 -   [`/scidoc/`](./scidoc/) — Selected files from Scintilla documentation.
@@ -66,6 +67,18 @@ This folder contains a selection of documentation files taken from the Scintilla
 This folder will contain a readaptation of Scintilla documentation for PureBASIC specific usage.
 
 (coming soon)
+
+## GoScintilla 3
+
+- [`/GoScintilla3/`](./GoScintilla3/)
+
+by Stephen Rodriguez (aka [**@srod**](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678) and **nxSoftWare**).
+
+GoScintilla is a small Purebasic source-code utility which wraps a lot of the Scintilla API in order to make it easier to use the Scintilla control within our applications to give our programs source code editing facilities.
+
+It comes with a powerful little lexer which is easily configured to give us syntax styling and/or code folding and/or code-completion and/or call-tips (code-tips) … as appropriate for some programming/scripting language or other.
+
+With a few lines of Purebasic code we can have a fully configured Scintilla control up and running in no time and without the need to code our own lexer.
 
 Icons
 -----
