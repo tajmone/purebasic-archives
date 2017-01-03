@@ -13,6 +13,7 @@ Scintilla
     -   [Documentation](#documentation)
         -   [Scintilla Documentation](#scintilla-documentation)
         -   [PB-Scintilla Documentation](#pb-scintilla-documentation)
+    -   [GoScintilla](#goscintilla)
     -   [Icons](#icons)
 -   [About Scintilla](#about-scintilla)
     -   [PB Scintilla Version](#pb-scintilla-version)
@@ -32,7 +33,7 @@ External Refrence Links
 In This Repo
 ============
 
-- [`/GoScintilla3/`](./GoScintilla3/) — __GoScintilla__ updated to PB 5.x.
+-   [`/GoScintilla/`](./GoScintilla/) — **GoScintilla** updated to PB 5.x.
 -   [`/icons1/`](./icons1/) — Icons that can be used with Scintilla.
 -   [`/pb-scidoc/`](./pb-scidoc/) — Scintilla documentation adapted to PB usage (empty)
 -   [`/scidoc/`](./scidoc/) — Selected files from Scintilla documentation.
@@ -68,9 +69,10 @@ This folder will contain a readaptation of Scintilla documentation for PureBASIC
 
 (coming soon)
 
-## GoScintilla 3
+GoScintilla
+-----------
 
-- [`/GoScintilla3/`](./GoScintilla3/)
+-   [`/GoScintilla/`](./GoScintilla/)
 
 by Stephen Rodriguez (aka [**@srod**](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678) and **nxSoftWare**).
 

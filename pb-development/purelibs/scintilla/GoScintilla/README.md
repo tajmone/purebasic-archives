@@ -1,5 +1,5 @@
-GoScintilla 3
-=============
+GoScintilla
+===========
 
 GoScintilla is a small Purebasic source-code utility which wraps a lot of the Scintilla API in order to make it easier to use the Scintilla control within our applications to give our programs source code editing facilities.
 
@@ -11,8 +11,8 @@ With a few lines of Purebasic code we can have a fully configured Scintilla cont
 
 <!-- #toc -->
 -   [Introduction](#introduction)
-    -   [About GoScintilla 2](#about-goscintilla-2)
-    -   [About GoScintilla 3](#about-goscintilla-3)
+    -   [About GoScintilla v2](#about-goscintilla-v2)
+    -   [About GoScintilla v3](#about-goscintilla-v3)
 -   [License](#license)
 
 <!-- /toc -->
@@ -22,8 +22,8 @@ With a few lines of Purebasic code we can have a fully configured Scintilla cont
 Introduction
 ============
 
-About GoScintilla 2
--------------------
+About GoScintilla v2
+--------------------
 
 -   [GoScintilla on PureBASIC Forums](http://www.purebasic.fr/english/viewtopic.php?f=14&t=40088&hilit=go+scintilla)
 
@@ -33,16 +33,20 @@ GoScintilla 2.7 can still be downloaded in a zip archive (`GoScintilla.zip`) fro
 
 -   <http://www.rsbasic.de/backups/>
 
-About GoScintilla 3
--------------------
+About GoScintilla v3
+--------------------
 
 **GoScintilla 3** takes on from the latest version of **GoScintilla 2**, tweaking slighlty its source code to make it compatible with PureBASIC 5.51.
 
 The required changes were few (just 3 lines of code changed) and should make **GoScintilla 3** work with any PureBASIC version &gt;= 5.10. Future versions of **GoScintilla 3** might contain further optimizations that take into account the changes that both PureBASIC and the Scintilla component have undergone since **GoScintilla 2.7**.
 
+Please, note that the shift from v2 to v3 only denotes a backward compatiblity breakage, NOT ADDITIONAL FEATURES! I’m following here the [criteria of Semantic Versioning](http://semver.org/#spec-item-8):
+
+> **8)** Major version X (X.y.z | X &gt; 0) MUST be incremented if any backwards incompatible changes are introduced to the public API. It MAY include minor and patch level changes. Patch and minor version MUST be reset to 0 when major version is incremented.
+
 The aim of **GoScintilla 3** will be to make the most out of PureBASIC’s Scintilla gadget with the latest stable release of PureBASIC. The project is open to contributions.
 
-**GoScintilla 3** is maintained by Tristano Ajmone at **The PureBASIC Archives** on GitHub:
+This fork of **GoScintilla** is maintained by Tristano Ajmone at **The PureBASIC Archives** on GitHub:
 
 -   <https://github.com/tajmone/purebasic-archives>
 
