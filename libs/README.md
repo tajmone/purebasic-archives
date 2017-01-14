@@ -18,10 +18,14 @@ Outdated resources (ie: for PureBASIC 4) are kept in the list when no up-to-date
         -   [Audio](#audio)
     -   [HTML/CSS](#htmlcss)
     -   [Network](#network)
+    -   [System](#system)
 -   [Commercial](#commercial)
     -   [Chilkat](#chilkat)
 
 <!-- /toc -->
+
+------------------------------------------------------------------------
+
 By Category
 ===========
 
@@ -40,18 +44,23 @@ Multimedia
 -   [Libsndfile](http://00laboratories.com/resources/code/purebasic/libsndfile-header) – by 00laboratories. (**PB 5.41**). PB header file for [Libsndfile](http://www.mega-nerd.com/libsndfile/) 1.0.25, a C library for importing/exporting various sound file formats.
 -   [LibZPlay](http://erion.tdrealms.com/software/libzplay) — by Erion. (**PB 5.11**). A wrapper for the [LibZPlay](http://libzplay.sourceforge.net/) multimedia engine. Originally [ported to PB by TS-Soft](http://www.purebasic.fr/english/viewtopic.php?f=27&t=49345&hilit=LibZPlay), this version was [updated by Erion](http://www.purebasic.fr/english/viewtopic.php?f=12&t=54060&hilit=LibZPlay) to include some new functions from 2.0. Includes DLL, import lib file, the library’s original documentation in chm and a small PB example.
 -   [OpenAL Soft](http://00laboratories.com/resources/code/purebasic/openal-soft-header) – by 00laboratories. (**PB 5.41**). PB header file to import [OpenAL Soft](http://www.openal-soft.org/) (Open Audio Library) sound engine.
--   [PurESpeak](http://erion.tdrealms.com/software/pb/purespeak) – by Erion (**PB 5.11**). A wrapper for [ESpeak](http://espeak.sourceforge.net/) standalone speech synthesizer. Includes a DLL version of ESpeak with voices and variants that is part of [NVDA](http://www.nvaccess.org/) (NonVisual Desktop Access).
+-   [PurESpeak](http://erion.tdrealms.com/software/pb/purespeak) — by Erion (**PB 5.11**). A wrapper for [ESpeak](http://espeak.sourceforge.net/) standalone speech synthesizer. Includes a DLL version of ESpeak with voices and variants that is part of [NVDA](http://www.nvaccess.org/) (NonVisual Desktop Access).
 -   [TagLib](http://erion.tdrealms.com/taglib) – by Erion (**PB 5.11**). A wrapper for the C bindings of [TagLib Audio Meta-Data Library](http://taglib.org/), which allows to read and write tags and audio properties.
 
 HTML/CSS
 --------
 
--   [RWLibTidy](http://www.purearea.net/pb/english/dll_devtools.htm) – - by Progi1984. (**!!PB 4!!**) Wrapper for the 2008/01/25 release of the [LibTidy](http://www.html-tidy.org/developer/) DLL, a library for cleaning up your HTML web pages.
+-   [RWLibTidy](http://www.purearea.net/pb/english/dll_devtools.htm) — by Progi1984. (**!!PB 4!!**) Wrapper for the 2008/01/25 release of the [LibTidy](http://www.html-tidy.org/developer/) DLL, a library for cleaning up your HTML web pages.
 
 Network
 -------
 
--   [RWLibCurl](http://www.purearea.net/pb/english/dll_devtools.htm) - by Progi1984. (**!!PB 4!!**) Wrapper for the v7.17.1 of the [LibCurl](https://curl.haxx.se/libcurl/) DLL.
+-   [RWLibCurl](http://www.purearea.net/pb/english/dll_devtools.htm) — by Progi1984. (**!!PB 4!!**) Wrapper for the v7.17.1 of the [LibCurl](https://curl.haxx.se/libcurl/) DLL.
+
+System
+------
+
+-   [Registry Module](http://www.purebasic.fr/english/viewtopic.php?p=422572#p422572) (Windows only) — by ts-soft. Adds procedures for handling Windows’ registry read/write and delete operations. (tested on __PB 5.5x__)
 
 Commercial
 ==========

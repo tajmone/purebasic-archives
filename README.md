@@ -213,6 +213,7 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 Acknowledgements
 ================
 
+- Stephen Rodriguez «[@srod](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678)» — for the [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) library. 
 -   Jordan Klassen «[@forivall](https://github.com/forivall)» — for releasing [gh-pandoc.css](https://gist.github.com/forivall/7d5a304a8c3c809f0ba96884a7cf9d7e) under MIT when asked reuse permission.
 -   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
 -   [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) – for releasing [PBHGEN](https://bitbucket.org/Henry00/pbhgen) under CC BY when asked reuse permission..
