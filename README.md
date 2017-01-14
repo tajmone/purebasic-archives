@@ -92,6 +92,7 @@ For the time being, a single presentation-page is all the website can offer.
 Quick Links
 ===========
 
+-   [**Win Registry Module**](./libs/win-registry/) by Thomas Schulz «**ts-soft**» (Windows only). Adds procedures for handling Windows’ registry read/write and delete operations.
 -   [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) by Stephen Rodriguez (updated to PB 5.x): source-code helpers which wrap a lot of the Scintilla API in order to simplify use of Scintilla within applications.
 -   [**pandoc2bbcode**](./tools/pandoc2bbcode/) by [lilydjwg](https://github.com/lilydjwg/2bbcode) (依云) and [Tristano Ajmone](https://github.com/tajmone/2bbcode): a script for converting documents to PureBASIC Forums’ BBCode from over 20 input formats (including markdown, html, ODT and docx). Useful for writing elegantly formatted posts on PB forums using Markdown, or to quickly convert existing documents to BBCode.
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
@@ -213,7 +214,8 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 Acknowledgements
 ================
 
-- Stephen Rodriguez «[@srod](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678)» — for the [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) library. 
+-   Thomas Schulz «[@ts-soft](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=1214)» — for the [**Win Registry Module**](./libs/win-registry/).
+-   Stephen Rodriguez «[@srod](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678)» — for the [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) library.
 -   Jordan Klassen «[@forivall](https://github.com/forivall)» — for releasing [gh-pandoc.css](https://gist.github.com/forivall/7d5a304a8c3c809f0ba96884a7cf9d7e) under MIT when asked reuse permission.
 -   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
 -   [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) – for releasing [PBHGEN](https://bitbucket.org/Henry00/pbhgen) under CC BY when asked reuse permission..
@@ -223,6 +225,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2017/01/14` — Added [**Win Registry Module**](./libs/win-registry/) by Thomas Schulz, a module for handling Windows’ registry read/write and delete operations.
 -   `2017/01/02` — Added [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) by Stephen Rodriguez — updated to work with PB 5.x.
 -   `2016/12/20` — Added [**pandoc2bbcode**](./tools/pandoc2bbcode/), a script for converting documents to PureBASIC Forums BBCode from a variety of input formats.
 -   `2016/12/18` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to v9.9.0.

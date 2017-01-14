@@ -12,6 +12,8 @@ Outdated resources (ie: for PureBASIC 4) are kept in the list when no up-to-date
 ------------------------------------------------------------------------
 
 <!-- #toc -->
+-   [In This Repo](#in-this-repo)
+    -   [Windows Registry Module](#windows-registry-module)
 -   [By Category](#by-category)
     -   [Graphics](#graphics)
     -   [Multimedia](#multimedia)
@@ -26,8 +28,24 @@ Outdated resources (ie: for PureBASIC 4) are kept in the list when no up-to-date
 
 ------------------------------------------------------------------------
 
+In This Repo
+============
+
+PureBASIC libs hosted inside the repository.
+
+Windows Registry Module
+-----------------------
+
+-   [`/win-registry/`](./win-registry/) (Windows only)
+
+by Thomas Schulz «**ts-soft**». Adds procedures for handling Windows’ registry read/write and delete operations. Unrestriced free license. (tested on **PB 5.5x**)
+
+------------------------------------------------------------------------
+
 By Category
 ===========
+
+A list of libs — both from this repo and external linked-resources — sorted by category.
 
 Graphics
 --------
@@ -60,7 +78,7 @@ Network
 System
 ------
 
--   [Registry Module](http://www.purebasic.fr/english/viewtopic.php?p=422572#p422572) (Windows only) — by ts-soft. Adds procedures for handling Windows’ registry read/write and delete operations. (tested on __PB 5.5x__)
+-   [Windows Registry Module](#windows-registry-module) (**in this repo**) — by **ts-soft**. Adds procedures for handling Windows’ registry read/write and delete operations.
 
 Commercial
 ==========
