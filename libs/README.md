@@ -12,17 +12,19 @@ Outdated resources (ie: for PureBASIC 4) are kept in the list when no up-to-date
 ------------------------------------------------------------------------
 
 <!-- #toc -->
--   [In This Repo](#in-this-repo)
-    -   [Windows Registry Module](#windows-registry-module)
--   [By Category](#by-category)
-    -   [Graphics](#graphics)
-    -   [Multimedia](#multimedia)
-        -   [Audio](#audio)
-    -   [HTML/CSS](#htmlcss)
-    -   [Network](#network)
-    -   [System](#system)
--   [Commercial](#commercial)
-    -   [Chilkat](#chilkat)
+
+- [In This Repo](#in-this-repo)
+    - [Windows Registry Module](#windows-registry-module)
+- [By Category](#by-category)
+    - [Graphics](#graphics)
+    - [GUI](#gui)
+    - [HTML/CSS](#htmlcss)
+    - [Multimedia](#multimedia)
+        - [Audio](#audio)
+    - [Network](#network)
+    - [System](#system)
+- [Commercial](#commercial)
+    - [Chilkat](#chilkat)
 
 <!-- /toc -->
 
@@ -52,6 +54,16 @@ Graphics
 
 -   [PureSVG](http://forum.purebasic.com/english/viewtopic.php?f=12&t=40540&hilit=svg&sid=d87053584f2e9f23933eb991e680d7f8) – by Seymour Clufley. (**PB 5.22**). This “library” enables you to draw SVG images using analogues of 2D Drawing’s commands.
 
+## GUI
+
+- [TimerMsgBox](http://www.purebasic.fr/english/viewtopic.php?f=12&t=52145) — by TI-994A. A self-contained procedure to create multi-line, multi-button, timer-enabled, stay-on-top message boxes.
+
+HTML/CSS
+--------
+
+-   [RWLibTidy](http://www.purearea.net/pb/english/dll_devtools.htm) — by Progi1984. (**!!PB 4!!**) Wrapper for the 2008/01/25 release of the [LibTidy](http://www.html-tidy.org/developer/) DLL, a library for cleaning up your HTML web pages.
+
+
 Multimedia
 ----------
 
@@ -65,10 +77,6 @@ Multimedia
 -   [PurESpeak](http://erion.tdrealms.com/software/pb/purespeak) — by Erion (**PB 5.11**). A wrapper for [ESpeak](http://espeak.sourceforge.net/) standalone speech synthesizer. Includes a DLL version of ESpeak with voices and variants that is part of [NVDA](http://www.nvaccess.org/) (NonVisual Desktop Access).
 -   [TagLib](http://erion.tdrealms.com/taglib) – by Erion (**PB 5.11**). A wrapper for the C bindings of [TagLib Audio Meta-Data Library](http://taglib.org/), which allows to read and write tags and audio properties.
 
-HTML/CSS
---------
-
--   [RWLibTidy](http://www.purearea.net/pb/english/dll_devtools.htm) — by Progi1984. (**!!PB 4!!**) Wrapper for the 2008/01/25 release of the [LibTidy](http://www.html-tidy.org/developer/) DLL, a library for cleaning up your HTML web pages.
 
 Network
 -------
