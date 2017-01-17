@@ -5,9 +5,8 @@
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="Tristano Ajmone (@tajmone)">
-  <meta name="dcterms.date" content="2016-12-18">
   <meta name="keywords" content="PureBasic, highlight.js, syntax highlighting, javascript">
-  <title>HLJS-PB v9.9.0a :: PB-DEV1</title>
+  <title>HLJS-PB v9.9.0b :: PB-DEV1</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="highlight.css">
   <link rel="stylesheet" href="../resources/gh-pandoc.min.css">
@@ -19,10 +18,10 @@
 </head>
 <body>
 <header>
-<h1 class="title">HLJS-PB v9.9.0a :: PB-DEV1</h1>
+<h1 class="title">HLJS-PB v9.9.0b :: PB-DEV1</h1>
 <p class="subtitle">Pre-Built HLJS-Package Demo</p>
 <p class="author">Author: Tristano Ajmone (<a href="https://github.com/tajmone" target="_blank"><span class="citation" data-cites="tajmone">@tajmone</span></a>)</p>
-<p class="date">Date: December 18, 2016</p>
+<p class="date">Date: Jan 17, 2017</p>
 </header>
 <nav id="TOC">
 <p class="toctitle">Contents</p>
@@ -38,11 +37,12 @@
 <li><a href="#dos-.bat">DOS .bat</a></li>
 <li><a href="#ini">Ini</a></li>
 <li><a href="#powershell">PowerShell</a></li>
+<li><a href="#fasm">FASM</a></li>
 </ul>
 </nav>
 <h1 id="highlight.js-examples">Highlight.js Examples</h1>
 <p>This page is an example (and test) page for the generated HLJS package.</p>
-<p>«<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">Highlight.js PureBASIC Modded Fork</a>» <strong>v9.9.0a</strong> (2016/12/18), based on Highlight.js <strong>v9.9.0</strong> (2016/12/13).</p>
+<p>«<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">Highlight.js PureBASIC Modded Fork</a>» <strong>v9.9.0b</strong> (2017/01/17), based on Highlight.js <strong>v9.9.0</strong> (2016/12/13).</p>
 <h2 id="using-hljs">Using HLJS</h2>
 <p>HLJS is capable of auto-detecting languages withing the <code>&lt;pre&gt;&lt;code&gt;</code> blocks, but it’s advaisable to manually define the language – especially for readability of source code.</p>
 <p>To define the language in html, assign the language name to the <code>class</code> attribute of the opening <code>&lt;code&gt;</code> tag of the <code>&lt;pre&gt;&lt;code&gt;</code> block that wraps your source code:</p>
@@ -180,6 +180,59 @@ do {
     $rollingDate = $rollingDate.AddDays(21)
     $username = [System.Environment]::UserName
 } until ($rollingDate -ge [datetime]&#39;2013/12/31&#39;)</code></pre>
+<h1 id="fasm">FASM</h1>
+<blockquote>
+<p><strong>NOTE 1</strong>: Currently, the FASM language definition (<code>fasm.js</code>) is just a copy of <code>x86asm.js</code> (<strong>highlight.js</strong>’s gerneric language definition for Intel x86 Assembly), so it doesn’t render FASM syntax 100% correctly. In due time, the language definition will be tweaked to become FASM-specific and fully compliant. I’ve chosen to early-adopt a renamed version of <code>x86asm.js</code> file to avoid having to change — in the future — all language class attributes in source documents.</p>
+</blockquote>
+<blockquote>
+<p><strong>NOTE 2</strong>: The current theme uses <strong>xterm</strong>’s color palette. I wanted to provide an old-school look to FASM syntax. But the theme palette will change when the language definition shall be completed.</p>
+</blockquote>
+<pre class="fasm"><code>; Beer - example of tiny (one section) Win32 program
+
+format PE GUI 4.0
+
+include &#39;win32a.inc&#39;
+
+; no section defined - fasm will automatically create .flat section for both
+; code and data, and set entry point at the beginning of this section
+
+    invoke  MessageBoxA,0,_message,_caption,MB_ICONQUESTION+MB_YESNO
+    cmp eax,IDYES
+    jne exit
+
+    invoke  mciSendString,_cmd_open,0,0,0
+    invoke  mciSendString,_cmd_eject,0,0,0
+    invoke  mciSendString,_cmd_close,0,0,0
+
+exit:
+    invoke  ExitProcess,0
+
+_message db &#39;Do you need additional place for the beer?&#39;,0
+_caption db &#39;Desktop configuration&#39;,0
+
+_cmd_open db &#39;open cdaudio&#39;,0
+_cmd_eject db &#39;set cdaudio door open&#39;,0
+_cmd_close db &#39;close cdaudio&#39;,0
+
+; import data in the same section
+
+data import
+
+ library kernel32,&#39;KERNEL32.DLL&#39;,\
+     user32,&#39;USER32.DLL&#39;,\
+     winmm,&#39;WINMM.DLL&#39;
+
+ import kernel32,\
+    ExitProcess,&#39;ExitProcess&#39;
+
+ import user32,\
+    MessageBoxA,&#39;MessageBoxA&#39;
+
+ import winmm,\
+    mciSendString,&#39;mciSendStringA&#39;
+
+end data</code></pre>
+<p>(example taken from <strong>FASM</strong> for Windows distribution package, examples folder, <code>BEER.ASM</code>)</p>
 <div class="warningnote">
 WARNING: This html documents is automatically generated from markdown sources. Any changes made to the html source will be overwritten and lost with the next building process.
 If you wish to contribute changes to this document, add them to the source repository:<br>

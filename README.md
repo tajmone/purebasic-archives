@@ -225,6 +225,7 @@ Repo History
 
 A record of the milestones of this repository history (reversed order).
 
+-   `2017/01/17` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to __HJLS-PB v9.9.0b__ (FASM syntax added).
 -   `2017/01/14` — Added [**Win Registry Module**](./libs/win-registry/) by Thomas Schulz, a module for handling Windows’ registry read/write and delete operations.
 -   `2017/01/02` — Added [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) by Stephen Rodriguez — updated to work with PB 5.x.
 -   `2016/12/20` — Added [**pandoc2bbcode**](./tools/pandoc2bbcode/), a script for converting documents to PureBASIC Forums BBCode from a variety of input formats.

@@ -48,9 +48,9 @@ There are 4 different pre-built HJS packages, with PureBASIC (modded) syntax bei
 
 -   [`/hljs-pb-only/`](./hljs-pb-only/) — Just PureBASIC syntax.
 
--   [`/hljs-pb-dev1/`](./hljs-pb-dev1/) — PureBASIC + Bash + DOS + Ini + PowerShell.
+-   [`/hljs-pb-dev1/`](./hljs-pb-dev1/) — PureBASIC + Bash + DOS + Ini + PowerShell + FASM.
 
--   [`/hljs-pb-dev1/`](./hljs-pb-dev1/) — PureBASIC + Bash + DOS + Ini + PowerShell + Diff + Makefile + JSON.
+-   [`/hljs-pb-dev1/`](./hljs-pb-dev1/) — PureBASIC + Bash + DOS + Ini + PowerShell + FASM + Diff + Makefile + JSON.
 
 -   [`/hljs-all/`](./hljs-all/) — All languages available in current HJS release.
 
@@ -77,8 +77,10 @@ Wherever possible, themes will mimick the language native’s IDE colors — lik
 
 Presently, I’ve defined CSS subsets only for PureBASIC and a few other langs:
 
--   PureBASIC
--   Diff
+-   **PureBASIC** — mimicks PB’s native IDE default color scheme.
+-   **Bash** — using xterm default palette.
+-   **Diff** — loosely inspired on [GitHub Compare View](https://github.com/blog/612-introducing-github-compare-view) color scheme.
+-   **FASM** — using xterm default palette, soon to be changed.
 
 All languages without a specific CSS definition will fallback on the general HLJS CSS theme which I’ve added to the prebuilt packages: `monokai-sublime.css`, from HLJS themes folder.
 

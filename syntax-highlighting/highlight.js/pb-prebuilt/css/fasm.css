@@ -1,0 +1,78 @@
+/*  "fasm.css" v1.0 — by Tristano Ajmone (2017-01-17)
+    
+    Released into the public domain under the terms of the Unlicense license:
+    -- http://unlicense.org/
+    ==============================================================================
+                                    xterm Palette                                 
+    ==============================================================================
+
+    ┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┓
+    ┃   NORMAL  COLORS   ┃   BRIGHT  COLORS   ┃
+    ┣━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━┫
+    ┃ BLACK:    #000000  ┃  DARKGRAY: #7F7F7F ┃
+    ┃ RED:      #CD0000  ┃  RED:      #FF0000 ┃
+    ┃ GREEN:    #00CD00  ┃  GREEN:    #00FF00 ┃
+    ┃ YELLOW:   #CDCD00  ┃  YELLOW:   #FFFF00 ┃
+    ┃ BLUE:     #0000EE  ┃  BLUE:     #5C5CFF ┃
+    ┃ MAGENTA:  #CD00CD  ┃  MAGENTA:  #FF00FF ┃
+    ┃ CYAN:     #00CDCD  ┃  CYAN:     #00FFFF ┃
+    ┃ GRAY:     #E5E5E5  ┃  WHITE:    #FFFFFF ┃
+    ┗━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
+
+  "fasm.js" produces the following tokens/classes:
+
+  -- .hljs-keyword
+  -- .hljs-built_in
+  -- .hljs-meta       = Macro parameter
+  -- .hljs-comment
+  -- .hljs-number
+  -- .hljs-string
+  -- .hljs-symbol     = Labels ( Global and local + Macro-local label )
+  -- .hljs-subst      = Macro parameter
+
+*/
+
+.fasm .hljs {
+  color: #FFFF00;       /**** BRIGHT YELLOW ****/
+  background: #000000;  /**** NORMAL BLACK ****/
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0.075em;
+  line-height: 1.2;
+  font-size: 0.85em;
+  font-weight: normal;
+}
+
+.fasm .hljs-meta,
+.fasm .hljs-subst {     /**** BRIGHT MAGENTA ****/
+  color: #FF00FF;
+}
+
+.fasm .hljs-keyword {
+  color: #00FFFF;       /**** BRIGHT CYAN ****/
+}
+
+.fasm .hljs-built_in {  /**** BRIGHT MAGENTA ****/
+  color: #FF00FF;
+}
+
+
+.fasm .hljs-number {    /**** BRIGHT RED ****/
+  color: #FF0000;
+  font-weight: bolder;
+}
+
+.fasm .hljs-string { 
+  color: #00CD00;       /**** NORMAL GREEN ****/
+}
+
+
+.fasm .hljs-comment {
+  color: #00CDCD;       /**** NORMAL CYAN ****/
+}
+
+
+.fasm .hljs-symbol {    /**** BRIGHT GREEN ****/
+  color: #00FF00;
+}
+
+
