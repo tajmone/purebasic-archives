@@ -1,0 +1,40 @@
+/* 	******************************************************************************
+	*                                                                            *
+	*                         Styles for Pandoc Elements                         *
+	*                                                                            *
+	******************************************************************************
+ 	Styles for pandoc-specific template elements.
+ 	by Tristano Ajmone.
+ */
+
+/* 	==============================================================================
+	                                Header Styles                                 
+	==============================================================================
+*/
+h1.title {
+	text-align: center;
+	margin-bottom: 0px;
+	font-size: 2.5em;
+}
+p.subtitle {
+	text-align: center;
+	font-size: 1.5em;	
+}
+/* 	==============================================================================
+	                              Table Of Contents                               
+	==============================================================================
+  	Styles for pandoc generated TOC.
+*/
+ #TOC {
+    position: relative;
+    padding: 16px;
+    color: #4c4a42;
+    background-color: #f5f5f5;
+    border: 1px solid #c1c1c1;
+    border-radius: 3px;
+	margin-bottom: 24px;
+}
+#TOC h1 {
+	font-size: 1.75em;
+	margin-top: 0px;
+}

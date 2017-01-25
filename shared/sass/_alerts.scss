@@ -1,0 +1,59 @@
+
+/* 	******************************************************************************
+	*                                                                            *
+	*                                Alert Boxes                                 *
+	*                                                                            *
+	******************************************************************************
+	This stylesheet is a readaptation of "Primer CSS Alerts"'s 'flash.scss' file:
+	Copyright (c) 2016 GitHub Inc., released under MIT License.
+	-- https://github.com/primer/primer-alerts
+	-- https://github.com/primer/primer-alerts/blob/master/lib/flash.scss
+*/
+
+// ------------------------------------------------------------------------------
+//                                   CHANGELOG                                   
+// ------------------------------------------------------------------------------
+// 2017-01-20:
+//  -- Renamed ".flash*" classes to ".alert*"
+//  -- Added "margin-bottom: 24px;" to ".alert"
+//  -- Changed basic alert colors from blue to gray
+//  -- Added .alert-info with blue colors (ie: original defaults)
+//  -- Deleted:
+//     -- .alert-messages
+//     -- .alert-close
+//     -- .alert-action
+//     -- .alert-full 
+//     -- .warning
+
+.alert {	// CHANGED: Grayscale (default was blue)
+    position: relative;
+    padding: 16px;
+    color: #4c4a42;
+    background-color: #f5f5f5;
+    border: 1px solid #c1c1c1;
+    border-radius: 3px;
+	margin-bottom: 24px;
+}
+.alert p:last-child {
+    margin-bottom: 0;
+}
+.alert-info {	// ADDED! Uses color of original .alert
+    color: #246;
+    background-color: #e2eef9;
+    border-color: #bac6d3;
+}
+.alert-warn {
+    color: #4c4a42;
+    background-color: #fff9ea;
+    border-color: #dfd8c2;
+}
+.alert-error {
+    color: #911;
+    background-color: #fcdede;
+    border-color: #d2b2b2;
+}
+.alert-success {
+    color: #22662c;
+    background-color: #e2f9e5;
+    border-color: #bad3be;
+}

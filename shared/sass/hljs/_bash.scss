@@ -1,0 +1,130 @@
+/*
+
+Bash theme for HLJS, by Tristano Ajmone
+
+based on xterm color palette
+
+*/
+
+/* Bash language uses the following tokens/CSS Classes:
+
+.bash .hljs-_
+.bash .hljs-built_in
+.bash .hljs-comment
+.bash .hljs-function
+.bash .hljs-function .hljs-title
+.bash .hljs-keyword
+.bash .hljs-literal
+.bash .hljs-meta
+.bash .hljs-string
+.bash .hljs-variable
+
+*/
+
+.bash .hljs {
+  background: #000000; 				/* Normal Black */
+  color: #FFFFFF; 					/* Bright White */
+  border: 1px solid #E0E0E0;
+}
+
+/*		.bash .hljs-_ {}	*/
+
+.bash .hljs-meta,
+.bash .hljs-comment {
+	color: #7F7F7F; 				/* Bright Darkgray */
+	font-weight: bold;
+}
+.bash .hljs-function,
+.bash .hljs-title,
+.bash .hljs-function .hljs-title {
+	color: #00FFFF; 				/* Bright Cyan */
+
+}
+.bash .hljs-built_in,
+.bash .hljs-keyword {
+	color: #FFFF00; 				/* Bright Yellow: */
+
+}
+.bash .hljs-literal {
+	color: #FF0000; 				/* Bright Red */
+
+}
+.bash .hljs-string {
+	color: #00FF00; 				/* Bright Green */	
+}
+.bash .hljs-variable {
+	color: #FF00FF; 				/* Bright Magenta */		
+}
+
+
+
+/*
+
+COLOR SPEC SHEET
+
+
+Normal Black: 
+    #000000
+    RGB: 0 0 0
+
+Normal Red: 
+    #CD0000
+    RGB: 205 0 0
+
+Normal Green: 
+    #00CD00
+    RGB: 0 205 0
+
+Normal Yellow: 
+    #CDCD00
+    RGB: 205 205 0
+
+Normal Blue: 
+    #0000EE
+    RGB: 0 0 238
+
+Normal Magenta: 
+    #CD00CD
+    RGB: 205 0 205
+
+Normal Cyan: 
+    #00CDCD
+    RGB: 0 205 205
+
+Normal Gray: 
+    #E5E5E5
+    RGB: 229 229 229
+
+Bright Darkgray: 
+    #7F7F7F
+    RGB: 127 127 127
+
+Bright red: 
+    #FF0000
+    RGB: 255 0 0
+
+Bright Green: 
+    #00FF00
+    RGB: 0 255 0
+
+Bright Yellow: 
+    #FFFF00
+    RGB: 255 255 0
+
+Bright Blue: 
+    #5C5CFF
+    RGB: 92 92 255
+
+Bright Magenta: 
+    #FF00FF
+    RGB: 255 0 255
+
+Bright Cyan: 
+    #00FFFF
+    RGB: 0 255 255
+
+Bright White: 
+    #FFFFFF
+    RGB: 255 255 255
+
+*/

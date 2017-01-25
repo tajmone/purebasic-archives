@@ -1,0 +1,23 @@
+
+---
+title:    Tutorial Template Preview
+subtitle: Template CSS test-ground and features overview
+# ==============================================================================
+#                                 HTML METADATA                                 
+# ==============================================================================
+# These variables will fill in the HTML <head> section
+author:       Tristano Ajmone
+pagetitle:    Pandoc Tutorial-Template Preview
+title-prefix: PureBASIC Archives
+lang:         en
+# toc-title:  Table of Contents
+date:         January 24, 2017
+description: 'A preview of the "Tutorial" pandoc HTML5 template used for
+              converting markdown source documents to HTML5 in the PureBASIC
+              Archives project.'
+keywords:
+  - pandoc
+  - template
+  - html5
+  - markdown
+...

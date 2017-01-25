@@ -1,0 +1,5 @@
+# ==============================================================================
+#                    .gitignore : /asm/fasm/tutorials/md-src/                   
+# ==============================================================================
+# Ignore html intermediary conversions of "*.before_body.md" files:
+*.before_body.html

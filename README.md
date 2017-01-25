@@ -18,7 +18,7 @@ or you may download selected resources as **Zip archives** from the [“Download
     -   [PureBASIC Archives Repository](#purebasic-archives-repository)
     -   [The Wiki](#the-wiki)
     -   [PureBASIC Archives Website](#purebasic-archives-website)
--   [Quick Links](#quick-links)
+-   [Quick Links](#quick-links) - [Developers’ Resources](#developers-resources) - [Tutorials](#tutorials) - [Miscillaneous Utilities](#miscillaneous-utilities)
 -   [Download Links](#download-links)
 -   [Resources Organization](#resources-organization)
 -   [Developement Branches](#developement-branches)
@@ -32,6 +32,7 @@ or you may download selected resources as **Zip archives** from the [“Download
     -   [Non-FOSS Collections](#non-foss-collections)
     -   [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
 -   [Acknowledgements](#acknowledgements)
+-   [Credits](#credits)
 -   [Repo History](#repo-history)
 
 <!-- /toc -->
@@ -92,11 +93,21 @@ For the time being, a single presentation-page is all the website can offer.
 Quick Links
 ===========
 
+### Developers’ Resources
+
 -   [**Win Registry Module**](./libs/win-registry/) by Thomas Schulz «**ts-soft**» (Windows only). Adds procedures for handling Windows’ registry read/write and delete operations.
 -   [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) by Stephen Rodriguez (updated to PB 5.x): source-code helpers which wrap a lot of the Scintilla API in order to simplify use of Scintilla within applications.
--   [**pandoc2bbcode**](./tools/pandoc2bbcode/) by [lilydjwg](https://github.com/lilydjwg/2bbcode) (依云) and [Tristano Ajmone](https://github.com/tajmone/2bbcode): a script for converting documents to PureBASIC Forums’ BBCode from over 20 input formats (including markdown, html, ODT and docx). Useful for writing elegantly formatted posts on PB forums using Markdown, or to quickly convert existing documents to BBCode.
 -   [**PBHGEN v5.42**](./pb-development/pb-ide/tools/pbhgen/) by Henry de Jongh: PB-IDE Tool that generates header files (`*.pbi`) for your source code (automatically creates `Declare` staments for your procedures).
+-   [fasm resources](./asm/fasm/) folder.
+
+### Tutorials
+
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial ([Also in French](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html)) – [source folder](./tutorials/oop/drac/).
+-   Vid’s «*TAJGA FASM Tutorial*» (also [available in CHM format](./asm/fasm/tutorials/)) — [source folder](./asm/fasm/tutorials/).
+
+### Miscillaneous Utilities
+
+-   [**pandoc2bbcode**](./tools/pandoc2bbcode/) by [lilydjwg](https://github.com/lilydjwg/2bbcode) (依云) and [Tristano Ajmone](https://github.com/tajmone/2bbcode): a script for converting documents to PureBASIC Forums’ BBCode from over 20 input formats (including markdown, html, ODT and docx). Useful for writing elegantly formatted posts on PB forums using Markdown, or to quickly convert existing documents to BBCode.
 -   [PureBASIC Syntax Highlighting](./syntax-highlighting/): resources for publishing neatly formatted source code examples.
 
 Download Links
@@ -111,6 +122,7 @@ Resources Organization
 
 The Archives project is divided into folders according to categories:
 
+-   [`/asm/`](./asm/) — x86 Assembly (FASM and Yasm) resources.
 -   [`/books/`](./books/) — books on PureBASIC programming.
 -   [`/libs/`](./libs/) – 3rd party PureBASIC libraries, modules, wrappers, ecc.
 -   [`/pb-development/`](./pb-development/) – resources for developing in PureBASIC.
@@ -220,12 +232,23 @@ Acknowledgements
 -   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
 -   [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) – for releasing [PBHGEN](https://bitbucket.org/Henry00/pbhgen) under CC BY when asked reuse permission..
 
+Credits
+=======
+
+-   «**Vid**» of TAJGA Team, author of “TAJGA FASM Tutorial”.
+
 Repo History
 ============
 
-A record of the milestones of this repository history (reversed order).
+A record of the milestones of this repository history (reverse order).
 
--   `2017/01/17` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to __HJLS-PB v9.9.0b__ (FASM syntax added).
+-   `2017/01/25`
+    -   Reprinted **Vid**’s “_TAJGA FASM Tutorial_” (also [available in CHM format](./asm/fasm/tutorials/)).
+    -   Created [Assembly section](./asm/) for [fasm resources](./asm/fasm/).
+    -   Created [`/shared/`](./shared/) section for gathering shared resources (CSS, JavaScript, etc.).
+    -   Created pandoc [“Tutorial” html5 template](./shared/pandoc/) for building html tutorials from multiple markdown source files.
+    -   Added [Sass/Compass project](./shared/sass/) to build CSS stylesheets of [`/shared/`](./shared/) section.
+-   `2017/01/17` — Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to **HJLS-PB v9.9.0b** (FASM syntax added).
 -   `2017/01/14` — Added [**Win Registry Module**](./libs/win-registry/) by Thomas Schulz, a module for handling Windows’ registry read/write and delete operations.
 -   `2017/01/02` — Added [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) by Stephen Rodriguez — updated to work with PB 5.x.
 -   `2016/12/20` — Added [**pandoc2bbcode**](./tools/pandoc2bbcode/), a script for converting documents to PureBASIC Forums BBCode from a variety of input formats.

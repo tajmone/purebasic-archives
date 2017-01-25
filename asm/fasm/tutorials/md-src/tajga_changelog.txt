@@ -1,0 +1,170 @@
+Last edited: 2017-01-24 | by Tristano Ajmone <tajmone@gmail.com>
+
+This document contains the CHANGELOGs and TODOs of Vid's "TAJGA FASM Tutorial"
+and to "FASM PREPROCESSOR GUIDE". First comes the new CHANGELOG and TODOs -- 
+from where Tristano took on reprinting and editing the original docs -- and at
+the end of this file you'll find verbatim copies of the original "changes.log"
+and "todo.txt" files that were distributed with the tutorial.
+==============================================================================
+                              REPRINT CHANGELOG                               
+==============================================================================
+This second changelog takes on from where Vid (the original author) left.
+It refers to The PureBASIC Archives' reprint of "TAJGA FASM Tutorial"
+------------------------------------------------------------------------------
+[2017-01-24] (by Tristano Ajmone, aka "tajmone")
+ -- First reprint of "TAJGA FASM Tutorial": ported from HTML4 to Markdown, and
+    converted to HTML5 via pandoc + custom template.
+ -- Some changes made to original text:
+    -- English text polished to improve readability.
+    -- Some paragraphs rewritten to improve clarity.
+    -- Fixed a few code typos/errors.
+    -- Added or corrected links to mentioned references.
+    -- Styled notes, tips and warnings with CSS Alert Boxes.
+    -- Applied highlighter style to key passages.
+ -- Code errors/typos fixed:
+    -- "6.4. Binary operations instructions" --- In first example, line:
+            mov bl,00000001b
+       was corrected to:
+            mov bl,00001001b
+       (text and second example make it clear it was a typo)
+    -- "6.5. Testing bits": Code in text didn't match example in paragraph:
+            "all bits but third of eight_booleans..."
+        fixed: `je` => `jz`
+    -- "7.5. Some examples" --- In stepping through code example:
+            Start: CF=16, BX=1100101000001011b
+        fixed: "Start:  CF = 16" => "Start:  CX = 16" 
+ -- Reweritten/Revised passages:
+    -- "4.1. Endian encodings" --- opening paragraphs partially rewritten to
+       improve clarity and readability.
+    -- "6.5. Testing bits": rewritten the paragraph:
+            "You often need to test value of some boolean..."
+    -- "7.1. Addition and substraction" --- typo in terminology definition:
+            "terms: incrementing (adding 1), decrementing (substracting 0)"
+       fixed: "(substracting 0)" => " (subtracting 1)" "
+==============================================================================
+                                 REPRINT TODO                                 
+==============================================================================
+New reprint TODOs shopping list, by Tristano Ajmone.
+------------------------------------------------------------------------------
+-- Reprint "FASM PREPROCESSOR GUIDE" also.
+-- Work out Vid's legacy TODO list and see what could be still done, and cross
+   out what can't be done or has been done already.
+-- Create a side-tutorial on how to setup a DOS emulator (DOSBox?) for running
+   the code examples of this tutorial.
+==============================================================================
+                          ORIGINAL CHANGELOG BY VID                           
+==============================================================================
+Here follows the original contents of the "changes.log" file found at:
+
+-- http://bos.asmhackers.net/docs/FASM%20tutorial/
+
+Changes refer to both "TAJGA FASM Tutorial" and to "FASM PREPROCESSOR GUIDE".
+------------------------------------------------------------------------------
+CHANGE LOG
+(typos and grammar fixes are not listed)
+
+[27.12.2004]
+- front: Deleted sentence about distributing tutorial under someone's other name
+- front: Added sentence about online version of tutorial
+- chapter 7.5: Example was totally wrong, now fixed, changed paragraph behind it and added another (stepping).
+
+[23.12.2004]
+- preprocessor 6.5: added <a href="combine"> on chapter
+- preprocessor 9.1: but if we have -> <br>But if we have
+- preprocessor 9.1: removed one <br> behind chapter name
+- preprocessor 9.2: not %fasm -> not anything%anything
+
+[22.12.2004]
+- chapter 7.4: changed formatting of before shifting, after shifting part
+- chapter 7.4: Last bit (...) is copied to CF -> ... is moved to CF
+- chapter 7.5: added <br> before And slightly optimized
+- chapter 7.5: all 1 bits -> all bits containing 1
+- chapter 7.5: basic-armed -> well-armed :)
+- chapter 7.5: not used by DOS services -> not used by DOS services we use
+
+[22.12.2004] release 20:20
+- all: tried to unify chapter names (preceded by two blank lines, text starts at next line)
+- preprocessor: chapter numbers, 1 -> 0, 2.1 -> 1, 2.2 -> 2.1, 2.3 -> 2.2, 2.4 -> 2.3
+- preprocessor: changed table of contents
+- preprocessor: added chapter 2.4 - String preprocessing
+- preprocessor: 9: changed almost whole chapter
+
+[13.11.2004]
+- chater 5.3: by the end:  ...if value in ax is not equal... -> ...if value in ax is equal...
+
+[15.10.2004]
+- chapter 5.3: added anchor "3"
+- chapter 5.3: added ":" after label "AX_bigger" declaration
+- chapter 7.1: last code block: changed "ax contains 5" to "ax contains 10"
+
+[25.8.2004]
+- chapter 3.2: 2nd text block from end: deleted space between "variable" and "2" and tags around "2".
+- chapter 4.1: 4th text block: added ", value of <code>variable</code> is constant, so <code>variable + 1</code> is constant as well)"
+- chapter 4.3: 4th text block: added " from given address" behind "number of characters to display"
+
+[14.6.2004]
+- chapter 6:  changed "15 possible operations (+leaving bits unchanged)" to "16 possible operations"
+- chapter 6: end: changed two "org 11111111b"s to "org 100000000b"s
+- chapter 6: all "jz"s and "jnz"s up to "test" instruction changed to "je" and "jne", rewriten
+  text about "jz" and "jnz" completely, added note about "jz"/"jnz" is same as "je"/"jne"
+- chapter 5.3: 1st text block: "lesser" -> "not greater", ">=" -> "&gt;"
+- chapter 3.2: 2nd code block from end: "variable 2" -> "variable2"
+
+[26.5.2004]
+- preprocessor: 9: deleted 2nd paragraph from the end ("it seems..." + code example)
+
+[25.5.2004]
+- chapter 4: all words "div" changed to "/", one "/" in code changed to <font color=#333399>/</font>
+- chapter 4.3: 2nd text block: added (like we did in chapter 1)
+- new style sheet
+
+[24.5.2004]
+- front: Translating tutorial: changed "Log will be present..." to "Log will be provided at request"
+- preprocessor: changed title to "FASM PREPROCESSOR GUIDE"
+- preprocessor: fixed chapter numbers 5.4 and 5.5 (they were 4.4 and 4.5)
+- preprocessor: 2.4: added <code> tags on %% in 2.4
+- preprocessor: 2.2: changed " - <code>;</code>" to "(<code>;</code>)"
+- preprocessor: 5.3: 3rd text block: <name> to "name", deleted "there will be no problem"
+- preprocessor: 5.3: 5th text block: deleted last sentence ("For example ...")
+- preprocessor: 5.3: 6th text block: "," -> (<code>,</code>)
+- preprocessor: 5.3: 7th text block: <code>..</code> -> (<code>,</code>)
+- preprocessor: 5.3: last text block: ".." -> (<code>..</code>)
+- preprocessor: 5.4: 1st text block: added "from macro argument"
+- preprocessor: 5.4: added "so for all..." behind 2nd code block
+- preprocessor: 7.1: added <code> tags on "ASCII eq ASCII", "UNICODE eq ASCII", "UNICODE eq UNICODE"
+- preprocessor: 9: 3rd text block: added hyperlink on "chapter 2"
+- preprocessor: 9: 3rd code block: added two number highlightings
+- preprocessor: 9: "sometimes you need..." code block: added line with "m3"
+- preprocessor: 9: after "sometimes..." code block: added paragraph "Symbols are..."
+
+[24.5.2004] release at 14:00
+- preprocessor: table of contents, 3.2: replaced "release" with "restore"
+- preprocessor: 4.4: added note about instruction prefix
+- preprocessor: 5.4: deleted example "a b# c" -> "a b c"
+- preprocessor: 8: deleted paragraph about incomplete floating point numbers
+
+[23.5.2004] first HTML release
+==============================================================================
+                              ORIGINAL TODO LIST                              
+==============================================================================
+Here follows the original contents of the "todo.txt" file found at:
+
+-- http://bos.asmhackers.net/docs/FASM%20tutorial/
+
+TODOs refer to both "TAJGA FASM Tutorial" and to "FASM PREPROCESSOR GUIDE".
+------------------------------------------------------------------------------
+all - anchor all chapters by number of chapter (including preprocessor)
+front - add something that tutorial is mainly assembly tutorial, not FASM tutorial
+3.1 - bad table at name.NAME2
+6.1 - add link on word "chapter 4.2'
+6.3 - add terms "setting bit" and "clearing bit"
+6.4 - check "}" indent in code block
+6.5 - add link on word "previous chapter"
+7.4 - Shifting by 0 (what is in CF), by number greater than number of bits of 
+      register (processor detection)
+preprocessor guide
+  fix one more space before console blocks
+  new paths system
+  9.1 - change italic font (best by indenting text below)
+  9.3 - describe usage of fixes for moving parts of code
+==============================================================================

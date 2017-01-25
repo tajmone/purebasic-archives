@@ -1,0 +1,54 @@
+/* 	******************************************************************************
+	*                                                                            *
+	*                          Highlight.js Lang Themes                          *
+	*                                                                            *
+	****************************************************************************** */
+
+/*	==============================================================================
+	                              HLJS COMMON RULES                               
+	==============================================================================
+*/
+
+code.hljs { /* Common set of rules required by highlight.js (don'r remove!) */
+	display: block;
+	overflow-x: auto;
+	padding: 16px;
+}
+
+/*
+pre.bash,
+pre.fasm {
+    padding: 0;
+    border: 0;
+}
+*/
+pre {
+  overflow: auto;
+  font-size: 85%;	
+}
+pre.nohighlight {
+  padding: 16px;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+// ==============================================================================
+//                        Fallback Theme: Monokai Sublime                        
+// ==============================================================================
+// IMPORTANT: This theme must be imported first!!!
+// It's the generic fallback theme for languages which don't have a dedicated
+// theme.
+@import "_monokai-sublime.scss";
+
+// ==============================================================================
+//                            Language-Specific Themes                           
+// ==============================================================================
+// These themes target specific languages.
+@import "_purebasic.scss";
+
+@import "_bash.scss";
+@import "_diff.scss";
+@import "_fasm.scss";
+@import "_hljs.scss";

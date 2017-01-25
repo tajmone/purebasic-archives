@@ -1,0 +1,64 @@
+/* 	==============================================================================
+	                            p.fake HEADERS STYLES                              
+	==============================================================================
+	Paragraph classes to simulate headers styles and bypass TOC entries.
+ */
+ 
+p.fake-h1,
+p.fake-h2,
+p.fake-h3,
+p.fake-h4,
+p.fake-h5,
+p.fake-h6 {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p.fake-h1 {
+  font-size: 32px;
+  font-size: 2em;
+  font-weight: 600;
+  // margin: 0.67em 0;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eee;
+}
+
+p.fake-h2 {
+  font-size: 24px;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eee;
+}
+
+p.fake-h3 {
+  font-size: 20px;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+p.fake-h4 {
+  font-size: 16px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+p.fake-h5 {
+  font-size: 14px;
+  font-size: 0.875em;
+  font-weight: 600;
+}
+
+p.fake-h6 {
+  font-size: 12px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #777;
+}
+
+
+
+

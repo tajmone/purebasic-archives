@@ -1,0 +1,35 @@
+
+---
+# ^ DON'T REMOVE the "---" above!
+# ******************************************************************************
+# *                              IN-DOC VARIABLES                              *
+# ******************************************************************************
+# The variables in this section will be directly visible in the final HTML doc. 
+# ------------------------------------------------------------------------------
+title:    Title Shown on Top of the Document
+subtitle: Subtitle directly below Title
+
+# ==============================================================================
+#                                   HTML META                                   
+# ==============================================================================
+# HTML Metadata -- for <head> section
+# If you don't need a variable, delete its line or comment it out with a `#`!
+# ------------------------------------------------------------------------------
+pagetitle:    Title shown in browser tab and bookmarks
+title-prefix: Prefixed to pagetitle
+lang:   en
+date:   January 25, 2017
+author:
+  - Author One
+  - Author Two
+  - Author Three
+description: 'Document description, to be shown in search engines results.'
+keywords:
+  - your
+  - keywords list
+  - for
+  - search engines
+  - indexing
+# ------------------------------------------------------------------------------
+# DON'T REMOVE the "..." below:
+...

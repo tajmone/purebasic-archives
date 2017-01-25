@@ -1,0 +1,8 @@
+# ==============================================================================
+#                      .gitignore : /shared/pandoc/md-src/                      
+# ==============================================================================
+# Ignore html intermediary conversions of "*.before_body.md" files:
+*.before_body.html
+
+# Ignore specific intermediary files of conversion process:
+TUTORIAL_PREVIEW.md
