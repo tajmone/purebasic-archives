@@ -7,6 +7,7 @@ This section is dedicated to all ASM-related resources (reference documentation,
 
 -   [`/fasm/`](./fasm/) — FASM-specific resources.
 -   [`/fasm/tutorials/`](./fasm/tutorials/) — the only folder of this section with contents right now.
+-   Vid’s «[*TAJGA FASM Tutorial*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/))   
 
 ------------------------------------------------------------------------
 
