@@ -20,6 +20,7 @@ TAJGA FASM Tutorial
 -------------------
 
 -   [`tajga-fasm-tutorial.html`](./tajga-fasm-tutorial.html)
+-   [Tutorial HTML Live Preview](https://cdn.rawgit.com/tajmone/purebasic-archives/f12e7d3/asm/fasm/tutorials/tajga-fasm-tutorial.html) (via rawgit.com)
 
 *TAJGA FASM Tutorial*, written by **vid** (2004) of the **TAJGA Team**. License: Unrestricted. Downloaded from [asmhackers.net](http://asmhackers.net/) ([BOS subdomain](http://bos.asmhackers.net/)).
 

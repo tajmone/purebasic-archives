@@ -108,7 +108,7 @@ Tutorials
 ---------
 
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial ([Also in French](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html)) – [source folder](./tutorials/oop/drac/).
--   Vid’s «[*TAJGA FASM Tutorial*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/)) — [source folder](./asm/fasm/tutorials/).
+-   Vid’s «[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/f12e7d3/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/)) — [source folder](./asm/fasm/tutorials/).
 
 Miscillaneous Utilities
 -----------------------
