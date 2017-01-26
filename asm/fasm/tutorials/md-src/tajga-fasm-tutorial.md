@@ -16,7 +16,7 @@ Development status of tutorial
 
 This tutorial is very far from being complete, but it already contains enough informations to be worth reading for beginners and intermediates.
 
-Currently, chapter 7 is done and is being revised.
+Currently, [**Chapter 7**](#arithmetic-instructions-more-on-flags) is done and is being revised.
 
 Additional articles
 -------------------
@@ -25,7 +25,7 @@ There are also some other articles connected with assembly and FASM included in 
 
 Articles:
 
--   [FASM preprocessor guide](preproc.html) (complete)
+-   [FASM preprocessor guide](./fasm-preprocessor-guide.html) (complete)
 
 Legal stuff
 -----------
@@ -770,9 +770,9 @@ So first you copy the value of `si` to `ax`. The high order byte of `ax` can be 
 4.3. String output using int 21h/ah=9
 -------------------------------------
 
-This should belong to Chapter 3, about addresses, but you need to know the `dx` register which is explained here.
+This should belong to [**Chapter 3**](#labels-addresses-and-variables), about addresses, but you need to know the `dx` register which is explained here.
 
-Here we will talk about another usage of `int 21h`. You should already know that when `ah` contains 2 then `int 21h` prints the character stored in `dl`. But if we wanted to display a long text we would have to set `dl` for every char, and this would be a bad method. Wouldn’t it be better if we just stored the string we want to display somewhere in a file (like we did in Chapter 1) and then just display it from here?
+Here we will talk about another usage of `int 21h`. You should already know that when `ah` contains 2 then `int 21h` prints the character stored in `dl`. But if we wanted to display a long text we would have to set `dl` for every char, and this would be a bad method. Wouldn’t it be better if we just stored the string we want to display somewhere in a file (like we did in [**Chapter 1**](#getting-started)) and then just display it from here?
 
 For this we can use `int 21h` with value `9` in `ah` and the string’s address in the `dx` register. Something like:
 
@@ -869,7 +869,7 @@ Line 2
 <div class="alert">
 **NOTE:** ASCII code 13 is called "CR" (carriage return) and code 10 is called "LF" (line feed).
 </div>
-Another example on addresses (previous chapter), but with word registers. Check by yourself whether you understood Chapter 3:
+Another example on addresses (previous chapter), but with word registers. Check by yourself whether you understood [**Chapter 3**](#labels-addresses-and-variables):
 
 ``` fasm
 org 256
@@ -1071,7 +1071,7 @@ terms:
 
 **set bit** --- A bit containing `1`.
 </div>
-Now, how can we store a number in these bits? It’s similar to storing a word in two bytes (Chapter 4.2, re-read it). One bit contains a `0` or `1` value, therefore a number that consists in just one bit can only contain values 0 and 1. When we add another bit, we can still store 0 and 1 in the first bit, but we have another bit which now can hold 2\*(0 or 1). A further bit holds 4\*(0 or 1), and then 8\*(0 or 1), etc.
+Now, how can we store a number in these bits? It’s similar to storing a word in two bytes ([**Chapter 4.2**](#word-registers), re-read it). One bit contains a `0` or `1` value, therefore a number that consists in just one bit can only contain values 0 and 1. When we add another bit, we can still store 0 and 1 in the first bit, but we have another bit which now can hold 2\*(0 or 1). A further bit holds 4\*(0 or 1), and then 8\*(0 or 1), etc.
 
 Like I said before, a byte consists of 8 bits. So it can hold a value of:
 
@@ -1223,7 +1223,7 @@ instructions: **and, or, xor**
 These instructions take the same arguments as `mov` — ie: the first argument can be a memory variable or a register, the second one can be a memory variable, a register or a constant. <mark>Both arguments must be of the same size, and only one of the arguments can be a memory variable.</mark>
 
 6.5. Testing bits
-------------------
+-----------------
 
 If you have programmed before, you probably already know about boolean variables (ocassionaly called “logical”). They can hold two values: `TRUE` or `FALSE`. You can see that they can be stored in a bit wuite finely — `1` for `TRUE`, and `0` for `FALSE`.
 
@@ -1285,7 +1285,7 @@ and [eight_booleans],11110111b
 and [eight_booleans],11010111b
 ```
 
-All this should be clear to you if you understood Chapter 6.4.
+All this should be clear to you if you understood [**Chapter 6.4**](#binary-operations-instructions).
 
 Now, how to **set** one of the variables:
 
@@ -1459,7 +1459,7 @@ etc.
 <div class="alert alert-info">
 Terms: **Overflow**, **Underflow**
 </div>
-We also need to know how to check if an overflow has occured after performing an operation, to prevent bugs. For this purpose, flags are used. I already mentioned flags in Chapter 5.3. We used flags for checking the results of comparison at conditional jumps, and I also said that there shouldn’t be any instrcutions between a comparison and its jumps because many instructions change the flags (of course, you can place an instruction there if you are sure it won’t change any needed flag). Arithmetic instructions `add` and `sub` use a flags’ bit called `CF` (carry flag). If an overflow occurs, they set it to `1`, otherwise they set it to `0`. You can test the carry flag with conditional jumps `jc` and `jnc` (see Chapter 5.3 about conditional jumps). `jc` jumps if the carry flag is set, `jnc` jumps if the carry flag is not set. Here is an example of testing overflows:
+We also need to know how to check if an overflow has occured after performing an operation, to prevent bugs. For this purpose, flags are used. I already mentioned flags in [**Chapter 5.3**](#comparing-and-conditonal-jumps). We used flags for checking the results of comparison at conditional jumps, and I also said that there shouldn’t be any instrcutions between a comparison and its jumps because many instructions change the flags (of course, you can place an instruction there if you are sure it won’t change any needed flag). Arithmetic instructions `add` and `sub` use a flags’ bit called `CF` (carry flag). If an overflow occurs, they set it to `1`, otherwise they set it to `0`. You can test the carry flag with conditional jumps `jc` and `jnc` (see [**Chapter 5.3**](#comparing-and-conditonal-jumps) about conditional jumps). `jc` jumps if the carry flag is set, `jnc` jumps if the carry flag is not set. Here is an example of testing overflows:
 
 ``` fasm
 add ax,bx
@@ -1536,7 +1536,7 @@ or ax,ax
 jz ax_is_zero
 ```
 
-… `or` won’t change `ax`, because `1` `or`ed with `1` is `1`, and `0` `or`ed with `0` is `0`. (Read again Chapter 6 if you aren’t following this.) Btw, this was used on older computers because such code is faster and a few bytes smaller than with `cmp`.
+… `or` won’t change `ax`, because `1` `or`ed with `1` is `1`, and `0` `or`ed with `0` is `0`. (Read again [**Chapter 6**](#bit-arithmetics) if you aren’t following this.) Btw, this was used on older computers because such code is faster and a few bytes smaller than with `cmp`.
 
 7.4. Carry flag: more binary arithmetic instructions
 ----------------------------------------------------
@@ -1559,7 +1559,7 @@ After shifting:
 || bit#6 | bit#5 | bit#4 | bit#3 | bit#2 | bit#1 | bit#0 |     0 || ; ( CF = bit7 )
 ```
 
-Let me explain why the number is multipied by 2. If you remember the beginning of Chapter 6, you know that a number before shifting is:
+Let me explain why the number is multipied by 2. If you remember the beginning of [**Chapter 6**](#bit-arithmetics), you know that a number before shifting is:
 
 ``` nohighlight
 128*bit#7 + 64*bit#6 + 32*bit#5 + 16*bit#4 + 8*bit#3 + 4*bit#2 + 2*bit#1 + bit#0

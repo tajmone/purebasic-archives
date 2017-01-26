@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="Vid">
+  <meta name="dcterms.date" content="2004-12-23">
+  <meta name="description" content=".">
+  <meta name="keywords" content="fasm, flat assembler, asm, assembler, assembly, TAJGA Team">
+  <title>PureBASIC Archives — FASM Preprocessor Guide</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../../../shared/css/tutorial.css">
+  <script src="../../../shared/js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">FASM Preprocessor Guide</h1>
+<p class="subtitle">An introductory tutorial — by Vid, 2004</p>
+</header>
+<pre class="nohighlight"><code>Current revision: 2017-01-26</code></pre><p>This is a reprint of the <em>FASM Preprocessor Guide</em> by «<strong>Vid</strong>», from the <strong>TAJGA Team</strong>. License: <a href="#legal-stuff">unrestricted</a> public domain (confirmed by Vid via private messagging). Last edited by the author in 2004-12-23.</p><p>Ported to Markdown, edited and reprinted by Tristano Ajmone <a href="https://github.com/tajmone"><strong>@tajmone</strong></a> (2017-01-26). Original file downloaded from:</p><ul><li><a href="http://bos.asmhackers.net/docs/FASM%20tutorial/preproc.html">http://bos.asmhackers.net/docs/FASM%20tutorial/preproc.html</a></li></ul><div class="alert alert-warn"><p><strong>CHANGES</strong> — Some changes made to original text:</p><ul><li>English text polished to improve readability.</li><li>Some paragraphs rewritten to improve clarity.</li><li>Renamed first and last chapters title.</li><li>Fixed some code typos/errors.</li><li>Added or corrected links to mentioned references.</li><li>Styled notes, tips and warnings with CSS Alert Boxes.</li><li>Applied highlighter style to key passages.</li></ul></div>
+<div class="alert alert-info"><strong>NOTE</strong> — The original website of the <strong>TAJGA Team</strong> is now defunct (tajga.kallimagarden.com), but the team has now an <a href="https://github.com/tajga">organization profile</a> and a <a href="http://tajga.github.io/">website</a> on GitHub.</div>
+<nav id="TOC">
+<h1>Table of Contents</h1>
+<ul><li><a href="#introduction">Introduction</a></li><li><a href="#what-is-a-preprocessor">1. What Is a Preprocessor</a></li><li><a href="#basic-preprocessing">2. Basic Preprocessing</a><ul><li><a href="#comment">2.1. Comment <code>;</code></a></li><li><a href="#line-break">2.2. Line Break <code>\</code></a></li><li><a href="#directive-include">2.3. Directive “<code>include</code>”</a></li><li><a href="#strings-preprocessing">2.4. Strings Preprocessing</a></li></ul></li><li><a href="#equates">3. Equates</a><ul><li><a href="#directive-equ">3.1. Directive “<code>equ</code>”</a></li><li><a href="#directive-restore">3.2. Directive “<code>restore</code>”</a></li></ul></li><li><a href="#simple-macros-without-arguments">4. Simple Macros without Arguments</a><ul><li><a href="#simple-macro-definition">4.1. Simple Macro Definition</a></li><li><a href="#nested-macros">4.2. Nested Macros</a></li><li><a href="#directive-purge-macro-undefinition">4.3. Directive “<code>purge</code>” (macro undefinition)</a></li><li><a href="#macros-behaviour">4.4. Macros Behaviour</a></li></ul></li><li><a href="#macros-with-fixed-number-of-arguments">5. Macros with Fixed Number of Arguments</a><ul><li><a href="#macros-with-single-argument">5.1. Macros with Single Argument</a></li><li><a href="#macros-with-miltiple-arguments">5.2. Macros with Miltiple Arguments</a></li><li><a href="#directive-local">5.3. Directive “<code>local</code>”</a></li><li><a href="#operator-symbol-concatenation">5.4. Operator <code>#</code> (symbol concatenation)</a></li><li><a href="#operator">5.5. Operator “<code>`</code>”</a></li></ul></li><li><a href="#macros-with-group-argument">6. Macros with Group Argument</a><ul><li><a href="#declaring-macros-with-group-argument">6.1. Declaring Macros with Group Argument</a></li><li><a href="#directive-common">6.2. Directive “<code>common</code>”</a></li><li><a href="#directive-forward">6.3. Directive “<code>forward</code>”</a></li><li><a href="#directive-reverse">6.4. Directive “<code>reverse</code>”</a></li><li><a href="#combining-group-control-directives">6.5. Combining Group Control Directives</a></li><li><a href="#behavior-of-local-inside-a-macro-with-group-argument">6.6. Behavior of <code>local</code> inside a Macro with Group Argument</a></li><li><a href="#macros-with-multiple-group-arguments">6.7. Macros with Multiple Group Arguments</a></li></ul></li><li><a href="#preprocessor-conditionals">7. Preprocessor Conditionals</a><ul><li><a href="#operator-eq">7.1. Operator <code>eq</code></a></li><li><a href="#operator-eqtype">7.2. Operator <code>eqtype</code></a></li><li><a href="#operator-in">7.3. Operator “<code>in</code>”</a></li></ul></li><li><a href="#structures">8. Structures</a></li><li><a href="#fixes">9. Fixes</a><ul><li><a href="#explaination-of-fixes">9.1. Explaination of Fixes</a></li><li><a href="#using-fixes-for-nested-macro-declaration">9.2. Using Fixes for Nested Macro Declaration</a></li><li><a href="#using-fixes-for-moving-parts-of-codes">9.3. Using Fixes for Moving Parts of Codes</a></li></ul></li><li><a href="#closing-remarks">Closing Remarks</a></li></ul>
+</nav>
+<h1 id="introduction">Introduction</h1><p>I wrote this doc because I saw many people asking lots of questions on FASM board because they’re’ understanding the genarl idea of the preprocessor, or one of its specific features. (I’m not discouraging you from asking anything on the forum — failing to understand something is not a shame, and if your question isn’t too hard someone will surely answer it).</p><p>Please if you can’t understand something from this tutorial tell me about it on <a href="https://board.flatassembler.net/topic.php?t=1178">my tutorial’s thread on FASM board</a>, or via <a href="mailto:vid@InMail.sk">email</a> if you prefer.</p><h1 id="what-is-a-preprocessor">1. What Is a Preprocessor</h1><p>A preprocessor is a program (or usually, part of the compiler) which modifies your source code before it is compiled. For example, if you use some piece of code very often, you can give it a name and tell preprocessor to replace that name with the piece of code each time it’s found.</p><p>Another example is when you want to simulate an instruction which doesn’t exist: using the preprocessor you can automatically replace it with a set of instructions yielding the same effect.</p><p>The preprocessor scans the source and replaces some things with others. But how do you tell it what should be preprocess? For this purpose, “preprocessor directives” are used. We will discuss them now.</p><p>The preprocessor doesn’t know anything about instructions, compiler directives, etc., it has its own set of directives and simply ignores parts of the source not meant for it.</p><h1 id="basic-preprocessing">2. Basic Preprocessing</h1><p>First, I shall describe basic preprocessing, which is performed on the file before any other preprocessing.</p><h2 id="comment">2.1. Comment <code>;</code></h2><p>Like in most assemblers, comments in FASM start with a semicolon (<code>;</code>). Everything else up to end of the line is ignored and removed from the source.</p><p>For example, the following source:</p><pre class="fasm"><code>;fill 100h bytes at EDI with zeros
+xor eax,eax ;zero value in eax
+mov ecx,100h/4
+rep stosd</code></pre><p>… after preprocessing will become:</p><pre class="fasm"><code>xor eax,eax
+mov ecx,100h/4
+rep stosd</code></pre><div class="alert"><strong>NOTE</strong>: <code>;</code> can be also understood as a preprocessor operator which deletes all text beyond it, up to the end of that line.</div>
+<div class="alert"><strong>NOTE</strong>: A line containing only a comment won’t be deleted, like in my example. It will become an empty line. I’ve skipped empty lines because of the text structure. This point will turn out to be important in the next chapter.</div><h2 id="line-break">2.2. Line Break <code>\</code></h2><p>If a line seems too long for you, you can “break” it with a backslash (“<code>\</code>”) symbol (or preprocessor operator). When a line ends with a <code>\</code>, the next line will be appended to current line.</p><p>Example:</p><pre class="fasm"><code>db 1,2,3,\
+   4,5,6,\
+   7,8,9</code></pre><p>… will be preprocessed to:</p><pre class="fasm"><code>db 1,2,3,4,5,6,7,8,9</code></pre><p>Of course a <code>\</code> inside strings or comments doesn’t concatenate lines: inside a string it’s interpreted as a string character (like everything else, except for the ending quote), and comments are deleted up to the end of line without inspecting what’s inside them.</p><p>There can’t be anything after the <code>\</code> in a line, except blank space and comment.</p><p>In the previous chapter I’ve mentioned that a line containing only a comment won’t be deleted, it will just become an empty line. That means, that code like this:</p><pre class="fasm"><code>db 1,2,3,\
+;   4,5,6,\   - commented
+   7,8,9</code></pre><p>… after preprocessing will become:</p><pre class="fasm"><code>db 1,2,3
+7,8,9</code></pre><p>… thus raising an error. To solve a situation like this, you must place a line break before the comment:</p><pre class="fasm"><code>db 1,2,3,\
+\;   4,5,6     - validly commented
+   7,8,9</code></pre><p>… which will become:</p><pre class="fasm"><code>db 1,2,3,7,8,9</code></pre><p>… like we wanted.</p><h2 id="directive-include">2.3. Directive “<code>include</code>”</h2><p>Its syntax:</p><pre class="fasm"><code>include &lt;quoted string - file name&gt;</code></pre><p>It will insert a text file into the source code. It allows you to break up the source code into multiple files. Of course, the inserted text will be preprocessed too. File path and name should be quoted (enclosed in <code>'</code>,<code>'</code> or <code>&quot;</code>,<code>&quot;</code>).</p><p>Examples:</p><pre class="fasm"><code>include &#39;file.asm&#39;
+include &#39;HEADERS\data.inc&#39;
+include &#39;..\lib\strings.asm&#39;
+include &#39;C:\config.sys&#39;</code></pre><p>You can also access environment variables enclosed in <code>%</code>,<code>%</code>:</p><pre class="fasm"><code>include &#39;%FASMINC%\win32a.inc&#39;
+include &#39;%SYSTEMROOT%\somefile.inc&#39;
+include &#39;%myproject%\headers\something.inc&#39;
+include &#39;C:\%myprojectdir%\headers\something.inc&#39;</code></pre><div class="alert alert-warn"><strong>TODO</strong>: 1.52 paths system (someone could describe it for me…)</div><h2 id="strings-preprocessing">2.4. Strings Preprocessing</h2><p>You might face problems including a <code>'</code> in a string declared using <code>'</code>s, or including a <code>&quot;</code> in a string declared using <code>&quot;</code>s. For this purpose you must place the character twice in the string; this won’t end the current string and begin a next one, as you may think, it will instead include the literal quote character in the string.</p><p>For example:</p><pre class="fasm"><code>db &#39;It&#39;&#39;s okay&#39;</code></pre><p>… will generate a binary containing string <code>It's okay</code>.</p><p>It’s same with <code>&quot;</code>.</p><h1 id="equates">3. Equates</h1><h2 id="directive-equ">3.1. Directive “<code>equ</code>”</h2><p>The simplest preprocessor command. It’s syntax:</p><pre class="fasm"><code>&lt;name1&gt; equ &lt;name2&gt;</code></pre><p>This command tells the preprocessor to replace every following occurrence of <code>&lt;name1&gt;</code> with <code>&lt;name2&gt;</code>.</p><p>Example, the source:</p><pre class="fasm"><code>count equ 10  ;this is a preprocessor command
+mov ecx,count</code></pre><p>… is preprocessed to:</p><pre class="fasm"><code>mov ecx,10</code></pre><p>Example:</p><pre class="fasm"><code>mov eax,count
+count equ 10
+mov ecx,count</code></pre><p>… is preprocessed to:</p><pre class="fasm"><code>mov eax,count
+mov ecx,10</code></pre><p>… because the preprocessor only replaces occurrences of <code>count</code> that come <em>after</em> the <code>equ</code> directive.</p><p>Even this works:</p><pre class="fasm"><code>10 equ 11
+mov ecx,10</code></pre><p>… after preprocessing, it becomes:</p><pre class="fasm"><code>mov ecx,11</code></pre><p>Bare in mind that <mark><code>name1</code> can be <em>any</em> symbol</mark>. A symbol is just a set of chars, terminated by a blank character (space, tab, end of line), a comment (<code>;</code>), a line-break (<code>\</code>) or an operator (including assembly-time operators, not just preprocessor operators). <mark>But it can’t be an operator or a special symbol</mark> (like <code>,</code> or <code>}</code>, etc.)</p><p><code>name2</code> can be anything, not just one symbol: everything up to end of line is taken. It can even be empty, then <code>&lt;name1&gt;</code> is replaced with blank space.</p><p>Example:</p><pre class="fasm"><code>10 equ 11,12,13
+db 10</code></pre><p>… becomes:</p><pre class="fasm"><code>db 11,12,13</code></pre><h2 id="directive-restore">3.2. Directive “<code>restore</code>”</h2><p>You can also tell the preprocessor to stop replacing a particular equate. This is achieved with the <code>restore</code> operator:</p><pre class="fasm"><code>restore &lt;name&gt;</code></pre><p>Where <code>&lt;name&gt;</code> is some equation. From this command onward, <code>&lt;name&gt;</code> will no longer be replaced as previously specified by <code>equ</code>.</p><p>Example:</p><pre class="fasm"><code>mov eax,count
+count equ 10
+mov eax,count
+restore count
+mov eax,count</code></pre><p>… becomes:</p><pre class="fasm"><code>mov eax,count
+mov eax,10
+mov eax,count</code></pre><p>Note that replacements are “stacked”: this means that if you define two equates for one symbol, and then restore it (once), the first one will be used.</p><p>Example:</p><pre class="fasm"><code>mov eax,count
+count equ 1
+mov eax,count
+count equ 2
+mov eax,count
+count equ 3
+mov eax,count
+restore count
+mov eax,count
+restore count
+mov eax,count
+restore count
+mov eax,count</code></pre><p>… becomes:</p><pre class="fasm"><code>mov eax,count
+mov eax,1
+mov eax,2
+mov eax,3
+mov eax,2
+mov eax,1
+mov eax,count</code></pre><p>If you try to restore a non-existing equation nothing will happen.</p><p>Example:</p><pre class="fasm"><code>mov eax,count
+restore count
+mov eax,count</code></pre><p>… becomes:</p><pre class="fasm"><code>mov eax,count
+mov eax,count</code></pre><h1 id="simple-macros-without-arguments">4. Simple Macros without Arguments</h1><h2 id="simple-macro-definition">4.1. Simple Macro Definition</h2><p>You can create your own instruction/directive using “<code>macro</code>”:</p><pre class="fasm"><code>macro &lt;name&gt;
+{
+  &lt;body&gt;
+}</code></pre><p>When the preprocessor encounters a <code>macro</code> directive it defines a macro, which means that each following occurence of a line starting with <code>&lt;name&gt;</code> will be replaced by <code>&lt;body&gt;</code>. <code>&lt;name&gt;</code> must be a single symbol, <code>&lt;body&gt;</code> can be anything except <code>}</code> which denotes end of macro body.</p><p>Example:</p><pre class="fasm"><code>macro a
+{
+  push eax
+}
+xor eax,eax
+a</code></pre><p>… becomes:</p><pre class="fasm"><code>xor eax,eax
+push eax</code></pre><p>Example:</p><pre class="fasm"><code>macro a
+{
+  push eax
+}
+macro b
+{
+  push ebx
+}
+b
+a</code></pre><p>… becomes:</p><pre class="fasm"><code>push ebx
+push eax</code></pre><p>Of course, a macro doesn’t have to be indented like in my examples, you could also write it this way:</p><pre class="fasm"><code>macro push5 {push dword 5}
+push5</code></pre><p>… which becomes:</p><pre class="fasm"><code>push dword 5</code></pre><p>Or even like this:</p><pre class="fasm"><code>macro push5 {push dword 5
+}</code></pre><p>… producing the same result. You have freedom of style reagarding macros indentation.</p><h2 id="nested-macros">4.2. Nested Macros</h2><p>You can nest macros. This means that if you redefine a macro, then the last definition is used. But if you use the original macro inside the last one, it will still work. Look at this example:</p><pre class="fasm"><code>macro a {mov ax,5}
+macro a
+{
+  a
+  mov bx,5
+}
+macro a
+{
+  a
+  mov cx,5
+}
+a</code></pre><p>… becomes:</p><pre class="fasm"><code>mov ax,5
+mov bx,5
+mov cx,5</code></pre><p>Or this example:</p><pre class="fasm"><code>macro a {1}
+a
+
+macro a {
+  a
+  2}
+
+a
+macro a {
+  a
+  3}
+
+a</code></pre><p>… becomes:</p><pre class="fasm"><code>1
+
+1
+2
+
+1
+2
+3</code></pre><h2 id="directive-purge-macro-undefinition">4.3. Directive “<code>purge</code>” (macro undefinition)</h2><p>You can also undefine macros, like you undefined equate. This is acomplished with the <code>purge</code> directive followed by the macro’s name:</p><pre class="fasm"><code>a
+macro a {1}
+a
+macro a {2}
+a
+purge a
+a
+purge a
+a</code></pre><p>… becomes:</p><pre class="fasm"><code>a
+1
+2
+1
+a</code></pre><p>If you try to <code>purge</code> a non-existing macro nothing will happen.</p><h2 id="macros-behaviour">4.4. Macros Behaviour</h2><p>A macro’s name will be replaced by the macro’s body not just when the line starts with the macro, but in every place where an instruction mnemonic (like <code>add</code>, <code>mov</code>) is accepted. It is because the main purpose of macros is to simulate instructions. The only exception is instruction prefix: <nark>a macro is not accepted after an instruction prefix</nark>.</p><p>Example:</p><pre class="fasm"><code>macro CheckErr
+{
+  cmp eax,-1
+  jz error
+}
+call Something
+a: CheckErr    ;here macro name is preceded by label definition, but it
+               ;will be replaced</code></pre><p>… becomes:</p><pre class="fasm"><code>call Something
+a:
+cmp eax,-1
+jz error</code></pre><p>Example:</p><pre class="fasm"><code>macro stos0
+{
+  mov al,0
+  stosb
+}
+stos0       ;this is place for instruction, will be replaced
+here: stos0 ;this is place for instruciton too
+db stos0    ;this in not place for instruction and so it won&#39;t be replaced</code></pre><p>… becomes:</p><pre class="fasm"><code>mov al,0
+stosb
+here:
+mov al,0
+stosb
+db stos0</code></pre><p>You can also “overload” instructions with macros. Since the preprocessor isn’t aware of instructions, it allows macro names to be instruction mnemonics:</p><pre class="fasm"><code>macro pusha
+{
+  push eax ebx ecx edx ebp esi edi
+}
+macro popa
+{
+  pop edi esi ebp edx ecx ebx eax
+}</code></pre><p>… these 2 save 4 bytes for every <code>pusha</code> because they don’t push <code>ESP</code>. But overloading istructions isn’t a very good idea, because someone reading your code may be fooled if he doesn’t know that the instruction is overloaded.</p><p>You can also overload assembly-time directives:</p><pre class="fasm"><code>macro use32
+{
+  align 4
+  use32
+}
+macro use16
+{
+  align 2
+  use16
+}</code></pre><h1 id="macros-with-fixed-number-of-arguments">5. Macros with Fixed Number of Arguments</h1><h2 id="macros-with-single-argument">5.1. Macros with Single Argument</h2><p>You can also define a macro’s argument. This argument is represented by a symbol, which will be replaced in the macro’s body by the passed argument.</p><pre class="fasm"><code>macro &lt;name&gt; &lt;argument&gt; { &lt;body&gt; }</code></pre><p>Example:</p><pre class="fasm"><code>macro add5 where
+{
+  add where,5
+}
+add5 ax
+add5 [variable]
+add5 ds
+add5 ds+2</code></pre><p>… becomes:</p><pre class="fasm"><code>add ax,5
+add [variable],5
+add ds,5   ;There is no such instruction, but it&#39;s not the task of the
+           ;preprocessor to check it. It will be preprocessed in this form,
+           ;and will throw an error during the assembling stage.
+add ds+2,5 ;Same as previous, but this is also syntactically wrong,
+           ;so it will throw an error during the parsing stage.</code></pre><p>(of course there won’t be those comments in the preprocessed file :)</p><h2 id="macros-with-miltiple-arguments">5.2. Macros with Miltiple Arguments</h2><p>Macros can have multiple arguments, separated with commas (<code>,</code>):</p><pre class="fasm"><code>macro movv where,what
+{
+  push what
+  pop  where
+}
+movv ax,bx
+movv ds,es
+movv [var1],[var2]</code></pre><p>… gets preprocessed to:</p><pre class="fasm"><code>push bx
+pop ax
+push es
+pop ds
+push [var2]
+pop [var1]</code></pre><p>If multiple arguments have the same name, the first one is used :).</p><p>If you pass less arguments than listed in macro declaration, the value of unspecified arguments will be blank:</p><pre class="fasm"><code>macro pupush a1,a2,a3,a4
+{
+  push a1 a2 a3 a4
+  pop a4 a3 a2 a1
+}
+pupush eax,dword [3]</code></pre><p>… becomes:</p><pre class="fasm"><code>push eax dword [3]
+pop dword [3] eax</code></pre><p>If you want to include a comma (<code>,</code>) in a macro’s argument, you must enclose the argument in angle brackets <code>&lt;</code>,<code>&gt;</code>:</p><pre class="fasm"><code>macro safe_declare name,what
+{
+  if used name
+    name what
+  end if
+}
+safe_declare var1, db 5
+safe_declare array5, &lt;dd 1,2,3,4,5&gt;
+safe_declare string, &lt;db &quot;hi, i&#39;m stupid string&quot;,0&gt;</code></pre><p>… becomes:</p><pre class="fasm"><code>if used var1
+  var1 db 5
+end if
+if used array5
+  array5 dd 1,2,3,4,5
+end if
+if used string
+  string db &quot;hi, i&#39;m stupid string&quot;,0
+end if</code></pre><p>Of course, you can use <code>&lt;</code> and <code>&gt;</code> in the macro’s body too:</p><pre class="fasm"><code>macro a arg {db arg}
+macro b arg1,arg2 {a &lt;arg1,arg2,3&gt;}
+b &lt;1,1&gt;,2</code></pre><p>… is preprocessed to:</p><pre class="fasm"><code>db 1,1,2,3</code></pre><h2 id="directive-local">5.3. Directive “<code>local</code>”</h2><p>You may want to declare a label inside the macro’s body:</p><pre class="fasm"><code>macro pushstr string
+{
+  call behind ;pushes address of string and jumps to behind
+  db string,0
+  behind:
+}</code></pre><p>but if you use this macro twice, label “<code>behind</code>” will be defined twice and that will raise an error. You can solve this by making the “<code>behind</code>” label local to the macro. This can be done using the “<code>local</code>” preprocessor directive:</p><pre class="fasm"><code>local &lt;name&gt;</code></pre><p>It must be inside the macro’s body. It makes all following occurences of <code>&lt;name&gt;</code> inside the macro’s body local to macro. Therefore, if the macro is used twice:</p><pre class="fasm"><code>macro pushstr string
+{
+  local behind
+  call behind
+  db string,0
+  behind:
+}
+pushstr &#39;aaaaa&#39;
+pushstr &#39;bbbbbbbb&#39;
+call something</code></pre><p>this won’t cause any problems. This is done by replacing <code>behind</code> with <code>behind?XXXXXXXX</code> where <code>XXXXXXXX</code> is some hexadecimal number generated by the preprocessor. The previous code could, for example, be preprocessed to:</p><pre class="fasm"><code>call behind?00000001
+db &#39;aaaaa&#39;,0
+behind?00000001:
+call behind?00000002
+db &#39;bbbbbbbb&#39;,0
+behind?00000002:
+call something</code></pre><p>Note that you can’t directly access names containing <code>?</code>, as it is a special symbol for fasm, and for this reason it is used with local names. For example <code>aa?bb</code> is considered as symbol <code>aa</code>, special symbol <code>?</code> and symbol <code>bb</code>.</p><p>If you want more local labels you don’t have to use <code>local</code> twice: you can list them all in a single <code>local</code> directive, separated by commas (<code>,</code>):</p><pre class="fasm"><code>macro pushstr string  ;does same job as previous macro
+{
+  local addr,behind
+  push addr
+  jmp behind
+  addr db string,0
+  behind:
+}</code></pre><p>It is always good practice to start all macro local label names with two dots (<code>..</code>), which means they won’t change the current global label. For example:</p><pre class="fasm"><code>macro pushstr string
+{
+  local behind
+  call behind
+  db string,0
+  behind:
+}
+MyProc:
+  pushstr &#39;aaaa&#39;
+  .a:</code></pre><p>… will be preprocessed to:</p><pre class="fasm"><code>MyProc:
+call behind?00000001
+db &#39;aaaa&#39;,0
+behind?00000001:
+.a:</code></pre><p>… which will create a <code>behind?00000001.a</code> label instead of <code>MyProc.a</code>. But names that start with two dots (<code>..</code>) don’t change the current global label, so in the following case <code>MyProc.a</code> would be declared:</p><pre class="fasm"><code>macro pushstr string
+{
+  local ..behind
+  call ..behind
+  db string,0
+  ..behind:
+}
+MyProc:
+  pushstr &#39;aaaa&#39;
+  .a:</code></pre><h2 id="operator-symbol-concatenation">5.4. Operator <code>#</code> (symbol concatenation)</h2><p>Another feature of fasm’s macrolanguage is symbols manipulation. This is achieved with the symbol-concatenation operator <code>#</code>, which concatenates two symbols into one: for example, <code>a#b</code> will become <code>ab</code>, and <code>aaa bbb#ccc ddd</code> -&gt; <code>aaa bbbccc ddd</code>. This operator can be used only inside a macro’s body, and symbols concatenatiion will occur after the replacement of a macro’s arguments, so you can use this feature to create a symbol from a macro’s argument.</p><p>Example:</p><pre class="fasm"><code>macro string name, data
+{
+  local ..start
+  ..start:
+  name db data,0
+  sizeof.#name =  $ - ..start
+}
+string s1,&#39;macros are stupid&#39;
+string s2,&lt;&#39;here I am&#39;,13,10,&#39;rock you like a hurricane&#39;&gt;</code></pre><p>… becomes:</p><pre class="fasm"><code>..start?00000001:
+s1 db &#39;macros are stupid&#39;,0
+sizeof.s1 = $ - ..start?00000001
+..start?00000002:
+s2 db &#39;here I am&#39;,13,10,&#39;rock you like a hurricane&#39;,0
+sizeof.s2 = $ - ..start?00000002</code></pre><p>… where for each string defined via the macro, a symbol <code>sizeof.&lt;name of string&gt;</code> gets defined.</p><p>This operator can also concatenate quoted strings:</p><pre class="fasm"><code>macro debug name
+{
+  db &#39;name: &#39;#name,0
+}
+debug &#39;1&#39;
+debug &#39;barfoo&#39;</code></pre><p>… becomes:</p><pre class="fasm"><code>db &#39;name: 1&#39;,0
+db &#39;name: barfoo&#39;,0</code></pre><p>this is usefull when passing argument from macro to macro:</p><pre class="fasm"><code>macro pushstring string
+{
+  local ..behind
+  call ..behind
+  db string,0
+  ..behind:
+}
+macro debug string
+{
+  push MB_OK
+  push 0 ;empty caption
+  pushstring &#39;debug: &#39;#string  ;&quot;pushstring&quot; takes one argument
+  push 0 ;no partent window
+  call [MessageBox]
+}</code></pre><p>Note that you can’t use <code>#</code> in arguments of <code>local</code>, because <code>local</code> is processed before <code>#</code>. Therefore, code like this won’t work:</p><pre class="fasm"><code>macro a arg
+{
+  local name_#arg
+}
+a foo</code></pre><h2 id="operator">5.5. Operator “<code>`</code>”</h2><p>There is also the <code>`</code> operator, which transfers the symbol following it to a quoted string. This operator can be used only inside macros.</p><p>Example:</p><pre class="fasm"><code>macro proc name
+{
+  name:
+  log `name   ;log can be a macro which takes a string as argument
+}
+proc DummyProc</code></pre><p>… becomes:</p><pre class="fasm"><code>DummyProc:
+log &#39;DummyProc&#39;</code></pre><p>A slightly more complicated example of <code>#</code> usage:</p><pre class="fasm"><code>macro proc name
+{
+  name:
+  log &#39;entering procedure: &#39;#`name
+}
+proc DummyProc
+retn
+proc Proc2
+retn</code></pre><p>… becomes:</p><pre class="fasm"><code>DummyProc:
+log &#39;entering procedure: DummyProc&#39;
+retn
+Proc2:
+log &#39;entering procedure: Proc2&#39;
+retn</code></pre><h1 id="macros-with-group-argument">6. Macros with Group Argument</h1><h2 id="declaring-macros-with-group-argument">6.1. Declaring Macros with Group Argument</h2><p>Macros can have the so-called “group argument”, allowing for a non-fixed number of arguments. The group argument must be enclosed in square brackets <code>[</code>,<code>]</code> in the macro definition:</p><pre class="fasm"><code>macro name arg1,arg2,[grouparg]
+{
+  &lt;body&gt;
+}</code></pre><p>The group argument must be the last argument in the macro defintion. Group argument can contain multiple arguments, like:</p><pre class="fasm"><code>macro name arg1,arg2,[grouparg] {}
+name 1,2,3,4,5,6</code></pre><p>… here the values of group argument (<code>grouparg</code>) are values 3, 4, 5 and 6. 1 and 2 are the values of <code>arg1</code> and <code>arg2</code>.</p><h2 id="directive-common">6.2. Directive “<code>common</code>”</h2><p>To work with group arguments, you use some preprocessor directives. These directives can be used only inside the body of a macro with group argument. The first of these directives is <code>common</code>. It means that from this directive onward the group argument’s name in a macro’s body will be replaced by all the arguments:</p><pre class="fasm"><code>macro string [grp]
+{
+  common
+    db grp,0
+}
+string &#39;aaaaaa&#39;
+string &#39;line1&#39;,13,10,&#39;line2&#39;
+string 1,2,3,4,5</code></pre><p>… becomes:</p><pre class="fasm"><code>db &#39;aaaaaa&#39;,0
+db &#39;line1&#39;,13,10,&#39;line2&#39;,0
+db 1,2,3,4,5,0</code></pre><h2 id="directive-forward">6.3. Directive “<code>forward</code>”</h2><p>But you can also work with the arguments in group argument by treating them separately. For this purpose, the <code>forward</code> preprocessor directive is used. The part of the macro’s body following the <code>forward</code> directive is preprocessed for each argument of the group argument:</p><pre class="fasm"><code>macro a arg1,[grparg]
+{
+forward
+  db arg1
+  db grparg
+}
+a 1,&#39;a&#39;,&#39;b&#39;,&#39;c&#39;
+a -1,10,20</code></pre><p>… becomes:</p><pre class="fasm"><code>db 1
+db &#39;a&#39;
+db 1
+db &#39;b&#39;
+db 1
+db &#39;c&#39;
+db -1
+db 10
+db -1
+db 20</code></pre><p><code>forward</code> is the default behavior for macros with group arguments, so the previous macro could be just as well written:</p><pre class="fasm"><code>macro a arg1,[grparg]
+{
+  db arg1
+  db grparg
+}</code></pre><h2 id="directive-reverse">6.4. Directive “<code>reverse</code>”</h2><p><code>reverse</code> is the same as <code>forward</code>, except that it processess the arguments in group argument from last to first (reverse order):</p><pre class="fasm"><code>macro a arg1,[grparg]
+{
+reverse
+  db arg1
+  db grparg
+  }
+a 1,&#39;a&#39;,&#39;b&#39;,&#39;c&#39;</code></pre><p>… becomes:</p><pre class="fasm"><code>db 1
+db &#39;c&#39;
+db 1
+db &#39;b&#39;
+db 1
+db &#39;a&#39;</code></pre><h2 id="combining-group-control-directives">6.5. Combining Group Control Directives</h2><p>These three directives divide a macro into blocks. Each block is processed after the previous one. For example:</p><pre class="fasm"><code>macro a [grparg]
+{
+  forward
+    f_#grparg:         ;symbol-concatenation operator #, see chapter 4.4
+  common
+    db grparg
+  reverse
+    r_#grparg:
+}
+a 1,2,3,4</code></pre><p>… becomes:</p><pre class="fasm"><code>f_1:
+f_2:
+f_3:
+f_4:
+db 1,2,3,4
+r_4:
+r_3:
+r_2:
+r_1:</code></pre><h2 id="behavior-of-local-inside-a-macro-with-group-argument">6.6. Behavior of <code>local</code> inside a Macro with Group Argument</h2><p>There is yet another very nice feature with labels that are local in a macro (ie: listed with the <code>local</code> preprocessor directive; see <a href="#directive-local"><strong>Chapter 5.3</strong></a>). If the <code>local</code> directive is defined inside a <code>forward</code> or <code>reverse</code> block, then a unique label is defined for each argument in the group, and the same labels are then used with their correspective arguments in the following <code>forward</code> or <code>reverse</code> blocks. Example:</p><pre class="fasm"><code>macro string_table [string]
+{
+  forward         ;table of pointers to strings
+    local addr    ;declare label for this string as local
+    dd addr       ;pointer to string
+  forward         ;strings
+    addr db string,0
+}
+string_table &#39;aaaaa&#39;,&#39;bbbbbb&#39;,&#39;5&#39;</code></pre><p>… becomes:</p><pre class="fasm"><code>dd addr?00000001
+dd addr?00000002
+dd addr?00000003
+addr?00000001 db &#39;aaaaa&#39;,0
+addr?00000002 db &#39;bbbbbb&#39;,0
+addr?00000003 db &#39;5&#39;,0</code></pre><p>Another example, this time with a <code>reverse</code> block:</p><pre class="fasm"><code>macro a [x]
+{
+forward
+  local here
+  here db x
+reverse
+  dd here
+}
+a 1,2,3</code></pre><p>… becomes:</p><pre class="fasm"><code>here?00000001 db 1
+here?00000002 db 2
+here?00000003 db 3
+dd here?00000003
+dd here?00000002
+dd here?00000001</code></pre><p>… the same unique label is used with each argument in both the <code>forward</code> and <code>reverse</code> blocks.</p><h2 id="macros-with-multiple-group-arguments">6.7. Macros with Multiple Group Arguments</h2><p>You can also have multiple group arguments. In that case a macro definition won’t look like:</p><pre class="fasm"><code>macro a [grp1],[grp2]</code></pre><p>… because then it would be unclear which arguments belong to which group. For this reason you declare them like this:</p><pre class="fasm"><code>macro a [grp1,grp2]</code></pre><p>… here every odd argument belongs to <code>grp1</code>, and every even argument to <code>grp2</code>.</p><p>Example:</p><pre class="fasm"><code>macro a [grp1,grp2]
+{
+  forward
+    l_#grp1:
+  forward
+    l_#grp2:
+}
+a 1,2,3,4,5,6</code></pre><p>… becomes:</p><pre class="fasm"><code>l_1:
+l_3:
+l_5:
+l_2:
+l_4:
+l_6:</code></pre><p>Another example:</p><pre class="fasm"><code>macro ErrorList [name,value]
+{
+  forward
+    ERROR_#name = value
+}
+ErrorList \
+ NONE,0,\
+ OUTOFMEMORY,10,\
+ INTERNAL,20</code></pre><p>… becomes:</p><pre class="fasm"><code>ERROR_NONE = 0
+ERROR_OUTOFMEMORY = 10
+ERROR_INTERNAL = 20</code></pre><p>Of course, there can be more than just two group arguments:</p><pre class="fasm"><code>macro a [g1,g2,g3]
+{
+  common
+    db g1
+    db g2
+    db g3
+}
+a 1,2,3,4,5,6,7,8,9,10,11</code></pre><p>… becomes:</p><pre class="fasm"><code>db 1,4,7,10
+db 2,5,8,11
+db 3,6,9</code></pre><h1 id="preprocessor-conditionals">7. Preprocessor Conditionals</h1><p>In fact, there is no preprocessor conditional syntax in FASM (too bad). But the assembly directive <code>if</code> can be used in conjuction with the preprocessor to achieve the same results as with preprocessor conditionals (but this way it wastes more time and memory).</p><p>As you know, <code>if</code> is an assembly-time statement. It means that the statement is checked after preprocessing, and this allows some special conditional operators to work.</p><p>I won’t describe its assembly-time behavior (conditional operators like <code>&amp;</code>, <code>|</code>, etc), read FASM’s docs for this. Here I will describe only those operators that are used with the preprocessor.</p><h2 id="operator-eq">7.1. Operator <code>eq</code></h2><p>The simplest on is <code>eq</code>. It just compares two symbols and checks if they are the same. Value of <code>abcd eq abcd</code> is true, value of <code>abcd eq 1</code> is false, etc. It is useful for comparing a symbol that will be preprocessed, like:</p><pre class="fasm"><code>STRINGS equ ASCII
+if STRINGS eq ASCII
+  db &#39;Oh yeah&#39;,0
+else if STRINGS eq UNICODE
+  du &#39;Oh yeah&#39;,0
+else
+  display &#39;unknown string type&#39;
+end if</code></pre><p>… after preprocessing it will become:</p><pre class="fasm"><code>if ASCII eq ASCII
+  db &#39;Oh yeah&#39;,0
+else if ASCII eq UNICODE
+  du &#39;Oh yeah&#39;,0
+else
+  display &#39;unknown string type&#39;
+end if</code></pre><p>… where the first condition (<code>ASCII eq ASCII</code>) is true, so only <code>db 'Oh yeah',0</code> will be assembled.</p><p>Another example:</p><pre class="fasm"><code>STRINGS equ UNICODE   ;only difference here, UNICODE instead of ASCII
+if STRINGS eq ASCII
+  db &#39;Oh yeah&#39;,0
+else if STRINGS eq UNICODE
+  du &#39;Oh yeah&#39;,0
+else
+  display &#39;unknown string type&#39;
+end if</code></pre><p>… after preprocessing it will be:</p><pre class="fasm"><code>if UNICODE eq ASCII
+  db &#39;Oh yeah&#39;,0
+else if UNICODE eq UNICODE
+  du &#39;Oh yeah&#39;,0
+else
+  display &#39;unknown string type&#39;
+end if</code></pre><p>… now the first condition (<code>UNICODE eq ASCII</code>) will be false, and the second one (<code>UNICODE eq UNICODE</code>) will be true, therefore <code>du 'Oh yeah',0</code> will be assembled.</p><p>A better usage of this operator is for checking macro arguments, like:</p><pre class="fasm"><code>macro item type,value
+{
+  if type eq BYTE
+    db value
+  else if type eq WORD
+    dw value
+  else if type eq DWORD
+    dd value
+  else if type eq STRING
+    db value,0
+  end if
+}
+item BYTE,1
+item STRING,&#39;aaaaaa&#39;</code></pre><p>… which becomes:</p><pre class="fasm"><code>if BYTE eq BYTE
+  db 1
+else if BYTE eq WORD
+  dw 1
+else if BYTE eq DWORD
+  dd 1
+else if BYTE eq STRING
+  db 1,0
+end if
+if STRING eq BYTE
+  db &#39;aaaaaa&#39;
+else if STRING eq WORD
+  dw &#39;aaaaaa&#39;
+else if STRING eq DWORD
+  dd &#39;aaaaaa&#39;
+else if STRING eq STRING
+  db &#39;aaaaaa&#39;,0
+end if</code></pre><p>… so only these two commands will get assembled:</p><pre class="fasm"><code>db 1
+db &#39;aaaaaa&#39;,0</code></pre><p><code>eq</code> (like all other preprocessor operators) can also work with empty arguments. This means, for example, that <code>if eq</code> is true, and <code>if 5 eq</code> is false etc. Example macro:</p><pre class="fasm"><code>macro mov dest,src,src2
+{
+  if src2 eq
+    mov dest,src
+  else
+    mov dest,src
+    mov src,src2
+  end if
+}</code></pre><h2 id="operator-eqtype">7.2. Operator <code>eqtype</code></h2><p>Another operator is <code>eqtype</code>. It compares whether symbols are of the same type. Types are:</p><ul><li>individual quoted strings (those not being a part of numerical expression)</li><li>floating point numbers</li><li>any numerical expression (note that any unknown word will be treated as a label, so it will also will be seen as an expression),</li><li>addresses - the numerical expressions in square brackets (with size operators and segment prefixes)</li><li>instruction mnemonics</li><li>registers</li><li>size operators</li><li>near/far operators,</li><li>use16/use32 operators</li><li>blank space</li></ul><p>Example of a macro which allows an <code>SHL</code> instruction with a memory variable as count, like <code>shl ax,[myvar]</code>:</p><pre class="fasm"><code>macro shl dest,count
+{
+  if count eqtype [0]   ;if count is a memory variable
+    push cx
+    mov cl,count
+    shl dest,cl
+    pop cx
+  else                  ;if count is of another type
+    shl dest,count      ;just use original shl
+  end if
+}
+shl ax,5
+byte_variable db 5
+shl ax,[byte_variable]</code></pre><p>… becomes:</p><pre class="fasm"><code>if 5 eqtype [0]
+  push cx
+  mov cl,5
+  shl ax,cl
+  pop cx
+else
+  shl ax,5
+end if
+byte_variable db 5
+if [byte_variable] eqtype [0]
+  push cx
+  mov cl,[byte_variable]
+  shl ax,cl
+  pop cx
+else
+  shl ax,[byte_variable]
+end if</code></pre><p>… and so, because of the conditionals, it will be assembled to:</p><pre class="fasm"><code>shl ax,5
+byte_variable db 5
+push cx
+mov cl,[byte variable]
+shl ax,cl
+pop cx</code></pre><p>Note that <code>shl ax,byte [variable]</code> wouldn’t work with this macro, because condition <code>byte [variable] eqtype [0]</code> isn’t true (read further).</p><!-- NEXT PARAGRAPH NEED REVISING: BADLY BROKEN!!!! --><p>The <code>eqtype</code> operator isn’t limited to just two operands. It just compares whether types of operands on its left-hand side and same to type of operands on right side of <code>eqtype</code>. For example, <code>if eax 4 eqtype ebx name</code> is true (<code>name</code> is a label, and thus it is a number too).</p><p>Example of extending the <code>mov</code> intruction so it allows moving between memory variables:</p><pre class="fasm"><code>macro mov dest,src
+{
+  if dest src eqtype [0] [0]
+    push src
+    pop dest
+  else
+    mov dest,src
+  end if
+}
+mov [var1],5
+mov [var1],[var2]</code></pre><p>… will be preprocessed to:</p><pre class="fasm"><code>if [var1] 5 eqtype [0] [0]  ;false
+  push 5
+  pop [var1]
+else
+  mov [var1],5
+end if
+if [var1] [var2] eqtype [0] [0]  ;true
+  push [var2]
+  pop [var1]
+else
+  mov [var1],[var2]
+end if</code></pre><p>… and assembled to:</p><pre class="fasm"><code>mov [var1],5
+push [var2]
+pop [var1]</code></pre><p>Anyway, a better (and more readable) way to write a similar macro is to use the <code>&amp;</code> operator (not covered in this document, see FASM documentation), like:</p><pre class="fasm"><code>macro mov dest,src
+{
+  if (dest eqtype [0]) &amp; (src eqtype [0])
+    push src
+    pop dest
+  else
+    mov dest,src
+  end if
+}</code></pre><p>The previous example using <code>eqtype</code> with four arguments was meant only to demonstrate its possibilities, but <code>&amp;</code> should be used if possible.</p><p>Note that currently you can use incomplete expressions as argument of <code>eqtype</code>, it is sufficent that the parser recognizes its type, but this is undocumented behavior so I won’t describe it any further.</p><h2 id="operator-in">7.3. Operator “<code>in</code>”</h2><p>FASM also includes another operator which can be employed if you use multiple <code>eq</code>s:</p><pre class="fasm"><code>macro mov a,b
+{
+  if (a eq cs) | (a eq ds) | (a eq es) | (a eq fs) |\
+     (a eq gs) | (a eq ss)
+    push b
+    pop a
+  else
+    mov a,b
+  end if
+}</code></pre><p>Instead of many <code>|</code>ed <code>eq</code>s, you can use the <code>in</code> operator. It compares the symbol on its left-hand side with multiple symbols in a list on its right-hand side. The symbols list must be enclosed in angle brackets (<code>&lt;</code> and <code>&gt;</code>), and the symbols inside the list should be separated by commas (<code>,</code>).</p><pre class="fasm"><code>macro mov a,b
+{
+  if a in &lt;cs,ds,es,fs,gs,ss&gt;
+    push b
+    pop a
+  else
+    mov a,b
+  end if
+}</code></pre><p><code>in</code> also works with multiple symbols on both sides (like <code>eq</code>):</p><pre class="fasm"><code>if dword [eax] in &lt;[eax], dword [eax], ptr eax, dword ptr eax&gt;</code></pre><h1 id="structures">8. Structures</h1><p>Structures are almost the same as macros. You declare them with the <code>struc</code> directive:</p><pre class="fasm"><code>struc &lt;name&gt; &lt;arguments&gt; { &lt;body&gt; }</code></pre><p>The difference is that when you use a structure in code, it must be preceded by a label (structure name). For example:</p><pre class="fasm"><code>struc a {db 5}
+a</code></pre><p>… doesn’t work. A structure is only recognized when preceded by <code>name</code>, like:</p><pre class="fasm"><code>struc a {db 5}
+name a</code></pre><p>… which, like a macro, will get preprocessed to:</p><pre class="fasm"><code>db 5</code></pre><p>The reason for the preceding <code>name</code> (ie: the one before the structure) is that <code>name</code> will be appended before every symbol inside the structure’s body that starts with a <code>.</code>. For example:</p><pre class="fasm"><code>struc a {.local:}
+name1 a
+name2 a</code></pre><p>… will become:</p><pre class="fasm"><code>name1.local:
+name2.local:</code></pre><p>This way you can define something similar to structures found in other languages. Example:</p><pre class="fasm"><code>struc rect left,right,top,bottom  ;has arguments, like macros
+{
+  .left dd left
+  .right dd right
+  .top dd top
+  .bottom dd bottom
+}
+r1 rect 0,20,10,30
+r2 rect ?,?,?,?</code></pre><p>… becomes:</p><pre class="fasm"><code>r1.left dd 0
+r1.right dd 20
+r1.top dd 10
+r1.bottom dd 30
+r2.left dd ?
+r2.right dd ?
+r2.top dd ?
+r2.bottom dd ?</code></pre><p>You can also use a cool trick with which you don’t have to specify arguments (and <code>0</code> will be used instead):</p><pre class="fasm"><code>struc ymmud arg
+{
+  .member dd arg+0
+}
+y1 ymmud 0xACDC
+y2 ymmud</code></pre><p>… becomes:</p><pre class="fasm"><code>y1.member dd 0xACDC+0
+y2.member dd +0</code></pre><p>As mentioned in 4.2, if an argument remain unspecified its value is blank inside macro/structure body. We also exploited the fact that <code>+</code> is both a binary (with two operands) and unary (with one operand) operator.</p><div class="alert"><strong>NOTE</strong>: You’ll often encounter a defined macro or structure called <code>struct</code> (not <code>struc</code>), which declares a structure or extends structure declaration. Don’t mistake that <code>struct</code> with <code>struc</code>.</div><h1 id="fixes">9. Fixes</h1><p>By the time FASM was evolving, it still missed one very useful feature: the ability to declare a macro inside a macro — ie: the result of unrolling the macro becomes a macro definition. Hypothetically, something like this:</p><pre class="fasm"><code>macro declare_macro_AAA
+{
+  macro AAA
+  {
+     db &#39;AAA&#39;,0
+  } ;end of &quot;AAA&quot; declaration
+} ;end of &quot;declare_macro_AAA&quot; declaration</code></pre><p>The problem here is that when macro <code>declare_macro_AAA</code> is read by the preprocessor, the first <code>}</code> encountered is interpreted as its end, which isn’t what we intended. It is similar to what happens with other preprocessor symbols/operators (eg: <code>#</code>, <code>`</code>, <code>forward</code>, <code>local</code>, etc.), they get processed during expansion of the outer macro, so they can’t be used in inner macro declaration.</p><h2 id="explaination-of-fixes">9.1. Explaination of Fixes</h2><p>In the meantime, another preprocessor directive was added. It does the same job as <code>equ</code>, but BEFORE other preprocessing (except for things listed in <a href="#basic-preprocessing"><strong>Chapter 2</strong></a>, which are done in a pre-preprocessing stage, but this is internal stuff, not particularly interesting). This directive is <code>fix</code>.</p><p>It has the same syntax as <code>equ</code> (<code>&lt;symbol&gt; fix &lt;anything&gt;</code>), but replacing fixed symbols in line is done before any other preprocessing (except things listed in <a href="#basic-preprocessing"><strong>Chapter 2</strong></a>, again). Preprocessing is done line by line, left to right, so if we have the following code:</p><pre class="fasm"><code>a equ 1
+b equ a
+a b</code></pre><p>… its preprocessing will happens like this:</p><ul><li><em>Preprocessing line 1:</em><ul><li><code>a</code> — Preprocessor finds unknown word, skips it.</li><li><code>equ</code> — “<code>equ</code>” is second word of line, so it memorizes that “<code>a</code>” equals rest of line (“<code>1</code>”), then deletes line.</li></ul></li><li><em>Preprocessing line 2:</em><ul><li><code>b</code> — Preprocessor finds unknown word, skips it.</li><li><code>equ</code> — “<code>equ</code>” is second word of line, so it memorizes that “<code>b</code>” equals rest of line (“<code>a</code>”), then deletes line.</li></ul></li><li><em>Preprocessing line 3:</em><ul><li><code>a</code> — Preprocessor replaces “<code>a</code>” with “<code>1</code>”</li><li><code>b</code> — Preprocessor replaces “<code>b</code>” with “<code>a</code>”</li></ul></li></ul><p>So it becomes:</p><pre class="fasm"><code>1 a</code></pre><p>But if we have:</p><pre class="fasm"><code>a fix 1
+b fix a
+a b</code></pre><p>… then it looks like:</p><ul><li><em>Fixing line 1:</em> No symbols to be fixed</li><li><em>Preprocessing line 1:</em><ul><li><code>a</code> — Preprocessor finds unknown word, skips it.</li><li><code>fix</code> — “<code>fix</code>” is second word of line, so it memorizes that “<code>a</code>” is fixed to rest of line (“<code>1</code>”), then deletes line.</li></ul></li><li><em>Fixing line 2:</em> “<code>a</code>” is fixed to “<code>1</code>”, so line becomes “<code>b fix 1</code>”</li><li><em>Preprocessing line 2:</em><ul><li><code>b</code> — Preprocessor finds unknown word, skips it.</li><li><code>fix</code> — “<code>fix</code>” is second word of line, so it memorizes that “<code>b</code>” is fixed to rest of line (“<code>1</code>”) and deletes line</li></ul></li><li><em>Fixing line 3:</em> “<code>a</code>” is fixed to “<code>1</code>”, “<code>b</code>” is fixed to “<code>1</code>” so line becomes “<code>1 1</code>”</li><li><em>Preprocessing line 3:</em><ul><li><code>1</code> — Preprocessor finds unknown word, skips it.</li><li><code>1</code> — Preprocessor finds unknown word, skips it.</li></ul></li></ul><p>This was only an example to show how fixing works, it isn’t usually used in this manner.</p><h2 id="using-fixes-for-nested-macro-declaration">9.2. Using Fixes for Nested Macro Declaration</h2><p>Now let’s get back to declaring a macro inside a macro. First of all, we need to know how macros are preprocessed. You can quite easily work it out yourself: at macro declaration the macro’s body is saved, and when a macro is expanded the preprocessor replaces the line containing the macro with that macro’s body, it internally declares equates to handle its arguments and then continues preprocessing the macro body. (of course it’s more complicated than this, but this is enough for understanding fixes).</p><p>So what was the problem with declaring a macro inside a macro? The first time the compiler encountered a “<code>}</code>” inside the macro’s body it interpreted it as the end of the macro’s body declaration, so there wasn’t any way to include “<code>}</code>” in a macro’s body. But we can easily fix <strong>:)</strong> this:</p><pre class="fasm"><code>macro a
+{
+  macro b
+  %_
+     display &#39;Never fix before something really needs to be fixed&#39;
+  _%
+}
+%_ fix {
+_% fix }
+a
+b</code></pre><p>Now preprocessing looks like this (simplified):</p><ol><li>Preprocessor loads declaration of macro “<code>a</code>”</li><li>Preprocessor loads declaration of fixes “<code>%_</code>” and “<code>_%</code>”</li><li>Preprocessor expands macro “<code>a</code>”</li><li>Preprocessor loads macro “<code>b</code>” declaration (“<code>_%</code>” and “<code>%_</code>” are fixed in each line before being handled by rest of preprocessor)</li><li>Preprocessor expands macro “<code>b</code>”</li></ol><p>Here you can see how important is the positioning of fixes’ declaration, because the macro’s body is fixed too before being loaded by the preprocessor. For example, this won’t work:</p><pre class="fasm"><code>%_ fix {
+_% fix }
+macro a
+{
+  macro b
+  %_
+     display &#39;Never fix before something really needs to be fixed, here you see it&#39;
+  _%
+}
+a
+b</code></pre><p>Because “<code>%_</code>” and “<code>_%</code>” will be fixed before loading macro “<code>a</code>”, so loading of the macro’s body will end at “<code>_%</code>” (by then, fixed to “<code>}</code>”) and the second “<code>}</code>” will remain there.</p><div class="alert"><strong>NOTE</strong>: Character “<code>%</code>” isn’t a special character for FASM’s preprocessor, so you use it just like any other normal character (eg: “<code>a</code>” or “<code>9</code>”). It has special meaning AFTER preprocessing, and only when it is the only char of a whole word (eg: “<code>%</code>” but not “<code>anything%anything</code>”).</div><p>We also need to fix other macro-releated operators:</p><pre class="fasm"><code>%_ fix {
+_% fix }
+%local fix local
+%forward fix forward
+%reverse fix revese
+%common fix common
+%tostring fix `</code></pre><!-- NOTE: UNCLEAR... doesn't explain why # is special, and why we'd want to fix it. Lacks context, and lacks clear connection with preceding text  --><p>Only <code>#</code> is a special case, you can fix it, but there is an easier way. Every time the preprocessor finds multiple <code>#</code>s, it removes one, so it is something like (this won’t actually work):</p><pre class="fasm"><code>etc...
+###### fix #####
+#####  fix ####
+####   fix ###
+###    fix ##
+##     fix #</code></pre><p>So instead of using symbol fixed to “<code>#</code>” you can just use “<code>##</code>” etc.</p><h2 id="using-fixes-for-moving-parts-of-codes">9.3. Using Fixes for Moving Parts of Codes</h2><p>You can also use fixes to move parts of code. In assembly programming this is useful, especially when you break code into modules but want to have data and code grouped in separate segment/section, but defined in a single file.</p><p>Right now this part of tutorial is <strong>TODO</strong>, I hope I will write it soon, for now you can look at JohnFound’s Fresh’s macro library, file <code>INCLUDE\MACRO\globals.inc</code>.</p><p>I know fixes are confusing, and to understand them you have to learn the inner workings of the preprocessor, but they give you great coding power. Privalov wanted FASM to be as powerful as possible, even at the cost of comprehensibility.</p><h1 id="closing-remarks">Closing Remarks</h1><p>Don’t forget to read FASM documentation. Almost everything from this tutorial is there, maybe written in a way that’s a little harder for learning but definitely a better reference. It is not so long, nor hard to remember — 99% of FASM users have learnt it from these docs and from the forum.</p>
+</body>
+</html>

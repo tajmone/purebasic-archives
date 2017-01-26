@@ -1,17 +1,27 @@
-Last edited: 2017-01-24 | by Tristano Ajmone <tajmone@gmail.com>
+Last edited: 2017-01-26 | by Tristano Ajmone <tajmone@gmail.com>
 
 This document contains the CHANGELOGs and TODOs of Vid's "TAJGA FASM Tutorial"
 and to "FASM PREPROCESSOR GUIDE". First comes the new CHANGELOG and TODOs -- 
-from where Tristano took on reprinting and editing the original docs -- and at
-the end of this file you'll find verbatim copies of the original "changes.log"
+from where Tristano took on republishing and editing the original docs.
+At the end of this file I've pasted verbatim copies of the original "changes.log"
 and "todo.txt" files that were distributed with the tutorial.
+******************************************************************************
+*                             REPRINT CHANGELOG                              *
+******************************************************************************
+These second changelogs takes on from where Vid (the original author) left.
+NOTE: General English polishing and typos fixes are not listed; only rewriting
+      of whole passages is mentioned.
 ==============================================================================
-                              REPRINT CHANGELOG                               
+                       TAJGA FASM Tutorial :: CHANGELOG                       
 ==============================================================================
-This second changelog takes on from where Vid (the original author) left.
 It refers to The PureBASIC Archives' reprint of "TAJGA FASM Tutorial"
+by Tristano Ajmone, aka "tajmone"
 ------------------------------------------------------------------------------
-[2017-01-24] (by Tristano Ajmone, aka "tajmone")
+[2017-01-26]
+ -- Changed link to "FASM PREPROCESSOR GUIDE" to point to newly created reprint
+    of that doc ("fasm-preprocessor-guide.html").
+ -- Added internal links (Chapters and Sub-Chapters)
+[2017-01-24]
  -- First reprint of "TAJGA FASM Tutorial": ported from HTML4 to Markdown, and
     converted to HTML5 via pandoc + custom template.
  -- Some changes made to original text:
@@ -42,15 +52,78 @@ It refers to The PureBASIC Archives' reprint of "TAJGA FASM Tutorial"
             "terms: incrementing (adding 1), decrementing (substracting 0)"
        fixed: "(substracting 0)" => " (subtracting 1)" "
 ==============================================================================
-                                 REPRINT TODO                                 
+                     FASM PREPROCESSOR GUIDE :: CHANGELOG                     
 ==============================================================================
+It refers to The PureBASIC Archives' reprint of "FASM PREPROCESSOR GUIDE"
+by Tristano Ajmone, aka "tajmone"
+------------------------------------------------------------------------------
+[2017-01-26]
+ -- First reprint of "FASM PREPROCESSOR GUIDE": ported from HTML4 to Markdown, and
+    converted to HTML5 via pandoc + custom template.
+ -- Some changes made to original text:
+    -- English text polished to improve readability.
+    -- Some paragraphs rewritten to improve clarity.
+    -- Fixed some code typos/errors.
+    -- Added or corrected links to mentioned references.
+    -- Added internal links (Chapters and Sub-Chapters)
+    -- Styled notes, tips and warnings with CSS Alert Boxes.
+    -- Applied highlighter style to key passages.
+    -- Fixed some interal links (possibly, chapter numbers changed during development
+       and some references where not updated)
+ -- Code errors/typos fixed:
+    -- "5.4. Operator `#`",
+        code example:
+            ------------------------
+            macro name name
+            {
+                db 'name: '#b,0
+            }
+            debug '1'
+            debug 'barfoo'
+            ------------------------
+        fixed to:
+            ------------------------
+            macro debug name
+            {
+              db 'name: '#name,0
+            }
+            debug '1'
+            debug 'barfoo'
+            ------------------------
+    -- "9.1. Explaination of Fixes", in various "equals rest of line (“X”)"
+       the "X" part was wrong (must be due to changes in the example code not
+       reflected in its commentary). Amendments done in both examples.
+ -- Renamed Chapter Titles:
+    -- "0. About this document" => "Introduction"
+    -- "FINAL WORDS" => "Closeing Remarks"
+******************************************************************************
+*                               REPRINT TODOs                                *
+******************************************************************************
 New reprint TODOs shopping list, by Tristano Ajmone.
 ------------------------------------------------------------------------------
--- Reprint "FASM PREPROCESSOR GUIDE" also.
 -- Work out Vid's legacy TODO list and see what could be still done, and cross
    out what can't be done or has been done already.
+==============================================================================
+                         TAJGA FASM Tutorial :: TODOs                         
+==============================================================================
 -- Create a side-tutorial on how to setup a DOS emulator (DOSBox?) for running
    the code examples of this tutorial.
+==============================================================================
+                       FASM PREPROCESSOR GUIDE :: TODOs                       
+==============================================================================
+-- "7.2. Operator `eqtype`":
+   -- Paragraph "The `eqtype` operator isn’t limited to just..." is badly broken.
+      I've attempted polishing it here and there, and even by consulting FASM
+      documentation I couldn't make out what Vid is trying to point out. This
+      must have been a WIP paragraph never completed.
+-- "9.2. Using Fixes for Nested Macro Declaration":
+   -- Paragraph "Only `#` is a special case, you can fix it..." needs fixing,
+      it's extremely unclear.
+******************************************************************************
+*                           ORIGINAL FILES BY VID                            *
+******************************************************************************
+"changes.log"
+"todo.txt"
 ==============================================================================
                           ORIGINAL CHANGELOG BY VID                           
 ==============================================================================
