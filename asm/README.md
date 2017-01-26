@@ -7,7 +7,8 @@ This section is dedicated to all ASM-related resources (reference documentation,
 
 -   [`/fasm/`](./fasm/) — FASM-specific resources.
 -   [`/fasm/tutorials/`](./fasm/tutorials/) — the only folder of this section with contents right now.
--   Vid’s «[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/f12e7d3/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/))   
+-   Vid’s «[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/))  
+-   Vid’s «[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)»
 
 ------------------------------------------------------------------------
 
@@ -30,12 +31,12 @@ PureBASIC allows to include x86 assembly code directly in its source code (inlin
 Section Organization
 ====================
 
-Since PureBASIC for Windows and Linux uses __FASM__ (flat assembler), and PureBASIC for Mac uses __Yasm__, this section is divided in two main subfolders:
+Since PureBASIC for Windows and Linux uses **FASM** (flat assembler), and PureBASIC for Mac uses **Yasm**, this section is divided in two main subfolders:
 
 -   [`/fasm/`](./fasm/) — dedicated to FASM-specific resources.
 -   [`/yasm/`](./yasm/) — dedicated to Yasm-specific resources (*coming soon*).
 
-This root folder will contain any resources that are common to both __FASM__ and __Yasm__ – x86 architecture resources, etc.
+This root folder will contain any resources that are common to both **FASM** and **Yasm** – x86 architecture resources, etc.
 
 External Links
 ==============

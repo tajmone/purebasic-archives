@@ -35,7 +35,6 @@ or you may download selected resources as **Zip archives** from the [“Download
     -   [Non-FOSS Collections](#non-foss-collections)
     -   [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
 -   [Acknowledgements](#acknowledgements)
--   [Credits](#credits)
 -   [Repo History](#repo-history)
 
 <!-- /toc -->
@@ -108,7 +107,8 @@ Tutorials
 ---------
 
 -   Dräc’s «[*PureBasic and Object-Oriented Programming*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/en/OOP-Demystified.html)» tutorial ([Also in French](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/tutorials/oop/drac/fr/POO-Demystifiee.html)) – [source folder](./tutorials/oop/drac/).
--   Vid’s «[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/f12e7d3/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/)) — [source folder](./asm/fasm/tutorials/).
+-   Vid’s «[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)» (also [available in CHM format](./asm/fasm/tutorials/)) — [source folder](./asm/fasm/tutorials/).
+-   Vid’s «[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)»
 
 Miscillaneous Utilities
 -----------------------
@@ -232,24 +232,22 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 Acknowledgements
 ================
 
+-   «**Vid**» of TAJGA Team — for “[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)”, and “[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)”.
 -   Thomas Schulz «[@ts-soft](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=1214)» — for the [**Win Registry Module**](./libs/win-registry/).
 -   Stephen Rodriguez «[@srod](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678)» — for the [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) library.
 -   Jordan Klassen «[@forivall](https://github.com/forivall)» — for releasing [gh-pandoc.css](https://gist.github.com/forivall/7d5a304a8c3c809f0ba96884a7cf9d7e) under MIT when asked reuse permission.
 -   «Dräc» — for releasing his [OOP tutorial](http://drac.site.chez-alice.fr/Tutorials%20Programming%20PureBasic/POO/POO_Pourquoi_en.htm) under CC BY when asked reprint permission.
 -   [Henry de Jongh](https://00laboratories.com/about/henry-de-jongh) – for releasing [PBHGEN](https://bitbucket.org/Henry00/pbhgen) under CC BY when asked reuse permission..
 
-Credits
-=======
-
--   «**Vid**» of TAJGA Team, author of “[*TAJGA FASM Tutorial*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/asm/fasm/tutorials/tajga-fasm-tutorial.html)”.
-
 Repo History
 ============
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/01/65`
+    -   Reprinted **Vid**’s “[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)”
 -   `2017/01/25`
-    -   Reprinted **Vid**’s “[*TAJGA FASM Tutorial*](http://htmlpreview.github.io/?https://github.com/tajmone/purebasic-archives/blob/master/asm/fasm/tutorials/tajga-fasm-tutorial.html)” (also [available in CHM format](./asm/fasm/tutorials/)).
+    -   Reprinted **Vid**’s “[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)” (also [available in CHM format](./asm/fasm/tutorials/)).
     -   Created [Assembly section](./asm/) for [fasm resources](./asm/fasm/).
     -   Created [`/shared/`](./shared/) section for gathering shared resources (CSS, JavaScript, etc.).
     -   Created pandoc [“Tutorial” html5 template](./shared/pandoc/) for building html tutorials from multiple markdown source files.
