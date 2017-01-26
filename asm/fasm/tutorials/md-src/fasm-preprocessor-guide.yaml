@@ -1,0 +1,23 @@
+
+---
+title:    FASM Preprocessor Guide
+subtitle: An introductory tutorial --- by Vid, 2004
+# ==============================================================================
+#                                 HTML METADATA                                 
+# ==============================================================================
+# These variables will fill in the HTML <head> section
+author:       Vid
+# pagetitle:
+title-prefix: PureBASIC Archives
+lang:         en
+toc-title:    Table of Contents
+date:         December 23, 2004
+description: '.'
+keywords:
+  - fasm
+  - flat assembler
+  - asm
+  - assembler
+  - assembly
+  - TAJGA Team
+...
