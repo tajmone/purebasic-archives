@@ -19,10 +19,11 @@ This folder contains information and resources pertaining to syntax highlighting
 Folder Contents
 ===============
 
+-   [`tokens-list.md`](./tokens-list.md) — info of PB syntax tokens, and how to build and maintain a list.
 -   [`Commands-Index-Parser.pb`](./Commands-Index-Parser.pb) — extract list of commands from online documentation.
+-   [`PB-Keywords-Lister.pb`](./PB-Keywords-Lister.pb) — extract and save to file list of commands and constants from online documentation.
 -   [`SyntaxHilighting.dll_PB543.png`](./SyntaxHilighting.dll_PB543.png) — screenshot.
 -   [`SyntaxHilighting.dll_PB550.png`](./SyntaxHilighting.dll_PB550.png) — screenshot.
--   [`tokens-list.md`](./tokens-list.md) — info of PB syntax tokens, and how to build and maintain a list.
 
 Introduction
 ============

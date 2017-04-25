@@ -7,8 +7,13 @@ This document discusses the PureBASIC language tokens list in relation to syntax
 
 <!-- #toc -->
 -   [Introduction](#introduction)
+-   [Terminology](#terminology)
+    -   [Syntax Examples](#syntax-examples)
+        -   [Kate Syntax Definitions](#kate-syntax-definitions)
+        -   [GeSHi](#geshi)
+-   [Getting The Tokens List](#getting-the-tokens-list)
     -   [Commands Index](#commands-index)
-        -   [Commands Index Parser](#commands-index-parser)
+        -   [Documentation Parsers](#documentation-parsers)
     -   [The SDK’s Syntax Highlighter](#the-sdks-syntax-highlighter)
 -   [Accessing Resources Within The Installer](#accessing-resources-within-the-installer)
 
@@ -21,11 +26,59 @@ Introduction
 
 Creation and maintainance of PureBASIC language syntax definitons will require having access to the full list of the language’s tokens. Unfortunately the task at hand is not that simple: PureBASIC doesn’t provide a list these tokens in a usable format. Furthermore, it will be necessary to track changes in this list with each new release of the language (new toknes, renaming, and deprecation).
 
+Terminology
+===========
+
+To avoid confusion, we’ll refer here to all PureBASIC built-in reserved keyword as “*tokens*”. This allows us to better classify the actual tokens into groups since most code beatifiers and editors will require that tokens are grouped into meaningful categories. The actual group names and subdivisions may vary amongst different applications, so we should look at some usage examples and try to subdvide tokens in the higher number of groups, in order to cover the needs of all potential applications (merging multiple groups into a single one, for apps that require less categories, is an easy task).
+
+Syntax Examples
+---------------
+
+So, let’s look at the tokens grouping conventions used by some syntax highlighters (beautifiers and editors alike), so that we can create a list of categories that would satisfy exporting tokens to any application.
+
+### Kate Syntax Definitions
+
+[Kate](https://kate-editor.org/)’s (KDE Advanced Text Editor) syntax definitions are also used by various syntax highlighters.
+
+For example, **pandoc** ([&gt;=1.19.2](https://github.com/jgm/pandoc/releases/tag/1.19.2)) uses [skylighting](https://github.com/jgm/skylighting) for syntax highlighting, which relies on Kate definitions, and ships with a [PureBASIC syntax definition](https://github.com/jgm/skylighting/blob/master/xml/purebasic.xml).
+
+The Kate Syntax Definitions XML schema (`<!DOCTYPE language SYSTEM "language.dtd">`) can be found at:
+
+-   <https://github.com/KDE/syntax-highlighting/blob/master/data/schema/language.xsd>
+
+These are tokens groups used in the [PureBASIC syntax definition](https://github.com/KDE/syntax-highlighting/blob/master/data/syntax/purebasic.xml) (ASM not supported):
+
+| TOKENS GROUP  | DESCRIPTION         | EXAMPLES                          |
+|---------------|---------------------|-----------------------------------|
+| **keywords**  | Basic Keywords      | `If`, `for`, `Procedure`, `Break` |
+| **compiler**  | Compiler directives | `CompilerIf`, `CompilerSelect`    |
+| **debug**     | Debugger directives | `Debug`, `CallDebugger`           |
+| **functions** | Built-in commands   | `Abs`, `MessageRequester`         |
+
+### GeSHi
+
+[GeSHi](http://qbnz.com/highlighter/) (Generic Syntax Highlighter for PHP) 1.0 ships with a [PureBASIC syntax definition](https://github.com/GeSHi/geshi-1.0/blob/master/src/geshi/purebasic.php).
+
+Instead of named groups, GeSHi adopts numbered arrays to group tokens:
+
+| TOKENS GROUP | DESCRIPTION             | EXAMPLES                                         |
+|--------------|-------------------------|--------------------------------------------------|
+| **group 1**  | Keywords                | `If`, `for`, `Procedure`, `CompilerIf`, `Debug`, |
+| **group 2**  | All Functions           | `Abs`, `MessageRequester`                        |
+| **group 3**  | ASM instructions (some) | `AAA`, `JNZ`, `RET`                              |
+
+Unlike Kate’s definition, GeSHi’s definition doesn’t subgroup compiler and debugger directives — in this case, the members of these groups could be just merged into group 1.
+
+> **NOTE**: Keywords group 2 also contains functions from third party libraries, like `egrid_AddColumn` and all the other functions added by the **egrid** library by srod (see [PB Forum \#23769)](http://www.purebasic.fr/english/viewtopic.php?t=23769).
+
+Getting The Tokens List
+=======================
+
 The possible sources for these tokens are:
 
--   The documentation’s [Commands Index](http://www.purebasic.com/documentation/) page. (_WIP_)
--   The SDK’s syntax highlighter shared library. (_WIP_)
--   Invoking the compiler with special options. (_coming soon_)
+-   The documentation’s [Commands Index](http://www.purebasic.com/documentation/) page. (*WIP*)
+-   The SDK’s syntax highlighter shared library. (*WIP*)
+-   Invoking the compiler with special options. (*coming soon*)
 
 Commands Index
 --------------
@@ -36,11 +89,12 @@ Unfortunately, the online version of the documentation is available only for the
 
 Older versions of this file can be taken from a PureBASIC installation ([or directly from the installer](#accessing-resources-within-the-installer)). On Windows, the html page will be inside the CHM Help file that is part of the installation, and will need to be extracted (CHM files can be unpacked like a ZIP file). On Mac, the documentation ships as loose html files, so no unpacking is required. On Linux the documentation is not in html.
 
-### Commands Index Parser
+### Documentation Parsers
 
-User Marc56us has created a useful code base for extracting the list of commands from the online Commands Index documentation page:
+User Marc56us has created a two useful code bases for extracting the list of commands and constants from the online [Commands Index](http://www.purebasic.com/documentation/reference/commandindex.html) and [PureBasic Constants](http://www.purebasic.com/documentation/reference/pbconstants.html) documentation pages:
 
--   [`Commands-Index-Parser.pb`](./Commands-Index-Parser.pb)
+-   [`Commands-Index-Parser.pb`](./Commands-Index-Parser.pb) — extract list of commands from online documentation.
+-   [`PB-Keywords-Lister.pb`](./PB-Keywords-Lister.pb) — extract and save to file list of commands and constants from online documentation.
 
 This code can easily be adapted to become part of a tokens extractor application.
 
