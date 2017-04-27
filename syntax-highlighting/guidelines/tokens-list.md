@@ -15,6 +15,7 @@ This document discusses the PureBASIC language tokens list in relation to syntax
     -   [Commands Index](#commands-index)
         -   [Documentation Parsers](#documentation-parsers)
     -   [The SDK’s Syntax Highlighter](#the-sdks-syntax-highlighter)
+        -   [The Syntax Highlighting DLL Parser](#the-syntax-highlighting-dll-parser)
 -   [Accessing Resources Within The Installer](#accessing-resources-within-the-installer)
 
 <!-- /toc -->
@@ -24,7 +25,7 @@ This document discusses the PureBASIC language tokens list in relation to syntax
 Introduction
 ============
 
-Creation and maintainance of PureBASIC language syntax definitons will require having access to the full list of the language’s tokens. Unfortunately the task at hand is not that simple: PureBASIC doesn’t provide a list these tokens in a usable format. Furthermore, it will be necessary to track changes in this list with each new release of the language (new toknes, renaming, and deprecation).
+Creation and maintainance of PureBASIC language syntax definitons will require having access to the full list of the language’s tokens. Unfortunately the task at hand is not that simple: PureBASIC doesn’t provide a list these tokens in a usable format. Furthermore, maintaining a tokens list of this kind will require to track changes with each new release of the language (new toknes, renaming, and deprecation).
 
 Terminology
 ===========
@@ -105,6 +106,8 @@ PureBASIC for Windows comes with a syntax highlighter library in the SDK:
 
 -   `\SDK\Syntax Highlighting\SyntaxHilighting.dll`
 
+> (*sic*): the DLL file is actually (mis)named `SyntaxHilighting.dll`, not a typo on my side.
+
 The DLL contains the keywords list of the language version it ships with. So (theoretically) it should be an up-to-date list reflecting the state of the syntax of any given version. I said “theoretically” because the SDK is in a pretty bad state, its documentation still refers to the Amiga in some places, and some sources therin are broken because they haven’t been updated for ages (see [PB Forum \#66969](http://www.purebasic.fr/english/viewtopic.php?f=3&t=66969)).
 
 Since the DLL is in binary format, you’ll need and hex editor to peek inside it, and then work out a way of extracting the list. Also, the strings from version 5.50 onward are in Unicode format (UCS2 LE), before that they are in Ascii — any automated approach to extracting the strings must bare this in mind.
@@ -118,6 +121,24 @@ And this is a screenshot of `SyntaxHilighting.dll` that ships with PureBASIC 5.5
 ![SyntaxHilighting.dll PB 5.43](./SyntaxHilighting.dll_PB550.png "Hex Editor Neo screenshot of 'SyntaxHilighting.dll' from PureBASIC 5.50")
 
 … you can clearly see the difference between the Ascii and Unicode strings.
+
+### The Syntax Highlighting DLL Parser
+
+-   [`Parse-Highlighting-DLL.pb`](./Parse-Highlighting-DLL.pb)
+
+This app parses the `SyntaxHilighting.dll` and extract the list of keywords it contains, and saves them to a text file. The final list will contain three lists of keywords (in this order, and no separation between them):
+
+1.  PureBASIC pseudotypes
+2.  PureBASIC keywords
+3.  ASM keywords
+
+Any PureBASIC user should be able to easily distinguish when one list ends and the next one begins by his knowledge of the keywords and by the fact that the alphabetical ordering starts over again with each new list.
+
+Please note that the final list will contain some duplicate keywords and a couple of non-strictly keywords strings (ie: `P` and `ABCUWLSFDQI`, the former relating to accessing procedures variables from inline Assembly, the latter being the list of characters used for native types).
+
+The purpose of this tool is *not* to create a ready-to-use list of tokens: the purpose is to pass the lists to some diffing tool in order to see what has changed between different PureBASIC releases. This would allow a quick way to see if tokens have been added or removed since last version, allowing maintainers of language definitions to manually adjust their lists.
+
+Bare in mind that the tokens list will not contain the built-in commands: PureBASIC IDE highlights user-created procedures and built-in functions in the same manner. For a full list of the built-in commands, refer to the [Commands Index](##commands-index) section of this document.
 
 *…to be continued…*
 
