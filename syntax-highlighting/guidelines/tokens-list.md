@@ -78,9 +78,9 @@ Getting The Tokens List
 
 The possible sources for these tokens are:
 
-1.  The documentation’s [Commands Index](http://www.purebasic.com/documentation/) page.
-2.  The SDK’s syntax highlighter shared library.
-3.  Invoking the compiler with special options. (*coming soon*)
+1.  [The documentation’s Commands Index page](#commands-index),
+2.  [The SDK’s syntax highlighter shared library](#the-sdks-syntax-highlighter),
+3.  [Querying the compiler via interactive command](#querying-the-compiler).
 
 Commands Index
 --------------
@@ -135,9 +135,9 @@ And this is a screenshot of `SyntaxHilighting.dll` that ships with PureBASIC 5.5
 
 This app parses the `SyntaxHilighting.dll` and extract the list of keywords it contains, and saves them to a text file. The final list will contain three lists of keywords (in this order, and no separation between them):
 
-1.  PureBASIC pseudotypes
-2.  PureBASIC keywords
-3.  ASM keywords
+1.  PureBASIC pseudotypes,
+2.  PureBASIC keywords,
+3.  ASM keywords.
 
 Any PureBASIC user should be able to easily distinguish when one list ends and the next one begins by his knowledge of the keywords — ie: PureBASIC keywords are title-cased, while ASM keywords are all upper-case — and by the fact that the alphabetical ordering starts over again with each new list.
 
@@ -153,7 +153,7 @@ Here’s an example screenshot of a [Beyond Compare](http://www.scootersoftware.
 
 ![Merging extracted tokens-lists](./SyntaxHilighting.dll_Merge.png "Screenshot of Beyond Compare 4 merging tokens-lists extracted from PureBASIC version 5.00 and 5.10")
 
-> **NOTE**: Bare in mind that the tokens list will not contain the built-in commands: PureBASIC IDE highlights user-created procedures and built-in functions in the same manner. For a full list of the built-in commands, refer to the [Commands Index](##commands-index) section of this document.
+> **NOTE**: Bare in mind that the tokens list will not contain the built-in commands: PureBASIC IDE highlights user-created procedures and built-in functions in the same manner. For a full list of the built-in commands, refer to the [Commands Index](#commands-index) section of this document.
 
 Querying The Compiler
 ---------------------
@@ -186,20 +186,4 @@ The Windows installer is a binary installer created with [Inno Setup](http://www
 You’ll need a free tool called **Universal Extractor**, an unpacker that supports a variaty of compression and isntaller formats, included the one used by the PureBASIC installer:
 
 -   <https://www.legroom.net/software/uniextract>
-
-<!-- #toc -->
--   [Introduction](#introduction)
--   [Terminology](#terminology)
-    -   [Syntax Examples](#syntax-examples)
-        -   [Kate Syntax Definitions](#kate-syntax-definitions)
-        -   [GeSHi](#geshi)
--   [Getting The Tokens List](#getting-the-tokens-list)
-    -   [Commands Index](#commands-index)
-        -   [Documentation Tools And Parsers](#documentation-tools-and-parsers)
-    -   [The SDK’s Syntax Highlighter](#the-sdks-syntax-highlighter)
-        -   [The Syntax Highlighting DLL Parser](#the-syntax-highlighting-dll-parser)
-    -   [Querying The Compiler](#querying-the-compiler)
--   [Accessing Resources Within The Installer](#accessing-resources-within-the-installer)
-
-<!-- /toc -->
 
