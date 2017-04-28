@@ -1,0 +1,173 @@
+{
+  "500": {
+    "changes": true,
+    "tokens-add": [
+      "And",
+      "Array",
+      "As",
+      "Break",
+      "CallDebugger",
+      "Case",
+      "CompilerCase",
+      "CompilerDefault",
+      "CompilerElse",
+      "CompilerEndIfCompilerEndSelect",
+      "CompilerEndSelect",
+      "CompilerError",
+      "CompilerIf",
+      "CompilerSelect",
+      "Continue",
+      "Data",
+      "DataSection",
+      "Debug",
+      "DebugLevel",
+      "Declare",
+      "DeclareC",
+      "DeclareCDLL",
+      "DeclareDLL",
+      "Default",
+      "Define",
+      "Dim",
+      "DisableASM",
+      "DisableDebugger",
+      "DisableExplicit",
+      "Else",
+      "ElseIf",
+      "EnableASM",
+      "EnableDebugger",
+      "EnableExplicit",
+      "End",
+      "EndDataSectionEndEnumeration",
+      "EndEnumeration",
+      "EndIfEndImport",
+      "EndImportEndInterface",
+      "EndInterface",
+      "EndMacroEndProcedure",
+      "EndProcedureEndProcedure",
+      "EndProcedure",
+      "EndSelectEndStructure",
+      "EndStructure",
+      "EndStructureUnionEndWith",
+      "EndWith",
+      "Enumeration",
+      "Extends",
+      "FakeReturn",
+      "For",
+      "ForEach",
+      "ForEver",
+      "Global",
+      "Gosub",
+      "Goto",
+      "If",
+      "Import",
+      "ImportC",
+      "IncludeBinary",
+      "IncludeFile",
+      "IncludePath",
+      "Interface",
+      "List",
+      "Macro",
+      "Map",
+      "NewList",
+      "NewMap",
+      "NextNext",
+      "Not",
+      "Or",
+      "Procedure",
+      "ProcedureC",
+      "ProcedureCDLL",
+      "ProcedureDLL",
+      "ProcedureReturn",
+      "Protected",
+      "Prototype",
+      "PrototypeC",
+      "ReDim",
+      "Read",
+      "Repeat",
+      "Restore",
+      "Return",
+      "Select",
+      "Shared",
+      "Static",
+      "Step",
+      "Structure",
+      "StructureUnion",
+      "Swap",
+      "Threaded",
+      "To",
+      "Until",
+      "Until ",
+      "WendWhile",
+      "With",
+      "XIncludeFile",
+      "XOr"
+    ]
+  },
+  "510": {
+    "changes": true,
+    "tokens-add": [
+      "Align",
+      "CompilerElseIf",
+      "MacroExpandedCount",
+      "UndefineMacro"
+    ]
+  },
+  "511": {
+    "changes": false
+  },
+  "520": {
+    "changes": true,
+    "tokens-add": [
+      "DeclareModule",
+      "EndDeclareModule",
+      "EndModule",
+      "Module"
+    ]
+  },
+  "521": {
+    "changes": false
+  },
+  "522": {
+    "changes": false
+  },
+  "523": {
+    "changes": false
+  },
+  "524": {
+    "changes": false
+  },
+  "530": {
+    "changes": false
+  },
+  "531": {
+    "changes": false
+  },
+  "540": {
+    "changes": true,
+    "tokens-add": [
+      "CompilerWarning",
+      "EnumerationBinary"
+    ]
+  },
+  "541": {
+    "changes": false
+  },
+  "542": {
+    "changes": false
+  },
+  "543": {
+    "changes": false
+  },
+  "544": {
+    "changes": false
+  },
+  "550": {
+    "changes": false
+  },
+  "551": {
+    "changes": false
+  },
+  "560": {
+    "changes": false
+  }
+}
