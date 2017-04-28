@@ -13,9 +13,10 @@ This document discusses the PureBASIC language tokens list in relation to syntax
         -   [GeSHi](#geshi)
 -   [Getting The Tokens List](#getting-the-tokens-list)
     -   [Commands Index](#commands-index)
-        -   [Documentation Parsers](#documentation-parsers)
+        -   [Documentation Tools And Parsers](#documentation-tools-and-parsers)
     -   [The SDK’s Syntax Highlighter](#the-sdks-syntax-highlighter)
         -   [The Syntax Highlighting DLL Parser](#the-syntax-highlighting-dll-parser)
+    -   [Querying The Compiler](#querying-the-compiler)
 -   [Accessing Resources Within The Installer](#accessing-resources-within-the-installer)
 
 <!-- /toc -->
@@ -77,27 +78,33 @@ Getting The Tokens List
 
 The possible sources for these tokens are:
 
--   The documentation’s [Commands Index](http://www.purebasic.com/documentation/) page. (*WIP*)
--   The SDK’s syntax highlighter shared library. (*WIP*)
--   Invoking the compiler with special options. (*coming soon*)
+1.  The documentation’s [Commands Index](http://www.purebasic.com/documentation/) page.
+2.  The SDK’s syntax highlighter shared library.
+3.  Invoking the compiler with special options. (*coming soon*)
 
 Commands Index
 --------------
 
 The [Commands Index](http://www.purebasic.com/documentation/) page in the documentation — available both online (latest version only) as well as in PureBASIC installation — is an html document containing the list of all the command supported by any given version of PureBASIC, including commands that are OS specific.
 
-Unfortunately, the online version of the documentation is available only for the latest release of PureBASIC, therefore other sources are needed to access previous versions of the file in order to build a version annoted list of these commands.
+The online version of the documentation is available only for the latest release of PureBASIC, therefore in order to build a version-annoted list of commands older versions of this file need to be accessed from the documentation that ships with each PureBASIC installation ([or directly from the installer](#accessing-resources-within-the-installer), as we shall see).
 
-Older versions of this file can be taken from a PureBASIC installation ([or directly from the installer](#accessing-resources-within-the-installer)). On Windows, the html page will be inside the CHM Help file that is part of the installation, and will need to be extracted (CHM files can be unpacked like a ZIP file). On Mac, the documentation ships as loose html files, so no unpacking is required. On Linux the documentation is not in html.
+On Windows, the html page is found inside the CHM Help file (`PureBasic.chm`) that is part of the installation, so it needs to be extracted (CHM files can be unpacked like a ZIP file), as shown in **@Marc56us** code (below).
 
-### Documentation Parsers
+On Mac, the documentation ships as loose html files, so no unpacking is required. On Linux the documentation is not in html.
 
-User Marc56us has created a two useful code bases for extracting the list of commands and constants from the online [Commands Index](http://www.purebasic.com/documentation/reference/commandindex.html) and [PureBasic Constants](http://www.purebasic.com/documentation/reference/pbconstants.html) documentation pages:
+### Documentation Tools And Parsers
+
+User [**@Marc56us**](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=11155) has created useful code bases for extracting the list of commands and constants from the online [Commands Index](http://www.purebasic.com/documentation/reference/commandindex.html) and [PureBasic Constants](http://www.purebasic.com/documentation/reference/pbconstants.html) documentation pages:
 
 -   [`Commands-Index-Parser.pb`](./Commands-Index-Parser.pb) — extract list of commands from online documentation.
 -   [`PB-Keywords-Lister.pb`](./PB-Keywords-Lister.pb) — extract and save to file list of commands and constants from online documentation.
 
-This code can easily be adapted to become part of a tokens extractor application.
+He also provided some code to extract the “`commandindex.html`” page/file from “`PureBasic.chm`”, which is a very handy way to access the Commands Index page of previous versions:
+
+-   [`Extract-Commands-Index-from-CHM.pb`](./Extract-Commands-Index-from-CHM.pb)
+
+These code examples can be easily adapted to become part of a tokens extractor application.
 
 The SDK’s Syntax Highlighter
 ----------------------------
@@ -132,15 +139,36 @@ This app parses the `SyntaxHilighting.dll` and extract the list of keywords it c
 2.  PureBASIC keywords
 3.  ASM keywords
 
-Any PureBASIC user should be able to easily distinguish when one list ends and the next one begins by his knowledge of the keywords and by the fact that the alphabetical ordering starts over again with each new list.
+Any PureBASIC user should be able to easily distinguish when one list ends and the next one begins by his knowledge of the keywords — ie: PureBASIC keywords are title-cased, while ASM keywords are all upper-case — and by the fact that the alphabetical ordering starts over again with each new list.
 
-Please note that the final list will contain some duplicate keywords and a couple of non-strictly keywords strings (ie: `P` and `ABCUWLSFDQI`, the former relating to accessing procedures variables from inline Assembly, the latter being the list of characters used for native types).
+> **NOTE**: The final list will contain some duplicate keywords and a couple of non-strictly keywords strings (ie: `P` and `ABCUWLSFDQI`, the former relating to accessing procedures variables from inline Assembly, the latter being the list of characters used for native types).
+>
+> Keywords duplicates are due to the fact that the Syntax Highlighting DLL tracks coupled tokens (eg: `If`, `EndIf`) by following an opening kewyord with its closing counterpart (presumably, for autocompletion purposes within the IDE). Also, some keywords share a common closing counterpart (eg: blocks declared with `Procedure`, `ProcedureC`, `ProcedureCDLL` and `ProcedureDLL` are all ended with `EndProcedure`, so the token `EndProcedure` will occur 5 times in the list).
+>
+> This type of redundancy is commonly found in language definitions for code editors, but it’s usually undesirable in code beautifiers.
 
-The purpose of this tool is *not* to create a ready-to-use list of tokens: the purpose is to pass the lists to some diffing tool in order to see what has changed between different PureBASIC releases. This would allow a quick way to see if tokens have been added or removed since last version, allowing maintainers of language definitions to manually adjust their lists.
+The purpose of this tool is *not* to create a ready-to-use list of tokens: the purpose is to pass the lists to some diffing tool in order to see what has changed between different PureBASIC releases. This provides a quick way to see whether tokens have been added or removed since the previous PureBASIC release, allowing maintainers of language definitions to manually adjust their lists, or the automate the task via merge tools.
 
-Bare in mind that the tokens list will not contain the built-in commands: PureBASIC IDE highlights user-created procedures and built-in functions in the same manner. For a full list of the built-in commands, refer to the [Commands Index](##commands-index) section of this document.
+Here’s an example screenshot of a [Beyond Compare](http://www.scootersoftware.com/) merging sessions that diffs two tokens-lists (PB 5.00 & 5.10) extracted with `Parse-Highlighting-DLL.pb`:
 
-*…to be continued…*
+![Merging extracted tokens-lists](./SyntaxHilighting.dll_Merge.png "Screenshot of Beyond Compare 4 merging tokens-lists extracted from PureBASIC version 5.00 and 5.10")
+
+> **NOTE**: Bare in mind that the tokens list will not contain the built-in commands: PureBASIC IDE highlights user-created procedures and built-in functions in the same manner. For a full list of the built-in commands, refer to the [Commands Index](##commands-index) section of this document.
+
+Querying The Compiler
+---------------------
+
+PureBASIC’s command line compiler can be invoked with the `/STANDBY` switch (`--standby` on Linux/Mac): this will start an interactive I/O session where special commands can be passed to the compiler. Among the commands that can be imparted in this special mode, there are some tha will query the compiler to output a list of *its known* functions, imported functions, interfaces, structures, and constants. These features are well documentent in the SDK’s `CompilerInterface.txt` file.
+
+The problem with this approach is that the compiler will only produce a list of the features it supports, therefore platform-dependent functions will not be supported by the compiler of another platform — ie: the compiler will only produce a list of *its known* functions, interfaces, etc.
+
+User **@Danilo** has written `GetPBInfo.pb`, an app the gets information about PureBASIC structures, interfaces, constants and functions directly from the compiler and saves the information to files:
+
+-   [GetPBInfo thread on PureBASIC Forum](http://purebasic.fr/english/viewtopic.php?f=12&t=53701)
+
+If you try to run it on Windows, you’ll notice that the output list will not contain the procedures `CocoaMessage()` (Mac only) and `SvgVectorOutput()` (Linux only).
+
+Therefore this method can’t be used to produce a full list of the PureBASIC language tokens. This limitation might not be a problem if you are working on a language definition for a platform-specific code editor, but it surely becomes a problem when targetting cross-platform applications.
 
 Accessing Resources Within The Installer
 ========================================
@@ -158,4 +186,20 @@ The Windows installer is a binary installer created with [Inno Setup](http://www
 You’ll need a free tool called **Universal Extractor**, an unpacker that supports a variaty of compression and isntaller formats, included the one used by the PureBASIC installer:
 
 -   <https://www.legroom.net/software/uniextract>
+
+<!-- #toc -->
+-   [Introduction](#introduction)
+-   [Terminology](#terminology)
+    -   [Syntax Examples](#syntax-examples)
+        -   [Kate Syntax Definitions](#kate-syntax-definitions)
+        -   [GeSHi](#geshi)
+-   [Getting The Tokens List](#getting-the-tokens-list)
+    -   [Commands Index](#commands-index)
+        -   [Documentation Tools And Parsers](#documentation-tools-and-parsers)
+    -   [The SDK’s Syntax Highlighter](#the-sdks-syntax-highlighter)
+        -   [The Syntax Highlighting DLL Parser](#the-syntax-highlighting-dll-parser)
+    -   [Querying The Compiler](#querying-the-compiler)
+-   [Accessing Resources Within The Installer](#accessing-resources-within-the-installer)
+
+<!-- /toc -->
 
