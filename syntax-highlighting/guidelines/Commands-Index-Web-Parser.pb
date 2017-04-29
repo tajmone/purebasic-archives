@@ -1,7 +1,7 @@
 ﻿; ==============================================================================
 ;                             Commands Index Parser                             
 ; ==============================================================================
-; "Commands-Index-Parser.pb" v1.0 (2017-04-23) — PureBASIC 5.60
+; "Commands-Index-Web-Parser.pb" v1.0 (2017-04-23) — PureBASIC 5.60
 ; License: Unrestricted usage permission.
 
 ; Written by Marc56us, Apr 23, 2017.

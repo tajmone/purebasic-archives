@@ -97,7 +97,7 @@ On Mac, the documentation ships as loose html files, so no unpacking is required
 
 User [**@Marc56us**](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=11155) has created useful code bases for extracting the list of commands and constants from the online [Commands Index](http://www.purebasic.com/documentation/reference/commandindex.html) and [PureBasic Constants](http://www.purebasic.com/documentation/reference/pbconstants.html) documentation pages:
 
--   [`Commands-Index-Parser.pb`](./Commands-Index-Parser.pb) — extract list of commands from online documentation.
+-   [`Commands-Index-Web-Parser.pb`](./Commands-Index-Web-Parser.pb) — extract list of commands from online documentation.
 -   [`PB-Keywords-Lister.pb`](./PB-Keywords-Lister.pb) — extract and save to file list of commands and constants from online documentation.
 
 He also provided some code to extract the “`commandindex.html`” page/file from “`PureBasic.chm`”, which is a very handy way to access the Commands Index page of previous versions:
