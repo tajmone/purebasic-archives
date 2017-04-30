@@ -1,20 +1,23 @@
 PureBASIC For Highlight
 =======================
 
+    PureBASIC 5.00 -> 5.60
+
 This folder is the home of the PureBASIC language definition and theme files for André Simons’ **Highlight**.
 
-> **NOTE**: The PureBASIC language definition and theme are now bundled in Highlight (v &gt;=3.33). No need to install them manually, just [download/update](http://www.andre-simon.de/zip/download.php) to the latest version of Highlight.
+> **NOTE**: The PureBASIC language definition and theme are now bundled in Highlight (v &gt;=3.33). No need to install them manually, just [download/update](http://www.andre-simon.de/zip/download.php) to the latest version of Highlight. When I update the language definition you might get here an early release before it's actually integrated into the next Highlight release.
 
 ------------------------------------------------------------------------
 
 <!-- #toc -->
--   [About This Project](#about-this-project)
-    -   [Files](#files)
--   [About Highlight](#about-highlight)
-    -   [AsciiDoc Integration](#asciidoc-integration)
--   [Manual Installation](#manual-installation)
-    -   [Installing PureBASIC Lang Definition](#installing-purebasic-lang-definition)
-    -   [Manually Installing The PureBASIC Theme](#manually-installing-the-purebasic-theme)
+
+- [About This Project](#about-this-project)
+    - [Files](#files)
+- [About Highlight](#about-highlight)
+    - [AsciiDoc Integration](#asciidoc-integration)
+- [Manual Installation](#manual-installation)
+    - [Installing PureBASIC Lang Definition](#installing-purebasic-lang-definition)
+    - [Manually Installing The PureBASIC Theme](#manually-installing-the-purebasic-theme)
 
 <!-- /toc -->
 About This Project
@@ -36,6 +39,7 @@ About Highlight
 ===============
 
 -   <http://www.andre-simon.de/doku/highlight/en/highlight.php>
+-   <https://github.com/andre-simon/highlight>
 
 Highilight is a crossplatform FOSS application for converting source code to formatted text with syntax highlighting. It’s a command line tool with an optional GUI fontend.
 

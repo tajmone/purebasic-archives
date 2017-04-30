@@ -247,6 +247,7 @@ Repo History
 A record of the milestones of this repository history (reverse order).
 
 -   `2017/04/30`
+    -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) to PB 5.60.
     -   New [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/) section dedicated to creators and maintainers of PureBASIC language definitions for syntax highlighters and code editors.
 -   `2017/01/26`
     -   Reprinted **Vid**’s “[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)”
