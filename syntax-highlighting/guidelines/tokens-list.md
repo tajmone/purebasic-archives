@@ -7,6 +7,7 @@ This document discusses the PureBASIC language tokens list in relation to syntax
 
 <!-- #toc -->
 -   [Introduction](#introduction)
+    -   [Tokens Lists Files](#tokens-lists-files)
 -   [Terminology](#terminology)
     -   [Syntax Examples](#syntax-examples)
         -   [Kate Syntax Definitions](#kate-syntax-definitions)
@@ -27,6 +28,18 @@ Introduction
 ============
 
 Creation and maintainance of PureBASIC language syntax definitons will require having access to the full list of the language’s tokens. Unfortunately the task at hand is not that simple: PureBASIC doesn’t provide a list these tokens in a usable format. Furthermore, maintaining a tokens list of this kind will require to track changes with each new release of the language (new toknes, renaming, and deprecation).
+
+Tokens Lists Files
+------------------
+
+In this folder you’ll find some ready-made lists of PureBASIC syntax tokens:
+
+-   [`/commands-lists/`](./commands-lists/) — txt and JSON commands-list extracted from each PureBASIC version.
+-   [`ASM-Keywords.txt`](./ASM-Keywords.txt) — list of ASM tokens (all PB versions share this same list)
+-   [`tokens-PB-Commands.json`](./tokens-PB-Commands.json) — JSON list of PB Commands.
+-   [`tokens-PB-Keywords.json`](./tokens-PB-Keywords.json) — JSON list of PB Keywords.
+
+The last two JSON files are different from the other lists: they consist of arrays of the added and removed tokens with each PureBASIC version. This allows to build a list of tokens, from PB 5.00 upward, in a progressive manner (either exclusively or additively), and avoid data redundancy — you’ll need to write a custom JSON parser for this. The JSON data structure is rather self-explaining.
 
 Terminology
 ===========
@@ -93,6 +106,8 @@ On Windows, the html page is found inside the CHM Help file (`PureBasic.chm`) th
 
 On Mac, the documentation ships as loose html files, so no unpacking is required. On Linux the documentation is not in html.
 
+You can find ready-to-use lists of the commands from each version of PureBASIC in the [`/commands-lists/`](./commands-lists/) folder.
+
 ### Documentation Tools And Parsers
 
 User [**@Marc56us**](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=11155) has created useful code bases for extracting the list of commands and constants from the online [Commands Index](http://www.purebasic.com/documentation/reference/commandindex.html) and [PureBasic Constants](http://www.purebasic.com/documentation/reference/pbconstants.html) documentation pages:
@@ -147,6 +162,9 @@ Any PureBASIC user should be able to easily distinguish when one list ends and t
 >
 > This type of redundancy is commonly found in language definitions for code editors, but it’s usually undesirable in code beautifiers.
 
+<!-- -->
+> **ASM KEYWORDS NOTE**: From diffing the extracted keywords lists from PB 5.00 up to 5.60, no changes were found in the ASM keywords. You can safely use the list found in [`ASM-Keywords.txt`](./ASM-Keywords.txt) in your syntax definitions.
+
 The purpose of this tool is *not* to create a ready-to-use list of tokens: the purpose is to pass the lists to some diffing tool in order to see what has changed between different PureBASIC releases. This provides a quick way to see whether tokens have been added or removed since the previous PureBASIC release, allowing maintainers of language definitions to manually adjust their lists, or the automate the task via merge tools.
 
 Here’s an example screenshot of a [Beyond Compare](http://www.scootersoftware.com/) merging sessions that diffs two tokens-lists (PB 5.00 & 5.10) extracted with `Parse-Highlighting-DLL.pb`:
@@ -174,6 +192,12 @@ Accessing Resources Within The Installer
 ========================================
 
 To avoid having to install each version of PureBASIC in order to access the above mentioned resources, the only workaround is to extract the contents of the binary installers, without actually installing anything.
+
+Older versions of PureBASIC installers can be downloaded from PureBASIC museum download page (login required):
+
+-   <https://www.purebasic.com/securedownload/Museum.php>
+
+> **NOTE**: PureBASIC 5.44 is not available for download, so unless you have kept a copy of it you won’t be able to access its contents.
 
 The Linux installer is just a GZIP Compressed Tar Archive file (`*.tgz`), so you can unpack it with 7-Zip.
 

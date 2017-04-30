@@ -19,14 +19,18 @@ This folder contains information and resources pertaining to syntax highlighting
 Folder Contents
 ===============
 
--   [`tokens-list.md`](./tokens-list.md) — info of PB syntax tokens, and how to build and maintain a list.
+-   [`/commands-lists/`](./commands-lists/) — txt and JSON commands-list from each PureBASIC version.
+-   [`ASM-Keywords.txt`](./ASM-Keywords.txt) — list of ASM tokens (all PB versions)
 -   [`Commands-Index-Web-Parser.pb`](./Commands-Index-Web-Parser.pb) — extract list of commands from website documentation.
 -   [`Extract-Commands-Index-from-CHM.pb`](./Extract-Commands-Index-from-CHM.pb) — extract “`commandindex.html`” from “`PureBasic.chm`”.
--   [`PB-Keywords-Lister.pb`](./PB-Keywords-Lister.pb) — extract and save to file list of commands and constants from online documentation.
 -   [`Parse-Highlighting-DLL.pb`](./Parse-Highlighting-DLL.pb) — parse the `SyntaxHilighting.dll` found in PB’s SKD and extract keywords list (PureBASIC and ASM).
+-   [`PB-Keywords-Lister.pb`](./PB-Keywords-Lister.pb) — extract and save to file list of commands and constants from online documentation.
 -   [`SyntaxHilighting.dll_Merge.png`](./SyntaxHilighting.dll_Merge.png) — screenshot.
 -   [`SyntaxHilighting.dll_PB543.png`](./SyntaxHilighting.dll_PB543.png) — screenshot.
 -   [`SyntaxHilighting.dll_PB550.png`](./SyntaxHilighting.dll_PB550.png) — screenshot.
+-   [`tokens-list.md`](./tokens-list.md) — info of PB syntax tokens, and how to build and maintain a list.
+-   [`tokens-PB-Commands.json`](./tokens-PB-Commands.json) — JSON list of PB Commands.
+-   [`tokens-PB-Keywords.json`](./tokens-PB-Keywords.json) — JSON list of PB Keywords.
 
 Introduction
 ============

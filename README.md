@@ -149,6 +149,7 @@ Some resources might require long-term work before being ready for inclusion in 
 For this purpose, some developement branches have been created to host different kind of works-in-progress (WIP):
 
 -   [`dev-tutorials`](https://github.com/tajmone/purebasic-archives/tree/dev-tutorials) – WIP for upcoming tutorials.
+-   [`dev-syntax-highlighters`](https://github.com/tajmone/purebasic-archives/tree/dev-syntax-highlighters) — WIP relating to syntax highlighting ad keeping track of PureBASIC syntax tokens.
 
 You might consider peeking into the dev-branches to get a preview of what is coming next and — why not?! — join the work.
 
@@ -232,6 +233,7 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 Acknowledgements
 ================
 
+-   «@Marc56us» — for having written code for the [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/) section.
 -   «**Vid**» of TAJGA Team — for “[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)”, and “[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)”.
 -   Thomas Schulz «[@ts-soft](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=1214)» — for the [**Win Registry Module**](./libs/win-registry/).
 -   Stephen Rodriguez «[@srod](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=678)» — for the [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) library.
@@ -244,7 +246,9 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
--   `2017/01/65`
+-   `2017/04/30`
+    -   New [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/) section dedicated to creators and maintainers of PureBASIC language definitions for syntax highlighters and code editors.
+-   `2017/01/26`
     -   Reprinted **Vid**’s “[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)”
 -   `2017/01/25`
     -   Reprinted **Vid**’s “[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)” (also [available in CHM format](./asm/fasm/tutorials/)).
