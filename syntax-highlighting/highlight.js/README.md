@@ -1,7 +1,9 @@
-Highlight.js v9.9.0
-==============================
+Highlight.js v9.11.0
+====================
 
-This repo npw host pre-built versions of **highlight.js**’ «PureBASIC enhanced/modded releases», with different combinations of language syntaxes, to cover common usage scenarios, along with instructions and examples:
+    PureBASIC 5.00–5.60
+
+This repo now host pre-built versions of **highlight.js**’ «PureBASIC enhanced/modded releases», with different combinations of language syntaxes, to cover common usage scenarios, along with instructions and examples:
 
 -   [`/pb-prebuilt/`](./pb-prebuilt/)
 -   [HTML online live demo](https://cdn.rawgit.com/tajmone/purebasic-archives/a4c2c1a/syntax-highlighting/highlight.js/pb-prebuilt/hljs-all/example.html) (needed if you are on GitHub)

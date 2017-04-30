@@ -247,6 +247,7 @@ Repo History
 A record of the milestones of this repository history (reverse order).
 
 -   `2017/04/30`
+    -   Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to **HJLS-PB v9.11.0** plus an updated PureBASIC lang definition to PB 5.60.
     -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) to PB 5.60.
     -   New [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/) section dedicated to creators and maintainers of PureBASIC language definitions for syntax highlighters and code editors.
 -   `2017/01/26`
