@@ -13,29 +13,31 @@ or you may download selected resources as **Zip archives** from the [“Download
 ------------------------------------------------------------------------
 
 <!-- #toc -->
--   [Vanity URLs](#vanity-urls)
--   [Introduction](#introduction)
-    -   [PureBASIC Archives Repository](#purebasic-archives-repository)
-    -   [The Wiki](#the-wiki)
-    -   [PureBASIC Archives Website](#purebasic-archives-website)
--   [Quick Links](#quick-links)
-    -   [Developers’ Resources](#developers-resources)
-    -   [Tutorials](#tutorials)
-    -   [Miscillaneous Utilities](#miscillaneous-utilities)
--   [Download Links](#download-links)
--   [Resources Organization](#resources-organization)
--   [Developement Branches](#developement-branches)
--   [License](#license)
-    -   [Third Party Resources Licensing Terms](#third-party-resources-licensing-terms)
-    -   [«PureBASIC Archives» Overall License Terms](#purebasic-archives-overall-license-terms)
--   [Contributing](#contributing)
--   [About PureBASIC](#about-purebasic)
--   [More Collections on GitHub](#more-collections-on-github)
-    -   [FOSS Collections](#foss-collections)
-    -   [Non-FOSS Collections](#non-foss-collections)
-    -   [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
--   [Acknowledgements](#acknowledgements)
--   [Repo History](#repo-history)
+
+- [Vanity URLs](#vanity-urls)
+- [Introduction](#introduction)
+    - [PureBASIC Archives Repository](#purebasic-archives-repository)
+    - [The Wiki](#the-wiki)
+    - [PureBASIC Archives Website](#purebasic-archives-website)
+- [Quick Links](#quick-links)
+    - [Developers’ Resources](#developers-resources)
+    - [Tutorials](#tutorials)
+    - [Miscillaneous Utilities](#miscillaneous-utilities)
+- [Download Links](#download-links)
+- [Resources Organization](#resources-organization)
+- [Developement Branches](#developement-branches)
+- [License](#license)
+    - [Third Party Resources Licensing Terms](#third-party-resources-licensing-terms)
+    - [«PureBASIC Archives» Overall License Terms](#purebasic-archives-overall-license-terms)
+- [Contributing](#contributing)
+- [About PureBASIC](#about-purebasic)
+- [More Collections on GitHub](#more-collections-on-github)
+    - [FOSS Collections](#foss-collections)
+    - [Non-FOSS Collections](#non-foss-collections)
+    - [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
+- [Useful Links](#useful-links)
+- [Acknowledgements](#acknowledgements)
+- [Repo History](#repo-history)
 
 <!-- /toc -->
 
@@ -229,6 +231,12 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 **PureBasic CodeArchiv** contains a wealth of resources for PureBASIC version 3 and 4. Its license terms are:
 
 > Design and compilation of the PureBasic CodeArchive is (c) 2003-2007 by Andre Beer and exclusive component of the www.PureArea.net PureBasic support site. You may use the codes published on this site without restrictions for your own projects, however a publication of this code archive on other web pages, CDRom etc., require the express consent of the author. The copyright of the individual codes lies at the respective authors.
+
+# Useful Links
+
+External links where you can find more PureBASIC resources.
+
+- http://rosettacode.org/wiki/PureBasic
 
 Acknowledgements
 ================
