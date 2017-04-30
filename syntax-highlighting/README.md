@@ -9,6 +9,7 @@ When it comes to publishing code, PureBASIC language is still unsupported in mos
 -   [In This Repo](#in-this-repo)
     -   [Highlight.js](#highlightjs)
     -   [Highlight](#highlight)
+    -   [Highlighting Guidelines](#highlighting-guidelines)
 -   [Available Highlighters](#available-highlighters)
     -   [Backend HTML Highlighters](#backend-html-highlighters)
         -   [GeSHi — Generic Syntax Highlighter](#geshi--generic-syntax-highlighter)
@@ -41,6 +42,13 @@ Highlight
 This repo hosts the project page of the PureBASIC language definition and color theme for [**Highlight**](http://www.andre-simon.de/doku/highlight/en/highlight.php) syntax highligther (PB lang definition file and theme are now bundled in Highlight since v3.33).
 
 Written by Tristano Ajmone, public domain.
+
+Highlighting Guidelines
+-----------------------
+
+-   [`/guidelines/`](./guidelines/)
+
+This folder contains information and resources pertaining to syntax highlighting PureBASIC code. They are intended to help anyone wishing to create a new PureBASIC syntax definition for third party highlighters and code editors.
 
 Available Highlighters
 ======================
