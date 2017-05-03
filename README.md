@@ -13,31 +13,30 @@ or you may download selected resources as **Zip archives** from the [“Download
 ------------------------------------------------------------------------
 
 <!-- #toc -->
-
-- [Vanity URLs](#vanity-urls)
-- [Introduction](#introduction)
-    - [PureBASIC Archives Repository](#purebasic-archives-repository)
-    - [The Wiki](#the-wiki)
-    - [PureBASIC Archives Website](#purebasic-archives-website)
-- [Quick Links](#quick-links)
-    - [Developers’ Resources](#developers-resources)
-    - [Tutorials](#tutorials)
-    - [Miscillaneous Utilities](#miscillaneous-utilities)
-- [Download Links](#download-links)
-- [Resources Organization](#resources-organization)
-- [Developement Branches](#developement-branches)
-- [License](#license)
-    - [Third Party Resources Licensing Terms](#third-party-resources-licensing-terms)
-    - [«PureBASIC Archives» Overall License Terms](#purebasic-archives-overall-license-terms)
-- [Contributing](#contributing)
-- [About PureBASIC](#about-purebasic)
-- [More Collections on GitHub](#more-collections-on-github)
-    - [FOSS Collections](#foss-collections)
-    - [Non-FOSS Collections](#non-foss-collections)
-    - [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
-- [Useful Links](#useful-links)
-- [Acknowledgements](#acknowledgements)
-- [Repo History](#repo-history)
+-   [Vanity URLs](#vanity-urls)
+-   [Introduction](#introduction)
+    -   [PureBASIC Archives Repository](#purebasic-archives-repository)
+    -   [The Wiki](#the-wiki)
+    -   [PureBASIC Archives Website](#purebasic-archives-website)
+-   [Quick Links](#quick-links)
+    -   [Developers’ Resources](#developers-resources)
+    -   [Tutorials](#tutorials)
+    -   [Miscillaneous Utilities](#miscillaneous-utilities)
+-   [Download Links](#download-links)
+-   [Resources Organization](#resources-organization)
+-   [Developement Branches](#developement-branches)
+-   [License](#license)
+    -   [Third Party Resources Licensing Terms](#third-party-resources-licensing-terms)
+    -   [«PureBASIC Archives» Overall License Terms](#purebasic-archives-overall-license-terms)
+-   [Contributing](#contributing)
+-   [About PureBASIC](#about-purebasic)
+-   [More Collections on GitHub](#more-collections-on-github)
+    -   [FOSS Collections](#foss-collections)
+    -   [Non-FOSS Collections](#non-foss-collections)
+    -   [PureBasic CodeArchiv (Rebirth)](#purebasic-codearchiv-rebirth)
+-   [Useful Links](#useful-links)
+-   [Acknowledgements](#acknowledgements)
+-   [Repo History](#repo-history)
 
 <!-- /toc -->
 
@@ -133,6 +132,9 @@ The Archives project is divided into folders according to categories:
 -   [`/asm/`](./asm/) — x86 Assembly (FASM and Yasm) resources.
 -   [`/books/`](./books/) — books on PureBASIC programming.
 -   [`/libs/`](./libs/) – 3rd party PureBASIC libraries, modules, wrappers, ecc.
+-   [`/os-linux/`](./os-linux/) — PureBASIC for Linux resources.
+-   [`/os-mac/`](./os-mac/) — PureBASIC for macOS resources.
+-   [`/os-win/`](./os-win/) — PureBASIC for Windows resources.
 -   [`/pb-development/`](./pb-development/) – resources for developing in PureBASIC.
 -   [`/syntax-highlighting/`](./syntax-highlighting/) — publishing PureBASIC source code in colored syntax.
 -   [`/text-editors/`](./text-editors/) — PureBASIC syntax support in text editors.
@@ -232,15 +234,17 @@ This project deserves a special mention. It seems to be a WIP to recreate an upd
 
 > Design and compilation of the PureBasic CodeArchive is (c) 2003-2007 by Andre Beer and exclusive component of the www.PureArea.net PureBasic support site. You may use the codes published on this site without restrictions for your own projects, however a publication of this code archive on other web pages, CDRom etc., require the express consent of the author. The copyright of the individual codes lies at the respective authors.
 
-# Useful Links
+Useful Links
+============
 
 External links where you can find more PureBASIC resources.
 
-- http://rosettacode.org/wiki/PureBasic
+-   <http://rosettacode.org/wiki/PureBasic>
 
 Acknowledgements
 ================
 
+-   «[@Sicro](https://github.com/SicroAtGIT)» (maintainer of [PureBasic-CodeArchiv-Rebirth](https://github.com/SicroAtGIT/PureBasic-CodeArchiv-Rebirth)) — for his continuos advice and for providing links to many useful resources.
 -   «@Marc56us» — for having written code for the [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/) section.
 -   «**Vid**» of TAJGA Team — for “[*TAJGA FASM Tutorial*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/tajga-fasm-tutorial.html)”, and “[*FASM Preprocessor Guide*](https://cdn.rawgit.com/tajmone/purebasic-archives/1351562/asm/fasm/tutorials/fasm-preprocessor-guide.html)”.
 -   Thomas Schulz «[@ts-soft](http://www.purebasic.fr/english/memberlist.php?mode=viewprofile&u=1214)» — for the [**Win Registry Module**](./libs/win-registry/).
