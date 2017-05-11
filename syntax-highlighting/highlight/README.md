@@ -1,23 +1,24 @@
 PureBASIC For Highlight
 =======================
 
+    v1.2 (2017/05/11) — ASM support added
     PureBASIC 5.00 -> 5.60
 
 This folder is the home of the PureBASIC language definition and theme files for André Simons’ **Highlight**.
 
-> **NOTE**: The PureBASIC language definition and theme are now bundled in Highlight (v &gt;=3.33). No need to install them manually, just [download/update](http://www.andre-simon.de/zip/download.php) to the latest version of Highlight. When I update the language definition you might get here an early release before it's actually integrated into the next Highlight release.
+> **NOTE**: The PureBASIC language definition and theme are now bundled in Highlight (v &gt;=3.33). No need to install them manually, just [download/update](http://www.andre-simon.de/zip/download.php) to the latest version of Highlight. When I update the language definition you might get here an early release before it’s actually integrated into the next Highlight release.
 
 ------------------------------------------------------------------------
 
 <!-- #toc -->
-
-- [About This Project](#about-this-project)
-    - [Files](#files)
-- [About Highlight](#about-highlight)
-    - [AsciiDoc Integration](#asciidoc-integration)
-- [Manual Installation](#manual-installation)
-    - [Installing PureBASIC Lang Definition](#installing-purebasic-lang-definition)
-    - [Manually Installing The PureBASIC Theme](#manually-installing-the-purebasic-theme)
+-   [About This Project](#about-this-project)
+    -   [ASM Syntax Support](#asm-syntax-support)
+    -   [Files](#files)
+-   [About Highlight](#about-highlight)
+    -   [AsciiDoc Integration](#asciidoc-integration)
+-   [Manual Installation](#manual-installation)
+    -   [Installing PureBASIC Lang Definition](#installing-purebasic-lang-definition)
+    -   [Manually Installing The PureBASIC Theme](#manually-installing-the-purebasic-theme)
 
 <!-- /toc -->
 About This Project
@@ -28,6 +29,13 @@ The PureBASIC language and theme files herein contained were written by Tristano
 These files are now part of the official Highlight project and since v3.33 are bundled with it.
 
 The `edit-purebasic` color theme mimics the look and feel of PB’s native IDE, and can be accessed in the “**Formatting**” tab, under the “**Color theme:**” drop-down menu of Highlight’s GUI, or invoked via options from the command line.
+
+ASM Syntax Support
+------------------
+
+With v1.2 the PB syntax definition now supports inline Assembly highlighting — just like within PureBASIC’s IDE.
+
+The syntax definition has been tested against edge cases and great care has been taken to ensure that the resulting highlighted code mimicks the behavior of PureBASIC’s native IDE.
 
 Files
 -----
