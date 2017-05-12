@@ -258,6 +258,9 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/05/12`
+    -   Bug-Fix Update to pre-built [**HJLS-PB v9.11.0b**](./syntax-highlighting/highlight.js/) — some PB keywords were accidentally joined together; now fixed.
+    -   New PB keywords list in [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/).
 -   `2017/05/11`
     -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.2): Added inline-Assembly support!
 -   `2017/04/30`

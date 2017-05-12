@@ -29,8 +29,12 @@ Folder Contents
 -   [`SyntaxHilighting.dll_PB543.png`](./SyntaxHilighting.dll_PB543.png) — screenshot.
 -   [`SyntaxHilighting.dll_PB550.png`](./SyntaxHilighting.dll_PB550.png) — screenshot.
 -   [`tokens-list.md`](./tokens-list.md) — info of PB syntax tokens, and how to build and maintain a list.
+-   [`PB-Keywords-500-560-Plain-List.txt`](./PB-Keywords-500-560-Plain-List.txt) — All-inclusive list of all PB keywords from 5.00 to 5.60, plain.
+-   [`PB-Keywords-500-560-Quoted-List.txt`](./PB-Keywords-500-560-Quoted-List.txt) — All-inclusive list of all PB keywords from 5.00 to 5.60, comma-separated and within double-quotes.
 -   [`tokens-PB-Commands.json`](./tokens-PB-Commands.json) — JSON list of PB Commands.
--   [`tokens-PB-Keywords.json`](./tokens-PB-Keywords.json) — JSON list of PB Keywords.
+-   [`tokens-PB-Keywords.json`](./tokens-PB-Keywords.json) — JSON list of PB Keywords **\*\* NOT RELIABLE!\*\***.
+
+> **WARNING**: The `tokens-PB-Keywords.json` list is not ready for use. Some keywords seem to be left out. It will be fixed in the future.
 
 Introduction
 ============
@@ -66,5 +70,5 @@ We’ll begin by analyzing the way PureBASIC code is highlighted in its native I
 Useful Links
 ============
 
--   [PB Forum \#68368](http://www.purebasic.fr/english/viewtopic.php?f=13&t=68368&start=0) — a thread on how to get the full list of PureBASIC keywords. Contains many suggestions, links and code examples. It’s also a thread for general discussion of PB syntax highlighting.
+-   [PB Forum \#68368](http://www.purebasic.fr/english/viewtopic.php?f=13&t=68368&start=0) � a thread on how to get the full list of PureBASIC keywords. Contains many suggestions, links and code examples. It’s also a thread for general discussion of PB syntax highlighting.
 

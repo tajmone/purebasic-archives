@@ -36,10 +36,16 @@ In this folder you’ll find some ready-made lists of PureBASIC syntax tokens:
 
 -   [`/commands-lists/`](./commands-lists/) — txt and JSON commands-list extracted from each PureBASIC version.
 -   [`ASM-Keywords.txt`](./ASM-Keywords.txt) — list of ASM tokens (all PB versions share this same list)
+-   [`PB-Keywords-500-560-Plain-List.txt`](./PB-Keywords-500-560-Plain-List.txt) — All-inclusive list of all PB keywords from 5.00 to 5.60, plain.
+-   [`PB-Keywords-500-560-Quoted-List.txt`](./PB-Keywords-500-560-Quoted-List.txt) — All-inclusive list of all PB keywords from 5.00 to 5.60, comma-separated and within double-quotes.
 -   [`tokens-PB-Commands.json`](./tokens-PB-Commands.json) — JSON list of PB Commands.
--   [`tokens-PB-Keywords.json`](./tokens-PB-Keywords.json) — JSON list of PB Keywords.
+-   [`tokens-PB-Keywords.json`](./tokens-PB-Keywords.json) — JSON list of PB Keywords **\*\* NOT RELIABLE!\*\***.
 
 The last two JSON files are different from the other lists: they consist of arrays of the added and removed tokens with each PureBASIC version. This allows to build a list of tokens, from PB 5.00 upward, in a progressive manner (either exclusively or additively), and avoid data redundancy — you’ll need to write a custom JSON parser for this. The JSON data structure is rather self-explaining.
+
+> **WARNING**: The `tokens-PB-Keywords.json` list is not ready for use. Some keywords seem to be left out. It will be fixed in the future.
+
+The two `PB-Keywords-500-560-*-List.txt` files contain an all-inclusive list of all the PureBASIC keywords from v5.00 to v5.60.
 
 Terminology
 ===========

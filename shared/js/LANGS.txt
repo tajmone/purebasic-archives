@@ -1,4 +1,4 @@
-Highlight.js PureBASIC mod v9.11.0 (April 30, 2017).
+Highlight.js PureBASIC mod v9.11.0b (May 12, 2017).
 Bundled languages:
 - purebasic
 - fasm
