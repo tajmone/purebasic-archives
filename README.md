@@ -258,6 +258,8 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/05/24`
+    -   updated [**pandoc2bbcode**](./tools/pandoc2bbcode/)’s `bbcode_phpbb.lua` to v1.2.
 -   `2017/05/12`
     -   Bug-Fix Update to pre-built [**HJLS-PB v9.11.0b**](./syntax-highlighting/highlight.js/) — some PB keywords were accidentally joined together; now fixed.
     -   New PB keywords list in [`/syntax-highlighting/guidelines/`](./syntax-highlighting/guidelines/).

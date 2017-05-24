@@ -3,9 +3,9 @@
      *                         Pandoc 2 BBCode for phpBB                          *
      *                                                                            *
      ******************************************************************************
-     "bbcode_phpbb.lua" v1.1 (2016-12-20)
-	 adapted by Tristano Ajmone (@tajmone):
-	 -- https://github.com/tajmone/2bbcode
+     "bbcode_phpbb.lua" v1.2 (2017-05-24)
+     adapted by Tristano Ajmone (@tajmone):
+     -- https://github.com/tajmone/2bbcode
      ------------------------------------------------------------------------------
      This code was forked by Tristano Ajmone from @lilydjwg's `2bbcode.lua`:
 
@@ -122,7 +122,7 @@ end
 
 -- CHANGES BY @tajmone: CaptionedImage
 --   *  Added CaptionedImage function (missing in original)
---		  Caused error for GFM images with Alt text (even if Alt was empty)
+--        Caused error for GFM images with Alt text (even if Alt was empty)
 function CaptionedImage(src, tit, caption, attr)
   return "[img]" .. src .. "[/img]"
 end
@@ -187,6 +187,10 @@ function HorizontalRule()
   return "--------------------------------------------------------------------------------"
 end
 
+function LineBlock(ls)
+  return table.concat(ls, '\n')
+end
+
 function CodeBlock(s, attr)
   return "[code]\n" .. s .. '\n[/code]'
 end
@@ -235,9 +239,9 @@ end
 
 -- CHANGES BY @tajmone: Table
 --   *  Now presence of a Table in input doesn't throw an error and abort,
---		  it just returns empty string, suppressing the table in converted output!
+--        it just returns empty string, suppressing the table in converted output!
 --   *  Warning is printed to STDERR showing the omitted Table's headers
---		(so user can understand what was left out).
+--      (so user can understand what was left out).
 
 -- Caption is a string, aligns is an array of strings,
 -- widths is an array of floats, headers is an array of
@@ -320,6 +324,9 @@ end
 ==============================================================================
                                  FILE HISTORY                                 
 ==============================================================================
+v1.2 - 2017-05-24
+     - @snan added support for starting lines with pipes to preserve line breaks:
+       - function LineBlock(ls)
 v1.1 - 2016/12/20
      - Bug Fix: Added missing fucntions:
        - DoubleQuoted()
