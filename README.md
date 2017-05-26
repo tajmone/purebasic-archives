@@ -30,6 +30,7 @@ or you may download selected resources as **Zip archives** from the [“Download
     -   [«PureBASIC Archives» Overall License Terms](#purebasic-archives-overall-license-terms)
 -   [Contributing](#contributing)
 -   [About PureBASIC](#about-purebasic)
+    -   [Interviews With PureBASIC Developers](#interviews-with-purebasic-developers)
 -   [More Collections on GitHub](#more-collections-on-github)
     -   [FOSS Collections](#foss-collections)
     -   [Non-FOSS Collections](#non-foss-collections)
@@ -200,6 +201,16 @@ PureBASIC is a commercial programming language and IDE published by Fantaisie So
 >
 > In spite of its beginner-friendly syntax, the possibilities are endless with PureBasic’s advanced features such as pointers, structures, procedures, dynamically linked lists and much more. Experienced coders will have no problem gaining access to any of the legal OS structures or API objects and PureBasic even allows inline ASM.
 
+Interviews With PureBASIC Developers
+------------------------------------
+
+Some interviews by André Beer ([PureArea.net](http://www.purearea.net)) with Frédéric Laboureur (aka **@Fred** and «AlphaSND»), founder of Fantaisie Software and main developer of PureBASIC, and with Timo Harter (**@freak**), 2nd main PureBASIC programmer:
+
+-   [2005 Interview with Fred](http://www.purearea.net/pb/english/interview.htm)
+-   [2009 Interview with freak](http://www.purearea.net/pb/english/interview_freak.htm)
+-   [2012 Interview with Fred](http://www.purearea.net/pb/english/interview_fred_2012.htm)
+-   [2015 Interview with Fred and freak](http://www.purearea.net/pb/english/interview_2015.htm)
+
 More Collections on GitHub
 ==========================
 
@@ -258,6 +269,8 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/05/26`
+    -   Added links to [interviews with PureBASIC developers](#interviews-with-purebasic-developers).
 -   `2017/05/24`
     -   updated [**pandoc2bbcode**](./tools/pandoc2bbcode/)’s `bbcode_phpbb.lua` to v1.2.
 -   `2017/05/12`
