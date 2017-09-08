@@ -19,6 +19,7 @@ It was released under the **WTFPL** (Do What the Fuck You Want to Public License
 
 <!-- #toc -->
 -   [GoScintilla v3](#goscintilla-v3)
+    -   [v3.0.1 (2017-09-08)](#v301-2017-09-08)
     -   [v3.0 (2017-01-02)](#v30-2017-01-02)
 -   [GoScintilla v2](#goscintilla-v2)
     -   [v2.7 (2012-08-11)](#v27-2012-08-11)
@@ -47,6 +48,11 @@ GoScintilla v3
 ==============
 
 Forked by Tristano Ajmone.
+
+v3.0.1 (2017-09-08)
+-------------------
+
+-   BUGFIX: **@srod** fixed a bug in `GOSCI_Free()` that caused crashes on Windows — see [Issue \#1](https://github.com/tajmone/purebasic-archives/issues/1) (thanks to [@MikeHart66](https://github.com/MikeHart66) for pointing it out!).
 
 v3.0 (2017-01-02)
 -----------------

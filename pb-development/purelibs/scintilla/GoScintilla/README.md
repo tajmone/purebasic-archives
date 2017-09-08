@@ -1,6 +1,8 @@
 GoScintilla
 ===========
 
+    GoScintilla v3.0.1 (2017/09/08)
+
 GoScintilla is a small Purebasic source-code utility which wraps a lot of the Scintilla API in order to make it easier to use the Scintilla control within our applications to give our programs source code editing facilities.
 
 It comes with a powerful little lexer which is easily configured to give us syntax styling and/or code folding and/or code-completion and/or call-tips (code-tips) … as appropriate for some programming/scripting language or other.
