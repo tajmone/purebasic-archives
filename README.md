@@ -3,6 +3,13 @@ The PureBASIC Archives
 
 A collection of PureBASIC resources.
 
+> __PROJECT TEMPORARILY FROZEN__ — The PureBASIC Archives project is currently being redesigned to become a fully browsable HTML project (both online, through GitHub Pages, as well as locally). The new version will be powered by __Butler__ — a static, flat-file content management system (written entirely in PureBASIC) that relies on [PP](https://github.com/CDSoft/pp), [pandoc](http://pandoc.org/) and [Highlight](http://www.andre-simon.de/doku/highlight/en/highlight.php) to generate HTML documentation from pandoc-markdown source files.
+> 
+> Until the new version is ready for release, the PureBASIC Archives will not be updated, and no pull requests will be accepted (currently, all the markdown contents are being ported to the new system).
+> 
+> __Estimated Release Date__: October/December (optimistically).
+
+
 **DIRECT DOWNLOAD** – You can download a full copy of The PB-Archives without using Git:
 
 -   [`master.zip`](https://github.com/tajmone/purebasic-archives/archive/master.zip) – download the production ready version.
