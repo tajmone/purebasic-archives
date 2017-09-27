@@ -276,6 +276,8 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/09/27`
+    -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.4).
 -   `2017/09/08`
     -   Fixed a bug in [**GoScintilla**](./pb-development/purelibs/scintilla/GoScintilla/) (now v3.0.1).
 -   `2017/05/26`

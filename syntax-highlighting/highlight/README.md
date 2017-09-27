@@ -1,7 +1,7 @@
 PureBASIC For Highlight
 =======================
 
-    v1.2 (2017/05/11) — ASM support added
+    v1.4 (2017/09/27)
     PureBASIC 5.00 -> 5.60
 
 This folder is the home of the PureBASIC language definition and theme files for André Simons’ **Highlight**.
