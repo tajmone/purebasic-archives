@@ -1,7 +1,7 @@
 PureBASIC For Highlight
 =======================
 
-    v1.4 (2017/09/27)
+    v1.6 (2017/09/30)
     PureBASIC 5.00 -> 5.60
 
 This folder is the home of the PureBASIC language definition and theme files for André Simons’ **Highlight**.
@@ -11,14 +11,15 @@ This folder is the home of the PureBASIC language definition and theme files for
 ------------------------------------------------------------------------
 
 <!-- #toc -->
--   [About This Project](#about-this-project)
-    -   [ASM Syntax Support](#asm-syntax-support)
-    -   [Files](#files)
--   [About Highlight](#about-highlight)
-    -   [AsciiDoc Integration](#asciidoc-integration)
--   [Manual Installation](#manual-installation)
-    -   [Installing PureBASIC Lang Definition](#installing-purebasic-lang-definition)
-    -   [Manually Installing The PureBASIC Theme](#manually-installing-the-purebasic-theme)
+
+- [About This Project](#about-this-project)
+    - [ASM Syntax Support](#asm-syntax-support)
+    - [Files](#files)
+- [About Highlight](#about-highlight)
+    - [AsciiDoc Integration](#asciidoc-integration)
+- [Manual Installation](#manual-installation)
+    - [Installing PureBASIC Lang Definition](#installing-purebasic-lang-definition)
+    - [Manually Installing The PureBASIC Theme](#manually-installing-the-purebasic-theme)
 
 <!-- /toc -->
 About This Project
@@ -40,8 +41,10 @@ The syntax definition has been tested against edge cases and great care has been
 Files
 -----
 
+- [`/archived/`](./archived/) --- folder containing the various versions of the lang definition and theme.
 -   `purebasic.lang` — PureBASIC language definition file for Highlight.
 -   `edit-purebasic.theme` — PureBASIC color theme for Highlight, mimicking PB’s native IDE look and feel.
+-   [`UNLICENSE`](./UNLICENSE) --- Full text of "Unlicense" terms.
 
 About Highlight
 ===============

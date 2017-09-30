@@ -276,6 +276,8 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/09/30`
+    -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.6 — fixes some bugs introduced with v1.4-5).
 -   `2017/09/27`
     -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.4).
 -   `2017/09/08`

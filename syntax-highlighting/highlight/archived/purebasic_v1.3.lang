@@ -2,7 +2,7 @@
     *                                                                            *
     *                       PureBASIC Language Definition                        *
     *                                                                            *
-    *                             v1.6 - 2017/09/30                             *
+    *                             v1.3 - 2017/05/20                              *
     *                                                                            *
     ******************************************************************************
     PureBASIC v5.00-5.60 -- This language definition emulates the way PureBASIC's
@@ -48,8 +48,7 @@ Keywords={
     },
   { Id=2,   -- Inline ASM > PB IDE color: #924B72 (Cannon Pink)
     Regex=[[ ^\s*(![^;]*) ]], Group=1
-    },
-  { Id=2,   -- ASM Keywords > PB IDE color: #924B72 (Cannon Pink)
+    },  { Id=2,   -- ASM Keywords > PB IDE color: #924B72 (Cannon Pink)
     List={
         -- Keywords list built by parsing the tokens inside PureBASIC SDK's
         -- "SyntaxHilighting.dll" (from each PureBASIC version)...
@@ -94,8 +93,8 @@ Keywords={
     Group=1
     },
   { Id=4,   -- Escaped-String Prefix ("~") > PB IDE color: same as strings
-    Regex=[[ ~" ]], -- NOTE: In the final doc, this Keyword is converted to become
-                    --       part of the string [see OnStateChange() func below]
+    Regex=[[ (~)" ]], -- Without this hack the Escaped-Strings Prefix will not color like the rest of the string!
+    Group=1
     },
 }
 
@@ -108,125 +107,34 @@ Comments={  -- PB IDE color: #00AAAA (Persian Green/Tradewind)
 
 Strings={   -- PB IDE color: #0080FF (Azure Radiance)
   Delimiter=[[ " ]],
+  RawPrefix=[[ ~ ]],
   Escape=[=[\\[abfnrtv"\\]]=],
 }
 
 Operators=[[\&|<|>|\!|\||\=|\/|\*|\%|\+|\-|~]]
 
-
--- FLOATS: PureBASIC strips and ignores all suffixes from float numbers.
---         Therefore "1.575e+1" and "1.575e+1bananas" are both valid float values
---         in PureBASIC code (both yelding the smae value of 15.75).
-Digits=[[ (?x)
-        # ============ HEX ============
-        # Pascal style ($FF):
-
-          \$[0-9a-fA-F]+\b
-
-        # ============ BINARY ============
-        | %[01]+\b
-
-
-        # ============ FLOAT ============
-        # With decimal point separator:
-
-        | \b[-]?\d+\.\d+(?:[eE][\-\+]?\d+)?[a-zA-Z]*\b
-
-        # Without decimal point separator:
-        
-        | \b[-]?\d+(?:[eE][\-\+]?\d+)[a-zA-Z]*\b
-
-
-        # ============ DECIMAL ============
-        | (?<!\$)\b\d+\b
-
-
- 
-       ]]
-
-
-function OnStateChange(oldState, newState, token, kwgroup)
-
---[[ Dismiss Escape-Sequences
-     =========================
-     Currently, I couldn't find a way to preserve escape sequences without causing
-     stray behaviour in string. So, for the time being they are just dismissed. ]]
-  if newState==HL_ESC_SEQ then
-    if oldState==HL_STRING then
-      return HL_STRING
-    else
-      return HL_REJECT
-    end
-
---[[ Escape Strings (~"...")
-     =======================
-     Keyword 4 (~") is converted to string state, so the tilda becomes part of
-     the actual string. The boolean var `escapedString` tracks this process. ]]
-  elseif newState==HL_KEYWORD and kwgroup==4 then
-    -- If ~" occurs inside a string, it's just a string with a tilda as last char...
-    if oldState==HL_STRING then
-      return HL_REJECT
-    -- In all other cases is an escaped string delimiter (opening) 
-    else
-      escapedString = true
-      return HL_STRING
-    end
-
---[[ Sanitize String Starts
-     ======================
-     Because Keyword 4 is converted to a string start, we must tell the parser to
-     treat the next string delimiter as a string end! ]]
-  elseif newState==HL_STRING and escapedString==true then
-    escapedString = false
-    return HL_STRING_END
-  end
-
-  return newState
-end
-
-
---[[==========================================================================
+--[[==============================================================================
                                       CHANGELOG                                   
-==============================================================================
-v1.6 - 2017/09/30 (PureBASIC v5.60) 
-     - IMPROVEMENTS: Added numbers definition (hex, binary, floats an decimals) 
-     - BUG-FIX: String concatenations didn't always parse correctly; now this
-       was fixed (at the expenses of escaped sequences).
-     - ABROGATED: parsing of escape sequences is now disabled because it caused
-       too many problems with strings.
-v1.5 - 2017/09/28 (PureBASIC v5.60) 
-     - IMPROVEMENTS:
-       - Escaped-String Prefix (~) is no longer handled as a keyword (ID=4/kwd)
-         but its recognized as a valid string delimiter.
-       - Escape Sequences are further sanitized so that they can occur only
-         inside strings with the ~" opening delimiter.
-     - ABROGATED:
-       - The lang definition no longer uses Keyword 4 (Escaped-String Prefix).
-v1.4 - 2017/09/27 (PureBASIC v5.60) 
-     - BUG-FIX: Added sanitize function to avoid false positive Escape Sequences
-       in structured vars (eg: "\v" in "SomeStructure\var1").
-       (Thanks to André Simon -- see Issue #23:)
-       -- https://github.com/andre-simon/highlight/issues/23
-v1.3 - 2017/05/20 (PureBASIC v5.60) 
-     - fixed single line comment delimiter
-v1.2 - 2017/05/11 (PureBASIC v5.60)
-     - Added ASM keywords and support for inline ASM (via "!" syntax).
-     - BUG-FIXES:
-       - Repaired missing or mispelled PB Keywords (something went wrong in the
-         keywords list of the v1.1 of this lang definition, some tokens were
-         lost, other fused into a single token -- sorry about that).
-v1.1 - 2017/04/30 (PureBASIC v5.60)
-     - Keywords list now built by extracting them from the PureBASIC SDK's
-       "SyntaxHilighting.dll" (from each PureBASIC version). Tokens from each
-       version are added to the list, and renamed or removed tokens are kept
-       for the sake of covering all versions of the language from PureBASIC
-       v5.00 upward. (NOTE: currently, there are no renamed or deprecated
-       tokens in the keywords list). For more info, see:
-       -- http://www.purebasic.fr/english/viewtopic.php?&p=506269
-       -- https://github.com/tajmone/purebasic-archives/tree/master/syntax-highlighting/guidelines
-v1.0 - 2016/10/27 (PureBASIC v5.50)
-     - First release. Keywords list taken and adapted from GuShH's PureBasic 
-       language file for GeSHi:
-       -- https://github.com/easybook/geshi/blob/master/geshi/purebasic.php
+    ==============================================================================
+   v1.3 - 2017/05/20 ASim 
+         - fixed single line comment delimiter
+   v1.2 - 2017/05/11 (PureBASIC v5.60)
+         - Added ASM keywords and support for inline ASM (via "!" syntax).
+         - BUG-FIXES:
+           - Repaired missing or mispelled PB Keywords (something went wrong in the
+             keywords list of the v1.1 of this lang definition, some tokens were
+             lost, other fused into a single token -- sorry about that).
+    v1.1 - 2017/04/30 (PureBASIC v5.60)
+         - Keywords list now built by extracting them from the PureBASIC SDK's
+           "SyntaxHilighting.dll" (from each PureBASIC version). Tokens from each
+           version are added to the list, and renamed or removed tokens are kept
+           for the sake of covering all versions of the language from PureBASIC
+           v5.00 upward. (NOTE: currently, there are no renamed or deprecated
+           tokens in the keywords list). For more info, see:
+           -- http://www.purebasic.fr/english/viewtopic.php?&p=506269
+           -- https://github.com/tajmone/purebasic-archives/tree/master/syntax-highlighting/guidelines
+    v1.0 - 2016/10/27 (PureBASIC v5.50)
+         - First release. Keywords list taken and adapted from GuShH's PureBasic 
+           language file for GeSHi:
+           -- https://github.com/easybook/geshi/blob/master/geshi/purebasic.php
 ]]
-
