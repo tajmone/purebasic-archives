@@ -1,7 +1,7 @@
 PureBASIC For Highlight
 =======================
 
-    v1.6 (2017/09/30)
+    v1.7 (2017/10/02)
     PureBASIC 5.00 -> 5.60
 
 This folder is the home of the PureBASIC language definition and theme files for André Simons’ **Highlight**.
@@ -12,6 +12,8 @@ This folder is the home of the PureBASIC language definition and theme files for
 
 <!-- #toc -->
 -   [About This Project](#about-this-project)
+    -   [PureBASIC’s Native IDE Look and Feel](#purebasics-native-ide-look-and-feel)
+    -   [Beyond The Native Look and Feel](#beyond-the-native-look-and-feel)
     -   [ASM Syntax Support](#asm-syntax-support)
     -   [Files](#files)
 -   [About Highlight](#about-highlight)
@@ -28,7 +30,37 @@ The PureBASIC language and theme files herein contained were written by Tristano
 
 These files are now part of the official Highlight project and since v3.33 are bundled with it.
 
-The `edit-purebasic` color theme mimics the look and feel of PB’s native IDE, and can be accessed in the “**Formatting**” tab, under the “**Color theme:**” drop-down menu of Highlight’s GUI, or invoked via options from the command line.
+PureBASIC’s Native IDE Look and Feel
+------------------------------------
+
+The PureBASIC language definition was originally designed with the sole purpose of mimicking the way PB’s native IDE highlights its source code with its default color scheme — the goal being to use Highlight to render PureBASIC code just as users would see it in PB’s IDE, so that it would look familiar to them.
+
+The `edit-purebasic` color theme was created specifically to mimic the look and feel of PB’s native IDE, and can be accessed in the “**Formatting**” tab, under the “**Color theme:**” drop-down menu of Highlight’s GUI, or invoked via options from the command line.
+
+Currently, the language definition is being improved so that it can highlight also syntax elements that are not usually differentiated in PB’s native IDE. For example, the IDE doesn’t colorize escape sequences inside escape strings (eg: `~"\n"`), and the default color scheme will show numbers, labels, structures, and other elements with the same color as normal text (ie: black).
+
+Although users can change the IDE’s default color scheme (**Preferences** » **Editor** » **Coloring**), the `edit-purebasic` color theme aims to replicate the IDE’s default settings plus inline ASM syntax coloring. This means that the theme will asign the same color to different syntax elements, making them unidstinguishable in the final rendering.
+
+Beyond The Native Look and Feel
+-------------------------------
+
+Since some Highlight users might wish to use also other themes to highlighting PB code, efforts are being carried out to make the language definition capture more syntax elements than merely those required for mimicking the native IDE — eg: escape sequences within strings, labels, pointers, etc.
+
+So far, these are the milestone achieved in that direction:
+
+-   `v1.5` Escaped-strings delimiter (the “`~`” in “`~"`”) is no longer rendered via an Highlight Keyword (`kwd`) but is rendered as part of the actual string.
+-   `v1.6` Numbers definition (hex, binary, floats an integers) were added.
+-   `v1.7` Escape sequences are now parsed correctly, and only if occuring in due context (ie: Escaped strings).
+
+And this is a list of more syntax elements (available in PB’s IDE preferences) that could be added in the future:
+
+-   Labels
+-   Structures
+-   Pointers
+-   Module Names
+-   Separators (`(; ,[])`)
+
+As the PureBASIC language definition will be refined and grow in time, the `edit-purebasic` color theme will be updated accordingly, to ensure that it will always be possible to mimick PureBASIC’s native look and feel.
 
 ASM Syntax Support
 ------------------

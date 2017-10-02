@@ -3,12 +3,13 @@ The PureBASIC Archives
 
 A collection of PureBASIC resources.
 
-> __PROJECT TEMPORARILY FROZEN__ — The PureBASIC Archives project is currently being redesigned to become a fully browsable HTML project (both online, through GitHub Pages, as well as locally). The new version will be powered by __Butler__ — a static, flat-file content management system (written entirely in PureBASIC) that relies on [PP](https://github.com/CDSoft/pp), [pandoc](http://pandoc.org/) and [Highlight](http://www.andre-simon.de/doku/highlight/en/highlight.php) to generate HTML documentation from pandoc-markdown source files.
-> 
-> Until the new version is ready for release, the PureBASIC Archives will not be updated, and no pull requests will be accepted (currently, all the markdown contents are being ported to the new system).
-> 
-> __Estimated Release Date__: October/December (optimistically).
-
+> **PROJECT TEMPORARILY FROZEN** — The PureBASIC Archives project is currently being redesigned to become a fully browsable HTML project (both online, through GitHub Pages, as well as locally). The new version will be powered by **Butler** — a static, flat-file content management system (written entirely in PureBASIC) that relies on [PP](https://github.com/CDSoft/pp), [pandoc](http://pandoc.org/) and [Highlight](http://www.andre-simon.de/doku/highlight/en/highlight.php) to generate HTML documentation from pandoc-markdown source files.
+>
+> Until the new version is ready for release, the PureBASIC Archives will not be updated, and no pull requests will be accepted (currently, all the markdown contents are being ported to the new system) — except for some sections (eg: [`/syntax-highlighting/`](./syntax-highlighting/)) which are crucial to the upcoming version and are being actively updated to make the transition possible.
+>
+> **Estimated Release Date**: October/December (optimistically).
+>
+> As soon as an early beta version will be ready for online testing, a temporary repo will be created to test that source building and GitHub Pages website deployment work correctly. If you wish to participate to the beta version testing, stay tuned on this page for an update, or contact me via email.
 
 **DIRECT DOWNLOAD** – You can download a full copy of The PB-Archives without using Git:
 
@@ -276,6 +277,8 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2017/10/02`
+    -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.7).
 -   `2017/09/30`
     -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.6 — fixes some bugs introduced with v1.4-5).
 -   `2017/09/27`
