@@ -7,9 +7,21 @@ A collection of PureBASIC resources.
 >
 > Until the new version is ready for release, the PureBASIC Archives will not be updated, and no pull requests will be accepted (currently, all the markdown contents are being ported to the new system) — except for some sections (eg: [`/syntax-highlighting/`](./syntax-highlighting/)) which are crucial to the upcoming version and are being actively updated to make the transition possible.
 >
-> **Estimated Release Date**: October/December (optimistically).
+> **ESTIMATED RELEASE DATE**: December 2017/January 2018 (optimistically).
 >
-> As soon as an early beta version will be ready for online testing, a temporary repo will be created to test that source building and GitHub Pages website deployment work correctly. If you wish to participate to the beta version testing, stay tuned on this page for an update, or contact me via email.
+> **ONLINE ALPHA TESTS PREVIEWING**
+>
+> An early access Alpha version is now publicly available in a temporary GitHub repository:
+>
+> -   <https://github.com/tajmone/pb-archives-test/>
+>
+> Here are some HTML Live preview links of what the revamped documentation website will look like (still WIP drafts):
+>
+> -   [homepage](http://htmlpreview.github.io/?https://github.com/tajmone/pb-archives-test/blob/source/index.html)
+> -   [TAJGA FASM Tutorial](http://htmlpreview.github.io/?https://github.com/tajmone/pb-archives-test/blob/source/asm/fasm/tutorials/tajga-fasm-tutorial.html)
+> -   [RegularExpression PureLibrary (PCRE)](http://htmlpreview.github.io/?https://github.com/tajmone/pb-archives-test/blob/source/pb-development/purelibs/regex/index.html)
+>
+> You’re welcome to participate to the alpha testing and development [via GitHub issues](https://github.com/tajmone/pb-archives-test/issues) or by contacting me via email (tajmone at gmail dot com).
 
 **DIRECT DOWNLOAD** – You can download a full copy of The PB-Archives without using Git:
 
