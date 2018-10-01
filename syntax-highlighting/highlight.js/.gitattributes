@@ -1,0 +1,7 @@
+# Custom Git settings overrides for folder:
+# /syntax-highlighting/highlight.js/
+
+# Set highlight.js files to Linux line ending, as this are built elsewhere and
+# imported here as they are:
+highlight.pack.js text eol=lf
+

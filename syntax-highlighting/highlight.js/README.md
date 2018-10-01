@@ -1,4 +1,4 @@
-Highlight.js v9.11.0
+Highlight.js v9.12.0
 ====================
 
     PureBASIC 5.00–5.60

@@ -289,6 +289,8 @@ Repo History
 
 A record of the milestones of this repository history (reverse order).
 
+-   `2018/10/01`
+    -   Updated pre-built [**Highlight.js**](./syntax-highlighting/highlight.js/) to **HJLS-PB v9.12.0a**.
 -   `2017/10/02`
     -   Updated [**Highlight** PureBASIC lang definition](./syntax-highlighting/highlight) (v1.7).
 -   `2017/09/30`

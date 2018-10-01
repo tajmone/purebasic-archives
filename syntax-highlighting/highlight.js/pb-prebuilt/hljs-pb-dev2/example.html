@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <meta name="author" content="Tristano Ajmone (@tajmone)">
-  <meta name="dcterms.date" content="2017-05-12">
-  <meta name="keywords" content="PureBasic, highlight.js, syntax highlighting, javascript">
-  <title>HLJS-PB v9.11.0b :: PB-DEV2</title>
+  <meta name="dcterms.date" content="2018-10-01">
+  <title>HLJS-PB v9.12.0a :: PB-DEV2</title>
   <style type="text/css">code{white-space: pre;}</style>
   <link rel="stylesheet" href="highlight.css">
   <link rel="stylesheet" href="../resources/gh-pandoc.min.css">
@@ -19,58 +17,23 @@
 </head>
 <body>
 <header>
-<h1 class="title">HLJS-PB v9.11.0b :: PB-DEV2</h1>
-<p class="subtitle">Pre-Built HLJS-Package Demo</p>
-<p class="author">Author: Tristano Ajmone (<a href="https://github.com/tajmone" target="_blank"><span class="citation" data-cites="tajmone">@tajmone</span></a>)</p>
-<p class="date">Date: May 12, 2017</p>
+<h1 class="title">HLJS-PB v9.12.0a :: PB-DEV2</h1>
+<p class="date">Date: 2018-10-01</p>
 </header>
 <nav id="TOC">
 <p class="toctitle">Contents</p>
-<ul>
-<li><a href="#highlight.js-examples">Highlight.js Examples</a><ul>
-<li><a href="#using-hljs">Using HLJS</a></li>
-<li><a href="#disable-highlighting-nohighlight">Disable Highlighting (<code>nohighlight</code>)</a></li>
-</ul></li>
-<li><a href="#purebasic">PureBASIC</a><ul>
-<li><a href="#purebasic-pseudocode">PureBASIC Pseudocode</a></li>
-</ul></li>
-<li><a href="#bash">Bash</a></li>
-<li><a href="#dos-.bat">DOS .bat</a></li>
-<li><a href="#ini">Ini</a></li>
-<li><a href="#powershell">PowerShell</a></li>
-<li><a href="#fasm">FASM</a></li>
-<li><a href="#diff">Diff</a></li>
-<li><a href="#makefile">Makefile</a></li>
-<li><a href="#json">JSON</a></li>
-</ul>
+<ul><li><a href="#highlight.js-examples">Highlight.js Examples</a><ul><li><a href="#using-hljs">Using HLJS</a></li><li><a href="#disable-highlighting-nohighlight">Disable Highlighting (<code>nohighlight</code>)</a></li></ul></li><li><a href="#purebasic">PureBASIC</a><ul><li><a href="#purebasic-pseudocode">PureBASIC Pseudocode</a></li></ul></li><li><a href="#bash">Bash</a></li><li><a href="#dos-.bat">DOS .bat</a></li><li><a href="#ini">Ini</a></li><li><a href="#powershell">PowerShell</a></li><li><a href="#fasm">FASM</a></li><li><a href="#diff">Diff</a></li><li><a href="#makefile">Makefile</a></li><li><a href="#json">JSON</a><ul><li><a href="#section"><!-- EOF --></a></li></ul></li></ul>
 </nav>
-<h1 id="highlight.js-examples">Highlight.js Examples</h1>
-<p>This page is an example (and test) page for the generated HLJS package.</p>
-<p>«<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">Highlight.js PureBASIC Modded Fork</a>» <strong>v9.11.0b</strong> (2017/05/12), based on Highlight.js <strong>v9.11.0</strong> (2017/04/19).</p>
-<p>PureBASIC v5.00–5.60 (syntax updated).</p>
-<h2 id="using-hljs">Using HLJS</h2>
-<p>HLJS is capable of auto-detecting languages withing the <code>&lt;pre&gt;&lt;code&gt;</code> blocks, but it’s advaisable to manually define the language – especially for readability of source code.</p>
-<p>To define the language in html, assign the language name to the <code>class</code> attribute of the opening <code>&lt;code&gt;</code> tag of the <code>&lt;pre&gt;&lt;code&gt;</code> block that wraps your source code:</p>
-<pre class="nohighlight"><code>&lt;pre&gt;&lt;code class=&quot;languagename&quot;&gt;
+<h1 id="highlight.js-examples">Highlight.js Examples</h1><p>This page is an example (and test) page for the generated HLJS package.</p><p>«<a href="https://github.com/tajmone/highlight.js/tree/PureBASIC">Highlight.js PureBASIC Modded Fork</a>» <strong>9.12.0a</strong> (2018-10-01), based on Highlight.js <strong>9.12.0</strong> (2017-05-31).</p><p>PureBASIC v5.00–5.60.</p><h2 id="using-hljs">Using HLJS</h2><p>HLJS is capable of auto-detecting languages withing the <code>&lt;pre&gt;&lt;code&gt;</code> blocks, but it’s advaisable to manually define the language – especially for readability of source code.</p><p>To define the language in html, assign the language name to the <code>class</code> attribute of the opening <code>&lt;code&gt;</code> tag of the <code>&lt;pre&gt;&lt;code&gt;</code> block that wraps your source code:</p><pre class="nohighlight"><code>&lt;pre&gt;&lt;code class=&quot;languagename&quot;&gt;
 [...your source code...]
-&lt;/code&gt;&lt;/pre&gt;</code></pre>
-<p>To define the language in markdown, type the language name after the opening backticks of the fenced code block that wraps your source code:</p>
-<pre class="nohighlight"><code>```languagename
+&lt;/code&gt;&lt;/pre&gt;</code></pre><p>To define the language in markdown, type the language name after the opening backticks of the fenced code block that wraps your source code:</p><pre class="nohighlight"><code>```languagename
 [...your source code...]
-```</code></pre>
-<h2 id="disable-highlighting-nohighlight">Disable Highlighting (<code>nohighlight</code>)</h2>
-<p>If you want to ensure that <code>&lt;pre&gt;&lt;code&gt;</code> block is not parsed by HLJS, use “nohighlight” instead of the language name.</p>
-<p>A code block set to “nohighlight” will look something like this:</p>
-<pre class="nohighlight"><code>I am a code block with no highlighting.
-Highlight.js will ignore me: no parsing, no highlighting tags added.</code></pre>
-<p>NOTE: The above block styling doesn’t derive by the HLJS generated stylesheet: it relies instead on the CSS definitions of the current document’s stylesheet, which defines a background color, padding, and some extra attributes.</p>
-<p>It will be up to you to handle its appearance by adding some definitions in you CSS file:</p>
-<pre class="nohighlight"><code>pre.nohighlight code {
+```</code></pre><h2 id="disable-highlighting-nohighlight">Disable Highlighting (<code>nohighlight</code>)</h2><p>If you want to ensure that <code>&lt;pre&gt;&lt;code&gt;</code> block is not parsed by HLJS, use “nohighlight” instead of the language name.</p><p>A code block set to “nohighlight” will look something like this:</p><pre class="nohighlight"><code>```nohighlight
+I am a code block with no highlighting.
+Highlight.js will ignore me: no parsing, no highlighting tags added.
+```</code></pre><p>NOTE: The above block styling doesn’t derive by the HLJS generated stylesheet: it relies instead on the CSS definitions of the current document’s stylesheet, which defines a background color, padding, and some extra attributes.</p><p>It will be up to you to handle its appearance by adding some definitions in you CSS file:</p><pre class="nohighlight"><code>pre {.nohighlight} code {
   [...your CSS...]
-}</code></pre>
-<h1 id="purebasic">PureBASIC</h1>
-<p>PureBASIC CSS Theme based on the original <a href="https://github.com/isagalaev/highlight.js/blob/master/src/styles/purebasic.css"><code>purebasic.css</code></a> by Tristano Ajmone (extended to include PB mod extra lang token).</p>
-<pre class="purebasic"><code>Enumeration Test 3 Step 10
+}</code></pre><h1 id="purebasic">PureBASIC</h1><p>PureBASIC CSS Theme based on the original <a href="https://github.com/isagalaev/highlight.js/blob/master/src/styles/purebasic.css"><code>purebasic.css</code></a> by Tristano Ajmone (extended to include PB mod extra lang token).</p><pre class="purebasic"><code>﻿Enumeration Test 3 Step 10
   #Constant_One ; Will be 3
   #Constant_Two ; Will be 13
 EndEnumeration
@@ -79,7 +42,7 @@ A.i = #Constant_One
 B = A + 3
 
 STRING.s = SomeProcedure(&quot;Hello World&quot;, 2, #Empty$, #Null$)
-ESCAPED_STRING$ = ~&quot;An escaped (\\) string!\nNewline...&quot;
+ESCAPED_STRING$ = ~&quot;An escaped (\\) string.\nNewline...&quot;
 
 FixedString.s{5} = &quot;12345&quot;
 
@@ -96,22 +59,12 @@ Declare.s Attach(String1$, String2$)
 
 Procedure.s Attach(String1$, String2$)
   ProcedureReturn String1$+&quot; &quot;+String2$
-EndProcedure</code></pre>
-<h2 id="purebasic-pseudocode">PureBASIC Pseudocode</h2>
-<p>PureBASIC Pseudocode is used for syntax-usage examples.</p>
-<pre class="purebasic pseudocode"><code>Interface &lt;Name1&gt; [Extends &lt;Name2&gt;]
+EndProcedure
+</code></pre><h2 id="purebasic-pseudocode">PureBASIC Pseudocode</h2><p>PureBASIC Pseudocode is used for syntax-usage examples.</p><pre class="purebasic pseudocode"><code>Interface &lt;Name1&gt; [Extends &lt;Name2&gt;]
   [Procedure1]
   [Procedure2]
   ...
-EndInterface</code></pre>
-<p>To enable PB Pseudocode in html, add “pseudocode” after “purebasic” (separated by a space) in the <code>class</code> attribute of the <code>&lt;code&gt;</code> tag:</p>
-<pre class="nohighlight"><code>&lt;pre class=&quot;purebasic pseudocode&quot;&gt;&lt;code&gt;</code></pre>
-<p>In Pandoc’s markdown, you’ll have to use this syntax (which might not work with other markdown parsers):</p>
-<pre class="nohighlight"><code> ``` {.purebasic .pseudocode}</code></pre>
-<p>For other markdown flavors/parsers, check the relevant documentation. Basically, want you want to achieve is to have both “purebasic” and “pseudocode” to appear as classnames in the final html’s <code>&lt;code&gt;</code> tag.</p>
-<h1 id="bash">Bash</h1>
-<p>Custom CSS theme by Tristano Ajmone, based on xterm default palette.</p>
-<pre class="bash"><code>#!/bin/bash
+EndInterface</code></pre><p>To enable PB Pseudocode in html, add “pseudocode” after “purebasic” (separated by a space) in the <code>class</code> attribute of the <code>&lt;code&gt;</code> tag:</p><pre class="nohighlight"><code>&lt;pre class=&quot;purebasic pseudocode&quot;&gt;&lt;code&gt;</code></pre><p>In Pandoc’s markdown, you’ll have to use this syntax (which might not work with other markdown parsers):</p><pre class="nohighlight"><code>  ``` {.purebasic .pseudocode}</code></pre><p>For other markdown flavors/parsers, check the relevant documentation. Basically, want you want to achieve is to have both “purebasic” and “pseudocode” to appear as classnames in the final html’s <code>&lt;code&gt;</code> tag.</p><!-- EOF --><h1 id="bash">Bash</h1><p>Custom CSS theme by Tristano Ajmone, based on xterm default palette.</p><pre class="bash"><code>#!/bin/bash
 
 ###### CONFIG
 ACCEPTED_HOSTS=&quot;/root/.hag_accepted.conf&quot;
@@ -125,12 +78,7 @@ fi
 
 genApacheConf(){
  echo -e &quot;# Host ${HOME_DIR}$1/$2 :&quot;
-}</code></pre>
-<h1 id="dos-.bat">DOS .bat</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
-</blockquote>
-<pre class="dos"><code>cd \
+}</code></pre><h1 id="dos-.bat">DOS .bat</h1><blockquote><p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p></blockquote><pre class="dos"><code>cd \
 copy a b
 ping 192.168.0.1
 @rem ping 192.168.0.1
@@ -153,12 +101,7 @@ sfc /SCANNOW
 
 set path = test
 
-xcopy %1\*.* %2</code></pre>
-<h1 id="ini">Ini</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
-</blockquote>
-<pre class="ini"><code>; boilerplate
+xcopy %1\*.* %2</code></pre><h1 id="ini">Ini</h1><blockquote><p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p></blockquote><pre class="ini"><code>; boilerplate
 [package]
 name = &quot;some_name&quot;
 authors = [&quot;Author&quot;]
@@ -169,12 +112,7 @@ a description&quot;
 name = ${NAME}
 default = True
 auto = no
-counter = 1_000</code></pre>
-<h1 id="powershell">PowerShell</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
-</blockquote>
-<pre class="powershell"><code>$initialDate = [datetime]&#39;2013/1/8&#39;
+counter = 1_000</code></pre><h1 id="powershell">PowerShell</h1><blockquote><p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p></blockquote><pre class="powershell"><code>$initialDate = [datetime]&#39;2013/1/8&#39;
 
 $rollingDate = $initialDate
 
@@ -184,15 +122,7 @@ do {
     Write-Host &quot;$rollingDate.ToShortDateString() - $results&quot;
     $rollingDate = $rollingDate.AddDays(21)
     $username = [System.Environment]::UserName
-} until ($rollingDate -ge [datetime]&#39;2013/12/31&#39;)</code></pre>
-<h1 id="fasm">FASM</h1>
-<blockquote>
-<p><strong>NOTE 1</strong>: Currently, the FASM language definition (<code>fasm.js</code>) is just a copy of <code>x86asm.js</code> (<strong>highlight.js</strong>’s gerneric language definition for Intel x86 Assembly), so it doesn’t render FASM syntax 100% correctly. In due time, the language definition will be tweaked to become FASM-specific and fully compliant. I’ve chosen to early-adopt a renamed version of <code>x86asm.js</code> file to avoid having to change — in the future — all language class attributes in source documents.</p>
-</blockquote>
-<blockquote>
-<p><strong>NOTE 2</strong>: The current theme uses <strong>xterm</strong>’s color palette. I wanted to provide an old-school look to FASM syntax. But the theme palette will change when the language definition shall be completed.</p>
-</blockquote>
-<pre class="fasm"><code>; Beer - example of tiny (one section) Win32 program
+} until ($rollingDate -ge [datetime]&#39;2013/12/31&#39;)</code></pre><h1 id="fasm">FASM</h1><blockquote><p><strong>NOTE 1</strong>: Currently, the FASM language definition (<code>fasm.js</code>) is just a copy of <code>x86asm.js</code> (<strong>highlight.js</strong>’s gerneric language definition for Intel x86 Assembly), so it doesn’t render FASM syntax 100% correctly. In due time, the language definition will be tweaked to become FASM-specific and fully compliant. I’ve chosen to early-adopt a renamed version of <code>x86asm.js</code> file to avoid having to change — in the future — all language class attributes in source documents.</p></blockquote><blockquote><p><strong>NOTE 2</strong>: The current theme uses <strong>xterm</strong>’s color palette. I wanted to provide an old-school look to FASM syntax. But the theme palette will change when the language definition shall be completed.</p></blockquote><pre class="fasm"><code>; Beer - example of tiny (one section) Win32 program
 
 format PE GUI 4.0
 
@@ -236,11 +166,7 @@ data import
  import winmm,\
     mciSendString,&#39;mciSendStringA&#39;
 
-end data</code></pre>
-<p>(example taken from <strong>FASM</strong> for Windows distribution package, examples folder, <code>BEER.ASM</code>)</p>
-<h1 id="diff">Diff</h1>
-<p>Custom theme by Tristano Ajmone, loosely inspired on <a href="https://github.com/blog/612-introducing-github-compare-view">GitHub Compare View</a> (<a href="https://github.com/tajmone/highlight.js/commit/cef34e110a2f1f302fed624db2aa39e45aacc8a9">see an example</a>).</p>
-<pre class="diff"><code>Index: languages/ini.js
+end data</code></pre><p>(example taken from <strong>FASM</strong> for Windows distribution package, examples folder, <code>BEER.ASM</code>)</p><!-- EOF --><h1 id="diff">Diff</h1><p>Custom theme by Tristano Ajmone, loosely inspired on <a href="https://github.com/blog/612-introducing-github-compare-view">GitHub Compare View</a> (<a href="https://github.com/tajmone/highlight.js/commit/cef34e110a2f1f302fed624db2aa39e45aacc8a9">see an example</a>).</p><pre class="diff"><code>Index: languages/ini.js
 ===================================================================
 --- languages/ini.js    (revision 199)
 +++ languages/ini.js    (revision 200)
@@ -269,12 +195,7 @@ end data</code></pre>
 ! compress the size of the
 ! changes.
 
-  It is important to spell</code></pre>
-<h1 id="makefile">Makefile</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
-</blockquote>
-<pre class="makefile"><code># Makefile
+  It is important to spell</code></pre><h1 id="makefile">Makefile</h1><blockquote><p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p></blockquote><pre class="makefile"><code># Makefile
 
 BUILDDIR      = _build
 EXTRAS       ?= $(BUILDDIR)/extras
@@ -286,12 +207,7 @@ main:
     build_main $(BUILDDIR)
 
 clean:
-    rm -rf $(BUILDDIR)/*</code></pre>
-<h1 id="json">JSON</h1>
-<blockquote>
-<p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p>
-</blockquote>
-<pre class="json"><code>[
+    rm -rf $(BUILDDIR)/*</code></pre><h1 id="json">JSON</h1><blockquote><p><strong>NOTE</strong>: Currently there is no custom CSS definition for this language.</p></blockquote><pre class="json"><code>[
   {
     &quot;title&quot;: &quot;apples&quot;,
     &quot;count&quot;: [12000, 20000],
@@ -302,7 +218,7 @@ clean:
     &quot;count&quot;: [17500, null],
     &quot;description&quot;: {&quot;text&quot;: &quot;...&quot;, &quot;sensitive&quot;: false}
   }
-]</code></pre>
+]</code></pre><h2 id="section"><!-- EOF --></h2><p>subtitle: Pre-Built HLJS-Package Demo author: Tristano Ajmone (<a href="https://github.com/tajmone" target="_blank"><span class="citation" data-cites="tajmone">@tajmone</span></a>) lang: en-GB keywords: - PureBasic - highlight.js - syntax highlighting - javascript …</p>
 <div class="warningnote">
 WARNING: This html documents is automatically generated from markdown sources. Any changes made to the html source will be overwritten and lost with the next building process.
 If you wish to contribute changes to this document, add them to the source repository:<br>
